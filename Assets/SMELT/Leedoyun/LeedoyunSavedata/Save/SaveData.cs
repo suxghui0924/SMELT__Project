@@ -1,0 +1,83 @@
+using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+/// <summary>
+/// 스멜트(SMELT) 게임의 모든 세이브 데이터를 담는 컨테이너.
+/// 팀원이 새 데이터를 추가할 때는 해당 Region에만 필드를 추가하세요.
+/// SaveManager.cs는 건드리지 마세요.
+/// </summary>
+[Serializable]
+public class SaveData
+{
+    // ─────────────────────────────────────────
+    // 메타 정보 (건드리지 마세요 - SaveManager가 자동 기록)
+    // ─────────────────────────────────────────
+    public string version  = "1.0.0"; // 버전 불일치 감지용
+    public string saveTime = ""; // 저장 시각 (자동 기록)
+    public float  playTime = 0f; // 총 플레이 시간(초)
+
+    // ─────────────────────────────────────────
+    // 경제 시스템 & 인벤토리 & 테크트리 담당자: 주다림
+    // ─────────────────────────────────────────
+    [Header("Economy")]
+    public int currentDay = 1; // 현재 날짜
+    public int gold = 0; // 보유 골드
+    public int maintenanceCost = 100; // 오늘의 유지비 (날마다 증가)
+
+    [Header("Inventory")]
+    public List<ItemSaveData> inventory = new List<ItemSaveData>();
+    // 저장 예시:
+    // { itemId: "fruitstone_strawberry", quantity: 5 }  → 딸기 과일석 5개
+    // { itemId: "weapon_sword", quantity: 2 }  → 검 2개
+    // { itemId: "juice_strawberry", quantity: 3 }  → 딸기주스 3개
+
+    [Header("Tech Tree")]
+    public int currentTechLevel = 1; // 1=무기, 2=주스, 3=+α
+    public List<string> unlockedTechs   = new List<string>();
+    // 저장 예시: ["tech_weapon", "tech_juice"]
+
+    // ─────────────────────────────────────────
+    // 플레이어 스탯 & 업그레이드 담당자: 이윤건
+    // ─────────────────────────────────────────
+    [Header("Player Stats & Upgrades")]
+    public float makeSpeedJuice =    1.0f; // 가공 속도 배율 (0.05 = 5%)
+    public float makeSpeedWeapon =    1.0f; // 가공 속도 배율 (0.05 = 5%)
+    public float parryRange =   1.0f; // 패링 판정 범위 배율 (0.05 = 5%)
+    public float moreSell =     0.0f; // 판매 수익 보너스 (0.05 = 5%)
+    public float attackSpeed =  0.0f; //공속 (0.05 = 5%)
+    public float getApple =     0.0f; //사과 배수 (0.05 = 5%)
+    public float getLemon =     0.0f; //레몬 배수 (0.05 = 5%)
+    public float getMelon =     0.0f; //멜론 배수 (0.05 = 5%)
+    public float getGrape =     0.0f; //포도 배수 (0.05 = 5%)
+    public float getOrange =    0.0f; //귤 배수 (0.05 = 5%)
+    public float getFriuts =    0.0f; //전체 과일 배수 (0.05 = 5%)
+    public List<string> purchasedUpgrades  = new List<string>();
+    // 저장 예시: ["upgrade_parry_range", "upgrade_sales_05"]
+
+    // ─────────────────────────────────────────
+    // 상점 운영 현황 담당자: 박성희
+    // ─────────────────────────────────────────
+    // ─────────────────────────────────────────
+    [Header("Shop")]
+    public int totalEarned  = 0;   // 누적 총 수익
+    public int todayEarned  = 0;   // 오늘 번 돈
+    public List<string> salesHistory = new List<string>();
+    // 저장 예시: ["weapon_sword", "juice_grape"] → 오늘 팔린 아이템 목록
+}
+
+// ─────────────────────────────────────────
+// 아이템 구조 (과일석 / 무기 / 주스 모두 여기서 관리)
+//
+// 아이템 ID 네이밍 규칙:
+//   과일석 원석 → fruitstone_strawberry / fruitstone_grape / fruitstone_lemon
+//   제련 무기   → weapon_sword / weapon_dagger
+//   착즙 주스   → juice_strawberry / juice_grape / juice_lemon
+//   장신구(3단계) → accessory_ring / accessory_necklace
+// ─────────────────────────────────────────
+[Serializable]
+public class ItemSaveData
+{
+    public string itemId;    // 아이템 고유 ID (ItemDatabase 조회 키)
+    public int quantity;  // 수량
+}
