@@ -93,7 +93,6 @@ public class InventoryManager : MonoBehaviour, ISaveable
         else
             _inventory[itemId] = amount;
 
-        Debug.Log($"[Inventory] 추가: {itemId} x{amount}");
     }
 
     /// <summary>아이템 소모. 수량 부족이면 false 반환.</summary>
@@ -126,7 +125,6 @@ public class InventoryManager : MonoBehaviour, ISaveable
     public void AddGold(int amount)
     {
         _gold += amount;
-        Debug.Log($"[Economy] 골드 +{amount} → 현재: {_gold}");
     }
 
     /// <summary>골드 차감. 부족하면 false 반환.</summary>
@@ -152,7 +150,6 @@ public class InventoryManager : MonoBehaviour, ISaveable
 
         _currentDay++;
         _maintenanceCost = Mathf.RoundToInt(_maintenanceCost * 1.2f);  // 유지비 20% 증가
-        Debug.Log($"[Economy] {_currentDay}일차 시작. 유지비: {_maintenanceCost}");
         return true;
     }
 
@@ -166,7 +163,6 @@ public class InventoryManager : MonoBehaviour, ISaveable
         if (_unlockedTechs.Contains(techId)) return false;
         _unlockedTechs.Add(techId);
         _techLevel++;
-        Debug.Log($"[Tech] 해금: {techId} → 현재 레벨: {_techLevel}");
         return true;
     }
 
@@ -185,7 +181,6 @@ public class InventoryManager : MonoBehaviour, ISaveable
     {
         if (!RemoveItem(inputId, inputAmount)) return false;
         AddItem(outputId, outputAmount);
-        Debug.Log($"[Craft] {inputId} x{inputAmount} → {outputId} x{outputAmount}");
         return true;
     }
 }

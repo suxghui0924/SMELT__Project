@@ -81,7 +81,6 @@ public class SaveManager : MonoBehaviour
             string json = JsonUtility.ToJson(CurrentData, prettyPrint: true);
             File.WriteAllText(SavePath, json);
 
-            Debug.Log($"[SaveManager] Save complete -> {SavePath}"); // 저장 완료
             OnSaveResult?.Invoke(true, $"Save complete\n{CurrentData.saveTime}"); // 저장 완료
         }
         catch (Exception e)
@@ -98,7 +97,6 @@ public class SaveManager : MonoBehaviour
     {
         if (!File.Exists(SavePath))
         {
-            Debug.Log("[SaveManager] No save file found -> starting new game"); // 세이브 파일 없음, 새 게임으로 시작
             OnLoadResult?.Invoke(false, "No saved data found."); // 저장된 데이터가 없습니다.
             return false;
         }
@@ -119,7 +117,6 @@ public class SaveManager : MonoBehaviour
 
             _sessionStartTime = Time.time;
 
-            Debug.Log($"[SaveManager] Load complete ({CurrentData.saveTime})"); // 불러오기 완료
             OnLoadResult?.Invoke(true, $"Load complete\n{CurrentData.saveTime}"); // 불러오기 완료
             return true;
         }
