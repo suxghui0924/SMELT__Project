@@ -124,11 +124,14 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
             case "upgrade_sales_05":
                 UPMoreSell += 0.05f;
                 break;
-/*
-            // 가공 속도 향상
-            case "upgrade_process_speed":
-                UPMakeSpeed += 0.3f;
-                break;*/
+            case "aoi":
+                UPGetApple += 0.05f;
+                break;
+            /*
+                        // 가공 속도 향상
+                        case "upgrade_process_speed":
+                            UPMakeSpeed += 0.3f;
+                            break;*/
 
             default:
                 Debug.LogWarning($"[Upgrade] 알 수 없는 업그레이드: {id}");
