@@ -3,27 +3,32 @@ using UnityEngine.InputSystem;
 
 public class Creafting : MonoBehaviour
 {
+    public GameObject CraftingUI;
 
-    public GameObject craftingUI;
+    private bool isPlayerNear = false;
+
+    private void Update()
+    {
+        if (isPlayerNear && Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            CraftingUI.SetActive(true);
+            Debug.Log("E 키 눌림 → UI 활성화"); // 근데 이건 UI가 있어야 하는데 없어서 일단 임시로 만듬
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) // 플레이어와 충돌했을 때
+        if (collision.CompareTag("Player"))
         {
-            if (Keyboard.current.eKey.wasPressedThisFrame) // E 키가 눌렸을 때
-            {
-                craftingUI.SetActive(true); // 크래프팅 UI 활성화
-                Debug.Log("E 키가 눌렸습니다. 크래프팅 UI가 활성화되었습니다.");
-            }
-        }
-    }
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player")) // 플레이어가 충돌에서 벗어났을 때
-        {
-            craftingUI.SetActive(false); // 크래프팅 UI 비활성화
-            Debug.Log("플레이어가 충돌에서 벗어났습니다. 크래프팅 UI가 비활성화되었습니다.");
+            isPlayerNear = true;
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            isPlayerNear = false;
+        }
+    }
 }

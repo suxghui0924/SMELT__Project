@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - UpgradeShop
+  - Anvil
   layers:
   - Default
   - TransparentFX
