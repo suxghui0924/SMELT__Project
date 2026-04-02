@@ -343,6 +343,7 @@ GameObject:
   - component: {fileID: 278570878}
   - component: {fileID: 278570877}
   - component: {fileID: 278570876}
+  - component: {fileID: 278570879}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -363,7 +364,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 393747910}
-  - {fileID: 1893950820}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -434,6 +434,26 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &278570879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 278570874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5ebe8f356301f479f42be8e28721b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveButton: {fileID: 794850040}
+  loadButton: {fileID: 1432661983}
+  popupPanel: {fileID: 1893950819}
+  popupMessage: {fileID: 1681418906}
+  popupIcon: {fileID: 1431978168}
+  successSprite: {fileID: -1096105371027078061, guid: cff31084ff1bcb6448c89be3f58fe679, type: 3}
+  failSprite: {fileID: -7962594866118868923, guid: 6b398a9fa8a762143b530e9faeae7559, type: 3}
+  popupDuration: 2
 --- !u!1 &393747909
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +488,7 @@ RectTransform:
   - {fileID: 794850037}
   - {fileID: 1242186940}
   - {fileID: 1432661980}
+  - {fileID: 1893950820}
   m_Father: {fileID: 278570875}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -2381,7 +2402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1893950820
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2396,12 +2417,12 @@ RectTransform:
   m_Children:
   - {fileID: 1431978167}
   - {fileID: 1681418905}
-  m_Father: {fileID: 278570875}
+  m_Father: {fileID: 393747910}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.00024414062, y: -0.00024414062}
+  m_AnchoredPosition: {x: 0, y: 54.26001}
+  m_SizeDelta: {x: 1269.1697, y: 534.36975}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893950821
 MonoBehaviour:
