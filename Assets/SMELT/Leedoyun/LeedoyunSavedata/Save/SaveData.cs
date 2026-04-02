@@ -13,7 +13,7 @@ public class SaveData
     // ─────────────────────────────────────────
     // 메타 정보 (건드리지 마세요 - SaveManager가 자동 기록)
     // ─────────────────────────────────────────
-    public string version  = "1.0.0"; // 버전 불일치 감지용
+    public string version = "1.0.0"; // 버전 불일치 감지용
     public string saveTime = ""; // 저장 시각 (자동 기록)
     public float  playTime = 0f; // 총 플레이 시간(초)
 
@@ -41,19 +41,25 @@ public class SaveData
     // 플레이어 스탯 & 업그레이드 담당자: 이윤건
     // ─────────────────────────────────────────
     [Header("Player Stats & Upgrades")]
-    public float makeSpeedJuice =    1.0f; // 가공 속도 배율 (0.05 = 5%)
-    public float makeSpeedWeapon =    1.0f; // 가공 속도 배율 (0.05 = 5%)
-    public float parryRange =   1.0f; // 패링 판정 범위 배율 (0.05 = 5%)
-    public float moreSell =     0.0f; // 판매 수익 보너스 (0.05 = 5%)
-    public float attackSpeed =  0.0f; //공속 (0.05 = 5%)
-    public float getApple =     0.0f; //사과 배수 (0.05 = 5%)
-    public float getLemon =     0.0f; //레몬 배수 (0.05 = 5%)
-    public float getMelon =     0.0f; //멜론 배수 (0.05 = 5%)
-    public float getGrape =     0.0f; //포도 배수 (0.05 = 5%)
-    public float getOrange =    0.0f; //귤 배수 (0.05 = 5%)
-    public float getFriuts =    0.0f; //전체 과일 배수 (0.05 = 5%)
+    public float makeSpeedJuice = 1.0f; // 가공 속도 배율 (0.05 = 5%)
+    public float makeSpeedWeapon = 1.0f; // 가공 속도 배율 (0.05 = 5%)
+    public float parryRange = 1.0f; // 패링 판정 범위 배율 (0.05 = 5%)
+    public float moreSell = 0.0f; // 판매 수익 보너스 (0.05 = 5%)
+    public float attackSpeed = 0.0f; //공속 (0.05 = 5%)
+    public float getApple = 0.0f; //사과 배수 (0.05 = 5%)
+    public float getLemon = 0.0f; //레몬 배수 (0.05 = 5%)
+    public float getMelon = 0.0f; //멜론 배수 (0.05 = 5%)
+    public float getGrape = 0.0f; //포도 배수 (0.05 = 5%)
+    public float getOrange = 0.0f; //귤 배수 (0.05 = 5%)
+    public float getFriuts = 0.0f; //전체 과일 배수 (0.05 = 5%)
     public List<string> purchasedUpgrades  = new List<string>();
     // 저장 예시: ["upgrade_parry_range", "upgrade_sales_05"]
+
+    // ─────────────────────────────────────────
+    // 설정 담당자: 이도윤
+    // ─────────────────────────────────────────
+    [Header("Settings")]
+    public float volumeLevel = 1.0f; // 마스터 볼륨 (0.0 ~ 1.0)
 
     // ─────────────────────────────────────────
     // 상점 운영 현황 담당자: 박성희
