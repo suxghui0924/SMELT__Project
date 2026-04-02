@@ -15,15 +15,16 @@ public class Player_HpScript : MonoBehaviour
     [Header("무적 작동시간 설정")]
     public float _playerInvincibleDuration;
 
-    public int _playerCurrentHp { get; private set; }
+    public int PlayerCurrentHp { get; private set; }
+
     private bool _isPlayerDead;
     private bool _isPlayerInvincible;
     private SpriteRenderer _playerSpriteRenderer;
    [SerializeField] private UI_HpChangingScript _hpChangingUIScript;
     private void Start()
     {
-        _playerSpriteRenderer = GetComponentInParent<SpriteRenderer>();
-        _playerCurrentHp = _playerMaxHp;
+        _playerSpriteRenderer = transform.parent.GetComponentInChildren<SpriteRenderer>();
+        PlayerCurrentHp = _playerMaxHp;
     }
 
     private void Update()
@@ -33,16 +34,16 @@ public class Player_HpScript : MonoBehaviour
     public void TakeDamage(int damageValue)
     {
         if (_isPlayerDead == true || _isPlayerInvincible == true) return;
-        _playerCurrentHp -= damageValue;
-        _playerCurrentHp = Mathf.Clamp(_playerCurrentHp, 0, _playerMaxHp);
-        _playerHpChanged?.Invoke(_playerCurrentHp);
-        if (_playerCurrentHp > 0)
+        PlayerCurrentHp -= damageValue;
+        PlayerCurrentHp = Mathf.Clamp(PlayerCurrentHp, 0, _playerMaxHp);
+        _playerHpChanged?.Invoke(PlayerCurrentHp);
+        if (PlayerCurrentHp > 0)
         {
-            _hpChangingUIScript.HealthViewUpdate(_playerCurrentHp);
+            _hpChangingUIScript.HealthViewUpdate(PlayerCurrentHp);
             StartCoroutine(InvisiblePlayer());
         }
 
-        else if (_playerCurrentHp <= 0) PlayerGameOver();
+        else if (PlayerCurrentHp <= 0) PlayerGameOver();
     }
 
     IEnumerator InvisiblePlayer()

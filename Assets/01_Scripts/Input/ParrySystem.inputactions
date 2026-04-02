@@ -1,6 +1,77 @@
 {
-    "version": 0,
+    "version": 1,
     "name": "ParrySystem",
-    "maps": [],
+    "maps": [
+        {
+            "name": "PlayerSkill",
+            "id": "fd112620-c275-4d4d-a369-17caca6dfd72",
+            "actions": [
+                {
+                    "name": "LeftSkill",
+                    "type": "Button",
+                    "id": "aae5e8cf-20b4-489e-a6df-0d64161f538a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightSkill",
+                    "type": "Button",
+                    "id": "58490c03-6ad9-4145-a51c-b8be4ae1ac87",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5afeefae-5038-4b1c-8468-68580cf4b357",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90c15733-d942-4471-bd67-86c24df62ce3",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "50563be4-9b07-49f5-9721-ea401a91ac13",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7a86a166-9749-4331-a41c-5a4fcbf885b9",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightSkill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
     "controlSchemes": []
 }
