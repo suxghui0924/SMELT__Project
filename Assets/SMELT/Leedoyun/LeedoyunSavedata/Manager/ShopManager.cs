@@ -82,14 +82,12 @@ public class ShopManager : MonoBehaviour, ISaveable
         _totalEarned  += finalPrice;
         _salesHistory.Add(itemId);
 
-        Debug.Log($"[Shop] 판매: {itemData.itemName} → {finalPrice}G");
         return true;
     }
 
     /// <summary>하루 종료 시 오늘 수익 초기화.</summary>
     public void EndOfDay()
     {
-        Debug.Log($"[Shop] 오늘 수익: {_todayEarned}G / 누적: {_totalEarned}G");
         _todayEarned = 0;
         _salesHistory.Clear();
     }
