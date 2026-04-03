@@ -8,7 +8,7 @@ public class Test : MonoBehaviour
     {
 /*        BillboardUI.Instance.AddTarget(_gameObject, _rectTransform, 0.85f);
         Debug.Log("시작됨");*/
-        VolumeManager.instance.VolumeStart("damage", 0.25f);
+        VolumeManager.instance.VolumeStart("heat", 0.25f);
         //VolumeManager.instance.VolumeStart("ui",0.25f);
     }
 }
