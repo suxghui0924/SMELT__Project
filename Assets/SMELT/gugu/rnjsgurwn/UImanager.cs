@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject craftUI;
+    public GameObject CraftUI;
+    public GameObject button;
 
-    public void CloseCraftUI()
+    public void CloseButton()
     {
-        craftUI.SetActive(false);
+        CraftUI.SetActive(false);
+        button.SetActive(false);
+
+        Debug.Log("Crafting UI closed.");
     }
 }
