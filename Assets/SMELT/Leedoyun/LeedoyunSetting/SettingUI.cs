@@ -13,6 +13,7 @@ using UnityEngine.InputSystem;
 ///   saveButton    : 저장하기 Button
 ///   loadButton    : 불러오기 Button
 ///   quitButton    : 게임 종료 Button
+///   closeButton   : 설정 창 닫기 Button
 ///
 /// ※ LeedoyunSetting 담당자 외 건드리지 마세요.
 /// </summary>
@@ -27,6 +28,7 @@ public class SettingUI : MonoBehaviour, ISaveable
     [SerializeField] private Button            saveButton;
     [SerializeField] private Button            loadButton;
     [SerializeField] private Button            quitButton;
+    [SerializeField] private Button            closeButton;
 
     // -----------------------------------------
     // 초기화
@@ -60,6 +62,9 @@ public class SettingUI : MonoBehaviour, ISaveable
 
         if (quitButton != null)
             quitButton.onClick.AddListener(OnQuitClicked);
+
+        if (closeButton != null)
+            closeButton.onClick.AddListener(ClosePanel);
     }
 
     // -----------------------------------------
@@ -78,6 +83,12 @@ public class SettingUI : MonoBehaviour, ISaveable
     {
         if (settingPanel == null) return;
         settingPanel.SetActive(!settingPanel.activeSelf);
+    }
+
+    public void ClosePanel()
+    {
+        if (settingPanel != null)
+            settingPanel.SetActive(false);
     }
 
     // -----------------------------------------
