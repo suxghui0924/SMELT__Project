@@ -5,6 +5,7 @@ public class Creafting : MonoBehaviour
 {
     public GameObject CraftingUI;
     public GameObject button;
+    public GameObject Creaft;
 
     private bool isPlayerNear = false;
 
@@ -14,6 +15,7 @@ public class Creafting : MonoBehaviour
         {
             CraftingUI.SetActive(true);
             button.SetActive(true);
+            Creaft.SetActive(true);
 
         }
     }
