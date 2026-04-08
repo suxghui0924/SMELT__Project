@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,7 @@ public class Creafting : MonoBehaviour
     public GameObject CraftingUI;
     public GameObject button;
     public GameObject Creaft;
+   
 
     private bool isPlayerNear = false;
 
