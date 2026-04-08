@@ -15,7 +15,6 @@ public class Upgrading : MonoBehaviour
 
     public Button upgradeButton;
     public GameObject checkMark;
-    public SOUpgrading myTrees;
     private void Start()
     {
         UpdateTreesUI();
@@ -23,7 +22,7 @@ public class Upgrading : MonoBehaviour
 
     public void UpdateTreesUI()
     {
-        bool isCompleted = PlayerStatManager.Instance.IsUpgradePurchased(myTrees.upName);
+        bool isCompleted = PlayerStatManager.Instance.IsUpgradePurchased(upso.upName);
 
         if (isCompleted)
         {
@@ -36,5 +35,18 @@ public class Upgrading : MonoBehaviour
             checkMark.SetActive(false);
         }
     }
+    public void OnClickUpgradeButton()
+    {
+        bool isSuccess = PlayerStatManager.Instance.BuyUpgrade(upso.upName, upso.needMoney);
 
+        if (isSuccess)
+        {
+            Debug.Log("업그레이드 성공! 빰빠카밤~");
+            UpdateTreesUI();
+        }
+        else
+        {
+            Debug.Log("업그레이드 실패! 돈이 부족합니다.");
+        }
+    }
 }

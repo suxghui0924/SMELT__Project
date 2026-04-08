@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f973bb2d8a52d346b99c9f669ff8e09, type: 3}
-  m_Name: AttackUp2
+  m_Name: AttackSpeedUp2
   m_EditorClassIdentifier: 
-  upName: AttackUp2
+  upName: AttackSpeedUp2
   upTime: 1
   needMoney: 0
