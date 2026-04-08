@@ -2,12 +2,15 @@ using UnityEngine;
 
 public class StartBtn : MonoBehaviour
 {
-    public void PickerOn()
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        gameObject.SetActive(true);
+        
     }
-    public void PickerOff()
+
+    // Update is called once per frame
+    void Update()
     {
-        gameObject.SetActive(false);
+        
     }
 }
