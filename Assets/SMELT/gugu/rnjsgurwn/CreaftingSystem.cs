@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class CraftSystem : MonoBehaviour
 {
@@ -16,4 +17,6 @@ public class CraftSystem : MonoBehaviour
             Debug.Log("점수 부족!");
         }
     }
+
+    
 }
