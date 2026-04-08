@@ -2,19 +2,18 @@ using UnityEngine;
 
 public class CraftSystem : MonoBehaviour
 {
-    public int playerScore = 100; // 현재 점수
-    public int cost = 10;         // 제작 비용
+    public Scoremanager scoreManager;
+    public int cost = 10;
 
     public void Craft()
     {
-        if (playerScore >= cost)
+        if (scoreManager.UseScore(cost))
         {
-            playerScore -= cost;
-            Debug.Log("제작 성공! 남은 점수: " + playerScore);
+            Debug.Log("제작 성공!");
         }
         else
         {
-            Debug.Log("점수가 부족해서 제작 불가!");
+            Debug.Log("점수 부족!");
         }
     }
 }

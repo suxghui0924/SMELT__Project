@@ -18,12 +18,12 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    //시작버튼을 누르면 플레이어가 한 번만 오른쪽으로 이동하기
+    
 
 
     private void FixedUpdate()
     {
-        //나의 위치가 이동한다.
+       
 
         Rigid.linearVelocity = moveDir * speed;
 

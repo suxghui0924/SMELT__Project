@@ -14,4 +14,5 @@ public class UIManager : MonoBehaviour
 
         Debug.Log("Crafting UI closed.");
     }
+
 }
