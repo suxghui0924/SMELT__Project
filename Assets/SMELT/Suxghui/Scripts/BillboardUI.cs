@@ -73,7 +73,6 @@ public class BillboardUI : MonoBehaviour
         {
             if (match.target != null && match.ui != null)
             {
-                Debug.Log(match.ui.name);
                 Image billBoard = match.ui.GetComponent<Image>();
                 billBoard = Instantiate(billBoard, canvas.transform);
                 match.ui = billBoard.GetComponent<RectTransform>();
