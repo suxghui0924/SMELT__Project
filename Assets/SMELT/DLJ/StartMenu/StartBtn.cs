@@ -1,13 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class StartBtn : MonoBehaviour
 {
-    public void PickerOn()
+    public void loadScene()
     {
-        gameObject.SetActive(true);
-    }
-    public void PickerOff()
-    {
-        gameObject.SetActive(false);
+       //SceneManager.LoadScene();
     }
 }
