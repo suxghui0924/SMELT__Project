@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
         closebutton.SetActive(false);
         Creaft.SetActive(false);
 
-        Debug.Log("Crafting UI closed.");
+
     }
 
 }
