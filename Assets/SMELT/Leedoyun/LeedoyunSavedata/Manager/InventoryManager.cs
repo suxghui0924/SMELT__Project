@@ -1,3 +1,4 @@
+using System;                       // 추가
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,6 +21,15 @@ public class InventoryManager : MonoBehaviour, ISaveable
     private int _techLevel       = 1;
 
     private List<string> _unlockedTechs = new List<string>();
+
+    // ─────────────────────────────────────────
+    // 이벤트 (UI가 구독해서 변경 감지)           // 추가
+    // ─────────────────────────────────────────
+    /// <summary>골드 변경 시 발생. (이전값, 새값)</summary>
+    public event Action<int, int> OnGoldChanged;    // 추가
+
+    /// <summary>아이템 수량 변경 시 발생. (itemId, 새 수량)</summary>
+    public event Action<string, int> OnItemChanged; // 추가
 
     // ─────────────────────────────────────────
     // 프로퍼티 (읽기 전용 - 외부 접근용)
@@ -62,10 +72,20 @@ public class InventoryManager : MonoBehaviour, ISaveable
         data.currentTechLevel = _techLevel;
         data.unlockedTechs    = _unlockedTechs;
 
-        // 인벤토리
+        // 과일석 전용 필드 저장                          // 추가
+        data.fruitStoneApple  = GetQuantity("fruitstone_apple");  // 추가
+        data.fruitStoneMelon  = GetQuantity("fruitstone_melon");  // 추가
+        data.fruitStoneOrange = GetQuantity("fruitstone_orange"); // 추가
+        data.fruitStoneLemon  = GetQuantity("fruitstone_lemon");  // 추가
+        data.fruitStoneGrape  = GetQuantity("fruitstone_grape");  // 추가
+
+        // 인벤토리 (과일석 제외한 나머지 아이템)        // 수정
         data.inventory.Clear();
         foreach (var pair in _inventory)
+        {
+            if (pair.Key.StartsWith("fruitstone_")) continue; // 과일석은 전용 필드로 저장 // 추가
             data.inventory.Add(new ItemSaveData { itemId = pair.Key, quantity = pair.Value });
+        }
     }
 
     public void OnLoad(SaveData data)
@@ -79,6 +99,18 @@ public class InventoryManager : MonoBehaviour, ISaveable
         _inventory.Clear();
         foreach (var saved in data.inventory)
             _inventory[saved.itemId] = saved.quantity;
+
+        // 과일석 전용 필드 로드                                          // 추가
+        if (data.fruitStoneApple  > 0) _inventory["fruitstone_apple"]  = data.fruitStoneApple;  // 추가
+        if (data.fruitStoneMelon  > 0) _inventory["fruitstone_melon"]  = data.fruitStoneMelon;  // 추가
+        if (data.fruitStoneOrange > 0) _inventory["fruitstone_orange"] = data.fruitStoneOrange; // 추가
+        if (data.fruitStoneLemon  > 0) _inventory["fruitstone_lemon"]  = data.fruitStoneLemon;  // 추가
+        if (data.fruitStoneGrape  > 0) _inventory["fruitstone_grape"]  = data.fruitStoneGrape;  // 추가
+
+        // 로드 완료 후 UI에 전체 갱신 알림                  // 추가
+        OnGoldChanged?.Invoke(_gold, _gold);                  // 추가
+        foreach (var pair in _inventory)                      // 추가
+            OnItemChanged?.Invoke(pair.Key, pair.Value);      // 추가
     }
 
     // ─────────────────────────────────────────
@@ -93,6 +125,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
         else
             _inventory[itemId] = amount;
 
+        OnItemChanged?.Invoke(itemId, _inventory[itemId]); // 추가
     }
 
     /// <summary>아이템 소모. 수량 부족이면 false 반환.</summary>
@@ -104,8 +137,11 @@ public class InventoryManager : MonoBehaviour, ISaveable
             return false;
         }
         _inventory[itemId] -= amount;
-        if (_inventory[itemId] <= 0)
+        int remaining = _inventory[itemId];
+        if (remaining <= 0)
             _inventory.Remove(itemId);
+
+        OnItemChanged?.Invoke(itemId, remaining <= 0 ? 0 : remaining); // 추가
         return true;
     }
 
@@ -124,7 +160,9 @@ public class InventoryManager : MonoBehaviour, ISaveable
     /// <summary>골드 추가.</summary>
     public void AddGold(int amount)
     {
+        int prev = _gold;   // 추가
         _gold += amount;
+        OnGoldChanged?.Invoke(prev, _gold); // 추가
     }
 
     /// <summary>골드 차감. 부족하면 false 반환.</summary>
@@ -135,7 +173,9 @@ public class InventoryManager : MonoBehaviour, ISaveable
             Debug.LogWarning($"[Economy] 골드 부족 (필요: {amount}, 보유: {_gold})");
             return false;
         }
+        int prev = _gold;   // 추가
         _gold -= amount;
+        OnGoldChanged?.Invoke(prev, _gold); // 추가
         return true;
     }
 

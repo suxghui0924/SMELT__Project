@@ -86,7 +86,7 @@ public class SaveManager : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError($"[SaveManager] Save failed: {e.Message}"); // 저장 실패
-            OnSaveResult?.Invoke(false, "Save failed."); // 저장에 실패했습니다.
+            OnSaveResult?.Invoke(false, "Save failed.");
         }
     }
 
@@ -123,7 +123,7 @@ public class SaveManager : MonoBehaviour
         catch (Exception e)
         {
             Debug.LogError($"[SaveManager] Load failed: {e.Message}"); // 불러오기 실패
-            OnLoadResult?.Invoke(false, "Load failed."); // 불러오기에 실패했습니다.
+            OnLoadResult?.Invoke(false, "Load failed.");
             return false;
         }
     }

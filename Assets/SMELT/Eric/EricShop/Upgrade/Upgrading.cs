@@ -1,37 +1,39 @@
+using System.Collections.Generic;
 using System.Data;
+using TreeEditor;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static PlayerStatManager;
+using static SaveManager;
 
 
 public class Upgrading : MonoBehaviour
 {
     //private PlayerStatManager plStatData;
     [SerializeField] private SOUpgrading upso;
-    private string upNamed;
-    private float upTimed;
-    private int needMoneyd;
-    private bool buyUp;
-    public Button but;
 
-    private void Awake()
+    public Button upgradeButton;
+    public GameObject checkMark;
+    public SOUpgrading myTrees;
+    private void Start()
     {
-        upNamed = upso.upName;
-        upTimed = upso.upTime;
-        needMoneyd = upso.needMoney;
-        //plStatData = GetComponent<PlayerStatManager>(b);
-        but.onClick.AddListener(OnButtonClick);
+        UpdateTreesUI();
     }
-    private void OnButtonClick()
+
+    public void UpdateTreesUI()
     {
-        //buyUp = plStatData.BuyUpgrade(upNamed, needMoneyd);
-        if (buyUp == false)
+        bool isCompleted = PlayerStatManager.Instance.IsUpgradePurchased(myTrees.upName);
+
+        if (isCompleted)
         {
-            Debug.Log("금지");
+            upgradeButton.interactable = false; 
+            checkMark.SetActive(true);
         }
         else
         {
-            Debug.Log("금지아님");
+            upgradeButton.interactable = true;
+            checkMark.SetActive(false);
         }
     }
 

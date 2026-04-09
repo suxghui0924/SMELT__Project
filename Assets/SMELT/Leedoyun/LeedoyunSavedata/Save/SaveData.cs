@@ -25,6 +25,13 @@ public class SaveData
     public int gold = 0; // 보유 골드
     public int maintenanceCost = 100; // 오늘의 유지비 (날마다 증가)
 
+    [Header("FruitStones")]  // 추가
+    public int fruitStoneApple  = 0; // 사과 과일석 개수  // 추가
+    public int fruitStoneMelon  = 0; // 멜론 과일석 개수  // 추가
+    public int fruitStoneOrange = 0; // 오렌지 과일석 개수 // 추가
+    public int fruitStoneLemon  = 0; // 레몬 과일석 개수  // 추가
+    public int fruitStoneGrape  = 0; // 포도 과일석 개수  // 추가
+
     [Header("Inventory")]
     public List<ItemSaveData> inventory = new List<ItemSaveData>();
     // 저장 예시:
