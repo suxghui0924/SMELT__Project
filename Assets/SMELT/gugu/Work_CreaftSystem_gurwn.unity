@@ -817,6 +817,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 492648839}
+        m_TargetAssemblyTypeName: CraftButton, Assembly-CSharp
+        m_MethodName: OnCraft
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &492648837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -867,8 +879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23837bb8c2f326f4db5b1f3f8472efb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiManager: {fileID: 1297345874}
   scoreManager: {fileID: 1813528737}
-  cost: 10
 --- !u!1 &593686683
 GameObject:
   m_ObjectHideFlags: 0
@@ -2068,6 +2080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   costText: {fileID: 1297345872}
+  currentCost: 0
 --- !u!1 &1433458697
 GameObject:
   m_ObjectHideFlags: 0

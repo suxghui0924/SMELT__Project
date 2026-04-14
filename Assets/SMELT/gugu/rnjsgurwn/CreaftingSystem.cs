@@ -1,22 +1,29 @@
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
-public class CraftSystem : MonoBehaviour
+public class CraftButton : MonoBehaviour
 {
+    public CostUIManager uiManager;
     public Scoremanager scoreManager;
-    public int cost = 10;
 
-    public void Craft()
+    public void OnCraft()
     {
+        int cost = uiManager.currentCost;
+
+        // 선택 안 했을 때 방지
+        if (cost == 0)
+        {
+            Debug.Log("아이템 먼저 선택!");
+            return;
+        }
+
         if (scoreManager.UseScore(cost))
         {
             Debug.Log("제작 성공!");
         }
         else
         {
-            Debug.Log("점수 부족!");
+            Debug.Log("포인트 부족!");
         }
     }
-
-    
 }

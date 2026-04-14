@@ -4,9 +4,7 @@ using UnityEngine;
 public class CostUIManager : MonoBehaviour
 {
     public TextMeshProUGUI costText;
-
-    public int currentCost; 
-
+    public int currentCost = 0; 
     public void SetCost(int cost)
     {
         currentCost = cost;
