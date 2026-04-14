@@ -1,17 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 /// <summary>
 /// 판매 시스템 프로토타입 UI.
 /// 코드로 UI를 자동 생성하므로 프리팹 없이 바로 실행 가능.
-///
-/// [씬 세팅 - 4개 오브젝트만 추가]
-///   1. SaveManager     오브젝트 → SaveManager.cs
-///   2. InventoryManager 오브젝트 → InventoryManager.cs
-///   3. SellManager     오브젝트 → Leedoyun_SellManager.cs
-///   4. SellUI          오브젝트 → Leedoyun_SellUI.cs  ← 이 파일
 ///
 /// 담당자: 이도윤
 /// </summary>
@@ -28,11 +23,13 @@ public class Leedoyun_SellUI : MonoBehaviour
     // UI 참조 (코드로 생성됨)
     // ─────────────────────────────────────────
     private TextMeshProUGUI _todayGoldText;
+    private TextMeshProUGUI _totalGoldText;
     private TextMeshProUGUI _heldWeaponText;
 
     // 주문 슬롯 3개
     private const int SLOT_COUNT = 3;
     private OrderSlotUI[] _slots = new OrderSlotUI[SLOT_COUNT];
+    private bool _isInitialized = false;
 
     // 테스트용 무기 선택 (← → 버튼으로 사이클)
     private int _selectedWeaponIndex = 0;
@@ -98,9 +95,10 @@ public class Leedoyun_SellUI : MonoBehaviour
     // ─────────────────────────────────────────
     private void Update()
     {
+        if (!_isInitialized) return;
         foreach (var slot in _slots)
         {
-            if (slot.order == null || !slot.order.IsActive) continue;
+            if (slot == null || slot.order == null || !slot.order.IsActive) continue;
             if (slot.timerBar != null)
                 slot.timerBar.fillAmount = slot.order.RemainingRatio;
         }
@@ -137,6 +135,8 @@ public class Leedoyun_SellUI : MonoBehaviour
     {
         if (_todayGoldText != null)
             _todayGoldText.text = $"오늘 수익: {next:N0} G";
+        if (_totalGoldText != null)
+            _totalGoldText.text = $"누적 수익: {Leedoyun_SellManager.Instance.TotalGold:N0} G";
     }
 
     // ─────────────────────────────────────────
@@ -229,6 +229,12 @@ public class Leedoyun_SellUI : MonoBehaviour
             _selectedWeaponText.text = WeaponDisplayName(TEST_WEAPONS[_selectedWeaponIndex]);
     }
 
+    // [설정] 버튼 - Work_Leedoyun_Setting 씬으로 이동
+    private void OnSettingClicked()
+    {
+        SceneManager.LoadScene("Work_Leedoyun_Setting");
+    }
+
     // [주문 강제 생성] 버튼 (테스트용)
     private void OnForceOrderClicked()
     {
@@ -271,8 +277,9 @@ public class Leedoyun_SellUI : MonoBehaviour
         // Canvas
         var canvasGo = new GameObject("SellUI_Canvas");
         var canvas   = canvasGo.AddComponent<Canvas>();
-        canvas.renderMode  = RenderMode.ScreenSpaceOverlay;
-        canvas.sortingOrder = 10; // 다른 UI 위에 표시
+        canvas.renderMode  = RenderMode.ScreenSpaceCamera;
+        canvas.worldCamera = Camera.main != null ? Camera.main : FindFirstObjectByType<Camera>();
+        canvas.sortingOrder = 10;
         var scaler = canvasGo.AddComponent<CanvasScaler>();
         scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         scaler.referenceResolution = new Vector2(1920, 1080);
@@ -289,7 +296,18 @@ public class Leedoyun_SellUI : MonoBehaviour
         // ── 오늘 수익 텍스트 ──
         _todayGoldText = MakeText(bg.transform, "GoldText", "오늘 수익: 0 G",
             new Vector2(0.5f, 1f), new Vector2(0.5f, 1f),
-            new Vector2(0, -60), 56, Color.yellow);
+            new Vector2(0, -50), 36, Color.yellow);
+
+        // ── 누적 수익 텍스트 (세이브 데이터 leedoyunTotalGold 반영) ──
+        _totalGoldText = MakeText(bg.transform, "TotalGoldText", "누적 수익: 0 G",
+            new Vector2(0.5f, 1f), new Vector2(0.5f, 1f),
+            new Vector2(0, -125), 28, new Color(1f, 0.85f, 0.3f));
+
+        // ── 설정 씬 이동 버튼 (우상단) ──
+        MakeButton(bg.transform, "SettingBtn", "설정",
+            new Vector2(0.88f, 0.92f), new Vector2(0.99f, 0.99f),
+            new Color(0.25f, 0.25f, 0.3f),
+            OnSettingClicked);
 
         // ── 주문 슬롯 3개 ──
         for (int i = 0; i < SLOT_COUNT; i++)
@@ -300,6 +318,8 @@ public class Leedoyun_SellUI : MonoBehaviour
 
         // ── 하단 테스트 패널 ──
         BuildTestPanel(bg.transform);
+
+        _isInitialized = true;
     }
 
     private OrderSlotUI BuildOrderSlot(Transform parent, int index, float xAnchor)
