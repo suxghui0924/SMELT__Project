@@ -35,6 +35,19 @@ public class SettingUI : MonoBehaviour, ISaveable
     // -----------------------------------------
     private void Start()
     {
+        // SettingUI가 속한 루트 Canvas를 찾아 카메라 연결
+        Canvas rootCanvas = GetComponentInParent<Canvas>();
+        if (rootCanvas == null && settingPanel != null)
+            rootCanvas = settingPanel.GetComponentInParent<Canvas>();
+
+        if (rootCanvas != null)
+        {
+            Camera cam = Camera.main != null ? Camera.main : FindFirstObjectByType<Camera>();
+            rootCanvas.renderMode   = RenderMode.ScreenSpaceCamera;
+            rootCanvas.worldCamera  = cam;
+            rootCanvas.sortingOrder = 20;
+        }
+
         // 시작 시 설정 창 숨김
         if (settingPanel != null)
             settingPanel.SetActive(false);
