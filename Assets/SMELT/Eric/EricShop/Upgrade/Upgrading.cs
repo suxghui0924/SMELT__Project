@@ -41,7 +41,7 @@ public class Upgrading : MonoBehaviour
 
         if (isSuccess)
         {
-            Debug.Log("업그레이드 성공! 빰빠카밤~");
+            Debug.Log("업그레이드 성공!");
             UpdateTreesUI();
         }
         else

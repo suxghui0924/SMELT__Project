@@ -202,7 +202,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
             case "WeaponUp4":
                 UPMakeSpeedWeapon += 0.2f;
                 break;
-            case "WeaponU51":
+            case "WeaponUp5":
                 UPMakeSpeedWeapon += 0.2f;
                 break;
             case "WeaponUp6":
