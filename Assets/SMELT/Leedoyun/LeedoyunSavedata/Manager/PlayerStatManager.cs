@@ -24,7 +24,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     public float UPGetMelon { get; private set; } =     0.0f;   //멜론 배수 (0.05 = 5%)
     public float UPGetGrape { get; private set; } =     0.0f;   //포도 배수 (0.05 = 5%)
     public float UPGetOrange { get; private set; } =    0.0f;   //귤 배수 (0.05 = 5%)
-    public float UPGetFriuts { get; private set; } =    0.0f;   //전체 과일 배수 (0.05 = 5%)
+    public float UPGetFruits { get; private set; } =    0.0f;   //전체 과일 배수 (0.05 = 5%)
 
     private List<string> _purchasedUpgrades = new List<string>();
 
@@ -62,7 +62,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         data.getMelon = UPGetMelon;
         data.getGrape = UPGetGrape;
         data.getOrange = UPGetOrange;
-        data.getFriuts = UPGetFriuts;
+        data.getFriuts = UPGetFruits;
         data.purchasedUpgrades = _purchasedUpgrades;
     }
 
@@ -78,7 +78,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         UPGetMelon = data.getMelon;
         UPGetGrape = data.getGrape;
         UPGetOrange = data.getOrange;
-        UPGetFriuts = data.getFriuts;
+        UPGetFruits = data.getFriuts;
         _purchasedUpgrades = data.purchasedUpgrades;
     }
 
@@ -115,24 +115,138 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     {
         switch (id)
         {
-            // 패링 판정 범위 증가
-            case "upgrade_parry_range":
-                UPParryRange += 0.2f;
+            case "AllUp1":
+                UPGetFruits += 0.2f;
                 break;
-
-            // 판매 수익 5% 증가
-            case "upgrade_sales_05":
-                UPMoreSell += 0.05f;
+            case "AllUp2":
+                UPGetFruits += 0.2f;
                 break;
-            case "aoi":
-                UPGetApple += 0.05f;
+            case "AllUp3":
+                UPGetFruits += 0.2f;
                 break;
-            /*
-                        // 가공 속도 향상
-                        case "upgrade_process_speed":
-                            UPMakeSpeed += 0.3f;
-                            break;*/
-
+            case "AllUp4":
+                UPGetFruits += 0.2f;
+                break;
+            case "AllUp5":
+                UPGetFruits += 0.2f;
+                break;
+            case "AppleUp1":
+                UPGetApple += 0.2f;
+                break;
+            case "AppleUp2":
+                UPGetApple += 0.2f;
+                break;
+            case "AppleUp3":
+                UPGetApple += 0.2f;
+                break;
+            case "AppleUp4":
+                UPGetApple += 0.2f;
+                break; ;
+            case "LemonUp1":
+                UPGetLemon += 0.2f;
+                break;
+            case "LemonUp2":
+                UPGetLemon += 0.2f;
+                break;
+            case "LemonUp3":
+                UPGetLemon += 0.2f;
+                break;
+            case "LemonUp4":
+                UPGetLemon += 0.2f;
+                break; ;
+            case "MelonUp1":
+                UPGetMelon += 0.2f;
+                break;
+            case "MelonUp2":
+                UPGetMelon += 0.2f;
+                break;
+            case "MelonUp3":
+                UPGetMelon += 0.2f;
+                break;
+            case "MelonUp4":
+                UPGetMelon += 0.2f;
+                break; ;
+            case "GrapeUp1":
+                UPGetGrape += 0.2f;
+                break;
+            case "GrapeUp2":
+                UPGetGrape += 0.2f;
+                break;
+            case "GrapeUp3":
+                UPGetGrape += 0.2f;
+                break;
+            case "GrapeUp4":
+                UPGetGrape += 0.2f;
+                break; ;
+            case "OrangeUp1":
+                UPGetOrange += 0.2f;
+                break;
+            case "OrangeUp2":
+                UPGetOrange += 0.2f;
+                break;
+            case "OrangeUp3":
+                UPGetOrange += 0.2f;
+                break;
+            case "OrangeUp4":
+                UPGetOrange += 0.2f;
+                break; ;
+            case "WeaponUp1":
+                UPMakeSpeedWeapon += 0.2f;
+                break;
+            case "WeaponUp2":
+                UPMakeSpeedWeapon += 0.2f;
+                break;
+            case "WeaponUp3":
+                UPMakeSpeedWeapon += 0.2f;
+                break;
+            case "WeaponUp4":
+                UPMakeSpeedWeapon += 0.2f;
+                break;
+            case "WeaponUp5":
+                UPMakeSpeedWeapon += 0.2f;
+                break;
+            case "WeaponUp6":
+                UPMakeSpeedWeapon += 0.2f;
+                break;
+            case "WeaponUp7":
+                UPMakeSpeedWeapon += 0.2f;
+                break;
+            case "WeaponUp8":
+                UPMakeSpeedWeapon += 0.2f;
+                break;
+            case "AttackSpeedUp1":
+                UPAttackSpeed += 0.2f;
+                break;
+            case "AttackSpeedUp2":
+                UPAttackSpeed += 0.2f;
+                break;
+            case "AttackSpeedUp3":
+                UPAttackSpeed += 0.2f;
+                break;
+            case "AttackSpeedUp4":
+                UPAttackSpeed += 0.2f;
+                break;
+            case "CoinUp1":
+                UPMoreSell += 0.2f;
+                break;
+            case "CoinUp2":
+                UPMoreSell += 0.2f;
+                break;
+            case "CoinUp3":
+                UPMoreSell += 0.2f;
+                break;
+            case "CoinUp4":
+                UPMoreSell += 0.2f;
+                break;
+            case "CoinUp5":
+                UPMoreSell += 0.2f;
+                break;
+            case "CoinUp6":
+                UPMoreSell += 0.2f;
+                break;
+            case "CoinUp7":
+                UPMoreSell += 0.2f;
+                break;
             default:
                 Debug.LogWarning($"[Upgrade] 알 수 없는 업그레이드: {id}");
                 break;
