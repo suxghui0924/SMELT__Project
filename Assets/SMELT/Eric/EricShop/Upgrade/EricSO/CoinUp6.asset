@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f973bb2d8a52d346b99c9f669ff8e09, type: 3}
   m_Name: CoinUp6
   m_EditorClassIdentifier: 
+  needName: AllUp2
   upName: CoinUp6
   upTime: 1
   needMoney: 0
