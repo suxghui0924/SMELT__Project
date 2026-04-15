@@ -2,29 +2,33 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class Player_HpScript : MonoBehaviour
 {
     [Header("최대 HP 설정")]
     public int _playerMaxHp;
 
-    [Header("이벤트")]
-    public UnityEvent<int> _playerHpChanged;
-    public UnityEvent _playerDead;
+    [FormerlySerializedAs("_playerHpChanged")] [Header("이벤트")]
+    public UnityEvent<int> PlayerHpChanged;
+    [FormerlySerializedAs("_playerDead")] public UnityEvent PlayerDead;
 
     [Header("무적 작동시간 설정")]
     public float _playerInvincibleDuration;
 
     public int PlayerCurrentHp { get; private set; }
 
-    private bool _isPlayerDead;
-    private bool _isPlayerInvincible;
+    public bool IsPlayerDead { get; private set; }
+    public bool IsPlayerInvincible {get; private set; }
+    
     private SpriteRenderer _playerSpriteRenderer;
    [SerializeField] private UI_HpChangingScript _hpChangingUIScript;
     private void Start()
     {
         _playerSpriteRenderer = transform.parent.GetComponentInChildren<SpriteRenderer>();
         PlayerCurrentHp = _playerMaxHp;
+        IsPlayerDead = false;
+        IsPlayerInvincible = false;
     }
 
     private void Update()
@@ -33,10 +37,10 @@ public class Player_HpScript : MonoBehaviour
     }
     public void TakeDamage(int damageValue)
     {
-        if (_isPlayerDead == true || _isPlayerInvincible == true) return;
+        if (IsPlayerDead == true || IsPlayerInvincible == true) return;
         PlayerCurrentHp -= damageValue;
         PlayerCurrentHp = Mathf.Clamp(PlayerCurrentHp, 0, _playerMaxHp);
-        _playerHpChanged?.Invoke(PlayerCurrentHp);
+        PlayerHpChanged?.Invoke(PlayerCurrentHp);
         if (PlayerCurrentHp > 0)
         {
             _hpChangingUIScript.HealthViewUpdate(PlayerCurrentHp);
@@ -48,7 +52,7 @@ public class Player_HpScript : MonoBehaviour
 
     IEnumerator InvisiblePlayer()
     {
-        _isPlayerInvincible = true;
+        IsPlayerInvincible = true;
         
         Color _playerAlphaChange=Color.white;
         float timer = 0f;
@@ -63,14 +67,15 @@ public class Player_HpScript : MonoBehaviour
         }
         _playerAlphaChange.a=1f;
         _playerSpriteRenderer.color = _playerAlphaChange;
-        _isPlayerInvincible = false;
+        IsPlayerInvincible = false;
         timer = 0f;
     }
 
     public void PlayerGameOver()
     {
+        _hpChangingUIScript.HealthViewUpdate(PlayerCurrentHp);
         Debug.Log("플레이어 사망");
-        _isPlayerDead = true;
+        IsPlayerDead = true;
     }
 }
 
