@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5277e8755c4c72e4e87bb1913921434d
+guid: dddb2a822f59a824e90aaf2ae1d2c8e6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2408915587133118496
-    second: LemonSword_0
+      213: -525894453893190208
+    second: GrapeSword_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: LemonSword_0
+      name: GrapeSword_0
       rect:
         serializedVersion: 2
         x: 119
         y: 119
         width: 354
         height: 354
-      alignment: 8
-      pivot: {x: 1, y: 0}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0e767075900d19ed0800000000000000
-      internalID: -2408915587133118496
+      spriteID: 0cd295ec7c5a3b8f0800000000000000
+      internalID: -525894453893190208
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: bc3ddf8a7778a154c8475fc8eb54c8b8
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      LemonSword_0: -2408915587133118496
+      GrapeSword_0: -525894453893190208
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
