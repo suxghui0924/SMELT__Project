@@ -1182,6 +1182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pickaxeSO: {fileID: 11400000, guid: 9181cc8b294d3bb47a01da26300f3670, type: 2}
+  _enemyLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &1852748398
 GameObject:
   m_ObjectHideFlags: 0
