@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 프로토타입 씬 자동 빌드.
@@ -14,9 +15,15 @@ using UnityEngine;
 /// </summary>
 public class PrototypeBootstrap : MonoBehaviour
 {
+    // 이 Bootstrap이 동작할 씬 이름
+    private const string TargetSceneName = "Work_Leedoyun_SaveData";
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void AutoStart()
     {
+        // Prototype 씬이 아니면 실행하지 않음
+        if (SceneManager.GetActiveScene().name != TargetSceneName) return;
+
         // 이미 씬에 Bootstrap이 있으면 중복 실행 방지
         if (FindAnyObjectByType<PrototypeBootstrap>() != null) return;
 
