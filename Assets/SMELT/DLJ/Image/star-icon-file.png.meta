@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: edde0229a75cb1444880516ad95381be
+guid: b9021071552985e41907d4b45adf5313
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9292235790873081
-    second: AppleSword_0
+      213: 6637810579273708311
+    second: star-icon-file_0
+  - first:
+      213: 4688737658119088525
+    second: star-icon-file_1
+  - first:
+      213: -793385258271525809
+    second: star-icon-file_2
+  - first:
+      213: -2976075616842635535
+    second: star-icon-file_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +109,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AppleSword_0
+      name: star-icon-file_0
       rect:
         serializedVersion: 2
-        x: 119
-        y: 121
-        width: 352
-        height: 352
-      alignment: 8
-      pivot: {x: 1, y: 0}
+        x: 86
+        y: 606
+        width: 340
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f1fb7d3d33012000800000000000000
-      internalID: 9292235790873081
+      spriteID: 71370ff9d8d3e1c50800000000000000
+      internalID: 6637810579273708311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: star-icon-file_1
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 606
+        width: 340
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d896f2dde0eb11140800000000000000
+      internalID: 4688737658119088525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: star-icon-file_2
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 87
+        width: 354
+        height: 338
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f44b1b6af445df4f0800000000000000
+      internalID: -793385258271525809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: star-icon-file_3
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 87
+        width: 354
+        height: 338
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1f6a4619efad2b6d0800000000000000
+      internalID: -2976075616842635535
       vertices: []
       indices: 
       edges: []
@@ -125,7 +200,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f59d3f082b5c1164ca6658d2d10351b0
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +210,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AppleSword_0: 9292235790873081
+      star-icon-file_0: 6637810579273708311
+      star-icon-file_1: 4688737658119088525
+      star-icon-file_2: -793385258271525809
+      star-icon-file_3: -2976075616842635535
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

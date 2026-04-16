@@ -1,9 +1,13 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Creafting : MonoBehaviour
 {
     public GameObject CraftingUI;
+    public GameObject button;
+    public GameObject Creaft;
+   
 
     private bool isPlayerNear = false;
 
@@ -12,7 +16,9 @@ public class Creafting : MonoBehaviour
         if (isPlayerNear && Keyboard.current.eKey.wasPressedThisFrame)
         {
             CraftingUI.SetActive(true);
-            Debug.Log("E 키 눌림 → UI 활성화"); // 근데 이건 UI가 있어야 하는데 없어서 일단 임시로 만듬
+            button.SetActive(true);
+            Creaft.SetActive(true);
+
         }
     }
 

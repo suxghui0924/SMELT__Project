@@ -4,20 +4,27 @@ using UnityEngine;
 public class MadeWeapon : MonoBehaviour
 {
     public SparkParticle SparkParticle;
+    public StarParticle starParticle;
     public GameObject[] weaponsPrefab;
+
+    public bool isCreating = false;
 
     private void Update()
     {
-        if (SparkParticle.amount == 3)
+        if (SparkParticle.amount == 3 && isCreating != true)
         {
-            CreateWeapon();
+            StartCoroutine(CreateWeapon());
+            StartCoroutine(starParticle.PlayParticle());
+
         } 
     }
     IEnumerator CreateWeapon()
     {
-        GameObject CreatedNow = weaponsPrefab[Random.Range(0, weaponsPrefab.Length - 1)];
-        CreatedNow.SetActive(true);
-        yield return new WaitForSeconds(1);
-        CreatedNow.SetActive(false);
+        isCreating = true;
+        yield return new WaitForSeconds(2);
+        GameObject CreatedNow = Instantiate(weaponsPrefab[Random.Range(0, weaponsPrefab.Length)]);
+        yield return new WaitForSeconds(1.3f);
+        isCreating = false;
+        Destroy(CreatedNow);
     }
 }
