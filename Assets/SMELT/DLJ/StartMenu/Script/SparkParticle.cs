@@ -25,15 +25,14 @@ public class SparkParticle : MonoBehaviour
         {
             ParticleSystem.Play();
             amount++;
-            yield return new WaitForSeconds(0.636f);
+            yield return new WaitForSeconds(1.32f);
         }
 
-        // 3번 터진 후
         ParticleSystem.Stop();
         Animator.SetInteger("Smithing", amount);
-        yield return new WaitForSeconds(1);
         amount = 0;
+        yield return new WaitForSeconds(2);
         Animator.SetInteger("Smithing", amount);
-        ParticleSystem.Play();
+        StartCoroutine(PlayParticle());
     }
 }
