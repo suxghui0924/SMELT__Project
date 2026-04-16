@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static EricUpgradeStat;
 
 /// <summary>
 /// 플레이어 스탯 및 업그레이드 관리.
@@ -24,7 +23,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     public float UPGetMelon { get; private set; } =     0.0f;   //멜론 배수 (0.05 = 5%)
     public float UPGetGrape { get; private set; } =     0.0f;   //포도 배수 (0.05 = 5%)
     public float UPGetOrange { get; private set; } =    0.0f;   //귤 배수 (0.05 = 5%)
-    public float UPGetFriuts { get; private set; } =    0.0f;   //전체 과일 배수 (0.05 = 5%)
+    public float UPGetFruits { get; private set; } =    0.0f;   //전체 과일 배수 (0.05 = 5%)
 
     private List<string> _purchasedUpgrades = new List<string>();
 
@@ -62,7 +61,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         data.getMelon = UPGetMelon;
         data.getGrape = UPGetGrape;
         data.getOrange = UPGetOrange;
-        data.getFriuts = UPGetFriuts;
+        data.getFriuts = UPGetFruits;
         data.purchasedUpgrades = _purchasedUpgrades;
     }
 
@@ -78,7 +77,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         UPGetMelon = data.getMelon;
         UPGetGrape = data.getGrape;
         UPGetOrange = data.getOrange;
-        UPGetFriuts = data.getFriuts;
+        UPGetFruits = data.getFriuts;
         _purchasedUpgrades = data.purchasedUpgrades;
     }
 
@@ -91,7 +90,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     /// ex) BuyUpgrade("upgrade_parry_range", 200)
     ///     → 골드 200 차감 후 패링 범위 증가
     /// </summary>
-    public bool BuyUpgrade(string upgradeId, int cost)
+    public bool BuyUpgrade(string upgradeId, int cost, float times)
     {
         // 이미 구매한 업그레이드인지 확인
         if (_purchasedUpgrades.Contains(upgradeId))
@@ -106,33 +105,147 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
 
         // 업그레이드 적용
         _purchasedUpgrades.Add(upgradeId);
-        ApplyUpgrade(upgradeId);
+        ApplyUpgrade(upgradeId, times);
         Debug.Log($"[Upgrade] 구매 완료: {upgradeId}");
         return true;
     }
 
-    private void ApplyUpgrade(string id)
+    private void ApplyUpgrade(string id, float times)
     {
         switch (id)
         {
-            // 패링 판정 범위 증가
-            case "upgrade_parry_range":
-                UPParryRange += 0.2f;
+            case "AllUp1":
+                UPGetFruits += times;
                 break;
-
-            // 판매 수익 5% 증가
-            case "upgrade_sales_05":
-                UPMoreSell += 0.05f;
+            case "AllUp2":
+                UPGetFruits += times;
                 break;
-            case "aoi":
-                UPGetApple += 0.05f;
+            case "AllUp3":
+                UPGetFruits += times;
                 break;
-            /*
-                        // 가공 속도 향상
-                        case "upgrade_process_speed":
-                            UPMakeSpeed += 0.3f;
-                            break;*/
-
+            case "AllUp4":
+                UPGetFruits += times;
+                break;
+            case "AllUp5":
+                UPGetFruits += times;
+                break;
+            case "AppleUp1":
+                UPGetApple += times;
+                break;
+            case "AppleUp2":
+                UPGetApple += times;
+                break;
+            case "AppleUp3":
+                UPGetApple += times;
+                break;
+            case "AppleUp4":
+                UPGetApple += times;
+                break; ;
+            case "LemonUp1":
+                UPGetLemon += times;
+                break;
+            case "LemonUp2":
+                UPGetLemon += times;
+                break;
+            case "LemonUp3":
+                UPGetLemon += times;
+                break;
+            case "LemonUp4":
+                UPGetLemon += times;
+                break; ;
+            case "MelonUp1":
+                UPGetMelon += times;
+                break;
+            case "MelonUp2":
+                UPGetMelon += times;
+                break;
+            case "MelonUp3":
+                UPGetMelon += times;
+                break;
+            case "MelonUp4":
+                UPGetMelon += times;
+                break; ;
+            case "GrapeUp1":
+                UPGetGrape += times;
+                break;
+            case "GrapeUp2":
+                UPGetGrape += times;
+                break;
+            case "GrapeUp3":
+                UPGetGrape += times;
+                break;
+            case "GrapeUp4":
+                UPGetGrape += times;
+                break; ;
+            case "OrangeUp1":
+                UPGetOrange += times;
+                break;
+            case "OrangeUp2":
+                UPGetOrange += times;
+                break;
+            case "OrangeUp3":
+                UPGetOrange += times;
+                break;
+            case "OrangeUp4":
+                UPGetOrange += times;
+                break; ;
+            case "WeaponUp1":
+                UPMakeSpeedWeapon += times;
+                break;
+            case "WeaponUp2":
+                UPMakeSpeedWeapon += times;
+                break;
+            case "WeaponUp3":
+                UPMakeSpeedWeapon += times;
+                break;
+            case "WeaponUp4":
+                UPMakeSpeedWeapon += times;
+                break;
+            case "WeaponUp5":
+                UPMakeSpeedWeapon += times;
+                break;
+            case "WeaponUp6":
+                UPMakeSpeedWeapon += times;
+                break;
+            case "WeaponUp7":
+                UPMakeSpeedWeapon += times;
+                break;
+            case "WeaponUp8":
+                UPMakeSpeedWeapon += times;
+                break;
+            case "AttackSpeedUp1":
+                UPAttackSpeed += times;
+                break;
+            case "AttackSpeedUp2":
+                UPAttackSpeed += times;
+                break;
+            case "AttackSpeedUp3":
+                UPAttackSpeed += times;
+                break;
+            case "AttackSpeedUp4":
+                UPAttackSpeed += times;
+                break;
+            case "CoinUp1":
+                UPMoreSell += times;
+                break;
+            case "CoinUp2":
+                UPMoreSell += times;
+                break;
+            case "CoinUp3":
+                UPMoreSell += times;
+                break;
+            case "CoinUp4":
+                UPMoreSell += times;
+                break;
+            case "CoinUp5":
+                UPMoreSell += times;
+                break;
+            case "CoinUp6":
+                UPMoreSell += times;
+                break;
+            case "CoinUp7":
+                UPMoreSell += times;
+                break;
             default:
                 Debug.LogWarning($"[Upgrade] 알 수 없는 업그레이드: {id}");
                 break;
