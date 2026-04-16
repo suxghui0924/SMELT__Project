@@ -20,6 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/SMELT/DLJ/LoadingScene/LoadingScene.unity
     guid: c16596375ed56224ea3ebadf6e8b177b
+  - enabled: 1
+    path: Assets/SMELT/gugu/Work_CreaftSystem_gurwn.unity
+    guid: e731510991649904c8703c67eec40916
+  - enabled: 1
+    path: Assets/SMELT/gugu/Dungeon Scene.unity
+    guid: 98fc9c31472405a4aaca178b185f9115
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
