@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using static EricUpgradeStat;
 
 /// <summary>
 /// 플레이어 스탯 및 업그레이드 관리.
@@ -91,7 +90,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     /// ex) BuyUpgrade("upgrade_parry_range", 200)
     ///     → 골드 200 차감 후 패링 범위 증가
     /// </summary>
-    public bool BuyUpgrade(string upgradeId, int cost)
+    public bool BuyUpgrade(string upgradeId, int cost, float times)
     {
         // 이미 구매한 업그레이드인지 확인
         if (_purchasedUpgrades.Contains(upgradeId))
@@ -106,146 +105,146 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
 
         // 업그레이드 적용
         _purchasedUpgrades.Add(upgradeId);
-        ApplyUpgrade(upgradeId);
+        ApplyUpgrade(upgradeId, times);
         Debug.Log($"[Upgrade] 구매 완료: {upgradeId}");
         return true;
     }
 
-    private void ApplyUpgrade(string id)
+    private void ApplyUpgrade(string id, float times)
     {
         switch (id)
         {
             case "AllUp1":
-                UPGetFruits += 0.2f;
+                UPGetFruits += times;
                 break;
             case "AllUp2":
-                UPGetFruits += 0.2f;
+                UPGetFruits += times;
                 break;
             case "AllUp3":
-                UPGetFruits += 0.2f;
+                UPGetFruits += times;
                 break;
             case "AllUp4":
-                UPGetFruits += 0.2f;
+                UPGetFruits += times;
                 break;
             case "AllUp5":
-                UPGetFruits += 0.2f;
+                UPGetFruits += times;
                 break;
             case "AppleUp1":
-                UPGetApple += 0.2f;
+                UPGetApple += times;
                 break;
             case "AppleUp2":
-                UPGetApple += 0.2f;
+                UPGetApple += times;
                 break;
             case "AppleUp3":
-                UPGetApple += 0.2f;
+                UPGetApple += times;
                 break;
             case "AppleUp4":
-                UPGetApple += 0.2f;
+                UPGetApple += times;
                 break; ;
             case "LemonUp1":
-                UPGetLemon += 0.2f;
+                UPGetLemon += times;
                 break;
             case "LemonUp2":
-                UPGetLemon += 0.2f;
+                UPGetLemon += times;
                 break;
             case "LemonUp3":
-                UPGetLemon += 0.2f;
+                UPGetLemon += times;
                 break;
             case "LemonUp4":
-                UPGetLemon += 0.2f;
+                UPGetLemon += times;
                 break; ;
             case "MelonUp1":
-                UPGetMelon += 0.2f;
+                UPGetMelon += times;
                 break;
             case "MelonUp2":
-                UPGetMelon += 0.2f;
+                UPGetMelon += times;
                 break;
             case "MelonUp3":
-                UPGetMelon += 0.2f;
+                UPGetMelon += times;
                 break;
             case "MelonUp4":
-                UPGetMelon += 0.2f;
+                UPGetMelon += times;
                 break; ;
             case "GrapeUp1":
-                UPGetGrape += 0.2f;
+                UPGetGrape += times;
                 break;
             case "GrapeUp2":
-                UPGetGrape += 0.2f;
+                UPGetGrape += times;
                 break;
             case "GrapeUp3":
-                UPGetGrape += 0.2f;
+                UPGetGrape += times;
                 break;
             case "GrapeUp4":
-                UPGetGrape += 0.2f;
+                UPGetGrape += times;
                 break; ;
             case "OrangeUp1":
-                UPGetOrange += 0.2f;
+                UPGetOrange += times;
                 break;
             case "OrangeUp2":
-                UPGetOrange += 0.2f;
+                UPGetOrange += times;
                 break;
             case "OrangeUp3":
-                UPGetOrange += 0.2f;
+                UPGetOrange += times;
                 break;
             case "OrangeUp4":
-                UPGetOrange += 0.2f;
+                UPGetOrange += times;
                 break; ;
             case "WeaponUp1":
-                UPMakeSpeedWeapon += 0.2f;
+                UPMakeSpeedWeapon += times;
                 break;
             case "WeaponUp2":
-                UPMakeSpeedWeapon += 0.2f;
+                UPMakeSpeedWeapon += times;
                 break;
             case "WeaponUp3":
-                UPMakeSpeedWeapon += 0.2f;
+                UPMakeSpeedWeapon += times;
                 break;
             case "WeaponUp4":
-                UPMakeSpeedWeapon += 0.2f;
+                UPMakeSpeedWeapon += times;
                 break;
             case "WeaponUp5":
-                UPMakeSpeedWeapon += 0.2f;
+                UPMakeSpeedWeapon += times;
                 break;
             case "WeaponUp6":
-                UPMakeSpeedWeapon += 0.2f;
+                UPMakeSpeedWeapon += times;
                 break;
             case "WeaponUp7":
-                UPMakeSpeedWeapon += 0.2f;
+                UPMakeSpeedWeapon += times;
                 break;
             case "WeaponUp8":
-                UPMakeSpeedWeapon += 0.2f;
+                UPMakeSpeedWeapon += times;
                 break;
             case "AttackSpeedUp1":
-                UPAttackSpeed += 0.2f;
+                UPAttackSpeed += times;
                 break;
             case "AttackSpeedUp2":
-                UPAttackSpeed += 0.2f;
+                UPAttackSpeed += times;
                 break;
             case "AttackSpeedUp3":
-                UPAttackSpeed += 0.2f;
+                UPAttackSpeed += times;
                 break;
             case "AttackSpeedUp4":
-                UPAttackSpeed += 0.2f;
+                UPAttackSpeed += times;
                 break;
             case "CoinUp1":
-                UPMoreSell += 0.2f;
+                UPMoreSell += times;
                 break;
             case "CoinUp2":
-                UPMoreSell += 0.2f;
+                UPMoreSell += times;
                 break;
             case "CoinUp3":
-                UPMoreSell += 0.2f;
+                UPMoreSell += times;
                 break;
             case "CoinUp4":
-                UPMoreSell += 0.2f;
+                UPMoreSell += times;
                 break;
             case "CoinUp5":
-                UPMoreSell += 0.2f;
+                UPMoreSell += times;
                 break;
             case "CoinUp6":
-                UPMoreSell += 0.2f;
+                UPMoreSell += times;
                 break;
             case "CoinUp7":
-                UPMoreSell += 0.2f;
+                UPMoreSell += times;
                 break;
             default:
                 Debug.LogWarning($"[Upgrade] 알 수 없는 업그레이드: {id}");
