@@ -5,6 +5,7 @@ public class CraftButton : MonoBehaviour
 {
     public CostUIManager uiManager;
     public Scoremanager scoreManager;
+    public MainMatter mainMatter;
 
     public void OnCraft()
     {
@@ -18,6 +19,10 @@ public class CraftButton : MonoBehaviour
         }
 
         if (scoreManager.UseScore(cost))
+        {
+            Debug.Log("제작 성공!");
+        }
+        if (mainMatter.UseScore(cost))
         {
             Debug.Log("제작 성공!");
         }
