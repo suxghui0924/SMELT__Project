@@ -8,7 +8,8 @@ public class GameDataSO : ScriptableObject
 {
     public enum GameState { Lobby, Loading, House, Shop, Craft, Mining, GameOver };
     public GameState curState = GameState.Lobby;
-    public int Gold;
+
+    /*public int Gold;
     public int requiredPayment;
     public int curDay;
     public void ChangeFloatDate(string name, float value)
@@ -34,7 +35,7 @@ public class GameDataSO : ScriptableObject
         {
             Debug.Log("변수 찾을수 없습니다.");
         }
-    }
+    }*/
     public void ChangeGameState(GameState newState)
     {
         curState = newState;
@@ -44,9 +45,9 @@ public class GameDataSO : ScriptableObject
         if (InventoryManager.Instance != null)
         {
             curState = GameState.Lobby;
-            Gold = InventoryManager.Instance.Gold;
-            requiredPayment = InventoryManager.Instance.MaintenanceCost;
-            curDay = InventoryManager.Instance.CurrentDay;
+            /*            Gold = InventoryManager.Instance.Gold;
+                        requiredPayment = InventoryManager.Instance.MaintenanceCost;
+                        curDay = InventoryManager.Instance.CurrentDay;*/
 
         }
     }

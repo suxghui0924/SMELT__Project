@@ -11,7 +11,6 @@ public class VolumeManager : MonoBehaviour
 
     [SerializeField] private Volume[] m_Volumes;
     private Volume global, heat, damage, ui;
-
     void Awake()
     {
         if (instance == null)
@@ -26,12 +25,25 @@ public class VolumeManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     private void Init()
     {
         global = m_Volumes[0].GetComponent<Volume>();
         heat = m_Volumes[1].GetComponent<Volume>();
         damage = m_Volumes[2].GetComponent<Volume>();
         ui = m_Volumes[3].GetComponent<Volume>();
+    }
+
+    public void VolumeChange(string str_name)
+    {
+        foreach(var vol in m_Volumes)
+        {
+            vol.weight = 0f;
+            if(vol.name == str_name.FirstCharacterToUpper() + "_Volume")
+            {
+                vol.weight = 1f;
+            }
+        }
     }
 
     public void VolumeStart(String str_name,string dir, float wait)
