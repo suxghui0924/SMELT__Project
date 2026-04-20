@@ -51,7 +51,6 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     // ─────────────────────────────────────────
     public void OnSave(SaveData data)
     {
-        data.makeSpeedJuice = UPMakeSpeedJuice;
         data.makeSpeedWeapon = UPMakeSpeedWeapon;
         data.parryRange = UPParryRange;
         data.moreSell = UPMoreSell;
@@ -67,7 +66,6 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
 
     public void OnLoad(SaveData data)
     {
-        UPMakeSpeedJuice = data.makeSpeedJuice;
         UPMakeSpeedWeapon = data.makeSpeedWeapon;
         UPParryRange = data.parryRange;
         UPMoreSell = data.moreSell;
@@ -207,10 +205,10 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
             case "WeaponUp6":
                 UPMakeSpeedWeapon += times;
                 break;
-            case "WeaponUp7":
+            case "UpParryRange1":
                 UPMakeSpeedWeapon += times;
                 break;
-            case "WeaponUp8":
+            case "UpParryRange2":
                 UPMakeSpeedWeapon += times;
                 break;
             case "AttackSpeedUp1":

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f973bb2d8a52d346b99c9f669ff8e09, type: 3}
-  m_Name: WeaponUp7
+  m_Name: UpParryRange2
   m_EditorClassIdentifier: 
-  needName: GrapeUp3
-  upName: WeaponUp7
+  needName: WeaponUp2
+  upName: UpParryRange2
   upTime: 1
   needMoney: 0
