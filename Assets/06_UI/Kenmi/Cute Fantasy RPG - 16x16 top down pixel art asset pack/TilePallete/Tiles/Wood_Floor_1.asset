@@ -15,12 +15,12 @@ MonoBehaviour:
   m_Sprite: {fileID: 21300000, guid: 6c9fdc406585ee04c9cd002859800932, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
-    e00: 1
+    e00: 2
     e01: 0
     e02: 0
     e03: 0
     e10: 0
-    e11: 1
+    e11: 2
     e12: 0
     e13: 0
     e20: 0
@@ -32,5 +32,5 @@ MonoBehaviour:
     e32: 0
     e33: 1
   m_InstancedGameObject: {fileID: 0}
-  m_Flags: 1
+  m_Flags: -1
   m_ColliderType: 1
