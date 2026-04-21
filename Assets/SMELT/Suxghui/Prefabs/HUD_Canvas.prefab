@@ -149,7 +149,7 @@ GameObject:
   - component: {fileID: 7230992759928277280}
   - component: {fileID: 2035390026194598427}
   m_Layer: 5
-  m_Name: Img_DayCount
+  m_Name: Img_Maintenance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,7 +502,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SMELT_USER
+  m_text: "1 \uC77C\uCC28"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
   m_sharedMaterial: {fileID: -6093665087452869761, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
@@ -736,7 +736,7 @@ GameObject:
   - component: {fileID: 4112324375988182182}
   - component: {fileID: 532326685166461599}
   m_Layer: 5
-  m_Name: Img_TimeDisplay
+  m_Name: Img_DayCount
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1517,6 +1517,7 @@ GameObject:
   - component: {fileID: 7965664604867873108}
   - component: {fileID: 6064864615844053349}
   - component: {fileID: 2147778123355573718}
+  - component: {fileID: 8541932057365064589}
   m_Layer: 5
   m_Name: HUD_Canvas
   m_TagString: Untagged
@@ -1607,6 +1608,26 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &8541932057365064589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441598264564723924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65e4ad2c982783343b5b905cf76fb29e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _goldText: {fileID: 2904210237180966572}
+  _appleText: {fileID: 152251066833686473}
+  _lemonText: {fileID: 2301063012790966269}
+  _grapeText: {fileID: 4988715854779622110}
+  _orangeText: {fileID: 987693867433882777}
+  _melonText: {fileID: 455825949617806675}
+  _curDayText: {fileID: 5309426662555039116}
+  _maintenanceText: {fileID: 5918527444473287127}
 --- !u!1 &3517669503537546458
 GameObject:
   m_ObjectHideFlags: 0
@@ -2228,7 +2249,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "1 \uC77C\uCC28"
+  m_text: "\uC720\uC9C0\uBE44\uC6A9 : 500,000"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
   m_sharedMaterial: {fileID: -6093665087452869761, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
@@ -2255,8 +2276,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 25.26
+  m_fontSizeBase: 25.26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
