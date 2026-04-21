@@ -13,8 +13,7 @@ public class UI_HpChangingScript : MonoBehaviour
     [SerializeField] private Sprite _hpDisabledImage;
     private int _maxHpCount; //Hp스크립트에서 가져올 풀피 칸
     private int _currentHp;
-
-   
+    
     private void Start()
     {
         //_playerHpScript = GetComponent<Player_HpScript>();
