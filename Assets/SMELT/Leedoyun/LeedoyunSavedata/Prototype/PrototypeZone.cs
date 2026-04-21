@@ -51,11 +51,22 @@ public class PrototypeZone : MonoBehaviour
     {
         _playerInside = false;
         PrototypeHUD.Instance?.OnZoneExit(ZoneType);
+
+        // 제작 UI는 대장간에서 나가면 닫기 (판매 UI는 항상 표시)
+        if (ZoneType == ZoneType.Crafting)
+            WeaponCraftUI.Instance?.Hide();
     }
 
     public void Interact()
     {
-        if      (ZoneType == ZoneType.Crafting) PrototypeHUD.Instance?.ToggleCraftPanel();
-        else if (ZoneType == ZoneType.Selling)  PrototypeHUD.Instance?.ToggleSellPanel();
+        if (ZoneType == ZoneType.Crafting)
+        {
+            // 새 WeaponCraftUI가 씬에 있으면 우선 사용, 없으면 기존 프로토타입 패널 fallback
+            if (WeaponCraftUI.Instance != null)
+                WeaponCraftUI.Instance.Toggle();
+            else
+                PrototypeHUD.Instance?.ToggleCraftPanel();
+        }
+        // 판매 UI는 항상 우측에 표시되므로 별도 토글 불필요
     }
 }
