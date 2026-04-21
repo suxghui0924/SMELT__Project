@@ -1,28 +1,43 @@
-using System.Collections.Generic;
-using System.Data;
-using TreeEditor;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
-using static PlayerStatManager;
-using static SaveManager;
 
 
-public class Upgrading : MonoBehaviour
+public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     //private PlayerStatManager plStatData;
-    [SerializeField] private SOUpgrading upso;
+    [SerializeField] public SOUpgrading upso;
 
     public Button upgradeButton;
     public GameObject checkMark;
+    
+    private bool _first;
+    private GameObject _treesUI;
+    
+    private TreesUI _treesUIScripts;
+    
+    private Image _image;
+    private Sprite _sprite;
 
-    private bool first;
+    private void Awake()
+    {
+        _treesUI = transform.Find("TreeUI").gameObject;
+        _treesUIScripts =  _treesUI.GetComponent<TreesUI>();
+        _image = GetComponent<Image>();
+    }
+
     private void Start()
     {
         UpdateTreesUI();
         if (upso.needName == "First") 
-            first = true;
-
+            _first = true;
+        _sprite = _image.sprite;
+    }
+    
+    private void Update()
+    {
+        if (!_first)
+            CanUp();
     }
 
     public void UpdateTreesUI()
@@ -39,11 +54,6 @@ public class Upgrading : MonoBehaviour
             upgradeButton.interactable = true;
             checkMark.SetActive(false);
         }
-    }
-    private void Update()
-    {
-        if (!first)
-            CanUp();
     }
     public void OnClickUpgradeButton()
     {
@@ -74,5 +84,19 @@ public class Upgrading : MonoBehaviour
             upgradeButton.interactable = false;
             checkMark.SetActive(true);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        _treesUI.SetActive(true);
+        _treesUIScripts.icon.sprite = _sprite;
+        _treesUIScripts.needMoney.text = upso.needMoney.ToString();
+        _treesUIScripts.upName.text = upso.upName;
+        _treesUIScripts.detail.text = $"{upso.upTime} times";
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _treesUI.SetActive(false);
     }
 }
