@@ -16,15 +16,10 @@ public class GameManager : MonoBehaviour
             gameData.curState = GameDataSO.GameState.Lobby;
             lastState = GameDataSO.GameState.Lobby;
             DontDestroyOnLoad(gameObject);
-
-            if (gameData != null)
-            {
-                gameData.ResetDate();
-                lastState = GameDataSO.GameState.Lobby;
-            }
         }
         else
         {
+
             Destroy(gameObject);
         }
     }
@@ -34,6 +29,7 @@ public class GameManager : MonoBehaviour
         if (lastState != newState)
         {
             gameData.ChangeGameState(newState);
+            lastState = newState;
         }
         switch (newState)
         {
@@ -45,6 +41,7 @@ public class GameManager : MonoBehaviour
                 break;
             case GameDataSO.GameState.House:
                 SceneManager.LoadScene("House");
+                VolumeManager.instance.VolumeChange("global");
                 break;
             case GameDataSO.GameState.Shop:
                 SceneManager.LoadScene("Shop");
