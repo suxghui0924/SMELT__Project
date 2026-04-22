@@ -13,17 +13,17 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     // 런타임 스탯
     // ─────────────────────────────────────────
 
-    public float UPMakeSpeedJuice { get; private set; } = 1.0f;//판매 수익 보너스 (0.05 = 5%)
-    public float UPMakeSpeedWeapon { get; private set; } = 1.0f;//판매 수익 보너스 (0.05 = 5%)
-    public float UPParryRange { get; private set; } =   1.0f;   // 패링 판정 범위 배율 (0.05 = 5%)
-    public float UPMoreSell { get; private set; } =     0.0f;   //판매 수익 보너스 (0.05 = 5%)
-    public float UPAttackSpeed { get; private set; } =  0.0f;   //공속 (0.05 = 5%)
-    public float UPGetApple { get; private set; } =     0.0f;   //사과 배수 (0.05 = 5%)
-    public float UPGetLemon { get; private set; } =     0.0f;   //레몬 배수 (0.05 = 5%)
-    public float UPGetMelon { get; private set; } =     0.0f;   //멜론 배수 (0.05 = 5%)
-    public float UPGetGrape { get; private set; } =     0.0f;   //포도 배수 (0.05 = 5%)
-    public float UPGetOrange { get; private set; } =    0.0f;   //귤 배수 (0.05 = 5%)
-    public float UPGetFruits { get; private set; } =    0.0f;   //전체 과일 배수 (0.05 = 5%)
+    public float UpMakeSpeedJuice { get; private set; } = 1.0f;//판매 수익 보너스 (0.05 = 5%)
+    public float UpMakeSpeedWeapon { get; private set; } = 1.0f;//판매 수익 보너스 (0.05 = 5%)
+    public float UpParryRange { get; private set; } =   1.0f;   // 패링 판정 범위 배율 (0.05 = 5%)
+    public float UpMoreSell { get; private set; } =     0.0f;   //판매 수익 보너스 (0.05 = 5%)
+    public float UpAttackSpeed { get; private set; } =  0.0f;   //공속 (0.05 = 5%)
+    public float UpGetApple { get; private set; } =     0.0f;   //사과 배수 (0.05 = 5%)
+    public float UpGetLemon { get; private set; } =     0.0f;   //레몬 배수 (0.05 = 5%)
+    public float UpGetMelon { get; private set; } =     0.0f;   //멜론 배수 (0.05 = 5%)
+    public float UpGetGrape { get; private set; } =     0.0f;   //포도 배수 (0.05 = 5%)
+    public float UpGetOrange { get; private set; } =    0.0f;   //귤 배수 (0.05 = 5%)
+    public float UpGetFruits { get; private set; } =    0.0f;   //전체 과일 배수 (0.05 = 5%)
 
     private List<string> _purchasedUpgrades = new List<string>();
 
@@ -51,31 +51,31 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     // ─────────────────────────────────────────
     public void OnSave(SaveData data)
     {
-        data.makeSpeedWeapon = UPMakeSpeedWeapon;
-        data.parryRange = UPParryRange;
-        data.moreSell = UPMoreSell;
-        data.attackSpeed = UPAttackSpeed;
-        data.getApple = UPGetApple;
-        data.getLemon = UPGetLemon;
-        data.getMelon = UPGetMelon;
-        data.getGrape = UPGetGrape;
-        data.getOrange = UPGetOrange;
-        data.getFriuts = UPGetFruits;
+        data.makeSpeedWeapon = UpMakeSpeedWeapon;
+        data.parryRange = UpParryRange;
+        data.moreSell = UpMoreSell;
+        data.attackSpeed = UpAttackSpeed;
+        data.getApple = UpGetApple;
+        data.getLemon = UpGetLemon;
+        data.getMelon = UpGetMelon;
+        data.getGrape = UpGetGrape;
+        data.getOrange = UpGetOrange;
+        data.getFriuts = UpGetFruits;
         data.purchasedUpgrades = _purchasedUpgrades;
     }
 
     public void OnLoad(SaveData data)
     {
-        UPMakeSpeedWeapon = data.makeSpeedWeapon;
-        UPParryRange = data.parryRange;
-        UPMoreSell = data.moreSell;
-        UPAttackSpeed = data.attackSpeed;
-        UPGetApple = data.getApple;
-        UPGetLemon = data.getLemon;
-        UPGetMelon = data.getMelon;
-        UPGetGrape = data.getGrape;
-        UPGetOrange = data.getOrange;
-        UPGetFruits = data.getFriuts;
+        UpMakeSpeedWeapon = data.makeSpeedWeapon;
+        UpParryRange = data.parryRange;
+        UpMoreSell = data.moreSell;
+        UpAttackSpeed = data.attackSpeed;
+        UpGetApple = data.getApple;
+        UpGetLemon = data.getLemon;
+        UpGetMelon = data.getMelon;
+        UpGetGrape = data.getGrape;
+        UpGetOrange = data.getOrange;
+        UpGetFruits = data.getFriuts;
         _purchasedUpgrades = data.purchasedUpgrades;
     }
 
@@ -88,7 +88,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     /// ex) BuyUpgrade("upgrade_parry_range", 200)
     ///     → 골드 200 차감 후 패링 범위 증가
     /// </summary>
-    public bool BuyUpgrade(string upgradeId, int cost, float times)
+    public bool BuyUpgrade(string upgradeId, long cost, float times)
     {
         // 이미 구매한 업그레이드인지 확인
         if (_purchasedUpgrades.Contains(upgradeId))
@@ -113,136 +113,136 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         switch (id)
         {
             case "AllUp1":
-                UPGetFruits += times;
+                UpGetFruits += times;
                 break;
             case "AllUp2":
-                UPGetFruits += times;
+                UpGetFruits += times;
                 break;
             case "AllUp3":
-                UPGetFruits += times;
+                UpGetFruits += times;
                 break;
             case "AllUp4":
-                UPGetFruits += times;
+                UpGetFruits += times;
                 break;
             case "AllUp5":
-                UPGetFruits += times;
+                UpGetFruits += times;
                 break;
             case "AppleUp1":
-                UPGetApple += times;
+                UpGetApple += times;
                 break;
             case "AppleUp2":
-                UPGetApple += times;
+                UpGetApple += times;
                 break;
             case "AppleUp3":
-                UPGetApple += times;
+                UpGetApple += times;
                 break;
             case "AppleUp4":
-                UPGetApple += times;
+                UpGetApple += times;
                 break; ;
             case "LemonUp1":
-                UPGetLemon += times;
+                UpGetLemon += times;
                 break;
             case "LemonUp2":
-                UPGetLemon += times;
+                UpGetLemon += times;
                 break;
             case "LemonUp3":
-                UPGetLemon += times;
+                UpGetLemon += times;
                 break;
             case "LemonUp4":
-                UPGetLemon += times;
+                UpGetLemon += times;
                 break; ;
             case "MelonUp1":
-                UPGetMelon += times;
+                UpGetMelon += times;
                 break;
             case "MelonUp2":
-                UPGetMelon += times;
+                UpGetMelon += times;
                 break;
             case "MelonUp3":
-                UPGetMelon += times;
+                UpGetMelon += times;
                 break;
             case "MelonUp4":
-                UPGetMelon += times;
+                UpGetMelon += times;
                 break; ;
             case "GrapeUp1":
-                UPGetGrape += times;
+                UpGetGrape += times;
                 break;
             case "GrapeUp2":
-                UPGetGrape += times;
+                UpGetGrape += times;
                 break;
             case "GrapeUp3":
-                UPGetGrape += times;
+                UpGetGrape += times;
                 break;
             case "GrapeUp4":
-                UPGetGrape += times;
+                UpGetGrape += times;
                 break; ;
             case "OrangeUp1":
-                UPGetOrange += times;
+                UpGetOrange += times;
                 break;
             case "OrangeUp2":
-                UPGetOrange += times;
+                UpGetOrange += times;
                 break;
             case "OrangeUp3":
-                UPGetOrange += times;
+                UpGetOrange += times;
                 break;
             case "OrangeUp4":
-                UPGetOrange += times;
+                UpGetOrange += times;
                 break; ;
             case "WeaponUp1":
-                UPMakeSpeedWeapon += times;
+                UpMakeSpeedWeapon += times;
                 break;
             case "WeaponUp2":
-                UPMakeSpeedWeapon += times;
+                UpMakeSpeedWeapon += times;
                 break;
             case "WeaponUp3":
-                UPMakeSpeedWeapon += times;
+                UpMakeSpeedWeapon += times;
                 break;
             case "WeaponUp4":
-                UPMakeSpeedWeapon += times;
+                UpMakeSpeedWeapon += times;
                 break;
             case "WeaponUp5":
-                UPMakeSpeedWeapon += times;
+                UpMakeSpeedWeapon += times;
                 break;
             case "WeaponUp6":
-                UPMakeSpeedWeapon += times;
+                UpMakeSpeedWeapon += times;
                 break;
             case "UpParryRange1":
-                UPMakeSpeedWeapon += times;
+                UpMakeSpeedWeapon += times;
                 break;
             case "UpParryRange2":
-                UPMakeSpeedWeapon += times;
+                UpMakeSpeedWeapon += times;
                 break;
             case "AttackSpeedUp1":
-                UPAttackSpeed += times;
+                UpAttackSpeed += times;
                 break;
             case "AttackSpeedUp2":
-                UPAttackSpeed += times;
+                UpAttackSpeed += times;
                 break;
             case "AttackSpeedUp3":
-                UPAttackSpeed += times;
+                UpAttackSpeed += times;
                 break;
             case "AttackSpeedUp4":
-                UPAttackSpeed += times;
+                UpAttackSpeed += times;
                 break;
             case "CoinUp1":
-                UPMoreSell += times;
+                UpMoreSell += times;
                 break;
             case "CoinUp2":
-                UPMoreSell += times;
+                UpMoreSell += times;
                 break;
             case "CoinUp3":
-                UPMoreSell += times;
+                UpMoreSell += times;
                 break;
             case "CoinUp4":
-                UPMoreSell += times;
+                UpMoreSell += times;
                 break;
             case "CoinUp5":
-                UPMoreSell += times;
+                UpMoreSell += times;
                 break;
             case "CoinUp6":
-                UPMoreSell += times;
+                UpMoreSell += times;
                 break;
             case "CoinUp7":
-                UPMoreSell += times;
+                UpMoreSell += times;
                 break;
             default:
                 Debug.LogWarning($"[Upgrade] 알 수 없는 업그레이드: {id}");
@@ -259,5 +259,5 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
 
     /// <summary>판매 가격에 수익 보너스 적용. ex) 기본가 100 → 105 (5% 보너스 시)</summary>
     public int ApplySalesBonus(int basePrice)
-        => Mathf.RoundToInt(basePrice * (1f + UPMoreSell));
+        => Mathf.RoundToInt(basePrice * (1f + UpMoreSell));
 }

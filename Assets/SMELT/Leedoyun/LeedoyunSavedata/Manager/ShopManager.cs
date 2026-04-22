@@ -154,7 +154,7 @@ public class ShopManager : MonoBehaviour, ISaveable
             return 0;
 
         float moreSell = PlayerStatManager.Instance != null
-            ? PlayerStatManager.Instance.UPMoreSell
+            ? PlayerStatManager.Instance.UpMoreSell
             : 0f;
 
         // (무기 기본금 + 메인 가치 × 메인 개수) × (1 + moreSell)

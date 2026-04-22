@@ -1,30 +1,27 @@
 using System;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TreesUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TreesUI : MonoBehaviour
 {
-    private SOUpgrading _soup;
-    [SerializeField] private GameObject ui;
-    [SerializeField] private Image icon;
-    [SerializeField] private TextMeshProUGUI needMoney;
-    [SerializeField] private TextMeshProUGUI upName;
-    [SerializeField] private TextMeshProUGUI detail;
+    public Image icon;
+    public TextMeshProUGUI needMoney;
+    public TextMeshProUGUI upName;
+    public TextMeshProUGUI detail;
+
+    private void Awake()
+    {
+        icon = transform.Find("Icon").GetComponent<Image>();
+        needMoney = transform.Find("NeedMoney").GetComponent<TextMeshProUGUI>();
+        upName = transform.Find("UpName").GetComponent<TextMeshProUGUI>();
+        detail = transform.Find("Detail").GetComponent<TextMeshProUGUI>();
+    }
 
     private void Start()
     {
-        ui.SetActive(false);
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-           ui.SetActive(true);
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        ui.SetActive(false);
+        this.gameObject.SetActive(false);
     }
 }

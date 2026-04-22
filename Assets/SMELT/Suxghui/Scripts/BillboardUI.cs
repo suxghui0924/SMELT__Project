@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System.Linq;
 
 public class BillboardUI : MonoBehaviour
 {
@@ -87,6 +88,7 @@ public class BillboardUI : MonoBehaviour
             if (m_Matches[_].target != null && m_Matches[_].ui != null)
             {
                 m_Matches[_].ui.position = m_Matches[_].target.position + Vector3.up * m_Matches[_].offset;
+                m_Matches[_].ui.position = new Vector3(m_Matches[_].ui.position.x, m_Matches[_].ui.position.y,0);
             }
         }
     }
