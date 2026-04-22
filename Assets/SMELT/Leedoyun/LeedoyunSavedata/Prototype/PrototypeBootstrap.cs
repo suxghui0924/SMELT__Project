@@ -18,6 +18,12 @@ public class PrototypeBootstrap : MonoBehaviour
     // 이 Bootstrap이 동작할 씬 이름
     private const string TargetSceneName = "Work_Leedoyun_SaveData";
 
+    [Header("캐릭터 이미지")]
+    [Tooltip("플레이어 스프라이트. 비워두면 기본 주황 사각형 사용.")]
+    [SerializeField] private Sprite _playerSprite;
+    [Tooltip("스프라이트 크기 (단위: 유닛). 기본값 (0.8, 1.0)")]
+    [SerializeField] private Vector2 _playerSize = new Vector2(0.8f, 1.0f);
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void AutoStart()
     {
@@ -53,7 +59,7 @@ public class PrototypeBootstrap : MonoBehaviour
             ZoneType.Crafting, new Color(0.38f, 0.26f, 0.14f, 0f));
 
         // 플레이어: 광석 채취 구역 하단에 시작
-        CreatePlayer(new Vector3(-6.5f, -3.5f, -1f));
+        CreatePlayer(new Vector3(-6.5f, -3.5f, -1f), _playerSprite, _playerSize);
     }
 
     // ─────────────────────────────────────────
@@ -67,7 +73,7 @@ public class PrototypeBootstrap : MonoBehaviour
         cam.orthographicSize  = 6.5f;
         cam.backgroundColor  = new Color(0.08f, 0.08f, 0.12f);
         cam.clearFlags       = CameraClearFlags.SolidColor;
-        cam.transform.position = new Vector3(0f, 1f, -10f);
+        cam.transform.position = new Vector3(0f, 2f, -10f);
     }
 
     private static void CreateBackground()
@@ -86,10 +92,22 @@ public class PrototypeBootstrap : MonoBehaviour
         zone.ZoneType = type;
     }
 
-    private static void CreatePlayer(Vector3 pos)
+    private static void CreatePlayer(Vector3 pos, Sprite sprite, Vector2 size)
     {
-        var go  = MakeSprite("Player", pos, new Vector2(0.8f, 1.0f), new Color(0.95f, 0.65f, 0.20f));
-        var rb  = go.AddComponent<Rigidbody2D>();
+        GameObject go;
+        if (sprite != null)
+        {
+            go = new GameObject("Player");
+            go.transform.position   = pos;
+            go.transform.localScale = new Vector3(size.x, size.y, 1f);
+            var sr = go.AddComponent<SpriteRenderer>();
+            sr.sprite = sprite;
+        }
+        else
+        {
+            go = MakeSprite("Player", pos, size, new Color(0.95f, 0.65f, 0.20f));
+        }
+        var rb = go.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
         rb.constraints  = RigidbodyConstraints2D.FreezeRotation;
         var col = go.AddComponent<BoxCollider2D>();
