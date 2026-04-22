@@ -15,4 +15,4 @@ MonoBehaviour:
   needName: AppleUp1
   upName: CoinUp1
   upTime: 1
-  needMoney: 0
+  needMoney: 10000

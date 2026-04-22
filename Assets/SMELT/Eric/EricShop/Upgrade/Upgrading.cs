@@ -1,6 +1,8 @@
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
 
 
 public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
@@ -10,6 +12,7 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     public Button upgradeButton;
     public GameObject checkMark;
+    private Image _thisSprite;
     
     private bool _first;
     private GameObject _treesUI;
@@ -24,6 +27,7 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _treesUI = transform.Find("TreeUI").gameObject;
         _treesUIScripts =  _treesUI.GetComponent<TreesUI>();
         _image = GetComponent<Image>();
+        _thisSprite = transform.Find("CheckMark").GetComponent<Image>();
     }
 
     private void Start()
@@ -32,6 +36,7 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (upso.needName == "First") 
             _first = true;
         _sprite = _image.sprite;
+        StatText();
     }
     
     private void Update()
@@ -83,20 +88,40 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         {
             upgradeButton.interactable = false;
             checkMark.SetActive(true);
+            
+            if (!isCompleted2)
+            {
+                _thisSprite.color = Color.red;
+            }
+            else
+            {
+                _thisSprite.color = Color.green;
+            }
         }
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         _treesUI.SetActive(true);
-        _treesUIScripts.icon.sprite = _sprite;
-        _treesUIScripts.needMoney.text = upso.needMoney.ToString();
-        _treesUIScripts.upName.text = upso.upName;
-        _treesUIScripts.detail.text = $"{upso.upTime} times";
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         _treesUI.SetActive(false);
+    }
+
+    private void StatText()
+    {
+        _treesUIScripts.icon.sprite = _sprite;
+        _treesUIScripts.needMoney.text = upso.needMoney switch
+        {
+            >= 1000000000 => $"{(float)upso.needMoney/1000000000:f1} B",
+            >= 1000000 => $"{(float)upso.needMoney/1000000:f1} M",
+            >= 1000 => $"{(float)upso.needMoney/1000:f1} K",
+            >= 0 => $"{(float)upso.needMoney:f0}",
+            _ => $"Error"
+        };
+        _treesUIScripts.upName.text = upso.upName;
+        _treesUIScripts.detail.text = $"{upso.upTime*100}% plus";
     }
 }
