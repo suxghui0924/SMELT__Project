@@ -1,19 +1,39 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class MoneyManager : MonoBehaviour
 {
     public static MoneyManager Instance;
+
     public int money;
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    public bool UseMoney(int amount)
+    {
+        if (money >= amount)
+        {
+            money -= amount;
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
-    public void AddMoney(int amount)
+    public void AddMoney(int rewardPoint)
     {
-        money += amount;
-        Debug.Log("돈: " + money);
+        money += rewardPoint;
+        Debug.Log("현재 돈: " + money);
     }
 }

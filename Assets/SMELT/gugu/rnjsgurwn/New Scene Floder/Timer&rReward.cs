@@ -4,17 +4,27 @@ using System.Collections;
 
 public class TimerAndReward : MonoBehaviour
 {
-    public float clearTime = 60f;
+    public float clearTime = 5f;
     public int rewardPoint = 100;
 
+    
     void Start()
     {
+        Debug.Log("Timer 시작됨");
         StartCoroutine(DungeonTimer());
     }
-
+   
     IEnumerator DungeonTimer()
     {
-        yield return new WaitForSeconds(clearTime);
+        Debug.Log("타이머 시작");
+
+        float timer = 0f;
+
+        while (timer < clearTime)
+        {
+            timer += Time.unscaledDeltaTime;
+            yield return null;
+        }
 
         DungeonClear();
     }
@@ -23,6 +33,7 @@ public class TimerAndReward : MonoBehaviour
     {
         Debug.Log("던전 클리어!");
         MoneyManager.Instance.AddMoney(rewardPoint);
+
         StartCoroutine(ReturnToField());
     }
 
@@ -30,6 +41,6 @@ public class TimerAndReward : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
 
-        SceneManager.LoadScene("Field");
+        SceneManager.LoadScene("Work_CreaftSystem_gurwn");
     }
 }
