@@ -535,11 +535,11 @@ public class Leedoyun_SellUI : MonoBehaviour
     {
         switch (o)
         {
-            case "apple":  return "사과";
-            case "melon":  return "멜론";
-            case "orange": return "귤";
-            case "lemon":  return "레몬";
-            case "grape":  return "포도";
+            case "apple":  return "사과석";
+            case "melon":  return "멜론석";
+            case "orange": return "귤석";
+            case "lemon":  return "레몬석";
+            case "grape":  return "포도석";
             default:       return o;
         }
     }
