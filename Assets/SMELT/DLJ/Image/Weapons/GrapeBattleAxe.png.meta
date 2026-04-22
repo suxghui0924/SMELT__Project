@@ -103,12 +103,12 @@ TextureImporter:
       name: GrapeBattleAxe_0
       rect:
         serializedVersion: 2
-        x: 639
-        y: 767
-        width: 2818
-        height: 2818
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 79
+        y: 95
+        width: 354
+        height: 354
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 0455cd58e8039fb4d9be4af3f61f9bd8
     internalID: 0
     vertices: []
     indices: 

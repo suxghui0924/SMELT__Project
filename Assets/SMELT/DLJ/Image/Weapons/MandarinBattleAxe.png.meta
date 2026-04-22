@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72b3d3b55953e0243a6ab29c4dc92484
+guid: 035c07ce43253b74a91c1625066b10eb
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -103,12 +103,12 @@ TextureImporter:
       name: MandarinBattleAxe_0
       rect:
         serializedVersion: 2
-        x: 639
-        y: 767
-        width: 2818
-        height: 2818
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 79
+        y: 95
+        width: 354
+        height: 354
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: ce57c866e039eca4e86d5a4d3d476571
     internalID: 0
     vertices: []
     indices: 

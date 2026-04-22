@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d52e5e2ad687bbb4292b44678691403e
+guid: a23b028df69a1524e9c7bcc44c237b3a
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -103,12 +103,12 @@ TextureImporter:
       name: LemonBattleAxe_0
       rect:
         serializedVersion: 2
-        x: 639
-        y: 767
-        width: 2818
-        height: 2818
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 79
+        y: 95
+        width: 354
+        height: 354
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 8e829845a983b564c8cad60b98b5d3ca
     internalID: 0
     vertices: []
     indices: 

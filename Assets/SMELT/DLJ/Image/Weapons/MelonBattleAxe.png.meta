@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a9a6f0b0d8a7b6e45bf387a8520cbdba
+guid: d2b49685c5789e143b1e29467dfe617a
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -103,12 +103,12 @@ TextureImporter:
       name: MelonBattleAxe_0
       rect:
         serializedVersion: 2
-        x: 639
-        y: 767
-        width: 2818
-        height: 2818
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 79
+        y: 95
+        width: 354
+        height: 354
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bb530451c22a6864da5b483be7782e5e
     internalID: 0
     vertices: []
     indices: 
