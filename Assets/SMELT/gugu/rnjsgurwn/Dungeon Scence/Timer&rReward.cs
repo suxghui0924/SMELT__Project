@@ -2,15 +2,18 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
+
+
 public class TimerAndReward : MonoBehaviour
 {
-    public float clearTime = 5f;
+    [SerializeField] private TimerAndReward instance;
+    public int stage = 1;
+    public float baseTime = 20f;
     public int rewardPoint = 100;
 
     
     void Start()
     {
-        Debug.Log("Timer 시작됨");
         StartCoroutine(DungeonTimer());
     }
    
@@ -19,12 +22,13 @@ public class TimerAndReward : MonoBehaviour
         Debug.Log("타이머 시작");
 
         float timer = 0f;
-
-        while (timer < clearTime)
+        float stageTime = baseTime + (stage - 1) * 5f;
+        while (timer < baseTime)
         {
             timer += Time.unscaledDeltaTime;
             yield return null;
         }
+        
 
         DungeonClear();
     }
@@ -33,14 +37,15 @@ public class TimerAndReward : MonoBehaviour
     {
         Debug.Log("던전 클리어!");
         MoneyManager.Instance.AddMoney(rewardPoint);
-
-        StartCoroutine(ReturnToField());
+        
+        StartCoroutine(ChangeStage());
     }
 
-    IEnumerator ReturnToField()
+    IEnumerator ChangeStage()
     {
         yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 
-        SceneManager.LoadScene("Work_CreaftSystem_gurwn");
     }
+   
 }
