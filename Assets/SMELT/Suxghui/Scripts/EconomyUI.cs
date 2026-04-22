@@ -1,116 +1,116 @@
-using NUnit.Framework;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.Processors;
-using static UnityEngine.Rendering.DebugUI;
 
 public class EconomyUI : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI _goldText;
     [SerializeField] TextMeshProUGUI _appleText;
+    [SerializeField] TextMeshProUGUI _melonText;
+    [SerializeField] TextMeshProUGUI _orangeText;
     [SerializeField] TextMeshProUGUI _lemonText;
     [SerializeField] TextMeshProUGUI _grapeText;
-    [SerializeField] TextMeshProUGUI _orangeText;
-    [SerializeField] TextMeshProUGUI _melonText;
     [SerializeField] TextMeshProUGUI _curDayText;
     [SerializeField] TextMeshProUGUI _maintenanceText;
-    List<TextMeshProUGUI> itemTexts = new List<TextMeshProUGUI>();
-    List<string> itemIds = new List<string> { "fruitstone_apple", "fruitstone_melon", "fruitstone_orange", "fruitstone_lemon", "fruitstone_grape" };
 
-    void Awake()
+    // itemIds 순서와 반드시 일치해야 함
+    private List<TextMeshProUGUI> _itemTexts;
+    private readonly List<string> _itemIds = new()
     {
-        itemTexts = new List<TextMeshProUGUI> { _appleText, _melonText, _lemonText, _grapeText, _orangeText };
-    }
-    private void OnEnable()
+        "fruitstone_apple", "fruitstone_melon", "fruitstone_orange",
+        "fruitstone_lemon",  "fruitstone_grape"
+    };
+
+    private void Awake()
     {
-        if (InventoryManager.Instance != null)
+        _itemTexts = new List<TextMeshProUGUI>
         {
-            InventoryManager.Instance.OnGoldChanged += UpdateUIGoldState;
-            UpdateUIGoldState(0, InventoryManager.Instance.Gold);
-            InventoryManager.Instance.OnItemChanged += UpdateUIItemState;
-            InitItemTexts();
-            InventoryManager.Instance.OnDayChanged += UpdateUICurDayMaintenanceCost;
-            //UpdateUIItemState(0, InventoryManager.Instance.Gold); 
-        }
+            _appleText, _melonText, _orangeText, _lemonText, _grapeText
+        };
     }
 
-    private void InitItemTexts()
+    private void Start()
     {
-        for (int i = 0; i < itemTexts.Count; i++)
-        {
-            int qty = InventoryManager.Instance.GetQuantity(itemIds[i]);
-            UpdateUIItemState(itemIds[i], qty);
-        }
-    }
-    // 아래의 스크립트는 빠른 테스트를 위해 테스트 케이스를 만듬 { Gemini }
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            InventoryManager.Instance.AddGold(1000000);
-        }
+        var inv = InventoryManager.Instance;
+        if (inv == null) return;
 
-        if (Input.GetKey(KeyCode.Alpha1))
-            InventoryManager.Instance.AddItem("fruitstone_apple", 10);
+        inv.OnGoldChanged += UpdateUIGoldState;
+        inv.OnItemChanged += UpdateUIItemState;
+        inv.OnDayChanged  += UpdateUICurDayMaintenanceCost;
 
-        if (Input.GetKey(KeyCode.Alpha2))
-            InventoryManager.Instance.AddItem("fruitstone_melon", 10);
+        // 로드 후 UI 전체 갱신
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.OnLoadResult += OnLoaded;
 
-        if (Input.GetKey(KeyCode.Alpha3))
-            InventoryManager.Instance.AddItem("fruitstone_orange", 10);
-
-        if (Input.GetKey(KeyCode.Alpha4))
-            InventoryManager.Instance.AddItem("fruitstone_lemon", 10);
-
-        if (Input.GetKey(KeyCode.Alpha5))
-            InventoryManager.Instance.AddItem("fruitstone_grape", 10);
-
-        // [R] 키: 모든 과일석 100개씩 추가 (폭풍 테스트용)
-        if (Input.GetKey(KeyCode.R))
-        {
-            foreach (var id in itemIds)
-            {
-                InventoryManager.Instance.AddItem(id, 100);
-            }
-        }
-
-        // [Enter] 키 또는 [N] 키: 하루 종료 (날짜 증가 + 유지비 차감)
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.N))
-        {
-            if (InventoryManager.Instance != null)
-            {
-                // EndOfDay는 유지비가 부족하면 false를 반환하도록 설계되어 있습니다.
-                bool success = InventoryManager.Instance.EndOfDay();
-
-                if (success)
-                {
-                    Debug.Log($"[Economy] {InventoryManager.Instance.CurrentDay}일차가 되었습니다.");
-                }
-                else
-                {
-                    Debug.LogWarning("[Economy] 골드가 부족하여 다음 날로 넘어갈 수 없습니다!");
-                }
-            }
-        }
+        RefreshAll();
     }
 
-    private void UpdateUIGoldState(int curGold, int newGold)
+    private void OnDestroy()
     {
-        _goldText.text = $"{Mathf.Clamp(newGold, 0, 200000000).ToString("N0")}";
+        var inv = InventoryManager.Instance;
+        if (inv != null)
+        {
+            inv.OnGoldChanged -= UpdateUIGoldState;
+            inv.OnItemChanged -= UpdateUIItemState;
+            inv.OnDayChanged  -= UpdateUICurDayMaintenanceCost;
+        }
+
+        if (SaveManager.Instance != null)
+            SaveManager.Instance.OnLoadResult -= OnLoaded;
     }
+
+    private void OnLoaded(bool ok, string _)
+    {
+        if (ok) RefreshAll();
+    }
+
+    private void RefreshAll()
+    {
+        var inv = InventoryManager.Instance;
+        if (inv == null) return;
+
+        UpdateUIGoldState(0, inv.Gold);
+        for (int i = 0; i < _itemIds.Count; i++)
+            UpdateUIItemState(_itemIds[i], inv.GetQuantity(_itemIds[i]));
+        UpdateUICurDayMaintenanceCost(inv.CurrentDay, inv.MaintenanceCost);
+    }
+
+    private void UpdateUIGoldState(int _, int newGold)
+    {
+        if (_goldText != null)
+            _goldText.text = Mathf.Clamp(newGold, 0, 200_000_000).ToString("N0");
+    }
+
     private void UpdateUIItemState(string itemId, int newValue)
     {
-        if (itemIds.IndexOf(itemId) != -1)
-        {
-            itemTexts[itemIds.IndexOf(itemId)].text = $"{Mathf.Clamp(newValue, 0, 10000).ToString("N0")}";
-        }
-        //_goldText.text = $"{newGold.ToString("N0")}";
+        int idx = _itemIds.IndexOf(itemId);
+        if (idx >= 0 && _itemTexts[idx] != null)
+            _itemTexts[idx].text = Mathf.Clamp(newValue, 0, 10_000).ToString("N0");
     }
 
     public void UpdateUICurDayMaintenanceCost(int curDay, int maintenance)
     {
-        _curDayText.text = $"{curDay} 일차";
-        _maintenanceText.text = $"유지비용 : {maintenance.ToString("N0")}";
+        if (_curDayText != null)      _curDayText.text      = $"{curDay} 일차";
+        if (_maintenanceText != null) _maintenanceText.text = $"유지비용 : {maintenance:N0}";
+    }
+
+    // ─── 테스트 입력 (빠른 확인용) ───────────────────────────────
+    private void Update()
+    {
+        var inv = InventoryManager.Instance;
+        if (inv == null) return;
+
+        if (Input.GetKeyDown(KeyCode.Space))        inv.AddGold(1_000_000);
+        if (Input.GetKeyDown(KeyCode.Alpha1))       inv.AddItem("fruitstone_apple",  10);
+        if (Input.GetKeyDown(KeyCode.Alpha2))       inv.AddItem("fruitstone_melon",  10);
+        if (Input.GetKeyDown(KeyCode.Alpha3))       inv.AddItem("fruitstone_orange", 10);
+        if (Input.GetKeyDown(KeyCode.Alpha4))       inv.AddItem("fruitstone_lemon",  10);
+        if (Input.GetKeyDown(KeyCode.Alpha5))       inv.AddItem("fruitstone_grape",  10);
+
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.N))
+        {
+            if (!inv.EndOfDay())
+                Debug.LogWarning("[Economy] 골드 부족 - 다음 날로 넘어갈 수 없습니다.");
+        }
     }
 }
