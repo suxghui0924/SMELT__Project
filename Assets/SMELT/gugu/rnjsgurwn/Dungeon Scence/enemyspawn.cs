@@ -5,8 +5,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private Transform[] spawnPoints;
 
     private float timer = 0;
-    private float minTime = 1f;
-    private float maxTime = 3f;
+    private float minTime = 0.5f;
+    private float maxTime = 2f;
 
     [SerializeField] private GameObject enemyPrefab;
 

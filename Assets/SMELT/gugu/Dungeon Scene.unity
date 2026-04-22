@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   money: 0
+  stage: 1
 --- !u!4 &579643768
 Transform:
   m_ObjectHideFlags: 0
@@ -442,9 +443,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24afbdc04344b6459dcc682d5aa2e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stage: 1
-  baseTime: 5
+  baseTime: 1
   rewardPoint: 100
+  minFatigue: 0
+  maxFatigue: 100
+  currentFatigue: 0
 --- !u!4 &1385956381
 Transform:
   m_ObjectHideFlags: 0

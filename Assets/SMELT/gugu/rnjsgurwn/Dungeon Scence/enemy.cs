@@ -28,12 +28,15 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
 
-
-
-
-
     }
+    void OnDestroy()
+    {
+        TimerAndReward tar = FindObjectOfType<TimerAndReward>();
 
-
+        if (tar != null)
+        {
+            tar.ReduceFatigue(5);
+        }
+    }
 
 }
