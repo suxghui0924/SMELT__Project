@@ -3645,11 +3645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SparkParticle: {fileID: 1242444888}
   starParticle: {fileID: 2012347143}
-  weaponsPrefab:
-  - {fileID: 8373635806528040117, guid: fa939c3b9ae16264fb7f5ea2f41388fa, type: 3}
-  - {fileID: 6369154081328476016, guid: bfb3c837c0ec98b4ea667c5c4b03249b, type: 3}
-  - {fileID: 5979029398021476873, guid: 68ee0dbe3ba8b0744a0f8e339e1cf4b5, type: 3}
-  - {fileID: 2930280646234732865, guid: 73cbabf6a93185d49903767155998b0b, type: 3}
+  weaponsPrefab: []
   isCreating: 0
 --- !u!4 &817866605
 Transform:
