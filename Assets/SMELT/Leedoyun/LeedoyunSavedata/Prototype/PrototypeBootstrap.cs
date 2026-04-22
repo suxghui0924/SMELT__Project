@@ -67,7 +67,7 @@ public class PrototypeBootstrap : MonoBehaviour
         cam.orthographicSize  = 6.5f;
         cam.backgroundColor  = new Color(0.08f, 0.08f, 0.12f);
         cam.clearFlags       = CameraClearFlags.SolidColor;
-        cam.transform.position = new Vector3(0f, 0f, -10f);
+        cam.transform.position = new Vector3(0f, 1f, -10f);
     }
 
     private static void CreateBackground()

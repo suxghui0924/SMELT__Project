@@ -24,26 +24,22 @@ public class Leedoyun_SellUI : MonoBehaviour
     // ─────────────────────────────────────────
     private TextMeshProUGUI _todayGoldText;
     private TextMeshProUGUI _totalGoldText;
-    private TextMeshProUGUI _heldWeaponText;
+    // private TextMeshProUGUI _heldWeaponText; // 테스트 패널 제거로 미사용
 
     // 주문 슬롯 3개
     private const int SLOT_COUNT = 3;
     private OrderSlotUI[] _slots = new OrderSlotUI[SLOT_COUNT];
     private bool _isInitialized = false;
 
-    // 테스트용 무기 선택 (← → 버튼으로 사이클)
-    private int _selectedWeaponIndex = 0;
-    private TextMeshProUGUI _selectedWeaponText;
-    private static readonly string[] TEST_WEAPONS =
-    {
-        "weapon_sword_apple",
-        "weapon_sword_melon",
-        "weapon_axe_apple",
-        "weapon_axe_melon",
-        "weapon_spear_orange",
-        "weapon_bat_lemon",
-        "weapon_gauntlet_grape",
-    };
+    // // ─── 테스트용 무기 선택 (← → 버튼) ─── 테스트 패널 제거로 미사용 ───
+    // private int _selectedWeaponIndex = 0;
+    // private TextMeshProUGUI _selectedWeaponText;
+    // private static readonly string[] TEST_WEAPONS =
+    // {
+    //     "weapon_sword_apple",  "weapon_sword_melon",  "weapon_axe_apple",
+    //     "weapon_axe_melon",    "weapon_spear_orange", "weapon_bat_lemon",
+    //     "weapon_gauntlet_grape",
+    // };
 
     // ─────────────────────────────────────────
     // 슬롯 데이터 (내부 클래스)
@@ -200,55 +196,38 @@ public class Leedoyun_SellUI : MonoBehaviour
         Debug.Log(ok ? $"[SellUI] 납품 성공: {weaponId}" : $"[SellUI] 납품 실패");
     }
 
-    // [인벤에 추가] 버튼 - 선택된 무기를 인벤토리에 추가 (테스트용)
-    private void OnAddWeaponClicked()
-    {
-        string weaponId = TEST_WEAPONS[_selectedWeaponIndex];
-        InventoryManager.Instance.AddItem(weaponId, 1);
-        Debug.Log($"[SellUI] 테스트 무기 추가: {weaponId}");
-        UpdateHeldText();
-    }
-
-    // [◀] 버튼 - 이전 무기
-    private void OnPrevWeapon()
-    {
-        _selectedWeaponIndex = (_selectedWeaponIndex - 1 + TEST_WEAPONS.Length) % TEST_WEAPONS.Length;
-        RefreshSelectedWeaponText();
-    }
-
-    // [▶] 버튼 - 다음 무기
-    private void OnNextWeapon()
-    {
-        _selectedWeaponIndex = (_selectedWeaponIndex + 1) % TEST_WEAPONS.Length;
-        RefreshSelectedWeaponText();
-    }
-
-    private void RefreshSelectedWeaponText()
-    {
-        if (_selectedWeaponText != null)
-            _selectedWeaponText.text = WeaponDisplayName(TEST_WEAPONS[_selectedWeaponIndex]);
-    }
-
     // [설정] 버튼 - Work_Leedoyun_Setting 씬으로 이동
     private void OnSettingClicked()
     {
         SceneManager.LoadScene("Work_Leedoyun_Setting");
     }
 
-    // [주문 강제 생성] 버튼 (테스트용)
-    private void OnForceOrderClicked()
-    {
-        // SendMessage로 private 메서드 호출
-        Leedoyun_SellManager.Instance.SendMessage("TrySpawnOrder",
-            SendMessageOptions.DontRequireReceiver);
-    }
-
-    private void UpdateHeldText()
-    {
-        if (_heldWeaponText == null) return;
-        // 실제 플레이에서는 WeaponHolder 연동, 프로토타입은 인벤 현황 표시
-        _heldWeaponText.text = "인벤토리 확인: 로그 참고";
-    }
+    // ─── 테스트용 메서드 (테스트 패널 제거로 미사용) ───────────────────────
+    // private void OnAddWeaponClicked()
+    // {
+    //     string weaponId = TEST_WEAPONS[_selectedWeaponIndex];
+    //     InventoryManager.Instance.AddItem(weaponId, 1);
+    //     Debug.Log($"[SellUI] 테스트 무기 추가: {weaponId}");
+    // }
+    // private void OnPrevWeapon()
+    // {
+    //     _selectedWeaponIndex = (_selectedWeaponIndex - 1 + TEST_WEAPONS.Length) % TEST_WEAPONS.Length;
+    //     RefreshSelectedWeaponText();
+    // }
+    // private void OnNextWeapon()
+    // {
+    //     _selectedWeaponIndex = (_selectedWeaponIndex + 1) % TEST_WEAPONS.Length;
+    //     RefreshSelectedWeaponText();
+    // }
+    // private void RefreshSelectedWeaponText()
+    // {
+    //     if (_selectedWeaponText != null)
+    //         _selectedWeaponText.text = WeaponDisplayName(TEST_WEAPONS[_selectedWeaponIndex]);
+    // }
+    // private void OnForceOrderClicked()
+    // {
+    //     Leedoyun_SellManager.Instance.SendMessage("TrySpawnOrder", SendMessageOptions.DontRequireReceiver);
+    // }
 
     // ─────────────────────────────────────────
     // UI 자동 생성
@@ -316,8 +295,7 @@ public class Leedoyun_SellUI : MonoBehaviour
             _slots[i] = BuildOrderSlot(bg.transform, i, xCenter);
         }
 
-        // ── 하단 테스트 패널 ──
-        BuildTestPanel(bg.transform);
+        // BuildTestPanel(bg.transform); // 테스트 패널 제거
 
         _isInitialized = true;
     }
@@ -387,49 +365,12 @@ public class Leedoyun_SellUI : MonoBehaviour
         return slot;
     }
 
-    private void BuildTestPanel(Transform parent)
-    {
-        var panel = MakePanel(parent, "TestPanel",
-            new Vector2(0f, 0f), new Vector2(1f, 0.2f),
-            new Color(0.08f, 0.08f, 0.12f, 1f));
-        panel.GetComponent<Image>().raycastTarget = false;
-
-        // 드롭다운 (무기 선택)
-        // [◀] 이전 무기 버튼
-        MakeButton(panel.transform, "PrevBtn", "<",
-            new Vector2(0.01f, 0.3f), new Vector2(0.08f, 0.85f),
-            new Color(0.3f, 0.3f, 0.35f),
-            OnPrevWeapon);
-
-        // 선택된 무기 이름 표시
-        _selectedWeaponText = MakeText(panel.transform, "SelectedWeapon",
-            WeaponDisplayName(TEST_WEAPONS[0]),
-            new Vector2(0.09f, 0.3f), new Vector2(0.38f, 0.85f),
-            Vector2.zero, 32, Color.white);
-
-        // [▶] 다음 무기 버튼
-        MakeButton(panel.transform, "NextBtn", ">",
-            new Vector2(0.39f, 0.3f), new Vector2(0.46f, 0.85f),
-            new Color(0.3f, 0.3f, 0.35f),
-            OnNextWeapon);
-
-        // [인벤에 추가] 버튼
-        MakeButton(panel.transform, "AddBtn", "인벤에 추가",
-            new Vector2(0.48f, 0.3f), new Vector2(0.72f, 0.85f),
-            new Color(0.2f, 0.4f, 0.7f),
-            OnAddWeaponClicked);
-
-        // [주문 강제 생성] 버튼 (테스트)
-        MakeButton(panel.transform, "SpawnBtn", "주문 강제 생성",
-            new Vector2(0.74f, 0.3f), new Vector2(0.99f, 0.85f),
-            new Color(0.6f, 0.3f, 0.1f),
-            OnForceOrderClicked);
-
-        _heldWeaponText = MakeText(panel.transform, "HeldText",
-            "[납품] 버튼을 누르면 해당 무기가 자동 추가 후 납품됩니다.",
-            new Vector2(0f, 0f), new Vector2(1f, 0.28f),
-            Vector2.zero, 26, new Color(0.7f, 0.7f, 0.7f));
-    }
+    // ─── BuildTestPanel (테스트 패널 - 미사용) ───────────────────────────────
+    // private void BuildTestPanel(Transform parent)
+    // {
+    //     // [◀/▶] 무기 선택, [인벤에 추가], [주문 강제 생성] 버튼 포함
+    //     // TEST_WEAPONS / _selectedWeaponIndex / _selectedWeaponText / _heldWeaponText 필드 필요
+    // }
 
     // ─────────────────────────────────────────
     // UI 생성 헬퍼

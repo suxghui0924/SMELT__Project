@@ -14,8 +14,7 @@ using UnityEditor;
 ///   좌상단  : 리소스 패널 (골드 + 과일석 5종 실시간 표시)
 ///   하단 중앙: 구역 안내 텍스트
 ///   화면 중앙: 제작 패널 (E키 - 대장간), 판매 패널 (E키 - 상점) [하나만 표시]
-///   우상단  : 미션 패널 (3종 미션 진행도)
-///   우하단  : 저장 / 로드 버튼
+///   우하단  : 상태 메시지 텍스트
 /// </summary>
 public class PrototypeHUD : MonoBehaviour
 {
@@ -113,20 +112,6 @@ public class PrototypeHUD : MonoBehaviour
     };
 
     // ─────────────────────────────────────────
-    // 미션 클래스
-    // ─────────────────────────────────────────
-    private class Mission
-    {
-        public string           Description;
-        public int              Target;
-        public int              Progress;
-        public bool             Completed;
-        public int              RewardGold;
-    }
-
-    private Mission[] _missions;
-
-    // ─────────────────────────────────────────
     // UI 레퍼런스 캐시
     // ─────────────────────────────────────────
     // 리소스 패널
@@ -149,17 +134,8 @@ public class PrototypeHUD : MonoBehaviour
     private Button[]    _sellButtons   = new Button[RECIPES.Length];
     private TMP_Text[]  _sellBtnTexts  = new TMP_Text[RECIPES.Length];
 
-    // 미션 패널
-    private TMP_Text[] _missionDescTexts  = new TMP_Text[3];
-    private TMP_Text[] _missionProgTexts  = new TMP_Text[3];
-    private Image[]    _missionChecks     = new Image[3];
-
-    // 저장/로드 상태 텍스트
+    // 상태 텍스트
     private TMP_Text _statusText;
-
-    // 미션 진행 카운터
-    private int _totalOresGathered;
-    private int _totalWeaponsSold;
 
     // ─────────────────────────────────────────
     // 초기화
@@ -172,7 +148,6 @@ public class PrototypeHUD : MonoBehaviour
 
     private void Start()
     {
-        InitMissions();
         BuildUI();
 
         var inv = InventoryManager.Instance;
@@ -180,19 +155,6 @@ public class PrototypeHUD : MonoBehaviour
         {
             inv.OnGoldChanged  += (_, _) => RefreshResources();
             inv.OnItemChanged  += (_, _) => RefreshResources();
-        }
-
-        var sm = SaveManager.Instance;
-        if (sm != null)
-        {
-            sm.OnSaveResult += (ok, msg) =>
-                SetStatus(ok ? $"저장 완료  {msg}" : $"저장 실패", ok ? new Color(0.4f, 1f, 0.4f) : new Color(1f, 0.4f, 0.4f));
-
-            sm.OnLoadResult += (ok, msg) =>
-            {
-                SetStatus(ok ? $"로드 완료  {msg}" : $"로드 실패", ok ? new Color(0.4f, 0.9f, 1f) : new Color(1f, 0.4f, 0.4f));
-                RefreshResources();
-            };
         }
 
         RefreshResources();
@@ -211,19 +173,6 @@ public class PrototypeHUD : MonoBehaviour
             _gatherEffTimer -= Time.deltaTime;
             if (_gatherEffTimer <= 0f) _gatherEffText.enabled = false;
         }
-    }
-
-    // ─────────────────────────────────────────
-    // 미션 초기화
-    // ─────────────────────────────────────────
-    private void InitMissions()
-    {
-        _missions = new[]
-        {
-            new Mission { Description = "광석 10개 채집하기", Target = 10,   RewardGold = 300  },
-            new Mission { Description = "무기 3개 판매하기",  Target = 3,    RewardGold = 500  },
-            new Mission { Description = "골드 1,000 모으기",  Target = 1000, RewardGold = 0    },
-        };
     }
 
     // ─────────────────────────────────────────
@@ -249,9 +198,6 @@ public class PrototypeHUD : MonoBehaviour
 
     public void OnOreGathered(string oreId)
     {
-        _totalOresGathered++;
-        UpdateMission(0, _totalOresGathered);
-
         // 채집 이펙트
         if (_gatherEffText != null)
         {
@@ -306,8 +252,7 @@ public class PrototypeHUD : MonoBehaviour
         BuildZoneHint(root);
         BuildCraftPanel(root);
         BuildSellPanel(root);
-        BuildMissionPanel(root);
-        BuildSaveLoadButtons(root);
+        BuildStatusText(root);
     }
 
     // ── 리소스 패널 (좌상단) ──────────────────
@@ -496,51 +441,11 @@ public class PrototypeHUD : MonoBehaviour
         _sellBtnTexts[idx].alignment = TextAlignmentOptions.Center;
     }
 
-    // ── 미션 패널 (우상단) ────────────────────
-    private void BuildMissionPanel(Transform root)
+    // ── 상태 메시지 텍스트 (우하단) ──────────
+    private void BuildStatusText(Transform root)
     {
-        var panel = MakePanel(root, "MissionPanel", new Color(0.05f, 0.05f, 0.10f, 0.88f),
-            new Vector2(1f, 1f), new Vector2(1f, 1f), new Vector2(-10f, -10f), new Vector2(248f, 172f));
-        var p = panel.transform;
-
-        var title = MakeText(p, "미션", 15, FontStyles.Bold, new Color(1f, 0.85f, 0.3f), new Vector2(0f, 72f), new Vector2(228f, 26f));
-        title.alignment = TextAlignmentOptions.Center;
-
-        for (int i = 0; i < _missions.Length; i++)
-        {
-            float y = 38f - i * 44f;
-
-            // 체크마크
-            var chk = MakeRT(p, $"Chk{i}", new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
-                new Vector2(0.5f, 0.5f), new Vector2(-104f, y + 6f), new Vector2(14f, 14f));
-            _missionChecks[i] = chk.AddComponent<Image>();
-            _missionChecks[i].color = new Color(0.38f, 0.38f, 0.38f);
-
-            // 설명
-            _missionDescTexts[i] = MakeText(p, _missions[i].Description,
-                12, FontStyles.Normal, new Color(0.82f, 0.82f, 0.82f),
-                new Vector2(18f, y + 6f), new Vector2(204f, 18f));
-
-            // 진행도
-            _missionProgTexts[i] = MakeText(p, $"0 / {_missions[i].Target}",
-                11, FontStyles.Normal, new Color(0.55f, 0.88f, 0.55f),
-                new Vector2(18f, y - 14f), new Vector2(204f, 16f));
-        }
-    }
-
-    // ── 저장/로드 버튼 (우하단) ───────────────
-    private void BuildSaveLoadButtons(Transform root)
-    {
-        MakeBtn(root, "저장", new Vector2(-10f, 72f), new Vector2(115f, 38f),
-            new Color(0.18f, 0.42f, 0.90f), () => SaveManager.Instance?.Save(),
-            new Vector2(1f, 0f), new Vector2(1f, 0f));
-
-        MakeBtn(root, "로드", new Vector2(-10f, 28f), new Vector2(115f, 38f),
-            new Color(0.15f, 0.68f, 0.42f), () => SaveManager.Instance?.Load(),
-            new Vector2(1f, 0f), new Vector2(1f, 0f));
-
         var sGO = MakeRT(root, "StatusText", new Vector2(1f, 0f), new Vector2(1f, 0f),
-            new Vector2(1f, 0f), new Vector2(-10f, 110f), new Vector2(280f, 34f));
+            new Vector2(1f, 0f), new Vector2(-10f, 18f), new Vector2(280f, 34f));
         _statusText           = sGO.AddComponent<TextMeshProUGUI>();
         if (_korFont != null) _statusText.font = _korFont;
         _statusText.fontSize  = 12f;
@@ -581,9 +486,6 @@ public class PrototypeHUD : MonoBehaviour
         inv.RemoveItem(recipe.WeaponId, 1);
         inv.AddGold(recipe.SellPrice);
 
-        _totalWeaponsSold++;
-        UpdateMission(1, _totalWeaponsSold);
-
         SetStatus($"{recipe.WeaponName} 판매 완료!  +{recipe.SellPrice} G", new Color(1f, 0.85f, 0.2f));
         RefreshSellPanel();
     }
@@ -602,9 +504,6 @@ public class PrototypeHUD : MonoBehaviour
         for (int i = 0; i < ORE_IDS.Length; i++)
             if (_oreTexts[i] != null)
                 _oreTexts[i].text = inv.GetQuantity(ORE_IDS[i]).ToString();
-
-        // 골드 미션 진행 갱신
-        UpdateMission(2, inv.Gold);
     }
 
     private void RefreshCraftButtons()
@@ -649,39 +548,6 @@ public class PrototypeHUD : MonoBehaviour
             if (_sellBtnTexts[i] != null)
                 _sellBtnTexts[i].text = qty > 0 ? "판매" : "없음";
         }
-    }
-
-    // ─────────────────────────────────────────
-    // 미션 업데이트
-    // ─────────────────────────────────────────
-    private void UpdateMission(int idx, int value)
-    {
-        if (_missions == null || idx >= _missions.Length) return;
-        var m = _missions[idx];
-        if (m.Completed) return;
-
-        m.Progress = value;
-        int display = Mathf.Min(m.Progress, m.Target);
-
-        if (_missionProgTexts[idx] != null)
-            _missionProgTexts[idx].text = $"{display} / {m.Target}";
-
-        if (m.Progress < m.Target) return;
-
-        // 미션 완료
-        m.Completed = true;
-
-        if (_missionChecks[idx] != null)
-            _missionChecks[idx].color = new Color(0.22f, 0.90f, 0.32f);
-
-        if (_missionDescTexts[idx] != null)
-            _missionDescTexts[idx].color = new Color(0.50f, 0.50f, 0.50f);
-
-        if (m.RewardGold > 0)
-            InventoryManager.Instance?.AddGold(m.RewardGold);
-
-        string reward = m.RewardGold > 0 ? $"  보상 +{m.RewardGold} G" : "";
-        SetStatus($"미션 완료!  {m.Description}{reward}", new Color(1f, 0.85f, 0.2f));
     }
 
     // ─────────────────────────────────────────
