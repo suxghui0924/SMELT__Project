@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("Mining");
                 break;
             case GameDataSO.GameState.GameOver:
-                SceneManager.LoadScene("GameOver");
+                GameRetry.instance.GetQty();
                 break;
         }
     }
