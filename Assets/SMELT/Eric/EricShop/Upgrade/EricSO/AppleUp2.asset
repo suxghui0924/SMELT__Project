@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needName: UpParryRange1
   upName: AppleUp2
-  upTime: 1
-  needMoney: 0
+  upTime: 5
+  needMoney: 500000

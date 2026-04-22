@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needName: OrangeUp3
   upName: AttackSpeedUp3
-  upTime: 1
-  needMoney: 0
+  upTime: 0.5
+  needMoney: 10000000

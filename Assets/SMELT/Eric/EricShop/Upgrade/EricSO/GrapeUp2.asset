@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needName: WeaponUp3
   upName: GrapeUp2
-  upTime: 1
-  needMoney: 0
+  upTime: 5
+  needMoney: 1500000
