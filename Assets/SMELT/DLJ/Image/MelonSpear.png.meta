@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: edde0229a75cb1444880516ad95381be
+guid: 3c5012c30cd7a814eb0fbfb0f7f33ea7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9292235790873081
-    second: AppleSword_0
+      213: -5523928489151072066
+    second: MelonSpear_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,23 +100,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: AppleSword_0
+      name: MelonSpear_0
       rect:
         serializedVersion: 2
-        x: 119
-        y: 121
-        width: 352
-        height: 352
-      alignment: 8
-      pivot: {x: 1, y: 0}
+        x: 55
+        y: 55
+        width: 418
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9f1fb7d3d33012000800000000000000
-      internalID: 9292235790873081
+      spriteID: eb87d7f5e401753b0800000000000000
+      internalID: -5523928489151072066
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f59d3f082b5c1164ca6658d2d10351b0
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      AppleSword_0: 9292235790873081
+      MelonSpear_0: -5523928489151072066
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

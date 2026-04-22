@@ -107,7 +107,7 @@ public class PrototypeHUD : MonoBehaviour
     {
         { "fruitstone_apple",  "사과석"   },
         { "fruitstone_melon",  "멜론석"   },
-        { "fruitstone_orange", "오렌지석" },
+        { "fruitstone_orange", "귤석" },
         { "fruitstone_lemon",  "레몬석"   },
         { "fruitstone_grape",  "포도석"   },
     };
@@ -234,9 +234,7 @@ public class PrototypeHUD : MonoBehaviour
         if (_zoneHintGO == null) return;
         _zoneHintText.text = type switch
         {
-            ZoneType.Mining   => "광석 채취 구역  —  머물면 자동 채집됩니다",
             ZoneType.Crafting => "대장간  —  [ E ] 무기 제작",
-            ZoneType.Selling  => "상점  —  [ E ] 무기 판매",
             _                 => ""
         };
         _zoneHintGO.SetActive(true);

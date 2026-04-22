@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c92d69d86be65994ca246348c9be025b
+guid: 5277e8755c4c72e4e87bb1913921434d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2126145041201181838
-    second: MelonSword_0
+      213: -2408915587133118496
+    second: LemonSword_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,27 +96,40 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MelonSword_0
+      name: LemonSword_0
       rect:
         serializedVersion: 2
         x: 119
         y: 119
         width: 354
         height: 354
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 8
+      pivot: {x: 1, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 27bce3e895a6e72e0800000000000000
-      internalID: -2126145041201181838
+      spriteID: 0e767075900d19ed0800000000000000
+      internalID: -2408915587133118496
       vertices: []
       indices: 
       edges: []
@@ -125,7 +138,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: bc3ddf8a7778a154c8475fc8eb54c8b8
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      MelonSword_0: -2126145041201181838
+      LemonSword_0: -2408915587133118496
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

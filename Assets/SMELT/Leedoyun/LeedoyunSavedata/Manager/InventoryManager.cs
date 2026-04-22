@@ -1,6 +1,7 @@
 using System;                       // 추가
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 /// <summary>
 /// 경제 시스템 + 인벤토리 + 테크트리 관리.
@@ -30,6 +31,8 @@ public class InventoryManager : MonoBehaviour, ISaveable
 
     /// <summary>아이템 수량 변경 시 발생. (itemId, 새 수량)</summary>
     public event Action<string, int> OnItemChanged; // 추가
+    // 위와 같음 현재 일차, 유지비용 --이도윤씨가 만든거 사용함. by 박성희
+    public event Action<int, int> OnDayChanged;
 
     // ─────────────────────────────────────────
     // 프로퍼티 (읽기 전용 - 외부 접근용)
@@ -190,6 +193,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
 
         _currentDay++;
         _maintenanceCost = Mathf.RoundToInt(_maintenanceCost * 1.2f);  // 유지비 20% 증가
+        OnDayChanged?.Invoke(_currentDay, _maintenanceCost); // 추가
         return true;
     }
 

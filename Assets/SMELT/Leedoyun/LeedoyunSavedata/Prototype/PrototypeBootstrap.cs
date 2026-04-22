@@ -35,6 +35,10 @@ public class PrototypeBootstrap : MonoBehaviour
     {
         Ensure<SaveManager>();
         Ensure<InventoryManager>();
+        Ensure<WeaponCraftManager>();
+        Ensure<AutoGatherManager>();
+        Ensure<Leedoyun_SellManager>();
+        Ensure<OrderHUD>();
     }
 
     private void Start()
@@ -45,13 +49,8 @@ public class PrototypeBootstrap : MonoBehaviour
         new GameObject("HUD").AddComponent<PrototypeHUD>();
 
         CreateBackground();
-
-        CreateZone("MiningZone", new Vector3(-6.5f, 0f, 0f), new Vector2(5f, 10f),
-            ZoneType.Mining, new Color(0.38f, 0.26f, 0.14f));
-        CreateZone("CraftingZone", new Vector3(0f, 0f, 0f), new Vector2(5f, 10f),
-            ZoneType.Crafting, new Color(0.18f, 0.18f, 0.42f));
-        CreateZone("SellingZone", new Vector3(6.5f, 0f, 0f), new Vector2(5f, 10f),
-            ZoneType.Selling, new Color(0.14f, 0.38f, 0.22f));
+        CreateZone("CraftingZone", new Vector3(-6.5f, 5f, 0f), new Vector2(5f, 5f),
+            ZoneType.Crafting, new Color(0.38f, 0.26f, 0.14f, 0f));
 
         // 플레이어: 광석 채취 구역 하단에 시작
         CreatePlayer(new Vector3(-6.5f, -3.5f, -1f));

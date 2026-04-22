@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9ee6374d3cb800547ae4a9d1a7c05857
+guid: 72b3d3b55953e0243a6ab29c4dc92484
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6627404146127580454
-    second: Mandarin_0
+      213: 6424255845565036113
+    second: MandarinBattleAxe_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mandarin_0
+      name: MandarinBattleAxe_0
       rect:
         serializedVersion: 2
-        x: 119
-        y: 119
-        width: 354
-        height: 354
+        x: 639
+        y: 767
+        width: 2818
+        height: 2818
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 62da2e815f449fb50800000000000000
-      internalID: 6627404146127580454
+      spriteID: 156712587aa872950800000000000000
+      internalID: 6424255845565036113
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Mandarin_0: 6627404146127580454
+      MandarinBattleAxe_0: 6424255845565036113
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

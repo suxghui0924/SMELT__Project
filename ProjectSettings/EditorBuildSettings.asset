@@ -5,21 +5,33 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/00_Scenes/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
-  - enabled: 1
+  - enabled: 0
     path: Assets/SMELT/Eric/EricPickaxeShop.unity
     guid: 4a96567f3fcb9434f847d6b6796a3090
-  - enabled: 1
+  - enabled: 0
     path: Assets/SMELT/Eric/EricUpgradeShop.unity
     guid: 7ac88e2c262b72d41914fb2a5bd34497
-  - enabled: 1
+  - enabled: 0
     path: Assets/SMELT/DLJ/StartMenu/DLJ_StartMenu.unity
     guid: 03fde21ddf1f8a14988ab35519176aba
-  - enabled: 1
+  - enabled: 0
     path: Assets/SMELT/DLJ/LoadingScene/LoadingScene.unity
     guid: c16596375ed56224ea3ebadf6e8b177b
+  - enabled: 1
+    path: Assets/SMELT/LHS/LHS_MiningScene.unity
+    guid: e7802199318568b45a113aee080d7261
+  - enabled: 1
+    path: Assets/00_Scenes/Scenes/Loading.unity
+    guid: 25f7976f4db7ccd41bdad5c34a238d1d
+  - enabled: 1
+    path: Assets/00_Scenes/Scenes/Lobby.unity
+    guid: aeca1699d6229b64b88bd774564bb04b
+  - enabled: 1
+    path: Assets/00_Scenes/Scenes/House.unity
+    guid: bd58411fc743bde42a0d6f3c1c934889
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
