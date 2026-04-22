@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UpSceneTrigger : MonoBehaviour
@@ -19,4 +19,4 @@ public class UpSceneTrigger : MonoBehaviour
             Debug.Log("돈 부족!");
         }
     }
-}
+}*/

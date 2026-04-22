@@ -5,8 +5,9 @@ public class MoneyManager : MonoBehaviour
     public static MoneyManager Instance;
 
     public int money;
+    public int stage = 1;
 
-    private void Awake()
+    void Awake()
     {
         if (Instance == null)
         {
@@ -18,22 +19,9 @@ public class MoneyManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    public bool UseMoney(int amount)
-    {
-        if (money >= amount)
-        {
-            money -= amount;
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
 
-    public void AddMoney(int rewardPoint)
+    public void AddMoney(int amount)
     {
-        money += rewardPoint;
-        Debug.Log("현재 돈: " + money);
+        money += amount;
     }
 }
