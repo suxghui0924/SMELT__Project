@@ -296,7 +296,7 @@ public class OrderHUD : MonoBehaviour
             new Vector2(panelW, panelH), CLR_BG_PANEL);
         rootGO.GetComponent<RectTransform>().pivot = new Vector2(1f, 1f);
         // pivot 변경 후 위치 재조정
-        rootGO.GetComponent<RectTransform>().anchoredPosition = new Vector2(-10f, -10f);
+        rootGO.GetComponent<RectTransform>().anchoredPosition = new Vector2(-10f, -160f);
 
         var root = rootGO.transform;
 
