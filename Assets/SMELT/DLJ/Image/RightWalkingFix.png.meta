@@ -90,7 +90,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -118,10 +118,10 @@ TextureImporter:
       name: RightWalkingFix_0
       rect:
         serializedVersion: 2
-        x: 79
-        y: 55
-        width: 106
-        height: 170
+        x: 0
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: RightWalkingFix_1
       rect:
         serializedVersion: 2
-        x: 335
-        y: 55
-        width: 106
-        height: 170
+        x: 256
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,10 +162,10 @@ TextureImporter:
       name: RightWalkingFix_2
       rect:
         serializedVersion: 2
-        x: 591
-        y: 55
-        width: 106
-        height: 162
+        x: 512
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,10 +184,10 @@ TextureImporter:
       name: RightWalkingFix_3
       rect:
         serializedVersion: 2
-        x: 847
-        y: 55
-        width: 106
-        height: 178
+        x: 768
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -206,10 +206,10 @@ TextureImporter:
       name: RightWalkingFix_4
       rect:
         serializedVersion: 2
-        x: 1103
-        y: 55
-        width: 106
-        height: 170
+        x: 1024
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -228,10 +228,10 @@ TextureImporter:
       name: RightWalkingFix_5
       rect:
         serializedVersion: 2
-        x: 1359
-        y: 55
-        width: 106
-        height: 162
+        x: 1280
+        y: 0
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,7 +250,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 03c5fcf54f5112b40af31a253749622b
     internalID: 0
     vertices: []
     indices: 
