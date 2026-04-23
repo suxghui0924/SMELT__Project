@@ -2,56 +2,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using JetBrains.Annotations;
+using UnityEngine.UI;
 
 public class TimerAndReward : MonoBehaviour
 {
     public static TimerAndReward Instance;
     //public float baseTime = 1f;
-    public int rewardPoint = 100;
-    public int minFatigue = 0;
-    public int maxFatigue = 100;
-    public int currentFatigue;
-    Coroutine timerCoroutine;
+    private int rewardPoint = 100;
+    private int minFatigue = 0;
+    int maxFatigue = 100;
+    int currentFatigue;
+    float clearTime = 60f;
+    [SerializeField] private Image _mp;
+
+   private int _stage = 0;
+
+    
+
 
     void Start()
     {
+        _stage = 1;
         currentFatigue = maxFatigue;
-        if (timerCoroutine == null)
-        {
-            timerCoroutine = StartCoroutine(DungeonTimer());
-        }
-    }
-     /*IEnumerator DungeonTimer()
-    {
-        float timer = 0f;
-
-        float stageTime = baseTime + (MoneyManager.Instance.stage - 1) * 0.1f;
-
-        Debug.Log("시간: " + stageTime);
-        Debug.Log("현재 스테이지: " + MoneyManager.Instance.stage);
-
-        while (timer < stageTime)
-        {
-            timer += Time.deltaTime;
-            yield return null;
-        }                                                   // 타이머 종료 후 보상 지급 및 씬 리로드
-
-        DungeonClear();
+        StartCoroutine(DungeonTimer());
+        
     }
 
-    void DungeonClear()
-    {
-        int reward = rewardPoint;
-        if (MoneyManager.Instance.stage >= 5)
-        {
-            reward = 100 + ((MoneyManager.Instance.stage - 1) / 5) * 50;
-        }
-        MoneyManager.Instance.AddMoney(reward);
-        MoneyManager.Instance.stage++;
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
-}*/
 
     bool isGameOver = false;
 
@@ -60,33 +36,40 @@ public class TimerAndReward : MonoBehaviour
         float timer = 0f;
         float moneyTimer = 0f;
 
-        while (!isGameOver)
+        while (timer < clearTime)
         {
             timer += Time.deltaTime;
             moneyTimer += Time.deltaTime;
 
             if (moneyTimer >= 1f)
             {
-                int rewardPerSecond = Mathf.FloorToInt(timer / 60f) + 1;         // 1초마다 돈 지금 근데 1분마다 초당 돈지급량 증가
+                int rewardPerSecond = Mathf.FloorToInt(MoneyManager.Instance.playTime / 60f) + 1;
+
                 MoneyManager.Instance.AddMoney(rewardPerSecond);
-                moneyTimer = 0f;
+
+                moneyTimer = 0f;               
+                ReduceFatigue(1);
+                _mp.fillAmount -= 0.01f;
+               
+                    
             }
 
             yield return null;
         }
-
         DungeonClear(); // 죽으면 클리어 처리 or 실패 처리
+        
     }
 
     void DungeonClear()
     {
         int reward = rewardPoint;
-        if (MoneyManager.Instance.stage >= 5)
+        if (_stage >= 5)
         {
-            reward = 100 + ((MoneyManager.Instance.stage - 1) / 5) * 50;
+            reward = 100 + ((_stage - 1) / 5) * 50;
         }
         MoneyManager.Instance.AddMoney(reward);
-        MoneyManager.Instance.stage++;
+        _stage++;
+        Debug.Log($"다음 스테이지: {MoneyManager.Instance.stage}");
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
@@ -106,8 +89,7 @@ public class TimerAndReward : MonoBehaviour
     {
         Debug.Log("피로도 0 → 게임 오버");
 
-        StopAllCoroutines(); // 타이머 멈춤
-
-        // 여기서 씬 이동 or UI 띄우기
+        Time.timeScale = 0f;
+        // 대충 2초 후에 마을로 돌아갈수 있게 할수 있?
     }
 }

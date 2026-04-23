@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class PlayerSpawn : MonoBehaviour
 {
@@ -11,4 +11,4 @@ public class PlayerSpawn : MonoBehaviour
             player.transform.position = PlayerPositionManager.lastPosition;
         }
     }
-}
+}*/

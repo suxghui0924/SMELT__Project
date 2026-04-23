@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class CraftButton : MonoBehaviour
@@ -31,4 +31,4 @@ public class CraftButton : MonoBehaviour
             Debug.Log("포인트 부족!");
         }
     }
-}
+}*/

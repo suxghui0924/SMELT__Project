@@ -30,13 +30,8 @@ public class Enemy : MonoBehaviour
 
     }
     void OnDestroy()
-    {
-        TimerAndReward tar = FindObjectOfType<TimerAndReward>();
-
-        if (tar != null)
-        {
-            tar.ReduceFatigue(5);
-        }
+    {        
+        TimerAndReward.Instance.ReduceFatigue(2);       
     }
 
 }
