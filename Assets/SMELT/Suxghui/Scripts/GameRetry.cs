@@ -5,6 +5,7 @@ using UnityEngine.InputSystem.Processors;
 
 public class GameRetry : MonoBehaviour
 {
+     
     [SerializeField] TextMeshProUGUI _textLabel;
     public static GameRetry instance;
     int[] Qty = new int[6];

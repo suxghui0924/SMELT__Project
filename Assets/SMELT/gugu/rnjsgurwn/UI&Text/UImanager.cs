@@ -1,6 +1,6 @@
-using UnityEngine;
+/*using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class UISManager : MonoBehaviour
 {
     public GameObject CraftUI;
     public GameObject closebutton;
@@ -15,4 +15,4 @@ public class UIManager : MonoBehaviour
 
     }
 
-}
+}*/
