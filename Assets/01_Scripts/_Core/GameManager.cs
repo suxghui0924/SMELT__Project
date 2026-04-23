@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager instance { get; private set;}
     public GameDataSO gameData;
     GameDataSO.GameState lastState;
+
     void Awake()    
     {
         if(instance == null)
@@ -21,6 +23,14 @@ public class GameManager : MonoBehaviour
         {
 
             Destroy(gameObject);
+        }
+    }
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            ChangeState(GameDataSO.GameState.GameOver);
         }
     }
     
@@ -53,7 +63,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("Mining");
                 break;
             case GameDataSO.GameState.GameOver:
-                GameRetry.instance.GetQty();
+                UICanvasManager.instance.GetQty(); 
                 break;
         }
     }

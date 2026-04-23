@@ -24,6 +24,10 @@ public class PrototypeBootstrap : MonoBehaviour
     [Tooltip("스프라이트 크기 (단위: 유닛). 기본값 (0.8, 1.0)")]
     [SerializeField] private Vector2 _playerSize = new Vector2(0.8f, 1.0f);
 
+    [Header("캐릭터 애니메이션")]
+    [Tooltip("Animator Controller. 비워두면 애니메이션 없이 동작.")]
+    [SerializeField] private RuntimeAnimatorController _animatorController;
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void AutoStart()
     {
@@ -59,7 +63,7 @@ public class PrototypeBootstrap : MonoBehaviour
             ZoneType.Crafting, new Color(0.38f, 0.26f, 0.14f, 0f));
 
         // 플레이어: 광석 채취 구역 하단에 시작
-        CreatePlayer(new Vector3(-6.5f, -3.5f, -1f), _playerSprite, _playerSize);
+        CreatePlayer(new Vector3(-6.5f, -3.5f, -1f), _playerSprite, _playerSize, _animatorController);
     }
 
     // ─────────────────────────────────────────
@@ -92,7 +96,7 @@ public class PrototypeBootstrap : MonoBehaviour
         zone.ZoneType = type;
     }
 
-    private static void CreatePlayer(Vector3 pos, Sprite sprite, Vector2 size)
+    private static void CreatePlayer(Vector3 pos, Sprite sprite, Vector2 size, RuntimeAnimatorController animCtrl)
     {
         GameObject go;
         if (sprite != null)
@@ -107,6 +111,13 @@ public class PrototypeBootstrap : MonoBehaviour
         {
             go = MakeSprite("Player", pos, size, new Color(0.95f, 0.65f, 0.20f));
         }
+
+        if (animCtrl != null)
+        {
+            var anim = go.AddComponent<Animator>();
+            anim.runtimeAnimatorController = animCtrl;
+        }
+
         var rb = go.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
         rb.constraints  = RigidbodyConstraints2D.FreezeRotation;
