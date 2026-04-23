@@ -5,6 +5,6 @@ public class StartBtn : MonoBehaviour
 {
     public void LoadScene()
     {
-        SceneManager.LoadScene("LoadingScene");
+        GameManager.instance.BtnStart();
     }
 }

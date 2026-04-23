@@ -25,6 +25,14 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void Update()
+    {
+        if(Input.GetKey(KeyCode.Space))
+        {
+            ChangeState(GameDataSO.GameState.GameOver);
+        }
+    }
     
     public void ChangeState(GameDataSO.GameState newState)
     {
@@ -55,7 +63,7 @@ public class GameManager : MonoBehaviour
                 SceneManager.LoadScene("Mining");
                 break;
             case GameDataSO.GameState.GameOver:
-                GameRetry.instance.GetQty(); 
+                UICanvasManager.instance.GetQty(); 
                 break;
         }
     }
