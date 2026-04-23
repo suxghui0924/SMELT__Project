@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,4 +15,4 @@ public class UIManager : MonoBehaviour
 
     }
 
-}
+}*/

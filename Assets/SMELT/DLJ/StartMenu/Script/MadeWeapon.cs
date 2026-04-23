@@ -23,6 +23,7 @@ public class MadeWeapon : MonoBehaviour
         isCreating = true;
         yield return new WaitForSeconds(2);
         GameObject CreatedNow = Instantiate(weaponsPrefab[Random.Range(0, weaponsPrefab.Length)]);
+        Debug.Log(CreatedNow);
         yield return new WaitForSeconds(1.3f);
         isCreating = false;
         Destroy(CreatedNow);

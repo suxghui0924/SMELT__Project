@@ -11,10 +11,10 @@ using UnityEditor;
 /// 프로토타입 전체 HUD.
 ///
 /// [패널 구성]
-///   좌상단  : 리소스 패널 (골드 + 과일석 5종 실시간 표시)
 ///   하단 중앙: 구역 안내 텍스트
 ///   화면 중앙: 제작 패널 (E키 - 대장간), 판매 패널 (E키 - 상점) [하나만 표시]
 ///   우하단  : 상태 메시지 텍스트
+/// (재화/광석 표시는 EconomyUI가 담당)
 /// </summary>
 public class PrototypeHUD : MonoBehaviour
 {
@@ -114,12 +114,6 @@ public class PrototypeHUD : MonoBehaviour
     // ─────────────────────────────────────────
     // UI 레퍼런스 캐시
     // ─────────────────────────────────────────
-    // 리소스 패널
-    private TMP_Text   _goldText;
-    private TMP_Text[] _oreTexts  = new TMP_Text[5];
-    private TMP_Text   _gatherEffText;
-    private float      _gatherEffTimer;
-
     // 구역 힌트
     private GameObject _zoneHintGO;
     private TMP_Text   _zoneHintText;
@@ -149,30 +143,11 @@ public class PrototypeHUD : MonoBehaviour
     private void Start()
     {
         BuildUI();
-
-        var inv = InventoryManager.Instance;
-        if (inv != null)
-        {
-            inv.OnGoldChanged  += (_, _) => RefreshResources();
-            inv.OnItemChanged  += (_, _) => RefreshResources();
-        }
-
-        RefreshResources();
     }
 
     private void OnDestroy()
     {
         if (Instance == this) Instance = null;
-    }
-
-    private void Update()
-    {
-        // 채집 이펙트 자동 소멸
-        if (_gatherEffText != null && _gatherEffText.enabled)
-        {
-            _gatherEffTimer -= Time.deltaTime;
-            if (_gatherEffTimer <= 0f) _gatherEffText.enabled = false;
-        }
     }
 
     // ─────────────────────────────────────────
@@ -196,17 +171,7 @@ public class PrototypeHUD : MonoBehaviour
         if (_zoneHintGO != null) _zoneHintGO.SetActive(false);
     }
 
-    public void OnOreGathered(string oreId)
-    {
-        // 채집 이펙트
-        if (_gatherEffText != null)
-        {
-            string name = ORE_NAMES.TryGetValue(oreId, out var n) ? n : oreId;
-            _gatherEffText.text    = $"+ {name}";
-            _gatherEffText.enabled = true;
-            _gatherEffTimer        = 1.0f;
-        }
-    }
+    public void OnOreGathered(string oreId) { }
 
     public void ToggleCraftPanel()
     {
@@ -248,49 +213,10 @@ public class PrototypeHUD : MonoBehaviour
         canvasGO.AddComponent<GraphicRaycaster>();
 
         var root = canvasGO.transform;
-        BuildResourcePanel(root);
         BuildZoneHint(root);
         BuildCraftPanel(root);
         BuildSellPanel(root);
         BuildStatusText(root);
-    }
-
-    // ── 리소스 패널 (좌상단) ──────────────────
-    // pivot=(0,1) → 패널 좌상단이 (10,-10)에 정확히 붙음
-    // 자식 위치는 패널 중심(100,-120) 기준 오프셋
-    private void BuildResourcePanel(Transform root)
-    {
-        var panel = MakePanel(root, "ResourcePanel", new Color(0.05f, 0.05f, 0.10f, 0.88f),
-            new Vector2(0f, 1f), new Vector2(0f, 1f), new Vector2(10f, -10f), new Vector2(200f, 240f));
-        var p = panel.transform;
-
-        // 패널 중심 = (100, -120), 자식 y 가시 범위: -120 ~ +120
-        float y = 102f; // 골드: 18px below top
-
-        // 골드
-        MakeText(p, "골드", 13, FontStyles.Normal, new Color(0.7f, 0.7f, 0.7f),
-            new Vector2(-32f, y), new Vector2(56f, 22f));
-        _goldText = MakeText(p, "0 G", 15, FontStyles.Bold, new Color(1f, 0.85f, 0.2f),
-            new Vector2(56f, y), new Vector2(88f, 22f));
-        y -= 30f;
-
-        // 광석 5종 (1열)
-        for (int i = 0; i < ORE_IDS.Length; i++)
-        {
-            int idx = i;
-            MakeText(p, ORE_NAMES[ORE_IDS[i]] + ":", 12, FontStyles.Normal,
-                new Color(0.65f, 0.65f, 0.65f), new Vector2(-32f, y), new Vector2(72f, 20f));
-            _oreTexts[idx] = MakeText(p, "0", 13, FontStyles.Bold,
-                new Color(0.5f, 1f, 0.6f), new Vector2(56f, y), new Vector2(52f, 20f));
-            y -= 26f;
-        }
-        y -= 8f;
-
-        // 채집 이펙트
-        _gatherEffText = MakeText(p, "", 13, FontStyles.Bold,
-            new Color(0.4f, 1f, 0.5f), new Vector2(0f, y), new Vector2(185f, 20f));
-        _gatherEffText.alignment = TextAlignmentOptions.Center;
-        _gatherEffText.enabled   = false;
     }
 
     // ── 구역 힌트 (하단 중앙) ─────────────────
@@ -493,19 +419,6 @@ public class PrototypeHUD : MonoBehaviour
     // ─────────────────────────────────────────
     // 패널 갱신
     // ─────────────────────────────────────────
-    private void RefreshResources()
-    {
-        var inv = InventoryManager.Instance;
-        if (inv == null) return;
-
-        if (_goldText != null)
-            _goldText.text = inv.Gold.ToString("N0") + " G";
-
-        for (int i = 0; i < ORE_IDS.Length; i++)
-            if (_oreTexts[i] != null)
-                _oreTexts[i].text = inv.GetQuantity(ORE_IDS[i]).ToString();
-    }
-
     private void RefreshCraftButtons()
     {
         var inv = InventoryManager.Instance;
