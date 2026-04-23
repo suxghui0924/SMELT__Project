@@ -437,8 +437,9 @@ public class OrderHUD : MonoBehaviour
     {
         var go = new GameObject("Canvas");
         var c  = go.AddComponent<Canvas>();
-        c.renderMode   = RenderMode.ScreenSpaceOverlay;
-        c.sortingOrder = 10;
+        c.renderMode        = RenderMode.ScreenSpaceOverlay;
+        c.sortingLayerName  = "UI";
+        c.sortingOrder      = 10;
         var cs = go.AddComponent<CanvasScaler>();
         cs.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         cs.referenceResolution = new Vector2(1920, 1080);
