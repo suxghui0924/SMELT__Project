@@ -25,13 +25,16 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+
+           
             Destroy(gameObject);
         }
 
     }
     void OnDestroy()
-    {        
-        TimerAndReward.Instance.ReduceFatigue(2);       
+    {
+        TimerAndReward.Instance.ReduceFatigue(2);
+        TimerAndReward.Instance._mp.fillAmount -= 0.02f;
     }
 
 }

@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 
     private float timer = 0;
     private float minTime = 0.5f;
-    private float maxTime = 2f;
+    private float maxTime = 1f;
 
     [SerializeField] private GameObject enemyPrefab;
 

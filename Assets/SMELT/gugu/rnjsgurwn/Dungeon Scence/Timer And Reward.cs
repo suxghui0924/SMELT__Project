@@ -13,11 +13,14 @@ public class TimerAndReward : MonoBehaviour
     int maxFatigue = 100;
     int currentFatigue;
     float clearTime = 60f;
-    [SerializeField] private Image _mp;
+    public Image _mp;
 
-   private int _stage = 0;
+    private int _stage = 0;
 
-    
+    private void Awake()
+    {
+        Instance = this;
+    }
 
 
     void Start()
@@ -89,7 +92,7 @@ public class TimerAndReward : MonoBehaviour
     {
         Debug.Log("피로도 0 → 게임 오버");
 
-        Time.timeScale = 0f;
-        // 대충 2초 후에 마을로 돌아갈수 있게 할수 있?
+       // Time.timeScale = 0f;
+       GameManager.instance.ChangeState(GameDataSO.GameState.GameOver);
     }
 }
