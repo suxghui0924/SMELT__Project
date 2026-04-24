@@ -17262,8 +17262,8 @@ Canvas:
   m_GameObject: {fileID: 1733342603}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
-  m_Camera: {fileID: 1777915217}
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -17273,7 +17273,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 983429904
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1733342608
@@ -17969,7 +17969,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1984389397}
-  - component: {fileID: 1984389396}
+  - component: {fileID: 1984389398}
   m_Layer: 0
   m_Name: WeaponCraftUI
   m_TagString: Untagged
@@ -17977,31 +17977,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1984389396
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1984389395}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95456985d0e3fc242b49176c487f2c50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _koreanFont: {fileID: 11400000, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
-  _weaponSprites:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _oreSprites:
-  - {fileID: -547095753, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
-  - {fileID: 2045102151, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
-  - {fileID: -822627805, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
-  - {fileID: 1049332450, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
-  - {fileID: 1677605231, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
 --- !u!4 &1984389397
 Transform:
   m_ObjectHideFlags: 0
@@ -18017,6 +17992,57 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1984389398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984389395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95456985d0e3fc242b49176c487f2c50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _koreanFont: {fileID: 11400000, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
+  _weaponTypeSprites:
+  - {fileID: -7030652864475459087, guid: 8f3fb3070ccb01149b796ff68fe65119, type: 3}
+  - {fileID: -1093005795639087412, guid: 32eba95596e2c5c46be2374ecb563e5d, type: 3}
+  - {fileID: -7132931398887799787, guid: 74cb1bdd88fd76c4b94895e69dc004c7, type: 3}
+  - {fileID: -2856760390859582142, guid: 0598fa5ed2a37e544838b597d6ff2dad, type: 3}
+  - {fileID: 7460064142523934285, guid: d0f4cf07fa8cbe64f9e683e4c49858b3, type: 3}
+  _weaponSprites:
+  - {fileID: 9292235790873081, guid: edde0229a75cb1444880516ad95381be, type: 3}
+  - {fileID: -3600597895170646090, guid: 23bdd38742a37c7419dcd2d375371023, type: 3}
+  - {fileID: -40007065904677045, guid: a8ade00ae05d5ea48bb9bcc35e9358ff, type: 3}
+  - {fileID: -4890826957543954650, guid: ad445263ffeeb2249bb987e227a6afeb, type: 3}
+  - {fileID: 3085469014519208132, guid: 1dc4873c301a99a4ba7478321b548371, type: 3}
+  - {fileID: -2126145041201181838, guid: c92d69d86be65994ca246348c9be025b, type: 3}
+  - {fileID: 2876681339834547262, guid: d2b49685c5789e143b1e29467dfe617a, type: 3}
+  - {fileID: -5523928489151072066, guid: 3c5012c30cd7a814eb0fbfb0f7f33ea7, type: 3}
+  - {fileID: 8595819177365238761, guid: b097179e5ff034f4894b12c4a0c31f94, type: 3}
+  - {fileID: 1080776202562321054, guid: b81a88a7984e6b94987c6a90ac77d14f, type: 3}
+  - {fileID: 6627404146127580454, guid: 9ee6374d3cb800547ae4a9d1a7c05857, type: 3}
+  - {fileID: 6424255845565036113, guid: 035c07ce43253b74a91c1625066b10eb, type: 3}
+  - {fileID: 4462203257609335955, guid: 5d693fdc47fcef544ae73a6f1a5eda4a, type: 3}
+  - {fileID: -5716110074759944367, guid: 05e527d2cdab41148a7447b101a7913c, type: 3}
+  - {fileID: -624565897969754747, guid: 8f74a0b91b3d264428e285dbf50d0c79, type: 3}
+  - {fileID: -2408915587133118496, guid: 5277e8755c4c72e4e87bb1913921434d, type: 3}
+  - {fileID: 435241413852511791, guid: a23b028df69a1524e9c7bcc44c237b3a, type: 3}
+  - {fileID: 7320175533551608770, guid: cea32f1aa90700942bcfe355d2fa42f6, type: 3}
+  - {fileID: -7846868092002422408, guid: a23bee9444c546742951469dbd9e62be, type: 3}
+  - {fileID: -1563010625836928001, guid: eb6d4d310aadb4a4f89fff0ad8ddba78, type: 3}
+  - {fileID: -525894453893190208, guid: dddb2a822f59a824e90aaf2ae1d2c8e6, type: 3}
+  - {fileID: 7749751641818272283, guid: 78f2e119e76039b4a92fc36780e41349, type: 3}
+  - {fileID: 4870335914078814076, guid: 7b298c4d49701dc4e8f68228c2189c0a, type: 3}
+  - {fileID: -4895465289503425610, guid: ef008fc8f4104f54e9623e7ab1049637, type: 3}
+  - {fileID: -5116115839572227774, guid: ff6ce12ae50d6114497572e88f398858, type: 3}
+  _oreSprites:
+  - {fileID: -547095753, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
+  - {fileID: 2045102151, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
+  - {fileID: -822627805, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
+  - {fileID: 1049332450, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
+  - {fileID: 1677605231, guid: 572bb35294ab715449c4c06f31b1fa55, type: 3}
 --- !u!1 &2005452710
 GameObject:
   m_ObjectHideFlags: 0

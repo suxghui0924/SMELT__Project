@@ -12,7 +12,7 @@ using UnityEngine;
 ///   4. 시간 내 납품 못 하면 주문 만료
 ///
 /// [25가지 무기 조합]
-///   5종류(검/도끼/창/방망이/건틀릿) × 5광석(사과/멜론/귤/레몬/포도)
+///   5종류(검/도끼/창/망치/건틀릿) × 5광석(사과/멜론/귤/레몬/포도)
 ///   현재 날짜에 해금된 조합만 주문에 등장
 ///
 /// 담당자: 이도윤
@@ -81,7 +81,7 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         (WeaponType.Sword,    1), // 1일차: 검
         (WeaponType.Axe,      1), // 1일차: 도끼
         (WeaponType.Spear,    3), // 3일차: 창
-        (WeaponType.Bat,      5), // 5일차: 방망이
+        (WeaponType.Hammer,   5), // 5일차: 망치
         (WeaponType.Gauntlet, 7), // 7일차: 건틀릿
     };
 
@@ -328,7 +328,7 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
             case WeaponType.Sword:    return "sword";
             case WeaponType.Axe:      return "axe";
             case WeaponType.Spear:    return "spear";
-            case WeaponType.Bat:      return "bat";
+            case WeaponType.Hammer:   return "hammer";
             case WeaponType.Gauntlet: return "gauntlet";
             default:                  return type.ToString().ToLower();
         }

@@ -23,7 +23,7 @@ using UnityEditor;
 ///   └──────────────────────────────┘
 ///
 /// [이미지 설정]
-///   Inspector의 _weaponSprites (5개, 검/도끼/창/방망이/건틀릿 순)에
+///   Inspector의 _weaponSprites (5개, 검/도끼/창/망치/건틀릿 순)에
 ///   무기 스프라이트를 할당하면 주문 슬롯 아이콘에 표시됩니다.
 ///   비워두면 색상 박스로 대체됩니다.
 ///
@@ -40,7 +40,7 @@ public class OrderHUD : MonoBehaviour
     [SerializeField] private TMP_FontAsset _koreanFont;
     private const string FONT_PATH = "Assets/SMELT/Suxghui/Galmuri9 SDF.asset";
 
-    [Header("무기 이미지 (검 / 도끼 / 창 / 방망이 / 건틀릿 순)")]
+    [Header("무기 이미지 (검 / 도끼 / 창 / 망치 / 건틀릿 순)")]
     [Tooltip("할당하면 주문 슬롯 아이콘에 표시됩니다. 비워두면 색상 박스 사용.")]
     [SerializeField] private Sprite[] _weaponSprites = new Sprite[5];
 
@@ -68,7 +68,7 @@ public class OrderHUD : MonoBehaviour
     // ─────────────────────────────────────────
     // 데이터 테이블
     // ─────────────────────────────────────────
-    private static readonly string[] WEAPON_TYPE_IDS = { "sword", "axe", "spear", "bat", "gauntlet" };
+    private static readonly string[] WEAPON_TYPE_IDS = { "sword", "axe", "spear", "hammer", "gauntlet" };
 
     // ─────────────────────────────────────────
     // 내부 슬롯 클래스
@@ -104,7 +104,6 @@ public class OrderHUD : MonoBehaviour
         BuildHUD();
         SubscribeEvents();
         SyncExistingOrders();
-        // 0.5초마다 납품 버튼 상태 갱신 (인벤토리 변경 반영)
         InvokeRepeating(nameof(RefreshDeliverButtons), 0.5f, 0.5f);
     }
 
@@ -314,6 +313,7 @@ public class OrderHUD : MonoBehaviour
             float slotCenterY = firstSlotCenterY - i * (ORDER_H + SLOT_GAP);
             _slots[i] = BuildSlot(root, i, new Vector2(0f, slotCenterY));
         }
+
     }
 
     private OrderSlotUI BuildSlot(Transform parent, int idx, Vector2 centerPos)
@@ -414,7 +414,7 @@ public class OrderHUD : MonoBehaviour
             "sword"    => "검",
             "axe"      => "도끼",
             "spear"    => "창",
-            "bat"      => "방망이",
+            "hammer"   => "망치",
             "gauntlet" => "건틀릿",
             _          => p[1],
         };
@@ -437,8 +437,9 @@ public class OrderHUD : MonoBehaviour
     {
         var go = new GameObject("Canvas");
         var c  = go.AddComponent<Canvas>();
-        c.renderMode   = RenderMode.ScreenSpaceOverlay;
-        c.sortingOrder = 10;
+        c.renderMode        = RenderMode.ScreenSpaceOverlay;
+        c.sortingLayerName  = "UI";
+        c.sortingOrder      = 10;
         var cs = go.AddComponent<CanvasScaler>();
         cs.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         cs.referenceResolution = new Vector2(1920, 1080);
