@@ -458,13 +458,14 @@ GameObject:
   - component: {fileID: 604397840}
   - component: {fileID: 604397842}
   - component: {fileID: 604397841}
+  - component: {fileID: 604397843}
   m_Layer: 0
   m_Name: LeftHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &604397840
 Transform:
   m_ObjectHideFlags: 0
@@ -581,6 +582,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &604397843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 604397839}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef949a8794e2b04c86bbad58732910c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pickaxeStat: {fileID: 11400000, guid: 9181cc8b294d3bb47a01da26300f3670, type: 2}
 --- !u!1 &648674669
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,6 +656,7 @@ GameObject:
   - component: {fileID: 820997746}
   - component: {fileID: 820997745}
   - component: {fileID: 820997747}
+  - component: {fileID: 820997748}
   m_Layer: 0
   m_Name: PlayerVisual
   m_TagString: Untagged
@@ -753,8 +768,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84e67654fcb970842abdb576963031c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _skillCoolDown: 0.3
   _skillInput: {fileID: 11400000, guid: 403745cc5736617438b00711bd2c8771, type: 2}
+--- !u!114 &820997748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820997743}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d655c2ea9636c043b14d36d0d079d91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _skillInput: {fileID: 11400000, guid: 403745cc5736617438b00711bd2c8771, type: 2}
+  _skillCoolDown: 0.3
+  _nextAttackTime: 0
 --- !u!1 &1388714851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1088,9 +1117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _pickaxeSO: {fileID: 11400000, guid: 9181cc8b294d3bb47a01da26300f3670, type: 2}
-  _enemyLayer:
-    serializedVersion: 2
-    m_Bits: 64
+  _triggerOn: 0
+  _enem: {fileID: 664322327174399474, guid: 7f25d13d9ede21e44acca9029be994aa, type: 3}
 --- !u!1 &1852748398
 GameObject:
   m_ObjectHideFlags: 0
@@ -1297,13 +1325,14 @@ GameObject:
   - component: {fileID: 2124142600}
   - component: {fileID: 2124142602}
   - component: {fileID: 2124142601}
+  - component: {fileID: 2124142603}
   m_Layer: 0
   m_Name: RightHitBox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2124142600
 Transform:
   m_ObjectHideFlags: 0
@@ -1420,6 +1449,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2124142603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124142599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ef949a8794e2b04c86bbad58732910c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _pickaxeStat: {fileID: 11400000, guid: 9181cc8b294d3bb47a01da26300f3670, type: 2}
 --- !u!1 &2136319144
 GameObject:
   m_ObjectHideFlags: 0
