@@ -189,7 +189,7 @@ public class ShopManager : MonoBehaviour, ISaveable
 
     /// <summary>
     /// 현재 날짜 기준 해금된 무기 타입 목록 반환.  // 추가
-    /// 1일차: 검/도끼 / 3일차: +창 / 5일차: +방망이 / 7일차: +건틀릿
+    /// 1일차: 검/도끼 / 3일차: +창 / 5일차: +망치 / 7일차: +건틀릿
     /// </summary>
     public List<WeaponType> GetUnlockedWeapons()                                         // 추가
     {
@@ -200,8 +200,8 @@ public class ShopManager : MonoBehaviour, ISaveable
         if (day >= 1) { weapons.Add(WeaponType.Sword); weapons.Add(WeaponType.Axe); }
         // 3일차: 창 해금
         if (day >= 3)   weapons.Add(WeaponType.Spear);
-        // 5일차: 방망이 해금
-        if (day >= 5)   weapons.Add(WeaponType.Bat);
+        // 5일차: 망치 해금
+        if (day >= 5)   weapons.Add(WeaponType.Hammer);
         // 7일차: 건틀릿 해금
         if (day >= 7)   weapons.Add(WeaponType.Gauntlet);
 

@@ -46,7 +46,7 @@ public class WeaponCraftManager : MonoBehaviour
             { WeaponType.Sword,    new WeaponRecipe(basePrice: 500,  mainCount: 1, subCount: 1) }, // 검:    메인×1 + 서브×1
             { WeaponType.Axe,      new WeaponRecipe(basePrice: 800,  mainCount: 1, subCount: 2) }, // 도끼:  메인×1 + 서브×2
             { WeaponType.Spear,    new WeaponRecipe(basePrice: 1000, mainCount: 2, subCount: 2) }, // 창:    메인×2 + 서브×2
-            { WeaponType.Bat,      new WeaponRecipe(basePrice: 1200, mainCount: 2, subCount: 3) }, // 방망이: 메인×2 + 서브×3
+            { WeaponType.Hammer,   new WeaponRecipe(basePrice: 1200, mainCount: 2, subCount: 3) }, // 망치: 메인×2 + 서브×3
             { WeaponType.Gauntlet, new WeaponRecipe(basePrice: 1500, mainCount: 3, subCount: 2) }, // 건틀릿: 메인×3 + 서브×2
         };
 
@@ -184,7 +184,7 @@ public class WeaponCraftManager : MonoBehaviour
             case WeaponType.Sword:    return "sword";
             case WeaponType.Axe:      return "axe";
             case WeaponType.Spear:    return "spear";
-            case WeaponType.Bat:      return "bat";
+            case WeaponType.Hammer:   return "hammer";
             case WeaponType.Gauntlet: return "gauntlet";
             default:                  return type.ToString().ToLower();
         }
@@ -210,7 +210,7 @@ public class WeaponCraftManager : MonoBehaviour
             case "sword":    weaponType = WeaponType.Sword;    break;
             case "axe":      weaponType = WeaponType.Axe;      break;
             case "spear":    weaponType = WeaponType.Spear;    break;
-            case "bat":      weaponType = WeaponType.Bat;      break;
+            case "hammer":   weaponType = WeaponType.Hammer;   break;
             case "gauntlet": weaponType = WeaponType.Gauntlet; break;
             default: return false;
         }
@@ -230,6 +230,6 @@ public enum WeaponType
     Sword,    // 검    (기본금 500)
     Axe,      // 도끼  (기본금 800)
     Spear,    // 창    (기본금 1000)
-    Bat,      // 방망이 (기본금 1200)
+    Hammer,   // 망치   (기본금 1200)
     Gauntlet  // 건틀릿 (기본금 1500)
 }

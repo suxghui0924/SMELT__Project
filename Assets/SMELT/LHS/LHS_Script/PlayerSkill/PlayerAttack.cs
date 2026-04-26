@@ -1,21 +1,43 @@
 using System;
+using SMELT.LHS.LHS_Script.PlayerSkill;
 using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public static PlayerAttack instance;
-   // [HideInInspector]
-    private void Awake()
+    [SerializeField] private SkillInputSO _skillInput;
+     private PlayerAnimation _skillAnim;
+    [SerializeField] private float _skillCoolDown;
+    
+    public float _nextAttackTime = 0f;
+
+    private void Start()
     {
-        if (instance == null)
+        _skillAnim=GameObject.Find("PlayerVisual").GetComponent<PlayerAnimation>();
+    }
+
+    private void OnEnable()
+    {
+        _skillInput.OnLeftKey += AttackLeft;
+        _skillInput.OnRightKey += AttackRight;
+    }
+
+    private void OnDisable()
+    {
+        _skillInput.OnLeftKey -= AttackLeft;
+        _skillInput.OnRightKey -= AttackRight;
+    }
+
+    private void AttackLeft() { TryAttack(-1f); }
+    private void AttackRight() { TryAttack(1f); }
+
+    public void TryAttack(float dirX)
+    {
+        if (Time.time >= _nextAttackTime)
         {
-            instance = this; 
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
+            _nextAttackTime = Time.time + _skillCoolDown;
+            
+            _skillAnim.OnPlayerAttack(dirX);
         }
     }
 }

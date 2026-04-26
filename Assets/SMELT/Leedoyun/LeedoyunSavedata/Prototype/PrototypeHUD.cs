@@ -206,6 +206,7 @@ public class PrototypeHUD : MonoBehaviour
         var canvasGO = new GameObject("ProtoCanvas");
         var canvas   = canvasGO.AddComponent<Canvas>();
         canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        canvas.sortingLayerName = "UI";
         canvas.sortingOrder = 10;
         var scaler = canvasGO.AddComponent<CanvasScaler>();
         scaler.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;

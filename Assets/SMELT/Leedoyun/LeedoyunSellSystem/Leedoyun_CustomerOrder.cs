@@ -92,7 +92,7 @@ public class Leedoyun_CustomerOrder
             case WeaponType.Sword:    return "sword";
             case WeaponType.Axe:      return "axe";
             case WeaponType.Spear:    return "spear";
-            case WeaponType.Bat:      return "bat";
+            case WeaponType.Hammer:   return "hammer";
             case WeaponType.Gauntlet: return "gauntlet";
             default:                  return type.ToString().ToLower();
         }
