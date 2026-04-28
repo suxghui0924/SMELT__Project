@@ -93,6 +93,6 @@ public class TimerAndReward : MonoBehaviour
         Debug.Log("피로도 0 → 게임 오버");
 
        // Time.timeScale = 0f;
-       GameManager.instance.ChangeState(GameDataSO.GameState.GameOver);
+       //GameManager.instance.ChangeState(GameDataSO.GameState.GameOver);
     }
 }
