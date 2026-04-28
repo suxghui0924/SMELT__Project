@@ -4,6 +4,8 @@ using UnityEngine;
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField] private EnemyDataSO enemyDataSo;
+
+    [SerializeField] private float knockbackTimer;
     private Transform _playerTransform;
     public int CurrentHp{get; private set;}
     private float _enemySpeed;
@@ -12,6 +14,8 @@ public class EnemyBase : MonoBehaviour
     private Vector3 _enemyDirection;
     private Collider2D _enemyCollider2D;
     Player_HpScript _playerHpScript;
+    
+    private bool _canMove = true;
     private void Start()
     {
        _playerHpScript= GameObject.Find("PlayerHP").GetComponent<Player_HpScript>();
@@ -26,12 +30,13 @@ public class EnemyBase : MonoBehaviour
 
     private void Update()
     {
-       transform.position-=_enemyDirection*_enemySpeed*Time.deltaTime;
+        if (_canMove)
+            transform.position -= _enemyDirection * (_enemySpeed * Time.deltaTime);
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
             _playerHpScript.TakeDamage(_enemyDamage);
@@ -42,5 +47,28 @@ public class EnemyBase : MonoBehaviour
     {
         CurrentHp -= damage;
         if(CurrentHp<=0)Destroy(gameObject);
+        else
+        {
+            StartCoroutine(KnockbackRoutine());
+        }
+    }
+    private IEnumerator KnockbackRoutine()
+    {
+        _canMove = false;
+        float timer = 0;
+    
+        while (timer <= knockbackTimer)
+        {
+            transform.position += _enemyDirection * (_enemySpeed * Time.deltaTime);
+            
+            timer += Time.deltaTime;
+            yield return null;
+        }
+    
+        _canMove = true;
     }
 }
+
+
+
+

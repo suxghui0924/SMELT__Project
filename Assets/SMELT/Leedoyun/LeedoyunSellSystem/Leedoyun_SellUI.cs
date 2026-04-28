@@ -466,7 +466,7 @@ public class Leedoyun_SellUI : MonoBehaviour
             case "sword":    return "검";
             case "axe":      return "도끼";
             case "spear":    return "창";
-            case "bat":      return "방망이";
+            case "hammer":   return "망치";
             case "gauntlet": return "건틀릿";
             default:         return t;
         }

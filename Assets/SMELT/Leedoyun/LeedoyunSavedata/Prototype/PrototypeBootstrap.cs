@@ -105,11 +105,13 @@ public class PrototypeBootstrap : MonoBehaviour
             go.transform.position   = pos;
             go.transform.localScale = new Vector3(size.x, size.y, 1f);
             var sr = go.AddComponent<SpriteRenderer>();
-            sr.sprite = sprite;
+            sr.sprite           = sprite;
+            sr.sortingLayerName = "Default";
         }
         else
         {
             go = MakeSprite("Player", pos, size, new Color(0.95f, 0.65f, 0.20f));
+            go.GetComponent<SpriteRenderer>().sortingLayerName = "Default";
         }
 
         if (animCtrl != null)
@@ -134,7 +136,9 @@ public class PrototypeBootstrap : MonoBehaviour
         var go = new GameObject(name);
         go.transform.position   = pos;
         go.transform.localScale = new Vector3(size.x, size.y, 1f);
-        go.AddComponent<SpriteRenderer>().sprite = MakeSolidSprite(color);
+        var sr = go.AddComponent<SpriteRenderer>();
+        sr.sprite           = MakeSolidSprite(color);
+        sr.sortingLayerName = "Background";
         return go;
     }
 

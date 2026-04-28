@@ -1,59 +1,65 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using SMELT.LHS.LHS_Script.PlayerSkill;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public class PlayerAnimation : MonoBehaviour
 {
     private Animator _anim;
     private readonly int skillPlayHash = Animator.StringToHash("SkillTrigger");
-    [SerializeField] float _skillCoolDown;
-    private bool canInput = true;
-    private Vector2 _vector2;
+    private bool canInput = true; //스킬 입력 가능 판별
     private Transform _playerTransform;
     public bool _leftHitBoxOn{ get; private set;}
     public bool _rightHitBoxOn { get; private set; }
+    [SerializeField] private SkillInputSO _skillInput;
+     private PlayerHitBox _playerHitBox;
+
     private void Start()
     {
+        _playerHitBox=GameObject.Find("HitBox").GetComponent<PlayerHitBox>();
         _anim = GetComponent<Animator>();
         _playerTransform = GetComponentInParent<Transform>();
-    }
+    }   
 
-    private void Update()
+    public void OnAttackEnd()
     {
-        if (_vector2 != Vector2.zero)
-        {
-          
-            if (canInput == true)
-            {
-                StartCoroutine(CoolTime());
-                if (_vector2.x == 1f)
-                {
-                    _playerTransform.rotation = Quaternion.Euler(0, 0, 0); //Right
-                    _anim.SetFloat(skillPlayHash, 1f);
-                    _rightHitBoxOn = true; 
-                }
-                else if (_vector2.x == -1f)
-                {
-                    _playerTransform.rotation = Quaternion.Euler(0, 180, 0); //Left
-                    _anim.SetFloat(skillPlayHash, -1f);
-                    _leftHitBoxOn = true;
-                }
-            }
-        }
-    }
-    private IEnumerator CoolTime()
-    {
-        canInput = false;
-        yield return new WaitForSeconds(_skillCoolDown);
-        canInput = true;
         _anim.SetFloat(skillPlayHash, 0f);
         _rightHitBoxOn = false;
         _leftHitBoxOn = false;
     }
-    private void OnMove(InputValue value)
+    
+    private void OnMove()
     {
-        _vector2 = value.Get<Vector2>();
+       OnPlayerAttack(_skillInput.moveDir.x);
     }
+
+    public void LeftEnd()
+    {
+        _playerHitBox.LeftHitBoxEnd();
+    }
+
+    public void RightEnd()
+    {
+        _playerHitBox.RightHitBoxEnd();
+    }
+
+    public void OnPlayerAttack(float vector)
+    {
+        
+                if (vector>0)
+                {
+                    _playerTransform.localScale = new Vector3(1, 1, 1); //Right
+                    
+                    _rightHitBoxOn = true; 
+                    _playerHitBox.CheckHit(1);
+                }
+                else if (vector<0)
+                {
+                    _playerTransform.localScale = new Vector3(-1, 1, 1); //Left
+                    _leftHitBoxOn = true;
+                    _playerHitBox.CheckHit(0);
+                }
+                _anim.SetFloat(skillPlayHash, vector);
+                _anim.SetTrigger("Attack");
+    }
+    
 }

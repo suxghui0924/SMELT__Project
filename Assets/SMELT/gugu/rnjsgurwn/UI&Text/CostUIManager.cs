@@ -1,4 +1,4 @@
-using TMPro;
+/*using TMPro;
 using UnityEngine;
 
 public class CostUIManager : MonoBehaviour
@@ -10,4 +10,4 @@ public class CostUIManager : MonoBehaviour
         currentCost = cost;
         costText.text = $"Need Point: {cost}";
     }
-}
+}*/

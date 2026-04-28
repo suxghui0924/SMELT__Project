@@ -15,9 +15,9 @@ public class PrototypePlayer : MonoBehaviour
     private const float SPEED = 5f;
 
     // Y축 정렬 기준값 — 이 값에서 Y 좌표를 빼서 sortingOrder 결정
-    // 씬에서 플레이어가 이동하는 Y 범위 중 최댓값보다 크게 설정
+    // UI는 별도 "UI" 레이어이므로 sortingOrder 값에 관계없이 UI가 항상 위에 그려짐
     private const int SORT_BASE = 100;
-
+            
     private Rigidbody2D   _rb;
     private Animator      _anim;
     private SpriteRenderer _sr;
