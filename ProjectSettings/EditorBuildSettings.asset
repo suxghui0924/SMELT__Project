@@ -18,8 +18,8 @@ EditorBuildSettings:
     path: Assets/SMELT/DLJ/StartMenu/DLJ_StartMenu.unity
     guid: 03fde21ddf1f8a14988ab35519176aba
   - enabled: 0
-    path: Assets/SMELT/DLJ/LoadingScene/LoadingScene.unity
-    guid: c16596375ed56224ea3ebadf6e8b177b
+    path: Assets/SMELT/DLJ/NewLoad/NewLoading.unity
+    guid: 700e758c0de1440408b17a21c4170ef2
   - enabled: 1
     path: Assets/SMELT/LHS/LHS_MiningScene.unity
     guid: e7802199318568b45a113aee080d7261
