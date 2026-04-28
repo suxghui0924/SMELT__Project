@@ -19,5 +19,10 @@ public class GaugeBar : MonoBehaviour
     private void Update()
     {
         image.fillAmount = Num.saveNum / 100f;
+        if (image.fillAmount >= 0.99f)
+        {
+            GameManager.instance.ChangeState(new HouseState());
+            UICanvasManager.instance.ControlObject(ObjectType.Loading, false);
+        }
     }
 }
