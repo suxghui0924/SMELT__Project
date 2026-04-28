@@ -7,6 +7,7 @@ TagManager:
   - UpgradeShop
   - Anvil
   - Enemy
+  - Inventory
   layers:
   - Default
   - TransparentFX

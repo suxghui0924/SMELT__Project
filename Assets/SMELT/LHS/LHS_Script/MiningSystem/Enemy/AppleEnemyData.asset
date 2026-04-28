@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: AppleEnemyData
   m_EditorClassIdentifier: 
   enemySpeed: 2
-  enemyMaxHp: 1
+  enemyMaxHp: 3
   enemyDamage: 1
   enemyName: Apple
