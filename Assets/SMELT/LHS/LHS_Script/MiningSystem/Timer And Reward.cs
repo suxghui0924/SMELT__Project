@@ -10,9 +10,11 @@ public class TimerAndReward : MonoBehaviour
     //public float baseTime = 1f;
     private int rewardPoint = 100;
     private int minFatigue = 0;
-    int maxFatigue = 100;
-    int currentFatigue;
-    float clearTime = 60f;
+    [HideInInspector]
+    public int maxFatigue = 100;
+    [HideInInspector]
+    public int currentFatigue;
+    private float clearTime = 60f;
     public Image _mp;
 
     private int _stage = 0;

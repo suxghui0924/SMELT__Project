@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 public class EnemyBase : MonoBehaviour
 {
     [SerializeField] private EnemyDataSO enemyDataSo;
@@ -46,7 +48,12 @@ public class EnemyBase : MonoBehaviour
     public void OnEnemyDamaged(int damage)
     {
         CurrentHp -= damage;
-        if(CurrentHp<=0)Destroy(gameObject);
+        if(CurrentHp<=0)
+        {
+            int randomItemCount = Random.Range(1, 3);
+            ItemSpawnManager.instance.AppleItemSpawn(transform,randomItemCount);
+            Destroy(gameObject);
+        }
         else
         {
             StartCoroutine(KnockbackRoutine());
@@ -56,16 +63,26 @@ public class EnemyBase : MonoBehaviour
     {
         _canMove = false;
         float timer = 0;
-    
+        Vector3 knockbackDir = (transform.position - _playerTransform.position).normalized;
+        float knockbackForce = _enemySpeed * 4f; 
+
         while (timer <= knockbackTimer)
         {
-            transform.position += _enemyDirection * (_enemySpeed * Time.deltaTime);
+            float progress = timer / knockbackTimer;
+            float currentForce = Mathf.Lerp(knockbackForce, 0, progress);
+            transform.position += knockbackDir * (currentForce * Time.deltaTime);
             
             timer += Time.deltaTime;
             yield return null;
         }
     
         _canMove = true;
+    }
+
+    private void OnDestroy()
+    {
+        TimerAndReward.Instance.ReduceFatigue(2);
+        TimerAndReward.Instance._mp.fillAmount -= 0.01f;
     }
 }
 
