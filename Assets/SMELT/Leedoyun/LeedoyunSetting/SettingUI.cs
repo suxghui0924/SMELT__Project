@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,6 +22,11 @@ public class SettingUI : MonoBehaviour, ISaveable
 {
     [Header("UI 패널")]
     [SerializeField] private GameObject settingPanel;
+    [SerializeField] private Image      dimBackground;     // 반투명 어두운 오버레이
+    [SerializeField] private float      dimAlpha     = 0.6f;
+    [SerializeField] private float      fadeDuration = 0.2f;
+
+    private Coroutine _dimCoroutine;
 
     [Header("버튼 / 슬라이더")]
     [SerializeField] private Slider            volumeSlider;
@@ -48,9 +54,15 @@ public class SettingUI : MonoBehaviour, ISaveable
             rootCanvas.sortingOrder = 20;
         }
 
-        // 시작 시 설정 창 숨김
+        // 시작 시 설정 창 및 dim 배경 숨김
         if (settingPanel != null)
             settingPanel.SetActive(false);
+
+        if (dimBackground != null)
+        {
+            dimBackground.gameObject.SetActive(false);
+            dimBackground.color = new Color(0f, 0f, 0f, 0f);
+        }
 
         // 세이브 시스템 등록
         if (SaveManager.Instance != null)
@@ -95,13 +107,49 @@ public class SettingUI : MonoBehaviour, ISaveable
     public void TogglePanel()
     {
         if (settingPanel == null) return;
-        settingPanel.SetActive(!settingPanel.activeSelf);
+        bool opening = !settingPanel.activeSelf;
+        settingPanel.SetActive(opening);
+        FadeDim(opening);
     }
 
     public void ClosePanel()
     {
         if (settingPanel != null)
             settingPanel.SetActive(false);
+        FadeDim(false);
+    }
+
+    private void FadeDim(bool fadeIn)
+    {
+        if (dimBackground == null) return;
+
+        if (_dimCoroutine != null)
+            StopCoroutine(_dimCoroutine);
+
+        _dimCoroutine = StartCoroutine(FadeDimRoutine(fadeIn));
+    }
+
+    private IEnumerator FadeDimRoutine(bool fadeIn)
+    {
+        float target  = fadeIn ? dimAlpha : 0f;
+        float start   = dimBackground.color.a;
+
+        if (fadeIn)
+            dimBackground.gameObject.SetActive(true);
+
+        float elapsed = 0f;
+        while (elapsed < fadeDuration)
+        {
+            elapsed += Time.deltaTime;
+            float alpha = Mathf.Lerp(start, target, elapsed / fadeDuration);
+            dimBackground.color = new Color(0f, 0f, 0f, alpha);
+            yield return null;
+        }
+
+        dimBackground.color = new Color(0f, 0f, 0f, target);
+
+        if (!fadeIn)
+            dimBackground.gameObject.SetActive(false);
     }
 
     // -----------------------------------------

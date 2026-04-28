@@ -1,3 +1,6 @@
+using DG.Tweening;
+using System;
+using System.Security.Cryptography.X509Certificates;
 using TMPro;
 using UnityEngine;
 
@@ -9,13 +12,19 @@ public class UICanvasManager : MonoBehaviour
     [SerializeField] private Canvas _popup;
     [SerializeField] private Canvas _system;
     [SerializeField] TextMeshProUGUI _textLabelGameOver;
-
+    [SerializeField] GameObject[] HubTopObject;
+    [SerializeField] GameObject[] HubCenterObject;
+    [SerializeField] GameObject[] HubBottomObject;
+    [SerializeField] GameObject[] PopupObject;
+    [SerializeField] GameObject[] SystemObject;
+    [SerializeField] CanvasGroup fadeCanvasGroup;
     int[] Qty = new int[6];
     string[] itemIds = { "fruitstone_apple", "fruitstone_melon", "fruitstone_orange", "fruitstone_lemon", "fruitstone_grape" };
 
+
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
@@ -27,13 +36,35 @@ public class UICanvasManager : MonoBehaviour
         }
     }
 
-    void Init()
+    public void Init()
     {
-        _hub.gameObject.SetActive(false);
-        _popup.gameObject.SetActive(false);
-        _system.gameObject.SetActive(false);
+        foreach (GameObject obj in HubTopObject)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in HubCenterObject)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in HubBottomObject)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in PopupObject)
+        {
+            obj.SetActive(false);
+        }
+        foreach (GameObject obj in SystemObject)
+        {
+            obj.SetActive(false);
+        }
     }
 
+    public void FadeStart()
+    {
+        Sequence fadeSequence = DOTween.Sequence();
+//        fadeSequence.Append(DOTween.To(() => 0, color => 1) fadeCanvasGroup.DOFade(1, 1f).SetDelay(.5f).SetEase(Ease.InQuint));
+    }
     private void Start()
     {
         gameObject.SetActive(false);
@@ -49,11 +80,11 @@ public class UICanvasManager : MonoBehaviour
         }
         else if (canvasName == "Popup")
         {
-            _hub.gameObject.SetActive(true);
+            _popup.gameObject.SetActive(true);
         }
         else if (canvasName == "System")
         {
-            _hub.gameObject.SetActive(true);
+            _system.gameObject.SetActive(true);
         }
     }
 
@@ -65,11 +96,39 @@ public class UICanvasManager : MonoBehaviour
         }
         else if (canvasName == "Popup")
         {
-            _hub.gameObject.SetActive(false);
+            _popup.gameObject.SetActive(false);
         }
         else if (canvasName == "System")
         {
-            _hub.gameObject.SetActive(false);
+            _system.gameObject.SetActive(false);
+        }
+    }
+    public void ControlObject(string canvasName, int index, bool value)
+    {
+        if (canvasName == "HubTop")
+        {
+            if (HubTopObject[index] != null)
+                HubTopObject[index].SetActive(value);
+        }
+        else if (canvasName == "HubCenter")
+        {
+            if (HubCenterObject[index] != null)
+                HubCenterObject[index].SetActive(value);
+        }
+        else if (canvasName == "HubBottom")
+        {
+            if (HubBottomObject[index] != null)
+                HubBottomObject[index].SetActive(value);
+        }
+        else if (canvasName == "Popup")
+        {
+            if (PopupObject[index] != null)
+                PopupObject[index].SetActive(value);
+        }
+        else if (canvasName == "System")
+        {
+            if (SystemObject[index] != null)
+                SystemObject[index].SetActive(value);
         }
     }
     void UpdateUiTextLabel()
@@ -80,9 +139,9 @@ public class UICanvasManager : MonoBehaviour
     {
         Qty[0] = InventoryManager.Instance.CurrentDay;
         Qty[1] = InventoryManager.Instance.Gold;
-        /*       Qty[3] = InventoryManager.Instance.Gold;
-               Qty[4] = InventoryManager.Instance.Gold;
-               Qty[5] = InventoryManager.Instance.Gold;*/
+        Qty[3] = InventoryManager.Instance.Gold;
+        Qty[4] = InventoryManager.Instance.Gold;
+        Qty[5] = InventoryManager.Instance.Gold;
         for (int i = 0; i < itemIds.Length; i++)
         {
             Qty[2] += InventoryManager.Instance.GetQuantity(itemIds[i]);

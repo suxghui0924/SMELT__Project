@@ -32,6 +32,7 @@ public class SaveUIController : MonoBehaviour
     [SerializeField] private GameObject popupPanel;
     [SerializeField] private TMP_Text popupMessage;
     [SerializeField] private Image popupIcon;       // 선택 사항
+    [SerializeField] private Image background;
 
     [Header("아이콘 (선택)")]
     [SerializeField] private Sprite successSprite;       // 성공 아이콘

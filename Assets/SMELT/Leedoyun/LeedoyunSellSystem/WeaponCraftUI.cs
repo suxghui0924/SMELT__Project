@@ -161,8 +161,7 @@ public class WeaponCraftUI : MonoBehaviour
         if (_koreanFont == null)
             _koreanFont = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FONT_PATH);
 #endif
-        Canvas canvas = FindFirstObjectByType<Canvas>();
-        Transform canvasT = canvas != null ? canvas.transform : BuildCanvas();
+        Transform canvasT = BuildCanvas();
 
         _rootPanel = MakePanel(canvasT, "WeaponCraftUI",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
@@ -501,7 +500,7 @@ public class WeaponCraftUI : MonoBehaviour
         var go = new GameObject("Canvas");
         var c  = go.AddComponent<Canvas>();
         c.renderMode   = RenderMode.ScreenSpaceOverlay;
-        c.sortingOrder = 10;
+        c.sortingOrder = 200;
         var cs = go.AddComponent<CanvasScaler>();
         cs.uiScaleMode         = CanvasScaler.ScaleMode.ScaleWithScreenSize;
         cs.referenceResolution = new Vector2(1920, 1080);
