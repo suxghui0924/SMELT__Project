@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance { get; private set;}
+    public static GameManager instance { get; private set; }
     public GameDataSO gameData;
     GameDataSO.GameState lastState;
 
-    void Awake()    
+    void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             gameData.curState = GameDataSO.GameState.Lobby;
@@ -28,12 +28,13 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             ChangeState(GameDataSO.GameState.GameOver);
         }
     }
-    
+
+
     public void ChangeState(GameDataSO.GameState newState)
     {
         if (lastState != newState)
@@ -44,25 +45,29 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameDataSO.GameState.Lobby:
+                UICanvasManager.instance.Init();
                 SceneManager.LoadScene("Lobby");
                 break;
             case GameDataSO.GameState.Loading:
+                UICanvasManager.instance.FadeStart();
+                UICanvasManager.instance.ControlObject("System", 0, true);
                 SceneManager.LoadScene("Loading");
                 break;
             case GameDataSO.GameState.House:
-                SceneManager.LoadScene("House");
                 VolumeManager.instance.VolumeChange("global");
+                SceneManager.LoadScene("House");
                 break;
             case GameDataSO.GameState.Shop:
                 SceneManager.LoadScene("Shop");
                 break;
             case GameDataSO.GameState.Craft:
-                SceneManager.LoadScene("Craft");
+                //SceneManager.LoadScene("Craft");
                 break;
             case GameDataSO.GameState.Mining:
                 SceneManager.LoadScene("Mining");
                 break;
             case GameDataSO.GameState.GameOver:
+                UICanvasManager.instance.ControlObject("System", 2, true);
                 UICanvasManager.instance.GetQty(); 
                 break;
         }

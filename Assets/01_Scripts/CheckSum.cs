@@ -14,6 +14,7 @@ public class CheckSum : MonoBehaviour
         if(_bar.fillAmount >= 0.99f)
         {
             GameManager.instance.ChangeState(GameDataSO.GameState.House);
+            UICanvasManager.instance.ControlObject("System", 0, false);
         }
     }
 }
