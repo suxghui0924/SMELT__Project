@@ -6,7 +6,7 @@ public class BossSystem : MonoBehaviour
     public Image _Hp;
     public static BossSystem Instance;
     private float Damage = 10f; //근데 이건 곡괭이에따라서 데미지 달라져서 수정헤야함
-    private int per = 0;
+    
 
     
 
@@ -14,10 +14,10 @@ public class BossSystem : MonoBehaviour
     {
         Instance = this;
     }
-    public void Init(float damage, int per)
+    public void Init(float damage)
     {
         this.Damage = damage;
-        this.per = per;
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
