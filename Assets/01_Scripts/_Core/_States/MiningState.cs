@@ -6,6 +6,7 @@ public class MiningState : IGameState
     public void Enter()
     {
         GameManager.instance.ChangeState(new LoadingState());
+        UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, false);
         SceneManager.LoadScene("LHS_MiningScene");
     }
 
