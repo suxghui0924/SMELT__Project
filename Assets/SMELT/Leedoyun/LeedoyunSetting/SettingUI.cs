@@ -51,7 +51,7 @@ public class SettingUI : MonoBehaviour, ISaveable
             Camera cam = Camera.main != null ? Camera.main : FindFirstObjectByType<Camera>();
             rootCanvas.renderMode   = RenderMode.ScreenSpaceCamera;
             rootCanvas.worldCamera  = cam;
-            rootCanvas.sortingOrder = 20;
+            rootCanvas.sortingOrder = 501;
         }
 
         // 시작 시 설정 창 및 dim 배경 숨김
