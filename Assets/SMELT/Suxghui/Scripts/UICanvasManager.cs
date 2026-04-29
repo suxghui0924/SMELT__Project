@@ -89,7 +89,7 @@ public class UICanvasManager : MonoBehaviour
     }
     void UpdateUiTextLabel()
     {
-        _textLabelGameOver.text = $"{Qty[0]} 일차\n{Qty[1]}\n{Qty[2]}\n{Qty[3]}\n{Qty[4]}\n{Qty[5]}";
+        _textLabelGameOver.text = $"{Qty[0]} 일차\n{Qty[1].ToString("N0")}\n{Qty[2].ToString("N0")}\n{Qty[3].ToString("N0")}\n{Qty[4].ToString("N0")}\n{Qty[5].ToString("N0")}";
     }
     public void GetQty()
     {

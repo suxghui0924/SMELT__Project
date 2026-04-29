@@ -49,6 +49,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
