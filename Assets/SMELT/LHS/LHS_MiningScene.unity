@@ -983,7 +983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 4813902131418854710, guid: 7f25d13d9ede21e44acca9029be994aa, type: 3}
   maxEnemySpawnTimer: 3
-  minEnemySpawnTimer: 0.3
+  minEnemySpawnTimer: 0.6
 --- !u!4 &498979423
 Transform:
   m_ObjectHideFlags: 0
