@@ -1331,7 +1331,6 @@ GameObject:
   m_Component:
   - component: {fileID: 421676596}
   - component: {fileID: 421676595}
-  - component: {fileID: 421676597}
   m_Layer: 0
   m_Name: Start
   m_TagString: Untagged
@@ -1366,18 +1365,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &421676597
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421676594}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae373e45c0501e64ebb5f0c8716c8486, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &425593087
 GameObject:
   m_ObjectHideFlags: 0
@@ -2886,6 +2873,7 @@ MonoBehaviour:
   popupPanel: {fileID: 93592952}
   popupMessage: {fileID: 860268714}
   popupIcon: {fileID: 100091039}
+  background: {fileID: 0}
   successSprite: {fileID: -1096105371027078061, guid: cff31084ff1bcb6448c89be3f58fe679, type: 3}
   failSprite: {fileID: -7962594866118868923, guid: 6b398a9fa8a762143b530e9faeae7559, type: 3}
   popupDuration: 2
@@ -10475,6 +10463,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   settingPanel: {fileID: 1771723951}
+  dimBackground: {fileID: 0}
+  dimAlpha: 0.6
+  fadeDuration: 0.2
   volumeSlider: {fileID: 1127196682}
   volumeLabel: {fileID: 694082988}
   saveButton: {fileID: 816700554}

@@ -1,20 +1,23 @@
 using DG.Tweening;
-using System;
-using System.Security.Cryptography.X509Certificates;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+
+public enum CanvasType { Hud, Popup, System };
+public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading };
 
 public class UICanvasManager : MonoBehaviour
 {
     public static UICanvasManager instance;
 
-    [SerializeField] private Canvas _hub;
+    [SerializeField] private Canvas _hud;
     [SerializeField] private Canvas _popup;
     [SerializeField] private Canvas _system;
     [SerializeField] TextMeshProUGUI _textLabelGameOver;
-    [SerializeField] GameObject[] HubTopObject;
-    [SerializeField] GameObject[] HubCenterObject;
-    [SerializeField] GameObject[] HubBottomObject;
+    [SerializeField] GameObject HudTopObject;
+    [SerializeField] GameObject HudCenterObject;
+    [SerializeField] GameObject HudBottomObject;
     [SerializeField] GameObject[] PopupObject;
     [SerializeField] GameObject[] SystemObject;
     [SerializeField] CanvasGroup fadeCanvasGroup;
@@ -38,18 +41,6 @@ public class UICanvasManager : MonoBehaviour
 
     public void Init()
     {
-        foreach (GameObject obj in HubTopObject)
-        {
-            obj.SetActive(false);
-        }
-        foreach (GameObject obj in HubCenterObject)
-        {
-            obj.SetActive(false);
-        }
-        foreach (GameObject obj in HubBottomObject)
-        {
-            obj.SetActive(false);
-        }
         foreach (GameObject obj in PopupObject)
         {
             obj.SetActive(false);
@@ -62,7 +53,7 @@ public class UICanvasManager : MonoBehaviour
 
     public void FadeStart()
     {
-        Sequence fadeSequence = DOTween.Sequence();
+        DG.Tweening.Sequence fadeSequence = DOTween.Sequence();
 //        fadeSequence.Append(DOTween.To(() => 0, color => 1) fadeCanvasGroup.DOFade(1, 1f).SetDelay(.5f).SetEase(Ease.InQuint));
     }
     private void Start()
@@ -72,63 +63,28 @@ public class UICanvasManager : MonoBehaviour
 
     }
 
-    public void OpenCanvas(string canvasName)
+    public void SetCanvasActive(CanvasType canvasName, bool isActive)
     {
-        if (canvasName == "Hub")
+        switch(canvasName)
         {
-            _hub.gameObject.SetActive(true);
-        }
-        else if (canvasName == "Popup")
-        {
-            _popup.gameObject.SetActive(true);
-        }
-        else if (canvasName == "System")
-        {
-            _system.gameObject.SetActive(true);
+            case CanvasType.Hud: _hud.gameObject.SetActive(isActive); break;
+            case CanvasType.Popup: _popup.gameObject.SetActive(isActive); break;
+            case CanvasType.System: _system.gameObject.SetActive(isActive); break;
         }
     }
-
-    public void CloseCanvas(string canvasName)
+    public void ControlObject(ObjectType canvasName, bool isActive)
     {
-        if (canvasName == "Hub")
+        switch(canvasName)
         {
-            _hub.gameObject.SetActive(false);
-        }
-        else if (canvasName == "Popup")
-        {
-            _popup.gameObject.SetActive(false);
-        }
-        else if (canvasName == "System")
-        {
-            _system.gameObject.SetActive(false);
-        }
-    }
-    public void ControlObject(string canvasName, int index, bool value)
-    {
-        if (canvasName == "HubTop")
-        {
-            if (HubTopObject[index] != null)
-                HubTopObject[index].SetActive(value);
-        }
-        else if (canvasName == "HubCenter")
-        {
-            if (HubCenterObject[index] != null)
-                HubCenterObject[index].SetActive(value);
-        }
-        else if (canvasName == "HubBottom")
-        {
-            if (HubBottomObject[index] != null)
-                HubBottomObject[index].SetActive(value);
-        }
-        else if (canvasName == "Popup")
-        {
-            if (PopupObject[index] != null)
-                PopupObject[index].SetActive(value);
-        }
-        else if (canvasName == "System")
-        {
-            if (SystemObject[index] != null)
-                SystemObject[index].SetActive(value);
+            case ObjectType.Top: if (HudTopObject != null) HudTopObject.SetActive(isActive); break;
+            case ObjectType.Center: if (HudCenterObject != null) HudCenterObject.SetActive(isActive); break;
+            case ObjectType.Bottom: if (HudBottomObject != null) HudBottomObject.SetActive(isActive); break;
+            case ObjectType.ShopASkill: if (PopupObject[0] != null) PopupObject[0].SetActive(isActive); break;
+            case ObjectType.DayNext: if (PopupObject[1] != null) PopupObject[1].SetActive(isActive); break;
+            case ObjectType.Setting: if (PopupObject[2] != null) PopupObject[2].SetActive(isActive); break;
+            case ObjectType.Fade: if (SystemObject[0] != null) SystemObject[0].SetActive(isActive); break;
+            case ObjectType.GameOver: if (SystemObject[1] != null) SystemObject[1].SetActive(isActive); break;
+            case ObjectType.Loading: if (SystemObject[2] != null) SystemObject[2].SetActive(isActive); break;
         }
     }
     void UpdateUiTextLabel()
@@ -153,6 +109,6 @@ public class UICanvasManager : MonoBehaviour
     {
         Debug.Log("¹öÆ° Å¬¸¯µÊ!");
         Qty = new int[6];
-        GameManager.instance.ChangeState(GameDataSO.GameState.Lobby);
+        //GameManager.instance.ChangeState(GameDataSO.GameState.Lobby);
     }
 }

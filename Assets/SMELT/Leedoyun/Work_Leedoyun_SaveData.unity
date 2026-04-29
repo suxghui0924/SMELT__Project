@@ -11153,6 +11153,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackGround
       objectReference: {fileID: 0}
+    - target: {fileID: 9161792066109121324, guid: c387a7ca4c074e646b93958768638ede, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8939889512402379915, guid: c387a7ca4c074e646b93958768638ede, type: 3}
