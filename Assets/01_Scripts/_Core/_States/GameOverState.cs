@@ -5,6 +5,7 @@ public class GameOverState : IGameState
 {
     public void Enter()
     {
+        Time.timeScale = 0f;
         UICanvasManager.instance.ControlObject(ObjectType.GameOver, true);
         UICanvasManager.instance.GetQty();
     }
@@ -15,5 +16,6 @@ public class GameOverState : IGameState
 
     public void Exit()
     {
+        Time.timeScale = 1f;
     }
 }
