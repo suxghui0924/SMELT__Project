@@ -98,8 +98,8 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         }
 
         // 골드 차감
-        /*if (!InventoryManager.Instance.SpendGold(cost))
-            return false;*/
+        if (!InventoryManager.Instance.SpendGold((int)cost))
+            return false;
 
         // 업그레이드 적용
         _purchasedUpgrades.Add(upgradeId);
