@@ -6,7 +6,6 @@ public class LoadingState : IGameState
     public void Enter()
     {
         UICanvasManager.instance.FadeStart();
-        SceneManager.LoadScene("NewLoading");
     }
 
     public void Execute()
