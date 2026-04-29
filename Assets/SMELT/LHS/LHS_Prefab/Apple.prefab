@@ -4914,7 +4914,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 1967473339504806510, guid: 572ffd1bb7f911d4aa57dc0b96380180, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4938,7 +4938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDataSo: {fileID: 11400000, guid: 01e81795d288f2c47ae60d8dbc21739a, type: 2}
-  knockbackTimer: 0
+  knockbackTimer: 1
 --- !u!58 &-9003993438181686537
 CircleCollider2D:
   m_ObjectHideFlags: 0

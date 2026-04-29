@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -v \"m_Name: $\\\\|m_Name:  $\")"
+    ]
+  }
+}

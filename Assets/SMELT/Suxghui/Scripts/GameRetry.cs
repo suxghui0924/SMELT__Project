@@ -52,6 +52,7 @@ public class GameRetry : MonoBehaviour
     {
         Debug.Log("버튼 클릭됨!");
         Qty = new int[6];
-        GameManager.instance.ChangeState(GameDataSO.GameState.Lobby);
+        UICanvasManager.instance.ControlObject(ObjectType.GameOver, false);
+        //GameManager.instance.ChangeState(new GameOverState());
     }
 }
