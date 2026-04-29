@@ -6,9 +6,7 @@ public class HouseState : IGameState
     public void Enter()
     {
         VolumeManager.instance.VolumeChange("global");
-        SceneManager.LoadScene("House");
-        UICanvasManager.instance.ControlObject(ObjectType.Top, true);
-        UICanvasManager.instance.ControlObject(ObjectType.Bottom, true);
+        SceneLoader.LoadScene("House");
     }
 
     public void Execute()
