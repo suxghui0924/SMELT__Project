@@ -1,4 +1,4 @@
-/*using UnityEngine;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UpSceneTrigger : MonoBehaviour
@@ -10,13 +10,14 @@ public class UpSceneTrigger : MonoBehaviour
     {
         if (!collision.gameObject.CompareTag("Player")) return;
 
-        if (MoneyManager.Instance.UseMoney(100))
-        {
-            SceneManager.LoadScene(nextSceneName);
-        }
-        else
-        {
-            Debug.Log("돈 부족!");
-        }
+        //if (MoneyManager.Instance.UseMoney(100))
+
+        //{
+        //    SceneManager.LoadScene(nextSceneName);
+        //}
+        //else
+        //{
+        //    Debug.Log("돈 부족!");
+        //}
     }
-}*/
+}
