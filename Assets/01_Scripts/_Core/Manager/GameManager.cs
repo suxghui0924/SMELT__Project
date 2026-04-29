@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
         {
             ChangeState(new GameOverState());
         }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            ChangeState(new MiningState());
+        }
     }
 
 
