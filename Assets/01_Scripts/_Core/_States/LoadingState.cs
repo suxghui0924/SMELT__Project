@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-public class LoadingState : IGameState
-{
+public class LoadingState : IGameState 
+{   
     public void Enter()
     {
         UICanvasManager.instance.FadeStart();
-        UICanvasManager.instance.ControlObject(ObjectType.Loading, true);
+        SceneManager.LoadScene("NewLoading");
     }
 
     public void Execute()
