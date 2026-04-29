@@ -1,6 +1,6 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
-
 public class PlayerHitBox : MonoBehaviour
 {
     [SerializeField] PickaxeSO _pickaxeSO;

@@ -9,9 +9,9 @@ public class Player_HpScript : MonoBehaviour
     [Header("최대 HP 설정")]
     public int _playerMaxHp;
 
-    [FormerlySerializedAs("_playerHpChanged")] [Header("이벤트")]
+    [FormerlySerializedAs("_playerHpChanged")] [HideInInspector]
     public UnityEvent<int> PlayerHpChanged;
-    [FormerlySerializedAs("_playerDead")] public UnityEvent PlayerDead;
+    [FormerlySerializedAs("_playerDead")][HideInInspector] public UnityEvent PlayerDead;
 
     [Header("무적 작동시간 설정")]
     public float _playerInvincibleDuration;

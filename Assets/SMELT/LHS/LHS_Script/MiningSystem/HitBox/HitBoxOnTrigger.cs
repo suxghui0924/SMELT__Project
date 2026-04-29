@@ -31,4 +31,14 @@ public class HitBoxOnTrigger : MonoBehaviour
             }
         }
     }
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Enemy"))
+        {
+            if (_enemies.Contains(other.gameObject))
+            {
+                _enemies.Remove(other.gameObject);
+            }
+        }
+    }
 }
