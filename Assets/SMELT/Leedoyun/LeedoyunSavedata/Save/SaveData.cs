@@ -44,6 +44,9 @@ public class SaveData
     public List<string> unlockedTechs   = new List<string>();
     // 저장 예시: ["tech_weapon", "tech_juice"]
 
+    [Header("Achievement")]
+    public List<string> clearedAchievements = new List<string>();
+
     // ─────────────────────────────────────────
     // 플레이어 스탯 & 업그레이드 담당자: 이윤건
     // ─────────────────────────────────────────
