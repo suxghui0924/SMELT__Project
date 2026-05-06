@@ -81,8 +81,8 @@ public class EnemyBase : MonoBehaviour
 
     private void OnDestroy()
     {
-        TimerAndReward.Instance.ReduceFatigue(2);
-        TimerAndReward.Instance._mp.fillAmount -= 0.01f;
+        TimerAndReward.Instance.ReduceFatigue(1);
+        Debug.Log("니거"+ ++ItemSpawnManager.instance.nigger);
     }
 }
 
