@@ -1,16 +1,12 @@
+using TMPro;
 using UnityEngine;
 
 public class AchievementPopUp : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public TextMeshProUGUI[] achievementTitleAndDes;
+    public void AchPopUp(AchievementSO achievementSO)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        achievementTitleAndDes[0].text = achievementSO.achievementDisplayName;
+        achievementTitleAndDes[0].text = achievementSO.achievementDescription;
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AchievementManager : MonoBehaviour, ISaveable
@@ -8,6 +9,8 @@ public class AchievementManager : MonoBehaviour, ISaveable
     [field: SerializeField] public AchievementSO[] AchievementSO { get; private set; }
 
     public Dictionary<Achievements, AchievementSO> AchievementStateDic = new Dictionary<Achievements, AchievementSO>();
+
+    public TextMeshProUGUI[] achievementTitleAndDes;
 
 
     private void Awake()
@@ -27,7 +30,6 @@ public class AchievementManager : MonoBehaviour, ISaveable
     {
         SaveManager.Instance.Register(this);
         AchievementClear(Achievements.FirstJoined);
-        AchievementClear(Achievements.Suxghui);
     }
     private void InitDictionary()
     {
@@ -89,5 +91,11 @@ public class AchievementManager : MonoBehaviour, ISaveable
     public bool GetAchievementState(Achievements achievements)
     {
         return AchievementStateDic.TryGetValue(achievements, out AchievementSO achievement) && achievement.clear;
+    }
+
+    public void AchPopUp(AchievementSO achievementSO)
+    {
+        achievementTitleAndDes[0].text = achievementSO.achievementDisplayName;
+        achievementTitleAndDes[1].text = achievementSO.achievementDescription;
     }
 }

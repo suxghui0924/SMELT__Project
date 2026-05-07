@@ -3,18 +3,18 @@ using UnityEngine;
 
 public enum Achievements
 {
-    FirstJoined,
-    FirstSell,
-    TenthSell,
-    FirstMine,
-    ThirdMine,
-    TenMinPlayed,
+    FirstJoined, //
+    FirstSell, //
+    TenthSell, //
+    FirstMine, //
+    ThirdMine, //
+    TenMinPlayed, //
     HundredThousandMoney,
     Millionaire,
-    ThirtyMinPlayed,
+    ThirtyMinPlayed, //
     End,
     Suxghui,
-    OneHourPlayed
+    OneHourPlayed //
 }
 
 [CreateAssetMenu(fileName = "AchievementDataSO", menuName = "ScriptableObject/AchievementData")]
@@ -24,5 +24,6 @@ public class AchievementSO : ScriptableObject
     public string achievementDisplayName;
     public Achievements achievementState;
     public string achievementDescription;
-    public bool clear; 
+    public bool clear;
+    public int count;
 }
