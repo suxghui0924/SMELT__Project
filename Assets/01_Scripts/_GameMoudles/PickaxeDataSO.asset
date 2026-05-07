@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbd1d90ef7559a4e83ffe484cb2c2b7, type: 3}
   m_Name: PickaxeDataSO
   m_EditorClassIdentifier: 
+  pickaxeId: pickaxe_apple
   icon: {fileID: 0}
   name: "\uC0AC\uACFC \uACE1\uAD2D\uC774"
   desc: 
