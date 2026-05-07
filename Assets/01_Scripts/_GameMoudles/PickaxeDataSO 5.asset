@@ -9,7 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 703f39712f7808d4a8076834b0d15149, type: 3}
-  m_Name: GameDataSO
+  m_Script: {fileID: 11500000, guid: 8dbd1d90ef7559a4e83ffe484cb2c2b7, type: 3}
+  m_Name: PickaxeDataSO 5
   m_EditorClassIdentifier: 
-  curState: 2
+  icon: {fileID: 0}
+  name: "?? \uACE1\uAD2D\uC774"
+  desc: 
+  goldPrice: 0
+  fruitPrice: 0000000000000000000000000000000000000000
+  hitboxSquare: 0
+  eqiuqed: 0
