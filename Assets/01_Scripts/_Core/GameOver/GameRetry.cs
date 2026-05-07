@@ -1,4 +1,5 @@
-using TMPro;
+    using _01_Scripts._Core._States;
+    using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.Processors;
@@ -53,6 +54,6 @@ public class GameRetry : MonoBehaviour
         Debug.Log("버튼 클릭됨!");
         Qty = new int[6];
         UICanvasManager.instance.ControlObject(ObjectType.GameOver, false);
-        //GameManager.instance.ChangeState(new GameOverState());
+        GameManager.instance.ChangeState(new LobbyState());
     }
 }

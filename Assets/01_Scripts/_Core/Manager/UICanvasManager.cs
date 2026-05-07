@@ -83,13 +83,13 @@ public class UICanvasManager : MonoBehaviour
             case ObjectType.DayNext: if (PopupObject[1] != null) PopupObject[1].SetActive(isActive); break;
             case ObjectType.Setting: if (PopupObject[2] != null) PopupObject[2].SetActive(isActive); break;
             case ObjectType.Fade: if (SystemObject[0] != null) SystemObject[0].SetActive(isActive); break;
-            case ObjectType.GameOver: if (SystemObject[1] != null) SystemObject[1].SetActive(isActive); break;
+                case ObjectType.GameOver: if (SystemObject[1] != null) SystemObject[1].SetActive(isActive); break;
             case ObjectType.Loading: if (SystemObject[2] != null) SystemObject[2].SetActive(isActive); break;
         }
     }
     void UpdateUiTextLabel()
     {
-        _textLabelGameOver.text = $"{Qty[0]} ÀÏÂ÷\n{Qty[1].ToString("N0")}\n{Qty[2].ToString("N0")}\n{Qty[3].ToString("N0")}\n{Qty[4].ToString("N0")}\n{Qty[5].ToString("N0")}";
+        _textLabelGameOver.text = $"{Qty[0]} ï¿½ï¿½ï¿½ï¿½\n{Qty[1].ToString("N0")}\n{Qty[2].ToString("N0")}\n{Qty[3].ToString("N0")}\n{Qty[4].ToString("N0")}\n{Qty[5].ToString("N0")}";
     }
     public void GetQty()
     {
@@ -107,7 +107,7 @@ public class UICanvasManager : MonoBehaviour
     }
     public void RestartButton()
     {
-        Debug.Log("¹öÆ° Å¬¸¯µÊ!");
+        Debug.Log("ï¿½ï¿½Æ° Å¬ï¿½ï¿½ï¿½ï¿½!");
         Qty = new int[6];
         //GameManager.instance.ChangeState(GameDataSO.GameState.Lobby);
     }
