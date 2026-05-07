@@ -62,7 +62,7 @@ public class AchievementClear : MonoBehaviour
             else continue;
         }
     }
-    private void FirstSell()
+    public void FirstSell()
     {
         foreach (var achievement in achievementSOs)
         {
