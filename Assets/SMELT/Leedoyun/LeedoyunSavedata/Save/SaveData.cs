@@ -79,6 +79,13 @@ public class SaveData
     public int stamina = 100; // 현재 피로도 (0~100)  // 추가
 
     // ─────────────────────────────────────────
+    // 곡괭이 시스템 담당자: 이도윤                        // 추가
+    // ─────────────────────────────────────────
+    [Header("Pickaxe")]                                     // 추가
+    public string equippedPickaxeId = "pickaxe_default";    // 현재 장착된 곡괭이 ID // 추가
+    public List<string> purchasedPickaxeIds = new List<string>(); // 구매한 곡괭이 ID 목록 // 추가
+
+    // ─────────────────────────────────────────
     // 설정 담당자: 이도윤
     // ─────────────────────────────────────────
     [Header("Settings")]

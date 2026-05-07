@@ -9726,7 +9726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <AchievementSO>k__BackingField:
-  - {fileID: 11400000, guid: 2d4055f94e1ba654fbc0443b4bc2c115, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 699b2d34f59a3c44b8f92f56abdacce0, type: 2}
   - {fileID: 11400000, guid: d59dce70aa1d9b441b6eacc0f7bf51a5, type: 2}
 --- !u!4 &1324792307

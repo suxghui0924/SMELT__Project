@@ -9,10 +9,6 @@ using UnityEditor;
 /// 무기 미리보기 패널.
 /// 무기 종류 / 메인 과일석 / 서브 과일석을 선택하면 해당 무기 이미지를 표시합니다.
 /// 화면 우측에 주문 HUD 아래 자동 배치됩니다.
-///
-/// [Inspector 설정]
-///   _weaponSprites : 25개 (weapon_sword_apple → weapon_gauntlet_grape, 무기 타입 순 × 광석 순)
-///   _koreanFont    : TMP 한글 폰트
 /// </summary>
 public class WeaponPreviewPanel : MonoBehaviour
 {
