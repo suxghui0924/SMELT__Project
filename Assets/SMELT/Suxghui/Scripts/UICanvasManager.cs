@@ -41,10 +41,10 @@ public class UICanvasManager : MonoBehaviour
 
     public void Init()
     {
-        foreach (GameObject obj in PopupObject)
+/*        foreach (GameObject obj in PopupObject)
         {
             obj.SetActive(false);
-        }
+        }*/
         foreach (GameObject obj in SystemObject)
         {
             obj.SetActive(false);
