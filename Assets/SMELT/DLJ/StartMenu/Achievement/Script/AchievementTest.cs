@@ -1,12 +1,15 @@
 using UnityEngine;
 
-public class AchievementTest : MonoBehaviour
+namespace SMELT.DLJ.StartMenu.Achievement.Script
 {
-    void Update()
+    public class AchievementTest : MonoBehaviour
     {
-        if (Input.anyKeyDown)
+        void Update()
         {
+            if (Input.anyKeyDown)
+            {
             
+            }
         }
     }
 }

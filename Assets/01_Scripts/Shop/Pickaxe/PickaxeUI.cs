@@ -16,7 +16,7 @@ namespace _01_Scripts.Shop.Pickaxe
         [SerializeField] private GameObject[] pickaxeBuyItems;
         [SerializeField] private GameObject[] pickaxeEquiedItems;
         [SerializeField] private TextMeshProUGUI[] pickaxeEquiedTexts;
-        private int index = 0;
+        private int _index = 0;
         PickaxeDataSO curPickaxeDataSO;
 
         void OnEnable()
@@ -28,7 +28,7 @@ namespace _01_Scripts.Shop.Pickaxe
         {
             for (int i = 0; i < _pickaxeDataListSO.pickaxeDataSO.Length-1; i++)
             { Debug.Log(i);
-                if (PickaxeManager.Instance.IsPickaxePurchased(_pickaxeDataListSO.pickaxeDataSO[i].pickaxeId))
+                if ( _pickaxeDataListSO != null && PickaxeManager.Instance.IsPickaxePurchased(_pickaxeDataListSO.pickaxeDataSO[i].pickaxeId))
                 {
                     Debug.Log("구매됨 " + _pickaxeDataListSO.pickaxeDataSO[i].name);
 
@@ -67,7 +67,7 @@ namespace _01_Scripts.Shop.Pickaxe
         public void PickaxeBuy(int index)
         {
             objectGroup.SetActive(true);
-            index = index;
+            _index = index;
             InitPickaxe(_pickaxeDataListSO.pickaxeDataSO[index]);
         }
 
