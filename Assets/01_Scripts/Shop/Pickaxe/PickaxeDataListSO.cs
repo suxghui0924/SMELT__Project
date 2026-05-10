@@ -6,5 +6,6 @@ public class PickaxeDataListSO : ScriptableObject
     public PickaxeDataSO[] pickaxeDataSO;
 
     public string[] fruitTypes;
+    public string[] fruitTypesKr;
 
 }

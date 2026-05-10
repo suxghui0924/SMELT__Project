@@ -25,3 +25,9 @@ MonoBehaviour:
   - fruitstone_orange
   - fruitstone_lemon
   - fruitstone_grape
+  fruitTypesKr:
+  - "\uC0AC\uACFC\uC11D"
+  - "\uBA5C\uB860\uC11D"
+  - "\uADE4\uC11D"
+  - "\uB808\uBAAC\uC11D"
+  - "\uD3EC\uB3C4\uC11D"
