@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class AchievementManager : MonoBehaviour, ISaveable
@@ -9,20 +10,11 @@ public class AchievementManager : MonoBehaviour, ISaveable
 
     public Dictionary<Achievements, AchievementSO> AchievementStateDic = new Dictionary<Achievements, AchievementSO>();
 
+    public TextMeshProUGUI[] achievementTitleAndDes;
 
-    //public Dictionary<int, string> a = new Dictionary<int, string>();
 
     private void Awake()
     {
-        //a.Add(1, "안녕");
-        //a.Add(2, "얼불춤");
-        ////a.Add(3, "왜 불얼춤이 아닐까");
-        //a.Add(35, "불");
-
-        //Debug.Log(a[35]);
-        //이 디버그는 안녕을 출력한다
-
-
         if (Instance == null)
         {
             Instance = this;
@@ -36,10 +28,8 @@ public class AchievementManager : MonoBehaviour, ISaveable
 
     private void Start()
     {
-        foreach (var achievement in AchievementSO)
-        {
-            AchievementStateDic.Add(achievement.achievementState, achievement);
-        }
+        SaveManager.Instance.Register(this);
+        AchievementClear(Achievements.FirstJoined);
     }
     private void InitDictionary()
     {
@@ -57,6 +47,7 @@ public class AchievementManager : MonoBehaviour, ISaveable
                 continue;
             }
             AchievementStateDic.Add(achievement.achievementState, achievement);
+            Debug.Log("saved");
         }
     }
 
@@ -92,6 +83,7 @@ public class AchievementManager : MonoBehaviour, ISaveable
                 if (achievement.achievementID == achievementID)
                 {
                     achievement.clear = true;
+                    Debug.Log(achievementID);
                     break;
                 }
         }
@@ -99,5 +91,11 @@ public class AchievementManager : MonoBehaviour, ISaveable
     public bool GetAchievementState(Achievements achievements)
     {
         return AchievementStateDic.TryGetValue(achievements, out AchievementSO achievement) && achievement.clear;
+    }
+
+    public void AchPopUp(AchievementSO achievementSO)
+    {
+        achievementTitleAndDes[0].text = achievementSO.achievementDisplayName;
+        achievementTitleAndDes[1].text = achievementSO.achievementDescription;
     }
 }

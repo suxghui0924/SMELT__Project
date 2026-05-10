@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 04eebc2da29878c49b593024e20f5bd8, type: 3}
-  m_Name: FirstJoined
+  m_Name: End
   m_EditorClassIdentifier: 
-  achievementID: FirstJoined
-  achievementDisplayName: "\uC774 \uAC8C\uC784\uC744 \uB4DC\uB514\uC5B4 \uD0A4\uC168\uAD70\uC694!"
-  achievementState: 0
-  achievementDescription: "\uAC8C\uC784\uC744 \uCC98\uC74C\uC73C\uB85C \uC2E4\uD589"
+  achievementID: End
+  achievementDisplayName: "\uBC00\uB78D\uCE60\uD55C \uC57D\uAC04 \uB179\uC2A8 \uAE4D\uC778
+    \uAD6C\uB9AC \uBC18\uBE14\uB7ED"
+  achievementState: 9
+  achievementDescription: "\uAC8C\uC784\uC744 \uD074\uB9AC\uC5B4 \uD588\uC2B5\uB2C8\uB2E4!"
   clear: 0
