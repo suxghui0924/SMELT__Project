@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dbd1d90ef7559a4e83ffe484cb2c2b7, type: 3}
   m_Name: PickaxeDataSO
   m_EditorClassIdentifier: 
+  index: 0
   pickaxeId: pickaxe_apple
   icon: {fileID: 0}
   name: "\uC0AC\uACFC \uACE1\uAD2D\uC774"
-  desc: 
+  desc: "\uD5A5\uAE30\uB86D\uAC8C \uC0AC\uACFC\uB0C4\uC0C8\uAC00 \uB0A9\uB2C8\uB2E4."
   goldPrice: 5000
   fruitPrice: 0500000000000000000000000000000000000000
   hitboxSquare: 1
+  bought: 1
   eqiuqed: 0
