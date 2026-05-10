@@ -9,7 +9,7 @@ public class
 {
     public static SoundManager instance;
     private Dictionary<string, AudioClip> soundDict;
-    [SerializeField] private AudioSource _bgmource;
+    [SerializeField] private AudioSource _bgmSource;
     [SerializeField] private AudioSource _sfxSource;
     
     [Header("Audio Clips")]
@@ -37,19 +37,21 @@ public class
     #region OnVolumeChanged
     private void OnSfxVolumeChanged(float arg0)
     {
-        _sfxVolumeSlider.value = arg0;
+        _sfxSource.volume = arg0;
     }
 
     private void OnBgmVolumeChanged(float arg0)
     {
-        _bgmVolumeSlider.value = arg0;
+        _bgmSource.volume = arg0;
     }
 #endregion
 
     private void Init()
     {
+        _sfxSource.volume = _sfxVolumeSlider.value;
+        _bgmSource.volume = _bgmVolumeSlider.value; 
         soundDict = new Dictionary<string, AudioClip>();
-        _bgmource.loop = true;
+        _bgmSource.loop = true;
 
         foreach (AudioClip clip in audioClips)
         {
@@ -74,10 +76,10 @@ public class
     {
         if (soundDict.TryGetValue(bgmName, out var clip))
         {
-            if (_bgmource.clip != clip)
+            if (_bgmSource.clip != clip)
             {
-                _bgmource.clip = clip;
-                _bgmource.Play();
+                _bgmSource.clip = clip;
+                _bgmSource.Play();
             }
             else
             {
