@@ -51,7 +51,7 @@ public class BossSystem : MonoBehaviour
     private void OnStarting()
     {
         if (_Hp.fillAmount == 1||!isStart) isStart = false;
-        _Hp.fillAmount += 0.5f * Time.deltaTime;
+        _Hp.fillAmount += 1f * Time.deltaTime;
     }
     private void PlayDeathAnimation()
     {

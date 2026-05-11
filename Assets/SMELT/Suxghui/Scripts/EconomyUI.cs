@@ -97,9 +97,6 @@ public class EconomyUI : MonoBehaviour
     // ─── 테스트 입력 (빠른 확인용) ───────────────────────────────
     private void Update()
     {
-        if (Input.anyKeyDown)
-            Debug.Log($"키 입력 감지: {Input.inputString}");
-
         var inv = InventoryManager.Instance;
         if (inv == null)
         {

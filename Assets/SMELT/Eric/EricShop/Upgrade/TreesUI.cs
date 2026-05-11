@@ -12,7 +12,7 @@ public class TreesUI : MonoBehaviour
     public TextMeshProUGUI upName;
     public TextMeshProUGUI detail;
 
-    private void Awake()
+    private void OnEnable()
     {
         icon = transform.Find("Icon").GetComponent<Image>();
         needMoney = transform.Find("NeedMoney").GetComponent<TextMeshProUGUI>();
@@ -22,6 +22,7 @@ public class TreesUI : MonoBehaviour
 
     private void Start()
     {
+
         this.gameObject.SetActive(false);
     }
 }
