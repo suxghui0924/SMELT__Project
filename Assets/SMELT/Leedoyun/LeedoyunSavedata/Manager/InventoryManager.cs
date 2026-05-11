@@ -5,7 +5,7 @@ using static UnityEditor.Progress;
 
 /// <summary>
 /// 경제 시스템 + 인벤토리 + 테크트리 관리.
-/// 담당자: 미
+/// 담당자: 이도윤
 /// </summary>
 public class InventoryManager : MonoBehaviour, ISaveable
 {
@@ -49,6 +49,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()

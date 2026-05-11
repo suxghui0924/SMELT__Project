@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbd1d90ef7559a4e83ffe484cb2c2b7, type: 3}
+  m_Name: PickaxeDataSO 4
+  m_EditorClassIdentifier: 
+  index: 4
+  pickaxeId: pickaxe_grape
+  icon: {fileID: 0}
+  name: "\uD3EC\uB3C4 \uACE1\uAD2D\uC774"
+  desc: "\uD3EC\uB3C4\uC11D\uC774\uC9C0\uB9CC \uBE14\uB8E8\uBCA0\uB9AC \uB0C4\uC0C8\uAC00
+    \uB0A9\uB2C8\uB2E4."
+  goldPrice: 5000
+  fruitPrice: 0000000000000000000000000000000005000000
+  hitboxSquare: 0
+  bought: 1
+  eqiuqed: 0

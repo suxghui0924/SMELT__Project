@@ -98,6 +98,11 @@ public class EconomyUI : MonoBehaviour
     private void Update()
     {
         var inv = InventoryManager.Instance;
+        if (inv == null)
+        {
+            Debug.LogError("InventoryManager가 null!");
+            return;
+        }
         if (inv == null) return;
 
         if (Input.GetKeyDown(KeyCode.Space))        inv.AddGold(1_000_000);

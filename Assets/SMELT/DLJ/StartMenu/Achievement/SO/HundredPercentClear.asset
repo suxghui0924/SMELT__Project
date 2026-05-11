@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04eebc2da29878c49b593024e20f5bd8, type: 3}
+  m_Name: HundredPercentClear
+  m_EditorClassIdentifier: 
+  achievementID: 11
+  achievementDisplayName: "\uAC8C\uC784 100% \uD074\uB9AC\uC5B4!"
+  achievementState: 11
+  achievementDescription: "\uBAA8\uB4E0 \uB3C4\uC804\uACFC\uC81C \uB2EC\uC131"
+  achievementSprite: {fileID: 21300000, guid: b014a4be81b9d4932b639cbfe683162b, type: 3}
+  clear: 0
+  count: 0

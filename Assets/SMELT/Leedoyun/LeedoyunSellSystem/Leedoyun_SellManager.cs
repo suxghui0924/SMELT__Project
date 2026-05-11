@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using SMELT.DLJ.StartMenu.Achievement.Script;
 using UnityEngine;
 
 /// <summary>
@@ -212,6 +213,8 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         order.isFulfilled = true;
         _activeOrders.Remove(order);
         OnOrderFulfilled?.Invoke(order, order.rewardGold);
+
+        if (AchievementClear.instance != null) AchievementClear.instance.ClearAchievement(Achievements.FirstSell);
 
         Debug.Log($"[SellManager] 납품 완료: {weaponItemId} → +{order.rewardGold}G " +
                   $"(오늘 합계: {_todayGold}G)");

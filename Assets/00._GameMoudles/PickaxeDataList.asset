@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0beddc372f678384cab30494b54479d5, type: 3}
+  m_Name: PickaxeDataList
+  m_EditorClassIdentifier: 
+  pickaxeDataSO:
+  - {fileID: 11400000, guid: 1a826243a7b9dde47b53d4f7f3535666, type: 2}
+  - {fileID: 11400000, guid: 048521e2c9d1f0f46bc754193d2d3517, type: 2}
+  - {fileID: 11400000, guid: e00629d498ca06c4c9d3c3f9ed87665b, type: 2}
+  - {fileID: 11400000, guid: 1448cfa90e3e61c44ac73394bc546134, type: 2}
+  - {fileID: 11400000, guid: a50dbfee42d28b54db5b740b2bf593eb, type: 2}
+  - {fileID: 11400000, guid: fdab6fc60b324934896914d44ad7f158, type: 2}
+  fruitTypes:
+  - fruitstone_apple
+  - fruitstone_melon
+  - fruitstone_orange
+  - fruitstone_lemon
+  - fruitstone_grape
+  fruitTypesKr:
+  - "\uC0AC\uACFC\uC11D"
+  - "\uBA5C\uB860\uC11D"
+  - "\uADE4\uC11D"
+  - "\uB808\uBAAC\uC11D"
+  - "\uD3EC\uB3C4\uC11D"

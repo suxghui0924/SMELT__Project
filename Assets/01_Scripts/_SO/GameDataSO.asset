@@ -12,7 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 703f39712f7808d4a8076834b0d15149, type: 3}
   m_Name: GameDataSO
   m_EditorClassIdentifier: 
-  curState: 0
-  Gold: 0
-  requiredPayment: 0
-  curDay: 0
+  curState: 2
