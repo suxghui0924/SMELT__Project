@@ -4,7 +4,6 @@ using UnityEngine.SceneManagement;
 public class UpSceneTrigger : MonoBehaviour
 {
     public string nextSceneName;
-    public MoneyManager moneyManager;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

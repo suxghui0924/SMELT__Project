@@ -10,12 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8dbd1d90ef7559a4e83ffe484cb2c2b7, type: 3}
-  m_Name: PickaxeDataSO 5
+  m_Name: PickaxeDataSO 2
   m_EditorClassIdentifier: 
+  index: 2
+  pickaxeId: pickaxe_orange
   icon: {fileID: 0}
-  name: "?? \uACE1\uAD2D\uC774"
-  desc: 
-  goldPrice: 0
-  fruitPrice: 0000000000000000000000000000000000000000
+  name: "\uADE4 \uACE1\uAD2D\uC774"
+  desc: "\uC81C\uC8FC\uB3C4 \uC7A5\uC778\uC774 \uB9CC\uB4E0 \uADE4 \uACE1\uAD2D\uC774"
+  goldPrice: 5000
+  fruitPrice: 0000000000000000050000000000000000000000
   hitboxSquare: 0
+  bought: 1
   eqiuqed: 0

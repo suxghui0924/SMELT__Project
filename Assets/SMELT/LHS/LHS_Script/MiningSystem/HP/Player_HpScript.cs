@@ -75,7 +75,6 @@ public class Player_HpScript : MonoBehaviour
     {
         _hpChangingUIScript.HealthViewUpdate(PlayerCurrentHp);
         GameManager.instance.ChangeState(new GameOverState());
-        Debug.Log("플레이어 사망");
         IsPlayerDead = true;
     }
 }
