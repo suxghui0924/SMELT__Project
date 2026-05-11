@@ -1,6 +1,8 @@
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AchievementManager : MonoBehaviour, ISaveable
 {
@@ -12,9 +14,13 @@ public class AchievementManager : MonoBehaviour, ISaveable
 
     public TextMeshProUGUI[] achievementTitleAndDes;
 
+    [SerializeField] private AchievementBannerSizer bannerSizer;
+
+    [SerializeField] private Image achievementImage;
 
     private void Awake()
     {
+        
         if (Instance == null)
         {
             Instance = this;
@@ -29,7 +35,6 @@ public class AchievementManager : MonoBehaviour, ISaveable
     private void Start()
     {
         SaveManager.Instance.Register(this);
-        AchievementClear(Achievements.FirstJoined);
     }
     private void InitDictionary()
     {
@@ -50,7 +55,6 @@ public class AchievementManager : MonoBehaviour, ISaveable
             Debug.Log("saved");
         }
     }
-
 
     public void AchievementClear(Achievements achievements)
     { 
@@ -77,7 +81,7 @@ public class AchievementManager : MonoBehaviour, ISaveable
             achievement.clear = false;
         }
 
-        foreach (string achievementID in data.clearedAchievements)
+        foreach (int achievementID in data.clearedAchievements)
         {
             foreach (var achievement in AchievementStateDic.Values)
                 if (achievement.achievementID == achievementID)
@@ -95,6 +99,9 @@ public class AchievementManager : MonoBehaviour, ISaveable
 
     public void AchPopUp(AchievementSO achievementSO)
     {
+        bannerSizer.ChangeSize(0, 11.3f, 1.37f, 0.5f);
+        bannerSizer.ChangeInsideSize(0, 1, 0.5f);
+        achievementImage.sprite = achievementSO.achievementSprite;
         achievementTitleAndDes[0].text = achievementSO.achievementDisplayName;
         achievementTitleAndDes[1].text = achievementSO.achievementDescription;
     }

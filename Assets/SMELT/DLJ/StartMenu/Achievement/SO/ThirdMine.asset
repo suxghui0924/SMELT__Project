@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04eebc2da29878c49b593024e20f5bd8, type: 3}
   m_Name: ThirdMine
   m_EditorClassIdentifier: 
-  achievementID: ThirdMine
+  achievementID: 6
   achievementDisplayName: "\uB178\uB828\uD574\uC9C0\uC168\uAD70\uC694!"
   achievementState: 4
-  achievementDescription: "\uCC44\uAD11\uC744 \uC138\uBC88\uD568"
+  achievementDescription: "\uC138\uBC88 \uCC44\uAD11\uD568"
+  achievementSprite: {fileID: 0}
   clear: 0
+  count: 0

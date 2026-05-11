@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04eebc2da29878c49b593024e20f5bd8, type: 3}
   m_Name: FirstJoined
   m_EditorClassIdentifier: 
-  achievementID: FirstJoined
-  achievementDisplayName: "\uC774 \uAC8C\uC784\uC744 \uB4DC\uB514\uC5B4 \uD0A4\uC168\uAD70\uC694!"
+  achievementID: 0
+  achievementDisplayName: "\uB300\uC7A5\uC7A5\uC774\uC758 \uCCAB\uAC78\uC74C"
   achievementState: 0
   achievementDescription: "\uAC8C\uC784\uC744 \uCC98\uC74C\uC73C\uB85C \uC2E4\uD589"
-  clear: 0
+  achievementSprite: {fileID: 1025379074, guid: c1c8832eaec1b9845a6fe492d2e55237, type: 3}
+  clear: 1
+  count: 7
