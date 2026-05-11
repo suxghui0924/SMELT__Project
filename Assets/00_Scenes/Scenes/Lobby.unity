@@ -153,6 +153,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 699b2d34f59a3c44b8f92f56abdacce0, type: 2}
   - {fileID: 11400000, guid: d59dce70aa1d9b441b6eacc0f7bf51a5, type: 2}
   achievementTitleAndDes: []
+  bannerSizer: {fileID: 0}
+  achievementImage: {fileID: 0}
 --- !u!4 &8008360
 Transform:
   m_ObjectHideFlags: 0
@@ -9361,7 +9363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7447282846187055432, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7663975530339696067, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_SizeDelta.x
