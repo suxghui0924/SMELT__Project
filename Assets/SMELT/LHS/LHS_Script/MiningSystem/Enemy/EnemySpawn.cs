@@ -35,7 +35,7 @@ public class EnemySpawn : MonoBehaviour
             _enemySpawnPoint = Random.Range(0, 2);
             if (_enemySpawnPoint == 0)
             {
-                GameObject enemy= Instantiate(enemyPrefab,new Vector3(_leftX,_offset,0),Quaternion.identity);
+                GameObject enemy= Instantiate(enemyPrefab,new Vector3(_leftX,_offset,0),Quaternion.Euler(0,180,0));
             }
             else if (_enemySpawnPoint == 1)
             {

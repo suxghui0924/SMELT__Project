@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
 
@@ -21,8 +22,15 @@ public class AppleMaterial : MonoBehaviour
             .Append(transform.DOMoveX(worldPoint.x, 0.6f).SetEase(Ease.Linear))
             .Join(transform.DOMoveY(worldPoint.y, 0.6f).SetEase(Ease.InQuad))
             .OnComplete(() => {
-                gameObject.SetActive(false);
-                ItemSpawnManager.instance.applePool.Push(gameObject);
+                StartCoroutine(ParticleRoutine());
             });
+    }
+    private IEnumerator ParticleRoutine()
+    {
+        ParticleSystem particleSystem= GetComponentInChildren<ParticleSystem>();
+        particleSystem.Play();
+        yield return new WaitForSeconds(particleSystem.main.startLifetime.constant);
+        gameObject.SetActive(false);
+        ItemSpawnManager.instance.applePool.Push(gameObject);
     }
 }

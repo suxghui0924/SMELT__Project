@@ -7,6 +7,7 @@ public class ItemSpawnManager : MonoBehaviour
     public static ItemSpawnManager instance;
     
     public Stack<GameObject> applePool = new Stack<GameObject>();
+    public int nigger = 0;
     [SerializeField]private int appleCount = 10;
     [SerializeField]private GameObject appleItemPrefab;
     [SerializeField] private Transform inventoryUIPos;
