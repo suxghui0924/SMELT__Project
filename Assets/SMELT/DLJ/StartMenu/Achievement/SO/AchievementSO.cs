@@ -13,17 +13,18 @@ public enum Achievements
     Millionaire,
     ThirtyMinPlayed, //
     End,
-    Suxghui,
-    OneHourPlayed //
+    OneHourPlayed, //
+    HundredPercentClear
 }
 
 [CreateAssetMenu(fileName = "AchievementDataSO", menuName = "ScriptableObject/AchievementData")]
 public class AchievementSO : ScriptableObject
 {
-    public string achievementID;
+    public int achievementID;
     public string achievementDisplayName;
     public Achievements achievementState;
     public string achievementDescription;
+    public Sprite achievementSprite;
     public bool clear;
     public int count;
 }

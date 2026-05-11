@@ -9,6 +9,10 @@ public class AchievementClear : MonoBehaviour
 
     public static AchievementClear instance;
 
+    private ChangeTip changeTip;
+
+    [SerializeField] public GameObject[] AchievementDark;
+
     private void Awake()
     {
         instance = this;
@@ -17,98 +21,33 @@ public class AchievementClear : MonoBehaviour
     private void Start()
     {
         startTime = Time.timeAsDouble;
+        Debug.Log(1);
+        ClearAchievement(Achievements.FirstJoined);
     }
     private void Update()
     {
         playTime = Time.timeAsDouble - startTime;
-        if (playTime >= 600) TenMinPlayed();
-        if (playTime >= 1800) ThirtyMinPlayed();
-        if (playTime >= 3600) OneHourPlayed();
+        if (playTime >= 600) ClearAchievement(Achievements.TenMinPlayed);
+        if (playTime >= 1800) ClearAchievement(Achievements.ThirtyMinPlayed);
+        if (playTime >= 3600) ClearAchievement(Achievements.OneHourPlayed);
     }
-    #region 꼴보기 싫어요
-    private void TenMinPlayed()
+    public void ClearAchievement(Achievements state)
     {
         foreach (var achievement in achievementSOs)
         {
-            if (achievement.achievementState == Achievements.TenMinPlayed && !achievement.clear)
-            {
-                AchievementManager.Instance.AchPopUp(achievement);
-                achievement.clear = true;
-            }
-            else continue;
+            if (achievement.achievementState != state) continue;
+            if (achievement.clear) continue;
+
+            AchievementManager.Instance.AchPopUp(achievement);
+
+            AchievementManager.Instance.AchievementClear(achievement.achievementState);
+
+            achievement.count++;
+
+            achievement.clear = true;
+            
+            Debug.Log(achievement.achievementDisplayName);
+            return;
         }
     }
-    private void ThirtyMinPlayed()
-    {
-        foreach (var achievement in achievementSOs)
-        {
-            if (achievement.achievementState == Achievements.ThirtyMinPlayed && !achievement.clear)
-            {
-                AchievementManager.Instance.AchPopUp(achievement);
-                achievement.clear = true;
-            }
-            else continue;
-        }
-    }
-    private void OneHourPlayed()
-    {
-        foreach (var achievement in achievementSOs)
-        {
-            if (achievement.achievementState == Achievements.ThirtyMinPlayed && !achievement.clear)
-            {
-                AchievementManager.Instance.AchPopUp(achievement);
-                achievement.clear = true;
-            }
-            else continue;
-        }
-    }
-    public void FirstSell()
-    {
-        foreach (var achievement in achievementSOs)
-        {
-            if (achievement.achievementState == Achievements.FirstSell && !achievement.clear && achievement.count == 0)
-            {
-                AchievementManager.Instance.AchPopUp(achievement);
-                achievement.clear = true;
-            }
-            else continue;
-        }
-    }
-    private void TenthSell()
-    {
-        foreach (var achievement in achievementSOs)
-        {
-            if (achievement.achievementState == Achievements.TenthSell && !achievement.clear && achievement.count == 10)
-            {
-                AchievementManager.Instance.AchPopUp(achievement);
-                achievement.clear = true;
-            }
-            else continue;
-        }
-    }
-    private void FirstMine()
-    {
-        foreach (var achievement in achievementSOs)
-        {
-            if (achievement.achievementState == Achievements.FirstMine && !achievement.clear && achievement.count == 0)
-            {
-                AchievementManager.Instance.AchPopUp(achievement);
-                achievement.clear = true;
-            }
-            else continue;
-        }
-    }
-    private void ThirdMine()
-    {
-        foreach (var achievement in achievementSOs)
-        {
-            if (achievement.achievementState == Achievements.ThirdMine && !achievement.clear && achievement.count == 3)
-            {
-                AchievementManager.Instance.AchPopUp(achievement);
-                achievement.clear = true;
-            }
-            else continue;
-        }
-    }
-    #endregion
 }

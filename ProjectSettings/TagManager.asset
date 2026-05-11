@@ -51,5 +51,8 @@ TagManager:
   - name: UI
     uniqueID: 983429904
     locked: 0
+  - name: Achievement
+    uniqueID: 4198909209
+    locked: 0
   m_RenderingLayers:
   - Default
