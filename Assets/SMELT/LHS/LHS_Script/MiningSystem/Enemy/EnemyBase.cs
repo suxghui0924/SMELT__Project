@@ -52,7 +52,7 @@ public class EnemyBase : MonoBehaviour
         {
             int randomItemCount = Random.Range(1, 3);
             ItemSpawnManager.instance.AppleItemSpawn(transform,randomItemCount);
-            Destroy(gameObject);
+            StartCoroutine(ParticleRoutine());
         }
         else
         {
@@ -79,10 +79,23 @@ public class EnemyBase : MonoBehaviour
         _canMove = true;
     }
 
+    private IEnumerator ParticleRoutine()
+    {
+        _canMove = false;
+        Collider2D collider2D= GetComponent<Collider2D>();
+        SpriteRenderer spriteRenderer = collider2D.GetComponent<SpriteRenderer>();
+        collider2D.enabled = false;
+        spriteRenderer.enabled = false;
+        
+        ParticleSystem particleSystem= GetComponentInChildren<ParticleSystem>();
+             particleSystem.Play();
+             yield return new WaitForSeconds(particleSystem.main.startLifetime.constant);
+             Destroy(gameObject);
+    }
     private void OnDestroy()
     {
-        TimerAndReward.Instance.ReduceFatigue(2);
-        TimerAndReward.Instance._mp.fillAmount -= 0.01f;
+        TimerAndReward.Instance.ReduceFatigue(1);
+        Debug.Log("니거"+ ++ItemSpawnManager.instance.nigger);
     }
 }
 

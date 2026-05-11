@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class TimerAndReward : MonoBehaviour
 {
     public static TimerAndReward Instance;
-    //public float baseTime = 1f;
     private int rewardPoint = 100;
     private int minFatigue = 0;
     [HideInInspector]
@@ -16,27 +15,43 @@ public class TimerAndReward : MonoBehaviour
     public int currentFatigue;
     private float clearTime = 60f;
     public Image _mp;
-
-    private int _stage = 0;
-
+    float timer = 0f;
+    
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
 
     void Start()
     {
-        _stage = 1;
         currentFatigue = maxFatigue;
-        StartCoroutine(DungeonTimer());
+        //StartCoroutine(DungeonTimer());
         
     }
 
-
+    void Update()
+    {
+        timer+= Time.deltaTime;
+        if (timer >= 1)
+        {
+            ReduceFatigue(1);
+            timer = 0;
+        }
+        //ReduceFatigue(1);
+    }
+    
     bool isGameOver = false;
 
-    IEnumerator DungeonTimer()
+    /*IEnumerator DungeonTimer()
     {
         float timer = 0f;
         float moneyTimer = 0f;
@@ -48,11 +63,6 @@ public class TimerAndReward : MonoBehaviour
 
             if (moneyTimer >= 1f)
             {
-                int rewardPerSecond = Mathf.FloorToInt(MoneyManager.Instance.playTime / 60f) + 1;
-
-                MoneyManager.Instance.AddMoney(rewardPerSecond);
-
-                moneyTimer = 0f;               
                 ReduceFatigue(1);
                 _mp.fillAmount -= 0.01f;
                
@@ -63,25 +73,16 @@ public class TimerAndReward : MonoBehaviour
         }
         DungeonClear(); // 죽으면 클리어 처리 or 실패 처리
         
-    }
+    }*/
 
-    void DungeonClear()
+    void DungeonClear() //미완임 나중에 던전클리어UI완성하면 연결할꺼
     {
-        int reward = rewardPoint;
-        if (_stage >= 5)
-        {
-            reward = 100 + ((_stage - 1) / 5) * 50;
-        }
-        MoneyManager.Instance.AddMoney(reward);
-        _stage++;
-        Debug.Log($"다음 스테이지: {MoneyManager.Instance.stage}");
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ReduceFatigue(int amount)
     {
+        _mp.fillAmount -= (amount+0.0f)/100f;
         currentFatigue -= amount;
         Debug.Log($"피로도 감소: {amount}, 현재 피로도: {currentFatigue}");
         if (currentFatigue <= 0)
@@ -93,8 +94,9 @@ public class TimerAndReward : MonoBehaviour
     void GameOver()
     {
         Debug.Log("피로도 0 → 게임 오버");
-
-       // Time.timeScale = 0f;
+    
+        Time.timeScale = 0f;
        //GameManager.instance.ChangeState(GameDataSO.GameState.GameOver);
     }
+    
 }
