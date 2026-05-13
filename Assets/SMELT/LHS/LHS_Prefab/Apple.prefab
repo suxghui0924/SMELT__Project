@@ -5006,7 +5006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyDataSo: {fileID: 11400000, guid: 01e81795d288f2c47ae60d8dbc21739a, type: 2}
-  knockbackTimer: 1
+  knockbackTimer: 0.5
 --- !u!58 &-9003993438181686537
 CircleCollider2D:
   m_ObjectHideFlags: 0
