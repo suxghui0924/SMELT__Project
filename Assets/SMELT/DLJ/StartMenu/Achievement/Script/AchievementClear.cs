@@ -35,14 +35,14 @@ public class AchievementClear : MonoBehaviour
     {
         foreach (var achievement in achievementSOs)
         {
+            achievement.count++;
+            
             if (achievement.achievementState != state) continue;
             if (achievement.clear) continue;
 
             AchievementManager.Instance.AchPopUp(achievement);
 
             AchievementManager.Instance.AchievementClear(achievement.achievementState);
-
-            achievement.count++;
 
             achievement.clear = true;
             

@@ -63,7 +63,9 @@ public class EnemyBase : MonoBehaviour
     {
         _canMove = false;
         float timer = 0;
-        Vector3 knockbackDir = (transform.position - _playerTransform.position).normalized;
+        Vector3 knockbackDir = (transform.position - _playerTransform.position);
+        knockbackDir.y = 0;
+        knockbackDir.Normalize();
         float knockbackForce = _enemySpeed * 4f; 
 
         while (timer <= knockbackTimer)
@@ -94,8 +96,7 @@ public class EnemyBase : MonoBehaviour
     }
     private void OnDestroy()
     {
-        TimerAndReward.Instance.ReduceFatigue(1);
-        Debug.Log("니거"+ ++ItemSpawnManager.instance.nigger);
+        //TimerAndReward.Instance.ReduceFatigue(1);
     }
 }
 

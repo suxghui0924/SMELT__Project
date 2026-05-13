@@ -2,12 +2,6 @@ using UnityEngine;
 
 /// <summary>
 /// 스킬 트리 열기/닫기 컨트롤러.
-/// PrototypeZone(SkillTree) 이 Toggle() 을 호출합니다.
-///
-/// [Inspector 설정]
-///   Skill Tree Panel : UpgradeTrees Canvas 오브젝트
-///   Background       : 스킬 트리 전용 배경 오브젝트
-///
 /// 담당자: 이도윤
 /// </summary>
 public class SkillTreeController : MonoBehaviour
@@ -44,6 +38,7 @@ public class SkillTreeController : MonoBehaviour
 
     public void Show()
     {
+        UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
         if (_background     != null) _background.SetActive(true);
         if (_skillTreePanel != null) _skillTreePanel.SetActive(true);
 
@@ -64,6 +59,8 @@ public class SkillTreeController : MonoBehaviour
 
     public void Hide()
     {
+        
+        UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, false);
         if (_skillTreePanel != null) _skillTreePanel.SetActive(false);
         if (_background     != null) _background.SetActive(false);
     }
