@@ -92,14 +92,10 @@ public class AchievementManager : MonoBehaviour, ISaveable
                 }
         }
     }
-    public bool GetAchievementState(Achievements achievements)
-    {
-        return AchievementStateDic.TryGetValue(achievements, out AchievementSO achievement) && achievement.clear;
-    }
 
     public void AchPopUp(AchievementSO achievementSO)
     {
-        bannerSizer.ChangeSize(0, 11.3f, 1.37f, 0.5f);
+        bannerSizer.ChangeSize(0, 1248.5f, 191f, 0.5f);
         bannerSizer.ChangeInsideSize(0, 1, 0.5f);
         achievementImage.sprite = achievementSO.achievementSprite;
         achievementTitleAndDes[0].text = achievementSO.achievementDisplayName;
