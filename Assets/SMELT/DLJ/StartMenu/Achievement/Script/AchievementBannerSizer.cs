@@ -1,9 +1,11 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AchievementBannerSizer : MonoBehaviour
 {
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Image image;
+    [SerializeField] private RectTransform tr;
 
     private Coroutine bannerSizeCoroutine;
     private Coroutine insideSizeCoroutine;
@@ -13,14 +15,14 @@ public class AchievementBannerSizer : MonoBehaviour
 
     private void Awake()
     {
-        if (spriteRenderer == null)
-            spriteRenderer = GetComponent<SpriteRenderer>();
+        if (image == null)
+            image = GetComponent<Image>();
     }
 
     public void ChangeSize(float startWidth, float targetWidth, float height, float duration)
     {
         gameObject.SetActive(true);
-        spriteRenderer.color = Color.white;
+        image.color = Color.white;
         if (bannerSizeCoroutine != null)
             StopCoroutine(bannerSizeCoroutine);
             StartCoroutine(DisableBanner());
@@ -47,12 +49,12 @@ public class AchievementBannerSizer : MonoBehaviour
 
             float width = Mathf.Lerp(startWidth, targetWidth, t);
 
-            spriteRenderer.size = new Vector2(width, height);
+            tr.sizeDelta = new Vector2(width, height);
 
             yield return null;
         }
 
-        spriteRenderer.size = new Vector2(targetWidth, height);
+        tr.sizeDelta = new Vector2(targetWidth, height);
     }
     private IEnumerator InsideSizer(float startSize, float targetSize, float duration)
     {
@@ -76,12 +78,12 @@ public class AchievementBannerSizer : MonoBehaviour
     private IEnumerator DisableBanner()
     {
         yield return new WaitForSeconds(2);
-        StartCoroutine(SizeRoutine(11.3f, 0, 1.37f, 0.5f));
+        StartCoroutine(SizeRoutine(1248.5f, 0, 191f, 0.5f));
         StartCoroutine(InsideSizer(1, 0, 0.45f));
 
         float duration = 0.2f;
         float timer = 0f;
-        Color startColor = spriteRenderer.color;
+        Color startColor = image.color;
 
         yield return new WaitForSeconds(0.2f);
         while (timer < duration)
@@ -92,12 +94,12 @@ public class AchievementBannerSizer : MonoBehaviour
 
             float alpha = Mathf.Lerp(1, 0, t);
 
-            spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
+            image.color = new Color(startColor.r, startColor.g, startColor.b, alpha);
 
             yield return null;
         }
 
-        spriteRenderer.color = new Color(startColor.r, startColor.g, startColor.b, 0f);
+        image.color = new Color(startColor.r, startColor.g, startColor.b, 0f);
 
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
