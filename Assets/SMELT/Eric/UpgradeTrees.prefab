@@ -30439,7 +30439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6a5cde34ec2dc4b8483136a709e714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upso: {fileID: 11400000, guid: 19ed5a14d3152f4499bffd93aabb90e2, type: 2}
+  upso: {fileID: 0}
   upgradeButton: {fileID: 3110355249795560988}
   checkMark: {fileID: 5247595591333367411}
 --- !u!1 &7173628599949238272
@@ -37728,7 +37728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1421658224168072952
 RectTransform:
   m_ObjectHideFlags: 0
