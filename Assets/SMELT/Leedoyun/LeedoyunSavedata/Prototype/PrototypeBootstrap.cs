@@ -125,7 +125,8 @@ public class PrototypeBootstrap : MonoBehaviour
         rb.gravityScale = 0f;
         rb.constraints  = RigidbodyConstraints2D.FreezeRotation;
         var col = go.AddComponent<BoxCollider2D>();
-        col.size = Vector2.one;
+        col.size   = new Vector2(1f, 0.25f);
+        col.offset = new Vector2(0f, -0.375f);
         go.AddComponent<PrototypePlayer>();
     }
 
