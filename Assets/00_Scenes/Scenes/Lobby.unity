@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: weight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3548681480436670849, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
+      propertyPath: weight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6867786449527413193, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -12,7 +12,7 @@ public class TimerAndReward : MonoBehaviour
     [HideInInspector]
     public int maxFatigue = 100;
     [HideInInspector]
-    public int currentFatigue;
+    public float currentFatigue;
     private float clearTime = 60f;
     public Image _mp;
     float timer = 0f;
@@ -80,7 +80,7 @@ public class TimerAndReward : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
-    public void ReduceFatigue(int amount)
+    public void ReduceFatigue(float amount)
     {
         _mp.fillAmount -= (amount+0.0f)/100f;
         currentFatigue -= amount;
@@ -88,15 +88,15 @@ public class TimerAndReward : MonoBehaviour
         if (currentFatigue <= 0)
         {
             currentFatigue = 0;
-            GameOver();
+           //GameOver();
         }
     }
-    void GameOver()
+    /*void GameOver()
     {
         Debug.Log("피로도 0 → 게임 오버");
     
         Time.timeScale = 0f;
        //GameManager.instance.ChangeState(GameDataSO.GameState.GameOver);
-    }
+    }*/
     
 }

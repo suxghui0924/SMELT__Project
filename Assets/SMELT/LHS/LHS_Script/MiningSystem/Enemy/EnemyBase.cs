@@ -94,8 +94,7 @@ public class EnemyBase : MonoBehaviour
     }
     private void OnDestroy()
     {
-        TimerAndReward.Instance.ReduceFatigue(1);
-        Debug.Log("니거"+ ++ItemSpawnManager.instance.nigger);
+        //TimerAndReward.Instance.ReduceFatigue(1);
     }
 }
 
