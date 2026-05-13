@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public enum ZoneType { Mining, Crafting, Selling, SkillTree }
+public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance }
 
 /// <summary>
 /// 각 구역의 동작 정의.
@@ -71,5 +71,7 @@ public class PrototypeZone : MonoBehaviour
         }
         if (ZoneType == ZoneType.SkillTree)
             SkillTreeController.Instance?.Toggle();
+        if (ZoneType == ZoneType.MineEntrance)
+            GameManager.instance.ChangeState(new MiningState());
     }
 }

@@ -158,9 +158,10 @@ public class PrototypeHUD : MonoBehaviour
         if (_zoneHintGO == null) return;
         _zoneHintText.text = type switch
         {
-            ZoneType.Crafting  => "대장간  —  [ E ] 무기 제작",
-            ZoneType.SkillTree => "스킬 트리  —  [ E ] 열기",
-            _                  => ""
+            ZoneType.Crafting     => "대장간  —  [ E ] 무기 제작",
+            ZoneType.SkillTree    => "스킬 트리  —  [ E ] 열기",
+            ZoneType.MineEntrance => "광산 입구  —  [ E ] 광산으로 이동",
+            _                     => ""
         };
         _zoneHintGO.SetActive(true);
     }

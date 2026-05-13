@@ -46,7 +46,7 @@ public class Player_HpScript : MonoBehaviour
             _hpChangingUIScript.HealthViewUpdate(PlayerCurrentHp);
             StartCoroutine(InvisiblePlayer());
         }
-
+        
         else if (PlayerCurrentHp <= 0) PlayerGameOver();
     }
 
