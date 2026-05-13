@@ -28,6 +28,12 @@ public class PrototypeBootstrap : MonoBehaviour
     [Tooltip("Animator Controller. 비워두면 애니메이션 없이 동작.")]
     [SerializeField] private RuntimeAnimatorController _animatorController;
 
+    [Header("제작 구역")]
+    [Tooltip("CraftingZone 중심 위치")]
+    [SerializeField] private Vector3 _craftingZonePos = new Vector3(-5.39f, 3.83f, 0f);
+    [Tooltip("CraftingZone 크기 (유닛)")]
+    [SerializeField] private Vector2 _craftingZoneSize = new Vector2(8f, 10f);
+
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
     private static void AutoStart()
     {
@@ -60,7 +66,7 @@ public class PrototypeBootstrap : MonoBehaviour
         new GameObject("HUD").AddComponent<PrototypeHUD>();
 
         CreateBackground();
-        CreateZone("CraftingZone", new Vector3(-6.5f, 5f, 0f), new Vector2(5f, 5f),
+        CreateZone("CraftingZone", _craftingZonePos, _craftingZoneSize,
             ZoneType.Crafting, new Color(0.38f, 0.26f, 0.14f, 0f));
 
         // 플레이어: 광석 채취 구역 하단에 시작

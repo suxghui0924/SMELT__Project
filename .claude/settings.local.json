@@ -5,7 +5,10 @@
       "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\" -Directory)",
       "Bash(Select-Object -ExpandProperty Name)",
       "Bash(xargs grep -l \"GetComponent.*Collider2D\\\\|AddComponent.*Collider\")",
-      "Bash(xargs grep -l \"PlayerHitBox\\\\|Player.*Collider2D\")"
+      "Bash(xargs grep -l \"PlayerHitBox\\\\|Player.*Collider2D\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\Leedoyun\" -Recurse -Force)",
+      "Bash(grep -E \"\\\\\\\\.cs$\")",
+      "Bash(xargs grep -l \"IsTrigger\\\\|prototype\\\\|Zone\")"
     ]
   }
 }
