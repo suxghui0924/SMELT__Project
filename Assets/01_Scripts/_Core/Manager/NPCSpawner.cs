@@ -40,21 +40,22 @@ namespace _01_Scripts.Player.Manager
                 HandleOnAcceptOrder();
             if(Input.GetKeyDown(KeyCode.H))
                 HandleOnRewardOrder();
-            }
+        }
 
         private void HandleOnAcceptOrder()
         {
-            GameObject npcObject = Instantiate(npcPrefab.CharacterSprites[UnityEngine.Random.Range(0, npcPrefab.CharacterSprites.Length)]);
+            GameObject npcObject = Instantiate(npcPrefab.CharacterSprites[UnityEngine.Random.Range(0, npcPrefab.CharacterSprites.Length)], this.transform);
             npcStack.Push(npcObject);
         }
+        // ReSharper disable Unity.PerformanceAnalysis
         private void HandleOnRewardOrder()
         {
-          npcReverseStack = new Stack<GameObject>(npcStack.Reverse());
-          for (int i = 0; i < npcReverseStack.Count; i++            )
-          {
-              NpcMovement = npcReverseStack.Pop().GetComponent<NPCMovement>();
-              NpcMovement.IndexChange(NpcMovement._index);
-          }
+            npcReverseStack = new Stack<GameObject>(npcStack.Reverse());
+            for (int i = 0; i < npcReverseStack.Count; i++            )
+            {
+                NpcMovement = npcReverseStack.Pop().GetComponent<NPCMovement>();
+                NpcMovement.IndexChange(NpcMovement._index);
+            }
         }
         
         

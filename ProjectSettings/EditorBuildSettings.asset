@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00_Scenes/Scenes/NewLoading.unity
     guid: 700e758c0de1440408b17a21c4170ef2
-  - enabled: 0
+  - enabled: 1
     path: Assets/SMELT/LHS/LHS_MiningScene.unity
     guid: e7802199318568b45a113aee080d7261
   - enabled: 1
@@ -32,12 +32,6 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/SMELT/Eric/EricPickaxeShop.unity
     guid: 4a96567f3fcb9434f847d6b6796a3090
-  - enabled: 1
-    path: Assets/SMELT/LHS/LHS_MiningScene1.unity
-    guid: 2bbc20a92f107854fb0d39bf64dc5161
-  - enabled: 1
-    path: Assets/SMELT/LHS/LHS_MiningScene2.unity
-    guid: 896e76cbe94b727419151715fb06c547
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0
