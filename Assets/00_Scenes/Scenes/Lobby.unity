@@ -244,7 +244,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 995116047}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f484a7e2d47d7f4ebe7791bf2f07e64, type: 3}
   m_Name: 
@@ -42836,7 +42836,7 @@ ParticleSystem:
       properties: 0
       emitProbability: 1
   LightsModule:
-    enabled: 0
+    enabled: 1
     ratio: 0
     light: {fileID: 0}
     randomDistribution: 1

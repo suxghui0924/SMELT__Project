@@ -24,7 +24,6 @@ public class SparkParticle : MonoBehaviour
         while (amount < 3)
         {
             ParticleSystem.Play();
-            DLJ_SoundManager.instance.Play("Anvil");
             amount++;
             yield return new WaitForSeconds(1.32f);
         }
