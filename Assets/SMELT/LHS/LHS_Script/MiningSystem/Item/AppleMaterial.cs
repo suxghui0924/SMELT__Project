@@ -6,6 +6,14 @@ using UnityEngine;
 public class AppleMaterial : MonoBehaviour
 {
     private Sequence _appleSequence;
+    private SpriteRenderer _spriteRenderer;
+    private ParticleSystem particleSystem;
+
+    private void Awake()
+    {
+        particleSystem = GameObject.Find("GettingParticle").GetComponent<ParticleSystem>();
+    }
+
     public void AppleEnable(Vector2 screenPoint)
     {
         if(_appleSequence != null) _appleSequence.Kill();
@@ -22,14 +30,25 @@ public class AppleMaterial : MonoBehaviour
             .Append(transform.DOMoveX(worldPoint.x, 0.6f).SetEase(Ease.Linear))
             .Join(transform.DOMoveY(worldPoint.y, 0.6f).SetEase(Ease.InQuad))
             .OnComplete(() => {
-                StartCoroutine(ParticleRoutine());
+                ParticlePlay();
+                gameObject.SetActive(false);
             });
     }
+
+    private void ParticlePlay()
+    {
+        particleSystem.transform.position = transform.position;
+        particleSystem.Play();
+    }
+
+
     private IEnumerator ParticleRoutine()
     {
-        ParticleSystem particleSystem= GetComponentInChildren<ParticleSystem>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
+        _spriteRenderer.enabled = false;
         particleSystem.Play();
         yield return new WaitForSeconds(particleSystem.main.startLifetime.constant);
+        _spriteRenderer.enabled = true;
         gameObject.SetActive(false);
         ItemSpawnManager.instance.applePool.Push(gameObject);
     }
