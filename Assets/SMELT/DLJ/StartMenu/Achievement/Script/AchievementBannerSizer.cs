@@ -28,6 +28,7 @@ public class AchievementBannerSizer : MonoBehaviour
             StartCoroutine(DisableBanner());
 
         bannerSizeCoroutine = StartCoroutine(SizeRoutine(startWidth, targetWidth, height, duration));
+        
     }
     public void ChangeInsideSize(float startSize, float targetSize, float duration)
     {
