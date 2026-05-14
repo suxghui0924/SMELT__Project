@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using UnityEditor;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -7,17 +8,21 @@ public class EnemyBase : MonoBehaviour
 {
     [SerializeField] private EnemyDataSO enemyDataSo;
 
-    [SerializeField] private float knockbackTimer;
-    private Transform _playerTransform;
+    [SerializeField] protected float knockbackTimer;
+    [SerializeField] protected float knockbackPower;
+    protected Transform _playerTransform;
     public int CurrentHp{get; private set;}
-    private float _enemySpeed;
-    private int _enemyDamage;
-    private string _enemyName;
-    private Vector3 _enemyDirection;
-    private Collider2D _enemyCollider2D;
+    protected float _enemySpeed;
+    protected int _enemyDamage;
+    protected string _enemyName;
+    protected Vector3 _enemyDirection;
+    protected Collider2D _enemyCollider2D;
+    protected bool _canMove = true;
     Player_HpScript _playerHpScript;
+
+
+    private float _melonRot=0;
     
-    private bool _canMove = true;
     private void Start()
     {
        _playerHpScript= GameObject.Find("PlayerHP").GetComponent<Player_HpScript>();
@@ -30,13 +35,18 @@ public class EnemyBase : MonoBehaviour
             _enemyDirection=(transform.position-_playerTransform.position).normalized;
     }
 
+
     private void Update()
     {
         if (_canMove)
+        {
+            
             transform.position -= _enemyDirection * (_enemySpeed * Time.deltaTime);
+            if (_enemyName == "Melon") transform.Rotate(0,0,_melonRot++*Time.deltaTime);
+        }
     }
     
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
@@ -59,14 +69,14 @@ public class EnemyBase : MonoBehaviour
             StartCoroutine(KnockbackRoutine());
         }
     }
-    private IEnumerator KnockbackRoutine()
+    protected virtual IEnumerator KnockbackRoutine()
     {
         _canMove = false;
         float timer = 0;
         Vector3 knockbackDir = (transform.position - _playerTransform.position);
         knockbackDir.y = 0;
         knockbackDir.Normalize();
-        float knockbackForce = _enemySpeed * 4f; 
+        float knockbackForce = knockbackPower * 4f; 
 
         while (timer <= knockbackTimer)
         {
