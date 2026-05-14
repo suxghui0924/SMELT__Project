@@ -9,13 +9,14 @@ namespace _01_Scripts.NPC
 {
     public class NPCMovement : MonoBehaviour
     {
-        [SerializeField] private Transform _startPos;
-        [SerializeField] private Transform _turnPos;
-        [SerializeField] private Transform _lastPos;
         [SerializeField] private float _timer;
         [SerializeField] private float _offset;
-        [SerializeField] private int _index;
-        
+        public int _index { get; private set; }
+
+        private Transform _startPos;
+        private Transform _turnPos;
+        private Transform _lastPos;
+
         private bool _isMoving;
         private bool _isTurn;
         private bool _isTurned;
@@ -25,16 +26,18 @@ namespace _01_Scripts.NPC
 
         private NPCSpawner NPCSpawner;
         
-        private void Start()
+        private void Awake()
         {
-            NPCSpawner = GetComponentInChildren<NPCSpawner>();
+             
         }
 
         private void OnEnable()
         {
+            NPCSpawner = gameObject.GetComponentInParent<NPCSpawner>();
+         
             _startPos = NPCSpawner.StartPos;
             _turnPos = NPCSpawner.TurnPos;
-            _lastPos = NPCSpawner.LastPos;
+            _lastPos = NPCSpawner.LastPos;  
             _index = 3;
             transform.DOKill();
             Move();
@@ -55,7 +58,7 @@ namespace _01_Scripts.NPC
 
         public void IndexChange(int index)
         {
-            _index = index;
+            _index = --index;
             Move();
         }
         #region NPCMovement
