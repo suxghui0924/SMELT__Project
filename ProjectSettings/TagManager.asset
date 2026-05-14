@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Boss
   - Inventory
+  - juice
+  - ore
   layers:
   - Default
   - TransparentFX
