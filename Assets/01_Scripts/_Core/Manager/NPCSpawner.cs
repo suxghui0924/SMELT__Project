@@ -20,7 +20,8 @@ namespace _01_Scripts.Player.Manager
         private Stack<GameObject> npcReverseStack;
 
         private NPCMovement NpcMovement;
-        
+
+        private int charCount = 3;
         private void Awake()
         {
         }
@@ -42,20 +43,24 @@ namespace _01_Scripts.Player.Manager
                 HandleOnRewardOrder();
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void HandleOnAcceptOrder()
         {
             GameObject npcObject = Instantiate(npcPrefab.CharacterSprites[UnityEngine.Random.Range(0, npcPrefab.CharacterSprites.Length)], this.transform);
             npcStack.Push(npcObject);
+            npcObject.GetComponent<NPCMovement>().IndexChange(charCount);
+            charCount++;            
         }
         // ReSharper disable Unity.PerformanceAnalysis
         private void HandleOnRewardOrder()
         {
             npcReverseStack = new Stack<GameObject>(npcStack.Reverse());
-            for (int i = 0; i < npcReverseStack.Count; i++            )
+            for (int i = 0; i < npcReverseStack.Count; i++)
             {
                 NpcMovement = npcReverseStack.Pop().GetComponent<NPCMovement>();
                 NpcMovement.IndexChange(NpcMovement._index);
             }
+            charCount--;
         }
         
         
