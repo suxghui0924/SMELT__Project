@@ -20,26 +20,15 @@ public class Leedoyun_SellUI : MonoBehaviour
     [SerializeField] private TMP_FontAsset _koreanFont;
 
     // ─────────────────────────────────────────
-    // UI 참조 (코드로 생성됨)
+    // UI 참조
     // ─────────────────────────────────────────
     private TextMeshProUGUI _todayGoldText;
     private TextMeshProUGUI _totalGoldText;
-    // private TextMeshProUGUI _heldWeaponText; // 테스트 패널 제거로 미사용
 
     // 주문 슬롯 3개
     private const int SLOT_COUNT = 3;
     private OrderSlotUI[] _slots = new OrderSlotUI[SLOT_COUNT];
     private bool _isInitialized = false;
-
-    // // ─── 테스트용 무기 선택 (← → 버튼) ─── 테스트 패널 제거로 미사용 ───
-    // private int _selectedWeaponIndex = 0;
-    // private TextMeshProUGUI _selectedWeaponText;
-    // private static readonly string[] TEST_WEAPONS =
-    // {
-    //     "weapon_sword_apple",  "weapon_sword_melon",  "weapon_axe_apple",
-    //     "weapon_axe_melon",    "weapon_spear_orange", "weapon_bat_lemon",
-    //     "weapon_gauntlet_grape",
-    // };
 
     // ─────────────────────────────────────────
     // 슬롯 데이터 (내부 클래스)
@@ -201,34 +190,6 @@ public class Leedoyun_SellUI : MonoBehaviour
     {
         SceneManager.LoadScene("Work_Leedoyun_Setting");
     }
-
-    // ─── 테스트용 메서드 (테스트 패널 제거로 미사용) ───────────────────────
-    // private void OnAddWeaponClicked()
-    // {
-    //     string weaponId = TEST_WEAPONS[_selectedWeaponIndex];
-    //     InventoryManager.Instance.AddItem(weaponId, 1);
-    //     Debug.Log($"[SellUI] 테스트 무기 추가: {weaponId}");
-    // }
-    // private void OnPrevWeapon()
-    // {
-    //     _selectedWeaponIndex = (_selectedWeaponIndex - 1 + TEST_WEAPONS.Length) % TEST_WEAPONS.Length;
-    //     RefreshSelectedWeaponText();
-    // }
-    // private void OnNextWeapon()
-    // {
-    //     _selectedWeaponIndex = (_selectedWeaponIndex + 1) % TEST_WEAPONS.Length;
-    //     RefreshSelectedWeaponText();
-    // }
-    // private void RefreshSelectedWeaponText()
-    // {
-    //     if (_selectedWeaponText != null)
-    //         _selectedWeaponText.text = WeaponDisplayName(TEST_WEAPONS[_selectedWeaponIndex]);
-    // }
-    // private void OnForceOrderClicked()
-    // {
-    //     Leedoyun_SellManager.Instance.SendMessage("TrySpawnOrder", SendMessageOptions.DontRequireReceiver);
-    // }
-
     // ─────────────────────────────────────────
     // UI 자동 생성
     // ─────────────────────────────────────────
@@ -364,13 +325,6 @@ public class Leedoyun_SellUI : MonoBehaviour
 
         return slot;
     }
-
-    // ─── BuildTestPanel (테스트 패널 - 미사용) ───────────────────────────────
-    // private void BuildTestPanel(Transform parent)
-    // {
-    //     // [◀/▶] 무기 선택, [인벤에 추가], [주문 강제 생성] 버튼 포함
-    //     // TEST_WEAPONS / _selectedWeaponIndex / _selectedWeaponText / _heldWeaponText 필드 필요
-    // }
 
     // ─────────────────────────────────────────
     // UI 생성 헬퍼
