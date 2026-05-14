@@ -25897,7 +25897,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f484a7e2d47d7f4ebe7791bf2f07e64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< Updated upstream
   spriteRenderer: {fileID: 1236431030}
+=======
+  image: {fileID: 1236431031}
+  tr: {fileID: 1236431028}
+>>>>>>> Stashed changes
   Inside: {fileID: 367115550}
 --- !u!212 &1236431030
 SpriteRenderer:
