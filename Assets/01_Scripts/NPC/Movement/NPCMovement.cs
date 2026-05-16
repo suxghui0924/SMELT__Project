@@ -72,8 +72,8 @@ namespace _01_Scripts.NPC
         {
             _exitSequence = DOTween.Sequence();
 
-            _exitSequence.Append(transform.DOMove(_turnPos.position, _timer * 1.5f).SetEase(Ease.Linear))
-                .Append(transform.DOMoveY(_startPos.position.y, _timer * 1.5f).SetEase(Ease.Linear))
+            _exitSequence.Append(transform.DOMove(_turnPos.position, _timer * 0.5f).SetEase(Ease.Linear))
+                .Append(transform.DOMoveY(_startPos.position.y, _timer).SetEase(Ease.Linear))
                 .OnComplete(() => Destroy(gameObject));
         }
 

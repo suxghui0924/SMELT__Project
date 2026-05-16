@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections;
 using DG.Tweening;
-using Unity.Android.Types;
 using Unity.Cinemachine;
 
 public class DropShow : MonoBehaviour
