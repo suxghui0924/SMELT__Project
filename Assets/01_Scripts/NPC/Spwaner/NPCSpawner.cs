@@ -21,16 +21,14 @@ namespace _01_Scripts.Player.Manager
         
         private int charCount = 1;
 
-        private void Update()
+        private void OnEnable()
         {
-            if(Input.GetKeyDown(KeyCode.G))
-                HandleOnAcceptOrder();
-            if(Input.GetKeyDown(KeyCode.H))
-                HandleOnRewardOrder();
+            OrderHUD.OnOrderCreated += HandleOnAcceptOrder;
+            OrderHUD.OnOrderEnded += HandleOnRewardOrder;
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
-        private void HandleOnAcceptOrder()
+        private void HandleOnAcceptOrder(Leedoyun_CustomerOrder order)
         {
             if (npcList.Count >= MAX_NPC_COUNT)
             {
@@ -49,7 +47,7 @@ namespace _01_Scripts.Player.Manager
             npcObject.GetComponent<NPCMovement>().IndexChange(grantIndex);
         }
         // ReSharper disable Unity.PerformanceAnalysis
-        private void HandleOnRewardOrder()
+        private void HandleOnRewardOrder(Leedoyun_CustomerOrder order)
         {
             if (npcList.Count == 0) return;
 
