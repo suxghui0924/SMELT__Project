@@ -378,8 +378,9 @@ public class WeaponCraftUI : MonoBehaviour
         {
             RefreshAll();
             OrderHUD.Instance?.RefreshAll();
+            Sprite weaponSprite = SafeSprite(_weaponSprites, _selMain * 5 + _selWeapon);
             Hide();
-            CraftAnimationController.Instance?.PlayCraftAnimation();
+            CraftAnimationController.Instance?.PlayCraftAnimation(weaponSprite);
         }
     }
 

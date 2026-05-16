@@ -68,9 +68,11 @@ public class SaveData
     // ─────────────────────────────────────────
     // 판매 시스템 담당자: 이도윤                      // 추가
     // ─────────────────────────────────────────
-    [Header("SellSystem")]                            // 추가
-    public int leedoyunTodayGold = 0; // 오늘 판매 수익 (납품 기준) // 추가
-    public int leedoyunTotalGold = 0; // 누적 판매 수익 (납품 기준) // 추가
+    [Header("SellSystem")]
+    public int leedoyunTodayGold = 0;
+    public int leedoyunTotalGold = 0;
+    public float orderSpawnTimer = 0f;
+    public List<OrderSaveData> activeOrders = new List<OrderSaveData>();
 
     // ─────────────────────────────────────────
     // 피로도 담당자: 이도윤                          // 추가
@@ -111,6 +113,18 @@ public class SaveData
 //   착즙 주스   → juice_strawberry / juice_grape / juice_lemon
 //   장신구(3단계) → accessory_ring / accessory_necklace
 // ─────────────────────────────────────────
+[Serializable]
+public class OrderSaveData
+{
+    public string    orderId;
+    public string    requestedWeaponId;
+    public int       weaponType;
+    public string    mainOreId;
+    public int       rewardGold;
+    public float     timeLimit;
+    public float     elapsedTime;
+}
+
 [Serializable]
 public class ItemSaveData
 {

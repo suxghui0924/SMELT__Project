@@ -65,7 +65,7 @@ public class CraftAnimationController : MonoBehaviour
             transform.position = _followTarget.position + _offset;
     }
 
-    public void PlayCraftAnimation()
+    public void PlayCraftAnimation(Sprite resultSprite = null)
     {
         if (_craftAnimator == null)
         {
@@ -77,10 +77,10 @@ public class CraftAnimationController : MonoBehaviour
         if (_followTarget != null)
             _followTarget.position = new Vector3(_craftPosition.x, _craftPosition.y, _followTarget.position.z);
         SetPlayerVisible(false);
-        StartCoroutine(ReturnToIdle());
+        StartCoroutine(ReturnToIdle(resultSprite));
     }
 
-    private IEnumerator ReturnToIdle()
+    private IEnumerator ReturnToIdle(Sprite resultSprite)
     {
         for (int i = 0; i < 3; i++)
         {
@@ -105,6 +105,9 @@ public class CraftAnimationController : MonoBehaviour
         _craftAnimator.Play(HashNewState);
         SetPlayerVisible(true);
         PlayerMovement.IsLocked = false;
+
+        // 3회 애니메이션 완료 후 무기 스프라이트 표시
+        HeldItemController.Instance?.SetHeldItem(resultSprite);
     }
 
     private void SetPlayerVisible(bool visible)
