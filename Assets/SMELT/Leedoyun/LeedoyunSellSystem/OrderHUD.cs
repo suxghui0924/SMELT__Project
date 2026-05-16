@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -78,7 +79,9 @@ public class OrderHUD : MonoBehaviour
         public Leedoyun_CustomerOrder order;
     }
 
-    private OrderSlotUI[] _slots = new OrderSlotUI[SLOT_COUNT];
+    private readonly OrderSlotUI[] _slots = new OrderSlotUI[SLOT_COUNT];
+    private GameObject _hudRoot;
+    private const string HOUSE_SCENE = "House";
 
     // ─────────────────────────────────────────
     // 초기화
@@ -95,12 +98,21 @@ public class OrderHUD : MonoBehaviour
         SubscribeEvents();
         SyncExistingOrders();
         InvokeRepeating(nameof(RefreshDeliverButtons), 0.5f, 0.5f);
+        SceneManager.activeSceneChanged += OnSceneChanged;
     }
 
     private void OnDestroy()
     {
         if (Instance == this) Instance = null;
         UnsubscribeEvents();
+        SceneManager.activeSceneChanged -= OnSceneChanged;
+        if (_hudRoot != null) Destroy(_hudRoot);
+    }
+
+    private void OnSceneChanged(Scene _, Scene next)
+    {
+        if (_hudRoot != null)
+            _hudRoot.SetActive(next.name == HOUSE_SCENE);
     }
 
     private void Update()
@@ -289,15 +301,14 @@ public class OrderHUD : MonoBehaviour
         float panelH  = headerH + 8f + SLOT_COUNT * ORDER_H + (SLOT_COUNT - 1) * SLOT_GAP + 8f;
 
         // 루트 패널 — 우측 상단에 고정 (anchor & pivot 모두 top-right)
-        var rootGO = MakePanel(canvasT, "OrderHUD",
+        _hudRoot = MakePanel(canvasT, "OrderHUD",
             new Vector2(1f, 1f), new Vector2(1f, 1f),
             new Vector2(-panelW / 2f - 10f, -panelH / 2f - 10f),
             new Vector2(panelW, panelH), CLR_BG_PANEL);
-        rootGO.GetComponent<RectTransform>().pivot = new Vector2(1f, 1f);
-        // pivot 변경 후 위치 재조정
-        rootGO.GetComponent<RectTransform>().anchoredPosition = new Vector2(-10f, -160f);
+        _hudRoot.GetComponent<RectTransform>().pivot = new Vector2(1f, 1f);
+        _hudRoot.GetComponent<RectTransform>().anchoredPosition = new Vector2(-10f, -160f);
 
-        var root = rootGO.transform;
+        var root = _hudRoot.transform;
 
         // 헤더
         var header = MakeTxt(root, "손님 주문", 14, FontStyles.Bold,

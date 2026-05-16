@@ -89,4 +89,12 @@ public class ShopUI : MonoBehaviour
     
     #endregion
     
+    #region closeUI
+
+    public void OnCloseUI()
+    {
+        UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, false);
+    }
+    #endregion
+    
 }

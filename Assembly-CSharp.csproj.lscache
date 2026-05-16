@@ -63,11 +63,12 @@ Assets/01_Scripts/
  NPC/
   Data/NPCListDataSO.cs
   Movement/NPCMovement.cs
+  Spwaner/NPCSpawner.cs
  _Core/
   GameOver/GameRetry.cs
   Manager/
    GameManager.cs
-   NPCSpawner.cs
+   NPCManager.cs
    SceneLoader.cs
    SoundManager.cs
    UICanvasManager.cs
@@ -123,10 +124,12 @@ Assets/SMELT/gugu/Script/BossSystem/
  BossSkillManager.cs
  BossSystem.cs
  CameraShake.cs
+ DropShow.cs
  DrowOre.cs
  juice.cs
  ore.cs
  pressjuice.cs
+ skillSystem.cs
 Assets/SMELT/gugu/Script/Creaft/
  Creafting.cs
  CreaftingSystem.cs
@@ -149,6 +152,7 @@ Assets/SMELT/gugu/Script/UI&Text/
 Assets/SMELT/Leedoyun/LeedoyunPlayer/
  CraftAnimationController.cs
  CraftSparkParticle.cs
+ HeldItemController.cs
 Assets/SMELT/Leedoyun/LeedoyunSavedata/Item/
  ItemData.cs
  ItemDatabase.cs
@@ -185,6 +189,7 @@ Assets/SMELT/
    EnemyBase.cs
    EnemyDataSO.cs
    EnemySpawn.cs
+   MelonOverride.cs
   HitBox/
    HitBoxOnTrigger.cs
    PlayerHitBox.cs

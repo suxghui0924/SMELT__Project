@@ -37,6 +37,13 @@ public class PrototypePlayer : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerMovement.IsLocked)
+        {
+            _rb.linearVelocity = Vector2.zero;
+            if (_anim != null) _anim.SetBool(HashIsMoving, false);
+            return;
+        }
+
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         var dir = new Vector2(h, v).normalized;

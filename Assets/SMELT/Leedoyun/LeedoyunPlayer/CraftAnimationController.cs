@@ -3,7 +3,6 @@ using UnityEngine;
 
 /// <summary>
 /// 무기 제작 성공 시 재생되는 애니메이션 컨트롤러.
-/// 플레이어를 자동으로 찾아 따라다니며 Offset만큼 위에 표시.
 ///
 /// 담당자: 이도윤
 /// </summary>
@@ -18,14 +17,13 @@ public class CraftAnimationController : MonoBehaviour
     [Tooltip("Animator Controller Trigger 파라미터 이름.")]
     [SerializeField] private string _animationTrigger = "CraftPlay";
 
-<<<<<<< HEAD
     [Tooltip("파티클 발동 타이밍 (0 = 애니메이션 시작, 1 = 끝). 치는 순간에 맞게 조절.")]
     [SerializeField] [Range(0f, 1f)] private float _sparkNormalizedTime = 0.5f;
 
-=======
->>>>>>> parent of 33da136 (Revert "Reapply "Merge branch 'base' into Eric/Upgrade"")
     [Header("위치 설정")]
-    [Tooltip("플레이어 위치 기준 오프셋 (플레이어 머리 위쪽).")]
+    [Tooltip("제작 시 플레이어가 이동할 고정 위치.")]
+    [SerializeField] private Vector3 _craftPosition = new(-5.35f, 4.035428f, 0f);
+    [Tooltip("플레이어 위치 기준 애니메이션 오프셋.")]
     [SerializeField] private Vector3 _offset = new(0f, 1.5f, 0f);
 
     private static readonly int HashNewState = Animator.StringToHash("New State");
@@ -41,14 +39,24 @@ public class CraftAnimationController : MonoBehaviour
 
     private void Start()
     {
-        var player = FindFirstObjectByType<PrototypePlayer>();
-        if (player != null)
+        GameObject playerGO = null;
+
+        var pm = FindFirstObjectByType<PlayerMovement>();
+        if (pm != null)
+            playerGO = pm.gameObject;
+        else
         {
-            _followTarget = player.transform;
-            _playerSr = player.GetComponent<SpriteRenderer>();
+            var pp = FindFirstObjectByType<PrototypePlayer>();
+            if (pp != null) playerGO = pp.gameObject;
+        }
+
+        if (playerGO != null)
+        {
+            _followTarget = playerGO.transform;
+            _playerSr    = playerGO.GetComponent<SpriteRenderer>();
         }
         else
-            Debug.LogWarning("[CraftAnim] PrototypePlayer를 찾을 수 없습니다.");
+            Debug.LogWarning("[CraftAnim] 플레이어를 찾을 수 없습니다.");
     }
 
     private void LateUpdate()
@@ -57,12 +65,7 @@ public class CraftAnimationController : MonoBehaviour
             transform.position = _followTarget.position + _offset;
     }
 
-<<<<<<< HEAD
-    /// <summary>제작 성공 시 호출 — 플레이어 투명화 후 애니메이션을 3번 재생, 완료되면 복귀.</summary>
-=======
-    /// <summary>제작 성공 시 호출 — 플레이어 투명화 후 애니메이션 재생, 완료되면 복귀.</summary>
->>>>>>> parent of 33da136 (Revert "Reapply "Merge branch 'base' into Eric/Upgrade"")
-    public void PlayCraftAnimation()
+    public void PlayCraftAnimation(Sprite resultSprite = null)
     {
         if (_craftAnimator == null)
         {
@@ -70,21 +73,15 @@ public class CraftAnimationController : MonoBehaviour
             return;
         }
         StopAllCoroutines();
-<<<<<<< HEAD
         PlayerMovement.IsLocked = true;
         if (_followTarget != null)
-            _followTarget.position = new Vector3(-5.35f, 4.035428f, _followTarget.position.z);
+            _followTarget.position = new Vector3(_craftPosition.x, _craftPosition.y, _followTarget.position.z);
         SetPlayerVisible(false);
-=======
-        SetPlayerVisible(false);
-        _craftAnimator.SetTrigger(_animationTrigger);
->>>>>>> parent of 33da136 (Revert "Reapply "Merge branch 'base' into Eric/Upgrade"")
-        StartCoroutine(ReturnToIdle());
+        StartCoroutine(ReturnToIdle(resultSprite));
     }
 
-    private IEnumerator ReturnToIdle()
+    private IEnumerator ReturnToIdle(Sprite resultSprite)
     {
-<<<<<<< HEAD
         for (int i = 0; i < 3; i++)
         {
             _craftAnimator.SetTrigger(_animationTrigger);
@@ -108,18 +105,9 @@ public class CraftAnimationController : MonoBehaviour
         _craftAnimator.Play(HashNewState);
         SetPlayerVisible(true);
         PlayerMovement.IsLocked = false;
-=======
-        // 애니메이션 상태로 전환될 때까지 대기
-        yield return new WaitUntil(() =>
-            _craftAnimator.GetCurrentAnimatorStateInfo(0).IsName("Craft Animation"));
 
-        // 애니메이션이 끝날 때까지 대기
-        yield return new WaitUntil(() =>
-            _craftAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
-
-        _craftAnimator.Play(HashNewState);
-        SetPlayerVisible(true);
->>>>>>> parent of 33da136 (Revert "Reapply "Merge branch 'base' into Eric/Upgrade"")
+        // 3회 애니메이션 완료 후 무기 스프라이트 표시
+        HeldItemController.Instance?.SetHeldItem(resultSprite);
     }
 
     private void SetPlayerVisible(bool visible)

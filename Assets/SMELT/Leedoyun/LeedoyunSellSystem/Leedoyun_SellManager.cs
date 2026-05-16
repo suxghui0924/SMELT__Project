@@ -98,9 +98,6 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     private void Start()
     {
         SaveManager.Instance.Register(this);
-
-        // 게임 시작 시 첫 주문 즉시 생성
-        TrySpawnOrder();
     }
 
     private void OnDestroy()
@@ -150,16 +147,43 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     // ─────────────────────────────────────────
     public void OnSave(SaveData data)
     {
-        // todayEarned / totalEarned는 ShopManager와 별도로 이 매니저 전용 필드 사용
-        // → SaveData에 leedoyunTodayGold / leedoyunTotalGold 추가 필요 (아래 항목 참조)
-        data.leedoyunTodayGold  = _todayGold;  // 추가 필드
-        data.leedoyunTotalGold  = _totalGold;  // 추가 필드
+        data.leedoyunTodayGold = _todayGold;
+        data.leedoyunTotalGold = _totalGold;
+        data.orderSpawnTimer   = _spawnTimer;
+
+        data.activeOrders.Clear();
+        foreach (var o in _activeOrders)
+        {
+            data.activeOrders.Add(new OrderSaveData
+            {
+                orderId           = o.orderId,
+                requestedWeaponId = o.requestedWeaponId,
+                weaponType        = (int)o.weaponType,
+                mainOreId         = o.mainOreId,
+                rewardGold        = o.rewardGold,
+                timeLimit         = o.timeLimit,
+                elapsedTime       = o.elapsedTime,
+            });
+        }
     }
 
     public void OnLoad(SaveData data)
     {
-        _todayGold = data.leedoyunTodayGold;  // 추가 필드
-        _totalGold = data.leedoyunTotalGold;  // 추가 필드
+        _todayGold  = data.leedoyunTodayGold;
+        _totalGold  = data.leedoyunTotalGold;
+        _spawnTimer = data.orderSpawnTimer;
+
+        _activeOrders.Clear();
+        foreach (var s in data.activeOrders)
+        {
+            var order = new Leedoyun_CustomerOrder(
+                (WeaponType)s.weaponType, s.mainOreId, s.rewardGold, s.timeLimit);
+            order.orderId     = s.orderId;
+            order.elapsedTime = s.elapsedTime;
+            _activeOrders.Add(order);
+            OnOrderAdded?.Invoke(order);
+        }
+
         OnTodayGoldChanged?.Invoke(_todayGold, _todayGold);
     }
 

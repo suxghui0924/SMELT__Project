@@ -8,7 +8,8 @@
       "Bash(xargs grep -l \"PlayerHitBox\\\\|Player.*Collider2D\")",
       "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\Leedoyun\" -Recurse -Force)",
       "Bash(grep -E \"\\\\\\\\.cs$\")",
-      "Bash(xargs grep -l \"IsTrigger\\\\|prototype\\\\|Zone\")"
+      "Bash(xargs grep -l \"IsTrigger\\\\|prototype\\\\|Zone\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\" -Filter \"PlayerMovement.cs\" -Recurse)"
     ]
   }
 }

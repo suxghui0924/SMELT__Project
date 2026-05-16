@@ -91,11 +91,13 @@ namespace _01_Scripts.Shop.Pickaxe
         {
             if (PickaxeManager.Instance.BuyPickaxe(curPickaxeDataSO))
             {
+                SoundManager.instance.PlaySFX("UIClick");
                 getCurPickaxeDataSO();
                 GroupBuyCancel();
             }
             else
             {
+                SoundManager.instance.PlaySFX("failed");
                 //N
             }
             
