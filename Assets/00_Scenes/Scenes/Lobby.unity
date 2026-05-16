@@ -12898,10 +12898,6 @@ PrefabInstance:
       propertyPath: m_Value
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1481560625942746375, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
-      propertyPath: upso
-      value: 
-      objectReference: {fileID: 11400000, guid: 19ed5a14d3152f4499bffd93aabb90e2, type: 2}
     - target: {fileID: 1678223224104814793, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -13897,6 +13893,10 @@ PrefabInstance:
     - target: {fileID: 7447282846187055432, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7623879351334907794, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: m_Name
+      value: UpgradeTrees
       objectReference: {fileID: 0}
     - target: {fileID: 7623879351334907794, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_IsActive
