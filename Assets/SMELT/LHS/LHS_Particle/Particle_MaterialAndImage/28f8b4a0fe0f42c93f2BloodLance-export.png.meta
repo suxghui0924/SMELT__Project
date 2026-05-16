@@ -1,0 +1,273 @@
+fileFormatVersion: 2
+guid: 6b2eca05511965546bc359f1349fc104
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1999018768664180591
+    second: 28f8b4a0fe0f42c93f2BloodLance-export_0
+  - first:
+      213: 3039147079061461359
+    second: 28f8b4a0fe0f42c93f2BloodLance-export_1
+  - first:
+      213: 7365932614903533249
+    second: 28f8b4a0fe0f42c93f2BloodLance-export_2
+  - first:
+      213: -3178131963338823903
+    second: 28f8b4a0fe0f42c93f2BloodLance-export_3
+  - first:
+      213: -5387007681640707490
+    second: 28f8b4a0fe0f42c93f2BloodLance-export_4
+  - first:
+      213: 1754749566026995781
+    second: 28f8b4a0fe0f42c93f2BloodLance-export_5
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 512
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 1
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: 28f8b4a0fe0f42c93f2BloodLance-export_0
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 297
+        width: 33
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6731959af0fdbb10800000000000000
+      internalID: 1999018768664180591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 28f8b4a0fe0f42c93f2BloodLance-export_1
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 303
+        width: 30
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f69df939a283d2a20800000000000000
+      internalID: 3039147079061461359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 28f8b4a0fe0f42c93f2BloodLance-export_2
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 251
+        width: 47
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1ce0ac6dfac093660800000000000000
+      internalID: 7365932614903533249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 28f8b4a0fe0f42c93f2BloodLance-export_3
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 252
+        width: 275
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 127efdb51d105e3d0800000000000000
+      internalID: -3178131963338823903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 28f8b4a0fe0f42c93f2BloodLance-export_4
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 255
+        width: 12
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5a418d1e018d35b0800000000000000
+      internalID: -5387007681640707490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: 28f8b4a0fe0f42c93f2BloodLance-export_5
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 198
+        width: 55
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5485fc8ee6f1a5810800000000000000
+      internalID: 1754749566026995781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      28f8b4a0fe0f42c93f2BloodLance-export_0: 1999018768664180591
+      28f8b4a0fe0f42c93f2BloodLance-export_1: 3039147079061461359
+      28f8b4a0fe0f42c93f2BloodLance-export_2: 7365932614903533249
+      28f8b4a0fe0f42c93f2BloodLance-export_3: -3178131963338823903
+      28f8b4a0fe0f42c93f2BloodLance-export_4: -5387007681640707490
+      28f8b4a0fe0f42c93f2BloodLance-export_5: 1754749566026995781
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
