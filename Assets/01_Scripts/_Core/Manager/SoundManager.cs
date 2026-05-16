@@ -24,7 +24,6 @@ public class
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
             Init();
             _bgmVolumeSlider.onValueChanged.AddListener(OnBgmVolumeChanged);
             _sfxVolumeSlider.onValueChanged.AddListener(OnSfxVolumeChanged);

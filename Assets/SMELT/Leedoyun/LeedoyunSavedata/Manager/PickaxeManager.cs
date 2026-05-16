@@ -30,9 +30,8 @@ public class PickaxeManager : MonoBehaviour, ISaveable
     // ─────────────────────────────────────────
     private void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        if (Instance != null) { Destroy(gameObject); return; }
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
