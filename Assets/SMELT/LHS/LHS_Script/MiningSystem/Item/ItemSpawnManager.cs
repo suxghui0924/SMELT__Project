@@ -5,14 +5,17 @@ using UnityEngine;
 public class ItemSpawnManager : MonoBehaviour
 {
     public static ItemSpawnManager instance;
+
+    [HideInInspector] public Stack<GameObject>[] itemPools;
     
-    public Stack<GameObject> applePool = new Stack<GameObject>();
-    public int nigger = 0;
-    [SerializeField]private int appleCount = 10;
-    [SerializeField]private GameObject appleItemPrefab;
+    [SerializeField]private int itemPoolCount =6;
+
+    [SerializeField] private GameObject[] enemyItemPrefab;
+    
+    
     [SerializeField] private Transform inventoryUIPos;
     [SerializeField]private Camera uiCamera;
-    private AppleMaterial _appleMaterial;
+    private FruitMaterialLogic _fruitMaterialLogic;
 
     private Vector2 _screenPoint;
     private void Awake()
@@ -22,34 +25,39 @@ public class ItemSpawnManager : MonoBehaviour
 
     private void Start()
     {
-        CreateAppleItem();
         _screenPoint = RectTransformUtility.WorldToScreenPoint(uiCamera, inventoryUIPos.position);
+        itemPools = new Stack<GameObject>[5];
+          for(int i=0;i<itemPools.Length;i++)  itemPools[i] = new Stack<GameObject>();
+        CreateEnemyItem();
     }
     
-    public void AppleItemSpawn(Transform enemyDeadPos,int againValue)
+    public void SpawnItem(int itemIndex, Transform enemyDeadPos, int againValue)
     {
         for (int i = 0; i < againValue; i++)
         {
-            GameObject apple;
-            if (applePool.Count > 0)
+            GameObject item;
+            if (itemPools[itemIndex].Count > 0)
             {
-                apple = applePool.Pop();
-                apple.transform.position = enemyDeadPos.position;
-                _appleMaterial = apple.GetComponent<AppleMaterial>();
-                if (_appleMaterial != null) _appleMaterial.AppleEnable(_screenPoint);
-                apple.SetActive(true);
+                item = itemPools[itemIndex].Pop();
+                item.transform.position = enemyDeadPos.position;
+                _fruitMaterialLogic = item.GetComponent<FruitMaterialLogic>();
+                if (_fruitMaterialLogic != null) _fruitMaterialLogic.enemyMaterialEnable(_screenPoint);
+                item.SetActive(true);
             }
-            else apple = Instantiate(appleItemPrefab);
+            else item = Instantiate(enemyItemPrefab[itemIndex]);
         }
     }
 
-    private void CreateAppleItem()
+    private void CreateEnemyItem()
     {
-        for (int i = 0; i < appleCount; i++)
+        for(int i=0;i<itemPools.Length;i++)
         {
-            GameObject apple  = Instantiate(appleItemPrefab);
-            apple.SetActive(false);
-            applePool.Push(apple);
+             for (int j = 0; j < itemPoolCount; j++)
+             {
+                GameObject enemy  = Instantiate(enemyItemPrefab[i]);
+                enemy.SetActive(false); 
+                itemPools[i].Push(enemy);
+             }
         }
     }
 }
