@@ -378,6 +378,8 @@ public class WeaponCraftUI : MonoBehaviour
         {
             RefreshAll();
             OrderHUD.Instance?.RefreshAll();
+            CraftAnimationController.Instance?.PlayCraftAnimation();
+            Hide();
         }
     }
 

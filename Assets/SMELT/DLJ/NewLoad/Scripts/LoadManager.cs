@@ -25,6 +25,10 @@ public class LoadManager : MonoBehaviour
                 UICanvasManager.instance.ControlObject(ObjectType.Top, true);
                 UICanvasManager.instance.ControlObject(ObjectType.Bottom, true);
                 break;
+            case "Lobby":
+                UICanvasManager.instance.ControlObject(ObjectType.Top, false);
+                UICanvasManager.instance.ControlObject(ObjectType.Bottom, false);
+                break;
         }
     }
 }
