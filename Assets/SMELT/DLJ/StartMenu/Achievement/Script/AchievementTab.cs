@@ -15,14 +15,13 @@ public class AchievementTab : MonoBehaviour
     }
     public void ShowAchievement()
     {
-        AchievementCanvasState = !AchievementCanvasState;
-        AchievementCanvas.SetActive(AchievementCanvasState);
-        DLJ_SoundManager.instance.Play("Button");
+        if (AchievementCanvasState) AchievementCanvasState = false;
+        else AchievementCanvasState = true;
+        AchievementCanvas.SetActive(AchievementCanvas);
     }
 
     public void LeaveAchievement()
     {
         AchievementCanvas.SetActive(false);
-        DLJ_SoundManager.instance.Play("Button");
     }
 }
