@@ -11,15 +11,16 @@ public class DropShow : MonoBehaviour
     [SerializeField] private Transform target;
     
     Sequence mySequence;
-
+    
     private void Start()
     {
-        shake = true;
+        
         
         if(gameObject.name == "Player")
             mySequence.Append(transform.DOMoveY(-2, 1.5f).SetEase(Ease.OutBounce));
         else
             mySequence.Append(transform.DOMoveY(target.position.y, 1.5f).SetEase(Ease.OutBounce));
+        shake = true;
     }
     private void FixedUpdate()
     {
