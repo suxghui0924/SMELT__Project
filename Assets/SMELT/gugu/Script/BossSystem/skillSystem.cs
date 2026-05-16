@@ -5,9 +5,11 @@ using Unity.Cinemachine;
 
 public class skillSystem : MonoBehaviour
 {
+    
     [SerializeField]private bool isAlive = true;
     private float Damage = 10f;
     private bool shakes = false;
+    public bool IsAlive => isAlive;
     [SerializeField]private GameObject boss;
     [SerializeField]private GameObject orePrefab ;
     [SerializeField]private GameObject juicePrefab;
@@ -58,6 +60,7 @@ public class skillSystem : MonoBehaviour
 
         if (BossSystem.Instance._Hp.fillAmount <= 0 )
         {
+            DestroyAllSkills();
             Debug.Log("보스가 죽었습니다!");
             isAlive = false;
             StartCoroutine(PlayDeathAnimation());
@@ -66,14 +69,32 @@ public class skillSystem : MonoBehaviour
    
     private IEnumerator PlayDeathAnimation()
     {
-        Debug.Log("애니메이션 실행");
+
         shakes = true;
+
         yield return new WaitForSeconds(3f);
+
         OnAnimationEnd();
     }
     public void OnAnimationEnd()
     {
         Destroy(boss);
     }
-    
+
+    private void DestroyAllSkills()
+    {
+        GameObject[] ores = GameObject.FindGameObjectsWithTag("ore");
+
+        foreach (GameObject ore in ores)
+        {
+            Destroy(ore);
+        }
+
+        GameObject[] juices = GameObject.FindGameObjectsWithTag("juice");
+
+        foreach (GameObject juice in juices)
+        {
+            Destroy(juice);
+        }
+    }
 }

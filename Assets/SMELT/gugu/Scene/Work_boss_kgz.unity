@@ -303,6 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 461b37b92a8e2364ea91fba17b716ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _skillSystem: {fileID: 473688907}
   drawOre: {fileID: 1171383370}
   _prejuice: {fileID: 2072362471}
   _bossJump: {fileID: 33894947}

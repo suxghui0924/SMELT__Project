@@ -8,6 +8,8 @@ using Random = UnityEngine.Random;
 public class BossSkillManager : MonoBehaviour
 {
     public static BossSkillManager Instance;
+
+    [SerializeField] private skillSystem _skillSystem;
     public DrowOre drawOre;
     public pressjuice _prejuice;
     public BossJump _bossJump;
@@ -30,11 +32,14 @@ public class BossSkillManager : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         StartCoroutine(Manager());
     }
 
     private IEnumerator Manager()
     {
+       
+        
         if (db)
         {
             for (int i = 0; i < 1; i++)
@@ -48,7 +53,7 @@ public class BossSkillManager : MonoBehaviour
         
         timer -= Time.deltaTime;
 
-        if (timer < 0)
+        if (timer < 0 && !db)
         {
             timer = 3f;
             yield return new WaitForSeconds(2f);
@@ -57,6 +62,7 @@ public class BossSkillManager : MonoBehaviour
     }
     private void Skills(int skill)
     {
+        if (_skillSystem.IsAlive == false) return;
         StartCoroutine(SkillDelay(skill));
     }
 
