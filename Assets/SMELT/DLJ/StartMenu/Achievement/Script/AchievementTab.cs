@@ -18,12 +18,10 @@ public class AchievementTab : MonoBehaviour
         if (AchievementCanvasState) AchievementCanvasState = false;
         else AchievementCanvasState = true;
         AchievementCanvas.SetActive(AchievementCanvas);
-        DLJ_SoundManager.instance.Play("Button");
     }
 
     public void LeaveAchievement()
     {
         AchievementCanvas.SetActive(false);
-        DLJ_SoundManager.instance.Play("Button");
     }
 }
