@@ -21,6 +21,7 @@ public class CraftSparkParticle : MonoBehaviour
 
         if (_particle == null)
             _particle = GetComponent<ParticleSystem>();
+
     }
 
     private void OnDestroy()

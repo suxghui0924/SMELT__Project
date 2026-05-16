@@ -89,7 +89,13 @@ public class PrototypeBootstrap : MonoBehaviour
 
     private static void CreateBackground()
     {
-        MakeSprite("Background", new Vector3(0f, 0f, 1f), new Vector2(17f, 14f),
+        var cam = Camera.main;
+        float h = cam != null ? cam.orthographicSize * 2f : 14f;
+        float w = cam != null ? h * cam.aspect : 17f;
+        var center = cam != null
+            ? new Vector3(cam.transform.position.x, cam.transform.position.y, 1f)
+            : new Vector3(0f, 0f, 1f);
+        MakeSprite("Background", center, new Vector2(w, h),
             new Color(0.10f, 0.10f, 0.16f));
     }
 

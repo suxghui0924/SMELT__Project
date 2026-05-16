@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -8,30 +9,19 @@ using UnityEditor;
 /// <summary>
 /// 주문 HUD — 화면 우측 상단에 항상 표시.
 /// 플레이어가 어느 구역에 있든 손님 주문을 확인하고 납품할 수 있습니다.
-///
-/// [레이아웃] 우측 상단 고정
-///   ┌──────────────────────────────┐
-///   │ 📋 손님 주문                 │
-///   │ ┌──────────────────────────┐ │
-///   │ │ [무기  ] 사과석 검        │ │
-///   │ │ [이미지] 1,500 G  [납품]  │ │
-///   │ │         ██████░░ (타이머) │ │
-///   │ └──────────────────────────┘ │
-///   │ ┌──────────────────────────┐ │
-///   │ │       대기 중...          │ │
-///   │ └──────────────────────────┘ │
-///   └──────────────────────────────┘
-///
-/// [이미지 설정]
-///   Inspector의 _weaponSprites (5개, 검/도끼/창/망치/건틀릿 순)에
-///   무기 스프라이트를 할당하면 주문 슬롯 아이콘에 표시됩니다.
-///   비워두면 색상 박스로 대체됩니다.
-///
 /// 담당자: 이도윤
 /// </summary>
 public class OrderHUD : MonoBehaviour
 {
     public static OrderHUD Instance { get; private set; }
+
+    // ─────────────────────────────────────────
+    // 외부 이벤트
+    // ─────────────────────────────────────────
+    /// <summary>새 주문이 HUD 슬롯에 등록될 때 발생합니다.</summary>
+    public static event Action<Leedoyun_CustomerOrder> OnOrderCreated;
+    /// <summary>주문이 납품 완료되거나 시간 초과로 종료될 때 발생합니다.</summary>
+    public static event Action<Leedoyun_CustomerOrder> OnOrderEnded;
 
     // ─────────────────────────────────────────
     // Inspector 설정
@@ -155,13 +145,23 @@ public class OrderHUD : MonoBehaviour
             {
                 _slots[i].order = order;
                 RefreshSlot(i);
+                OnOrderCreated?.Invoke(order);
                 return;
             }
         }
     }
 
-    private void HandleOrderFulfilled(Leedoyun_CustomerOrder order, int gold) => RemoveOrder(order);
-    private void HandleOrderExpired(Leedoyun_CustomerOrder order) => RemoveOrder(order);
+    private void HandleOrderFulfilled(Leedoyun_CustomerOrder order, int gold)
+    {
+        RemoveOrder(order);
+        OnOrderEnded?.Invoke(order);
+    }
+
+    private void HandleOrderExpired(Leedoyun_CustomerOrder order)
+    {
+        RemoveOrder(order);
+        OnOrderEnded?.Invoke(order);
+    }
 
     private void RemoveOrder(Leedoyun_CustomerOrder order)
     {
@@ -479,7 +479,7 @@ public class OrderHUD : MonoBehaviour
     }
 
     private Button MakeBtn(Transform parent, string label, Vector2 pos, Vector2 size,
-        Color color, System.Action onClick)
+        Color color, Action onClick)
     {
         var go  = MakePanel(parent, "Btn",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), pos, size, color);
