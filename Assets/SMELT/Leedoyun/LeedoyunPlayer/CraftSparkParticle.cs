@@ -22,6 +22,10 @@ public class CraftSparkParticle : MonoBehaviour
         if (_particle == null)
             _particle = GetComponent<ParticleSystem>();
 
+        var main = _particle.main;
+        main.startSize = new ParticleSystem.MinMaxCurve(
+            main.startSize.constantMin * 0.75f,
+            main.startSize.constantMax * 0.75f);
     }
 
     private void OnDestroy()
