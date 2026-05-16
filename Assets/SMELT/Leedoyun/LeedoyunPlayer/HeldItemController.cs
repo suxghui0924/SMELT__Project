@@ -31,8 +31,9 @@ public class HeldItemController : MonoBehaviour
     private Vector3        _originalScale;
     private bool           _playerFound;
 
-    private static readonly int HashMoveX = Animator.StringToHash("MoveX");
-    private static readonly int HashMoveY = Animator.StringToHash("MoveY");
+    private static readonly int HashIsMoving = Animator.StringToHash("IsMoving");
+    private static readonly int HashMoveX    = Animator.StringToHash("MoveX");
+    private static readonly int HashMoveY    = Animator.StringToHash("MoveY");
 
     private void Awake()
     {
@@ -69,7 +70,7 @@ public class HeldItemController : MonoBehaviour
 
     private AnimationClip SelectClip(float mx, float my)
     {
-        bool moving = Mathf.Abs(mx) > 0.1f || Mathf.Abs(my) > 0.1f;
+        bool moving = _playerAnim != null && _playerAnim.GetBool(HashIsMoving);
         if (!moving) return _holdIdleClip != null ? _holdIdleClip : _holdFrontClip;
 
         if (my > 0.1f)             return _holdBackClip  != null ? _holdBackClip  : _holdFrontClip;
