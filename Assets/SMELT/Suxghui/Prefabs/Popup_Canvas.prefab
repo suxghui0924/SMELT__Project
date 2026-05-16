@@ -8829,7 +8829,6 @@ GameObject:
   m_Component:
   - component: {fileID: 9041760237738177173}
   - component: {fileID: 6666091031889579287}
-  - component: {fileID: 6517181588821367773}
   m_Layer: 5
   m_Name: Group_Setting
   m_TagString: Untagged
@@ -8868,28 +8867,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5705839963504980030}
   m_CullTransparentMesh: 1
---- !u!114 &6517181588821367773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5705839963504980030}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f65ea133abcbffa4286f4898b8fb8bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settingPanel: {fileID: 5705839963504980030}
-  dimBackground: {fileID: 0}
-  dimAlpha: 0.6
-  fadeDuration: 0.2
-  volumeSlider: {fileID: 0}
-  volumeLabel: {fileID: 0}
-  saveButton: {fileID: 3614555383873003493}
-  loadButton: {fileID: 239694902537581583}
-  quitButton: {fileID: 4531584625546610727}
-  closeButton: {fileID: 4983184486472124335}
 --- !u!1 &5792997402657171259
 GameObject:
   m_ObjectHideFlags: 0

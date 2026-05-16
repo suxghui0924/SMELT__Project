@@ -2776,7 +2776,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.06, y: 1.7}
+  m_Size: {x: 1.22, y: 1.62}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -2808,7 +2808,7 @@ Transform:
   m_GameObject: {fileID: 1356672104}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 667.3656}
+  m_LocalPosition: {x: -0.62, y: 0, z: 667.3656}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23209,11 +23209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f9e94e0e8d49c43a64dfaf4fd615fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _holdOffset: {x: 0.3, y: 0.1, z: 0}
+  _holdOffset: {x: 0.1, y: 0.13, z: 0}
   _itemScale: 0.25
   _itemSortingOrder: 100
   _holdingScaleMultiplier: 0.75
-  _holdIdleClip: {fileID: 0}
+  _itemRotation: -45
+  _holdIdleClip: {fileID: 7400000, guid: 19f24250380f60f4682c7d1e10988dec, type: 2}
   _holdFrontClip: {fileID: 7400000, guid: 3e680849a0083364b9984702a8f25a1a, type: 2}
   _holdBackClip: {fileID: 7400000, guid: d035baf29d03ce04295227d0855699f0, type: 2}
   _holdRightClip: {fileID: 7400000, guid: cea55818ae5f85348a14a3c52b3fb969, type: 2}
