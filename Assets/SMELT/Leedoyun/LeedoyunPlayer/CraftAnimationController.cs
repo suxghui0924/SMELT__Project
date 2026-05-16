@@ -18,9 +18,12 @@ public class CraftAnimationController : MonoBehaviour
     [Tooltip("Animator Controller Trigger 파라미터 이름.")]
     [SerializeField] private string _animationTrigger = "CraftPlay";
 
+<<<<<<< HEAD
     [Tooltip("파티클 발동 타이밍 (0 = 애니메이션 시작, 1 = 끝). 치는 순간에 맞게 조절.")]
     [SerializeField] [Range(0f, 1f)] private float _sparkNormalizedTime = 0.5f;
 
+=======
+>>>>>>> parent of 33da136 (Revert "Reapply "Merge branch 'base' into Eric/Upgrade"")
     [Header("위치 설정")]
     [Tooltip("플레이어 위치 기준 오프셋 (플레이어 머리 위쪽).")]
     [SerializeField] private Vector3 _offset = new(0f, 1.5f, 0f);
@@ -54,7 +57,11 @@ public class CraftAnimationController : MonoBehaviour
             transform.position = _followTarget.position + _offset;
     }
 
+<<<<<<< HEAD
     /// <summary>제작 성공 시 호출 — 플레이어 투명화 후 애니메이션을 3번 재생, 완료되면 복귀.</summary>
+=======
+    /// <summary>제작 성공 시 호출 — 플레이어 투명화 후 애니메이션 재생, 완료되면 복귀.</summary>
+>>>>>>> parent of 33da136 (Revert "Reapply "Merge branch 'base' into Eric/Upgrade"")
     public void PlayCraftAnimation()
     {
         if (_craftAnimator == null)
@@ -63,15 +70,21 @@ public class CraftAnimationController : MonoBehaviour
             return;
         }
         StopAllCoroutines();
+<<<<<<< HEAD
         PlayerMovement.IsLocked = true;
         if (_followTarget != null)
             _followTarget.position = new Vector3(-5.35f, 4.035428f, _followTarget.position.z);
         SetPlayerVisible(false);
+=======
+        SetPlayerVisible(false);
+        _craftAnimator.SetTrigger(_animationTrigger);
+>>>>>>> parent of 33da136 (Revert "Reapply "Merge branch 'base' into Eric/Upgrade"")
         StartCoroutine(ReturnToIdle());
     }
 
     private IEnumerator ReturnToIdle()
     {
+<<<<<<< HEAD
         for (int i = 0; i < 3; i++)
         {
             _craftAnimator.SetTrigger(_animationTrigger);
@@ -95,6 +108,18 @@ public class CraftAnimationController : MonoBehaviour
         _craftAnimator.Play(HashNewState);
         SetPlayerVisible(true);
         PlayerMovement.IsLocked = false;
+=======
+        // 애니메이션 상태로 전환될 때까지 대기
+        yield return new WaitUntil(() =>
+            _craftAnimator.GetCurrentAnimatorStateInfo(0).IsName("Craft Animation"));
+
+        // 애니메이션이 끝날 때까지 대기
+        yield return new WaitUntil(() =>
+            _craftAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+
+        _craftAnimator.Play(HashNewState);
+        SetPlayerVisible(true);
+>>>>>>> parent of 33da136 (Revert "Reapply "Merge branch 'base' into Eric/Upgrade"")
     }
 
     private void SetPlayerVisible(bool visible)
