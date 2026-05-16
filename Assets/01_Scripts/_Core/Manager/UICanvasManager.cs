@@ -30,7 +30,6 @@ public class UICanvasManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
             Init();
         }
         else
