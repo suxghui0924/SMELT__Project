@@ -18,6 +18,9 @@ public class CraftAnimationController : MonoBehaviour
     [Tooltip("Animator Controller Trigger 파라미터 이름.")]
     [SerializeField] private string _animationTrigger = "CraftPlay";
 
+    [Tooltip("파티클 발동 타이밍 (0 = 애니메이션 시작, 1 = 끝). 치는 순간에 맞게 조절.")]
+    [SerializeField] [Range(0f, 1f)] private float _sparkNormalizedTime = 0.5f;
+
     [Header("위치 설정")]
     [Tooltip("플레이어 위치 기준 오프셋 (플레이어 머리 위쪽).")]
     [SerializeField] private Vector3 _offset = new(0f, 1.5f, 0f);
@@ -51,7 +54,7 @@ public class CraftAnimationController : MonoBehaviour
             transform.position = _followTarget.position + _offset;
     }
 
-    /// <summary>제작 성공 시 호출 — 플레이어 투명화 후 애니메이션 재생, 완료되면 복귀.</summary>
+    /// <summary>제작 성공 시 호출 — 플레이어 투명화 후 애니메이션을 3번 재생, 완료되면 복귀.</summary>
     public void PlayCraftAnimation()
     {
         if (_craftAnimator == null)
@@ -60,23 +63,38 @@ public class CraftAnimationController : MonoBehaviour
             return;
         }
         StopAllCoroutines();
+        PlayerMovement.IsLocked = true;
+        if (_followTarget != null)
+            _followTarget.position = new Vector3(-5.35f, 4.035428f, _followTarget.position.z);
         SetPlayerVisible(false);
-        _craftAnimator.SetTrigger(_animationTrigger);
         StartCoroutine(ReturnToIdle());
     }
 
     private IEnumerator ReturnToIdle()
     {
-        // 애니메이션 상태로 전환될 때까지 대기
-        yield return new WaitUntil(() =>
-            _craftAnimator.GetCurrentAnimatorStateInfo(0).IsName("Craft Animation"));
+        for (int i = 0; i < 3; i++)
+        {
+            _craftAnimator.SetTrigger(_animationTrigger);
 
-        // 애니메이션이 끝날 때까지 대기
-        yield return new WaitUntil(() =>
-            _craftAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+            // 애니메이션 상태로 전환될 때까지 대기
+            yield return new WaitUntil(() =>
+                _craftAnimator.GetCurrentAnimatorStateInfo(0).IsName("Craft Animation"));
+
+            // 치는 타이밍에 파티클 발동
+            yield return new WaitUntil(() =>
+                _craftAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= _sparkNormalizedTime);
+
+            if (CraftSparkParticle.Instance != null)
+                CraftSparkParticle.Instance.Play();
+
+            // 애니메이션이 끝날 때까지 대기
+            yield return new WaitUntil(() =>
+                _craftAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
+        }
 
         _craftAnimator.Play(HashNewState);
         SetPlayerVisible(true);
+        PlayerMovement.IsLocked = false;
     }
 
     private void SetPlayerVisible(bool visible)

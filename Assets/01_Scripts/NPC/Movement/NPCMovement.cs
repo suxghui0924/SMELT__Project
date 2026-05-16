@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using _01_Scripts.Player.Manager;
 using DG.Tweening;
 using Unity.VisualScripting;
@@ -11,7 +11,8 @@ namespace _01_Scripts.NPC
     {
         [SerializeField] private float _timer;
         [SerializeField] private float _offset;
-        public int _index { get; private set; }
+        
+        public int Index { get; private set; }
 
         private Transform _startPos;
         private Transform _turnPos;
@@ -21,26 +22,20 @@ namespace _01_Scripts.NPC
         private bool _isTurn;
         private bool _isTurned;
         private bool _checkLastPos;
-        
-        private Sequence mySequence;
 
-        private NPCSpawner NPCSpawner;
-        
-        private void Awake()
-        {
-             
-        }
+        private Tween _moveTweener;
+        private Sequence _exitSequence;
+        private NPCSpawner _spawner;
 
         private void OnEnable()
         {
-            NPCSpawner = gameObject.GetComponentInParent<NPCSpawner>();
-         
-            _startPos = NPCSpawner.StartPos;
-            _turnPos = NPCSpawner.TurnPos;
-            _lastPos = NPCSpawner.LastPos;  
-            _index = 3;
-            transform.DOKill();
-            Move();
+            _spawner = GetComponentInParent<NPCSpawner>();
+            if (_spawner != null)
+            {
+                _startPos = _spawner.StartPos;
+                _turnPos = _spawner.TurnPos;
+                _lastPos = _spawner.LastPos;  
+            }
         }
         
         #region test
@@ -56,78 +51,41 @@ namespace _01_Scripts.NPC
 
         #endregion
 
-        public void IndexChange(int index)
+        public void IndexChange(int newIndex)
         {
-            _index = --index;
-            Move();
-        }
-        #region NPCMovement
-        private void Move()
-        {
-            if ( _index == 0 || _checkLastPos)
+            Index = newIndex;
+        
+            KillAllTweens();
+
+            if (Index == 0)
             {
-                Turn();
+                ExitQuene();
             }
             else
             {
-                if (!_isMoving)
-                {
-                    this.gameObject.transform.position = _startPos.position;
-                    _isMoving = true;
-                    mySequence = DOTween.Sequence();
-                    mySequence.Append(transform.DOMove(_lastPos.position + ((Vector3.down * _index * _offset)),
-                        _timer));
-                    if(_index == 1)
-                        mySequence.OnComplete(() => _checkLastPos = true);
-                }
-                else if (_isTurn || _isTurned)
-                {
-                    if (_isTurned)
-                        Turned();
-                    if (_isTurn)
-                        Turn();
-                }
-                else
-                {
-                    mySequence = DOTween.Sequence();
-                    mySequence.Append(transform.DOMove(_lastPos.position + ((Vector3.down * _index * _offset)),
-                        _timer));
-                    if(_index == 1)
-                        mySequence.OnComplete(() => _checkLastPos = true);
-                }
+                Vector3 targetPosition = _lastPos.position + (Vector3.down * ((Index - 1) * _offset));
+                _moveTweener = transform.DOMove(targetPosition, _timer).SetEase(Ease.OutQuad);
             }
         }
 
-        private void Turn()
+        private void ExitQuene()
         {
-            _isTurn = true;
-            if (_isTurn && !_isTurned)
-            {
-                mySequence = DOTween.Sequence();
-                mySequence.Append(transform.DOMove(_turnPos.position, _timer / 2));
-                mySequence.OnComplete(Turned);
-            }
-            else
-            {
-                Turned();
-            }
+            _exitSequence = DOTween.Sequence();
+
+            _exitSequence.Append(transform.DOMove(_turnPos.position, _timer * 1.5f).SetEase(Ease.Linear))
+                .Append(transform.DOMoveY(_startPos.position.y, _timer * 1.5f).SetEase(Ease.Linear))
+                .OnComplete(() => Destroy(gameObject));
         }
 
-        private void Turned()
+        private void KillAllTweens()
         {
-            _isTurned = true;
-            if (_isTurned)
-            {
-                mySequence = DOTween.Sequence();
-                mySequence.Append(transform.DOMoveY(_startPos.position.y, _timer / 2));
-            }
+            if(_moveTweener != null && _moveTweener.IsActive()) _moveTweener.Kill();
+            if(_exitSequence !=null && _exitSequence.IsActive()) _exitSequence.Kill();
         }
-        #endregion
+        
         private void OnDisable()
         {
-            if (mySequence == null) return;
-            mySequence.Kill();
-            mySequence = null;
+            KillAllTweens();
         }
     }
 }
