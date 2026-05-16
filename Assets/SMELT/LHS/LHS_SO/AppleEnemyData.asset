@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9e2842bf2c266409c6c98dcc3d8d62, type: 3}
   m_Name: AppleEnemyData
   m_EditorClassIdentifier: 
-  enemySpeed: 4
+  enemySpeed: 3
   enemyMaxHp: 2
   enemyDamage: 1
   enemyName: Apple

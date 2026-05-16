@@ -25,10 +25,9 @@ public class AchievementBannerSizer : MonoBehaviour
         image.color = Color.white;
         if (bannerSizeCoroutine != null)
             StopCoroutine(bannerSizeCoroutine);
-        StartCoroutine(DisableBanner());
+            StartCoroutine(DisableBanner());
 
         bannerSizeCoroutine = StartCoroutine(SizeRoutine(startWidth, targetWidth, height, duration));
-        
     }
     public void ChangeInsideSize(float startSize, float targetSize, float duration)
     {

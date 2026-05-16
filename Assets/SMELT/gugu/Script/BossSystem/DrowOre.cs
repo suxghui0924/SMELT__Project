@@ -4,15 +4,12 @@ using System.Collections;
 
 public class DrowOre : MonoBehaviour
 {
-    public pressjuice _prejuice;
-    public BossJump _bossJump;
-    
     [SerializeField] private Transform spawnPoints;
     [SerializeField] private GameObject ore;
 
-     private float spawnDelay = 5f; // 생성 쿨타임 (변경 가능+ 나중에 스킬 추가 되면 지우고 랜덤으로 바꿀예정)
-     private int spawnCount = 3;// 생성 개수 (변경 가능)
-     private float Delays = 1f;
+    [SerializeField] private float spawnDelay = 5f; // 생성 쿨타임 (변경 가능+ 나중에 스킬 추가 되면 지우고 랜덤으로 바꿀예정)
+    [SerializeField] private int spawnCount = 3;// 생성 개수 (변경 가능)
+    [SerializeField] private float Delays = 3f;
 
     private float timer = 0f;
 
@@ -20,8 +17,6 @@ public class DrowOre : MonoBehaviour
     {
         timer = spawnDelay;
     }
-
-    
 
     
     public IEnumerator SpawnOre()

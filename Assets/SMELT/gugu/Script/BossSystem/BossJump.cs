@@ -5,8 +5,8 @@ public class BossJump : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
 
-    private float leftX = -6f;
-    private float rightX = 6f;
+    public float leftX = -8f;
+    public float rightX = 8f;
 
     public IEnumerator JumpTo()
     {
@@ -29,8 +29,8 @@ public class BossJump : MonoBehaviour
 
         Vector3 targetPos = new Vector3(targetX, startPos.y, startPos.z);
 
-        float duration = 1f;
-        float height = 3f;
+        float duration = 2f;
+        float height = 5f;
 
         float time = 0f;
 
