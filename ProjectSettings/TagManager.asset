@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Boss
   - Inventory
+  - juice
+  - ore
   layers:
   - Default
   - TransparentFX
@@ -54,6 +56,9 @@ TagManager:
     locked: 0
   - name: Achievement
     uniqueID: 4198909209
+    locked: 0
+  - name: Enemy
+    uniqueID: 2839955341
     locked: 0
   m_RenderingLayers:
   - Default

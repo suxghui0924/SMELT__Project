@@ -8,7 +8,6 @@ using Random = UnityEngine.Random;
 public class BossSkillManager : MonoBehaviour
 {
     public static BossSkillManager Instance;
-
     public DrowOre drawOre;
     public pressjuice _prejuice;
     public BossJump _bossJump;
