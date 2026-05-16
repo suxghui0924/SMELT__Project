@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b28293b9f43e97e4586b9bb648a969ad
+guid: 3493b53a1fb964840bfe2529e7d36bfb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2960582073617116908
-    second: frame_6_delay-0.1s_0
+      213: -5257179123007661247
+    second: appleGetting_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: frame_6_delay-0.1s_0
+      name: appleGetting_0
       rect:
         serializedVersion: 2
-        x: 139
-        y: 119
-        width: 462
-        height: 382
+        x: 56
+        y: 56
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 41199a53a46e9e6d0800000000000000
-      internalID: -2960582073617116908
+      spriteID: 14b578cf07fba07b0800000000000000
+      internalID: -5257179123007661247
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      frame_6_delay-0.1s_0: -2960582073617116908
+      appleGetting_0: -5257179123007661247
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
