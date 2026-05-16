@@ -647,6 +647,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 62d0bb600de081d468beb5768eb68825, type: 2}
   upgradeButton: {fileID: 4854203176723364313}
   checkMark: {fileID: 5655495141730830137}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &144935839797360262
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,7 +1085,7 @@ MonoBehaviour:
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 1, b: 1, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
+  m_spriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
   m_TextStyleHashCode: -1183493901
@@ -2470,9 +2475,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6a5cde34ec2dc4b8483136a709e714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upso: {fileID: 11400000, guid: fea4e0937ce73564eb22029b4ba119fb, type: 2}
+  upso: {fileID: 11400000, guid: 437d8be03809bd54ba753e13b87f055c, type: 2}
   upgradeButton: {fileID: 3201185477757197897}
   checkMark: {fileID: 4917055316148012058}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &529046633665761808
 GameObject:
   m_ObjectHideFlags: 0
@@ -3750,6 +3760,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: f043dca3393305f40bd51a19d708e454, type: 2}
   upgradeButton: {fileID: 7296722363802445303}
   checkMark: {fileID: 7038408231549209441}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &784032731703104751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4711,6 +4726,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: c15b5a7ba8e582142ababbddf89c17a2, type: 2}
   upgradeButton: {fileID: 6989719928041118621}
   checkMark: {fileID: 4720029815182098757}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &1095967328474814119
 GameObject:
   m_ObjectHideFlags: 0
@@ -6174,6 +6194,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 3c6af49dcb807a3489a4d0940443ddaa, type: 2}
   upgradeButton: {fileID: 2018276237855785500}
   checkMark: {fileID: 3437123853672151911}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &1372358923480353178
 GameObject:
   m_ObjectHideFlags: 0
@@ -7068,6 +7093,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: a8bfaf0674f2c53449e30d67002c9c14, type: 2}
   upgradeButton: {fileID: 6402661302739092257}
   checkMark: {fileID: 6156095883069650769}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &1473129687343043896
 GameObject:
   m_ObjectHideFlags: 0
@@ -7994,6 +8024,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 860ca225acb59ee4a94eed8756dc7df1, type: 2}
   upgradeButton: {fileID: 5518117689234631826}
   checkMark: {fileID: 2392498531365073332}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &1812695409245632010
 GameObject:
   m_ObjectHideFlags: 0
@@ -8294,6 +8329,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: fc0a8e01787bc5840b6ef1352a958ba2, type: 2}
   upgradeButton: {fileID: 5613916309532280469}
   checkMark: {fileID: 7550911978500742354}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &1915490878728483081
 GameObject:
   m_ObjectHideFlags: 0
@@ -9139,6 +9179,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 35384a9686af79b40b42b27f5042114b, type: 2}
   upgradeButton: {fileID: 1989635153191769354}
   checkMark: {fileID: 5483363826391488149}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &2044817392344699197
 GameObject:
   m_ObjectHideFlags: 0
@@ -10077,6 +10122,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: c4f110c663cf3e445a2df00c421aaaec, type: 2}
   upgradeButton: {fileID: 7909392468325492893}
   checkMark: {fileID: 1877075727500722609}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &2426745456406956391
 GameObject:
   m_ObjectHideFlags: 0
@@ -10985,7 +11035,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 14.516724, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -12673,6 +12723,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 6a710943ffd27714eb989f0d0747b4e6, type: 2}
   upgradeButton: {fileID: 5697422524579601174}
   checkMark: {fileID: 1642180956152460229}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &2977981374387867970
 GameObject:
   m_ObjectHideFlags: 0
@@ -14156,6 +14211,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: fb8b77a979ad088408cb730a89cae982, type: 2}
   upgradeButton: {fileID: 1726148985757900511}
   checkMark: {fileID: 7184840301832712831}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &3231619775750100164
 GameObject:
   m_ObjectHideFlags: 0
@@ -14518,6 +14578,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 818510846ce83e24abfd8193a5607303, type: 2}
   upgradeButton: {fileID: 3881564684342445112}
   checkMark: {fileID: 5399522595852855120}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &3270631575390959462
 GameObject:
   m_ObjectHideFlags: 0
@@ -15233,6 +15298,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 542d689b7f6357e4891f41346ed89a6b, type: 2}
   upgradeButton: {fileID: 3840149600181897155}
   checkMark: {fileID: 8733408525361283442}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &3378978399593699207
 GameObject:
   m_ObjectHideFlags: 0
@@ -15383,6 +15453,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 5c7586dbac0507a42b71c73a48525ab5, type: 2}
   upgradeButton: {fileID: 6849114753281929408}
   checkMark: {fileID: 5346000885691298125}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &3416939704893049199
 GameObject:
   m_ObjectHideFlags: 0
@@ -16653,6 +16728,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 68cae6577cf7d2542bda8c778b67d393, type: 2}
   upgradeButton: {fileID: 4381686030858747007}
   checkMark: {fileID: 4050688844392837367}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &3618431714020102698
 GameObject:
   m_ObjectHideFlags: 0
@@ -17154,6 +17234,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: f513110e6d7e68e448ae00515eebabf3, type: 2}
   upgradeButton: {fileID: 7241571978648361284}
   checkMark: {fileID: 1559831331362804125}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &3653960453757881564
 GameObject:
   m_ObjectHideFlags: 0
@@ -17304,6 +17389,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 28fa43e38c3c8bb4e89abc2aa9bc4fd6, type: 2}
   upgradeButton: {fileID: 3428280311050468152}
   checkMark: {fileID: 1135600116163290546}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &3678272877979081699
 GameObject:
   m_ObjectHideFlags: 0
@@ -18993,6 +19083,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: a2897d05114568a4bb830aba52791392, type: 2}
   upgradeButton: {fileID: 4330147851547232566}
   checkMark: {fileID: 3231619775750100164}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &4112622230940566713
 GameObject:
   m_ObjectHideFlags: 0
@@ -19551,6 +19646,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 73145ceb8fd49f241a38eda6d93c1cad, type: 2}
   upgradeButton: {fileID: 5687177477599438068}
   checkMark: {fileID: 1812695409245632010}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &4290355723366162139
 GameObject:
   m_ObjectHideFlags: 0
@@ -20029,6 +20129,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: ef6f457b73f70a34b9e466ef48cb0d78, type: 2}
   upgradeButton: {fileID: 5889675385762771484}
   checkMark: {fileID: 2238128006791347455}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &4417063216581676537
 GameObject:
   m_ObjectHideFlags: 0
@@ -20179,6 +20284,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 2c6162effa117c84c89593afb42649f6, type: 2}
   upgradeButton: {fileID: 8268824160688118922}
   checkMark: {fileID: 3911604809385122390}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &4421701947674550474
 GameObject:
   m_ObjectHideFlags: 0
@@ -21798,6 +21908,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 82df22e8659aa944b9b7ec7997d97453, type: 2}
   upgradeButton: {fileID: 263016921713884003}
   checkMark: {fileID: 6854320178933870656}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &4833828224844245465
 GameObject:
   m_ObjectHideFlags: 0
@@ -22294,6 +22409,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 122149eed6a507b46a6dcafeeb4da61f, type: 2}
   upgradeButton: {fileID: 3642838448690687568}
   checkMark: {fileID: 7305741826785633001}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &4917055316148012058
 GameObject:
   m_ObjectHideFlags: 0
@@ -22519,6 +22639,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 03db3b1ef1b057f4595ce67d1c3282ba, type: 2}
   upgradeButton: {fileID: 7383242028977570384}
   checkMark: {fileID: 5387325394211944237}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &4971048744230997067
 GameObject:
   m_ObjectHideFlags: 0
@@ -23129,6 +23254,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: fea4e0937ce73564eb22029b4ba119fb, type: 2}
   upgradeButton: {fileID: 8847411014424287416}
   checkMark: {fileID: 3752158430757302420}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &5230959138447726588
 GameObject:
   m_ObjectHideFlags: 0
@@ -24812,6 +24942,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: fe393ad6f5b9a5f42993060cc0249e34, type: 2}
   upgradeButton: {fileID: 1825644243315067614}
   checkMark: {fileID: 2044817392344699197}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &5581433347350544971
 GameObject:
   m_ObjectHideFlags: 0
@@ -26453,6 +26588,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 8232b3136ae41324ab88f9e93be16e79, type: 2}
   upgradeButton: {fileID: 1549010765494653681}
   checkMark: {fileID: 7279199732202334429}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &6285460323305096480
 GameObject:
   m_ObjectHideFlags: 0
@@ -26740,6 +26880,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 9c09bcf6563b48441a37362d800e0e71, type: 2}
   upgradeButton: {fileID: 928253377325627009}
   checkMark: {fileID: 5338340202909521692}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &6311550867701915575
 GameObject:
   m_ObjectHideFlags: 0
@@ -27164,6 +27309,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 5bf1449e68062254d9e1479cc1a928cf, type: 2}
   upgradeButton: {fileID: 7771702058132728384}
   checkMark: {fileID: 4600540372802630857}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &6427262437121688813
 GameObject:
   m_ObjectHideFlags: 0
@@ -28059,6 +28209,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: d0cab2796ebc1c74e8f4159cd4344c1b, type: 2}
   upgradeButton: {fileID: 4017387168593638792}
   checkMark: {fileID: 5598388802969650431}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &6793630972105910128
 GameObject:
   m_ObjectHideFlags: 0
@@ -28979,6 +29134,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: b51f709d3db3a8e45bacbed8e0f25338, type: 2}
   upgradeButton: {fileID: 3137397638491780155}
   checkMark: {fileID: 1994989402177211752}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &6891654914040570363
 GameObject:
   m_ObjectHideFlags: 0
@@ -29873,6 +30033,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: e1de994f3f6c3e840a4e193f1d3274d4, type: 2}
   upgradeButton: {fileID: 7906598174678893866}
   checkMark: {fileID: 6849811114304446900}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &7038408231549209441
 GameObject:
   m_ObjectHideFlags: 0
@@ -30439,9 +30604,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6a5cde34ec2dc4b8483136a709e714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upso: {fileID: 0}
+  upso: {fileID: 11400000, guid: 533a82489ae49b2498fd6a30030aaebb, type: 2}
   upgradeButton: {fileID: 3110355249795560988}
   checkMark: {fileID: 5247595591333367411}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &7173628599949238272
 GameObject:
   m_ObjectHideFlags: 0
@@ -31660,6 +31830,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: f8b3ae7773c5e064aaf63cd7983c69f7, type: 2}
   upgradeButton: {fileID: 7684911098476533115}
   checkMark: {fileID: 872108239613364327}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &7349676188488778059
 GameObject:
   m_ObjectHideFlags: 0
@@ -33074,6 +33249,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: ca5f54a2d0de8d540ac01d96a4b00c21, type: 2}
   upgradeButton: {fileID: 3033920130483465160}
   checkMark: {fileID: 6068613107620707283}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &7865143819344597413
 GameObject:
   m_ObjectHideFlags: 0
@@ -33281,6 +33461,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: a6f233a61b1d5f44e84036a89a444ca1, type: 2}
   upgradeButton: {fileID: 5459683248808520829}
   checkMark: {fileID: 7349676188488778059}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &7929405455095834177
 GameObject:
   m_ObjectHideFlags: 0
@@ -33507,6 +33692,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 4a7b83f53d93f9d4aa860d7e4e56de91, type: 2}
   upgradeButton: {fileID: 6896274635699030487}
   checkMark: {fileID: 529046633665761808}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &7941983010616687753
 GameObject:
   m_ObjectHideFlags: 0
@@ -34119,7 +34309,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 14.516724, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -35301,6 +35491,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 802e45dbd53ef7e428685a21d11b4b35, type: 2}
   upgradeButton: {fileID: 390817582682405560}
   checkMark: {fileID: 372169046977218785}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &8412327232867047159
 GameObject:
   m_ObjectHideFlags: 0
@@ -35451,6 +35646,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 0ca1a36d5b253d9469497cfac98e12c1, type: 2}
   upgradeButton: {fileID: 4190621678112917753}
   checkMark: {fileID: 3531339522181136204}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &8459942100579255389
 GameObject:
   m_ObjectHideFlags: 0
@@ -37413,6 +37613,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: a86511b9335473c4993b57041c5f5ed1, type: 2}
   upgradeButton: {fileID: 221444029455622707}
   checkMark: {fileID: 7524161449169355581}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &9029643863724704077
 GameObject:
   m_ObjectHideFlags: 0
@@ -37563,6 +37768,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: e3a852f47db1d274ab89af55a8288c52, type: 2}
   upgradeButton: {fileID: 2371944998434098405}
   checkMark: {fileID: 2004840320638149341}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &9051469219505671115
 GameObject:
   m_ObjectHideFlags: 0
@@ -37713,6 +37923,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: 53ba27dec4c7a9f42816f9b7bf982f3b, type: 2}
   upgradeButton: {fileID: 8366192919174265778}
   checkMark: {fileID: 2666011593279743213}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &9084718353189846504
 GameObject:
   m_ObjectHideFlags: 0
@@ -37985,6 +38200,11 @@ MonoBehaviour:
   upso: {fileID: 11400000, guid: ec8687a60561ed3408cb57ad72114fe6, type: 2}
   upgradeButton: {fileID: 4512608693800316631}
   checkMark: {fileID: 7261992133605123335}
+  myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
+  mySpriteAsset: {fileID: 11400000, guid: 076740dae8fddad4ab767f476951a10b, type: 2}
+  imageSize: 150
+  verticalOffset: 0
+  horizontalSpace: 0
 --- !u!1 &9160031961103760719
 GameObject:
   m_ObjectHideFlags: 0

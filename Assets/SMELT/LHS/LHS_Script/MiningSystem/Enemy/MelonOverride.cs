@@ -10,8 +10,9 @@ public class MelonOverride : EnemyBase
         Vector3 knockbackDir = (transform.position - _playerTransform.position);
         knockbackDir.y = 0;
         knockbackDir.Normalize();
-        float knockbackForce = knockbackPower * 4f; 
+        float knockbackForce = knockbackPower * 4f;
 
+        _melonRot = 0;
         while (timer <= knockbackTimer)
         {
             float progress = timer / knockbackTimer;
