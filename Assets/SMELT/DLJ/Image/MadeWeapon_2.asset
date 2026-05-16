@@ -11,7 +11,7 @@ Sprite:
     serializedVersion: 2
     x: 567
     y: 39
-    width: 130
+    width: 122
     height: 162
   m_Offset: {x: 0, y: 0}
   m_Border: {x: 0, y: 0, z: 0, w: 0}
@@ -103,18 +103,18 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 152
-      _typelessdata: e17a143f0000403f000000005c8f023f295c4fbf00000000e17a143fb81e45bf000000003d0ad73e295c4f3f000000003d0a17bf295c4f3f00000000666626bf3333333f00000000666626bf295c4fbf000000000000000000000000000000000000663f0000433fabaa633f00001c3e0000663f00002c3eabaa603f0000493f00003f3f0000493f00003d3f00003e3f00003d3f00001c3e
+      _typelessdata: f6281c3f5c8f423f00000000cdcc0c3f295c4fbf00000000f6281c3fb81e45bf000000001f85eb3e295c4f3f00000000cdcc0cbf295c4f3f00000000f6281cbf3333333f00000000f6281cbf295c4fbf00000000000000000000000000000000abaa653f0000443fabaa633f00001c3eabaa653f00002c3eabaa603f0000493f00003f3f0000493f00003d3f00003e3f00003d3f00001c3e
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
       x: 567
       y: 39
-      width: 122.92388
+      width: 122
       height: 162
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
     settingsRaw: 64
-    uvTransform: {x: 100, y: 632, z: 100, w: 120}
+    uvTransform: {x: 100, y: 628, z: 100, w: 120}
     downscaleMultiplier: 1
   m_AtlasRD:
     serializedVersion: 3
@@ -194,34 +194,34 @@ Sprite:
         format: 0
         dimension: 0
       m_DataSize: 152
-      _typelessdata: e17a143f0000403f000000005c8f023f295c4fbf00000000e17a143fb81e45bf000000003d0ad73e295c4f3f000000003d0a17bf295c4f3f00000000666626bf3333333f00000000666626bf295c4fbf000000000000000000000000000000000000663f0000433fabaa633f00001c3e0000663f00002c3eabaa603f0000493f00003f3f0000493f00003d3f00003e3f00003d3f00001c3e
+      _typelessdata: f6281c3f5c8f423f00000000cdcc0c3f295c4fbf00000000f6281c3fb81e45bf000000001f85eb3e295c4f3f00000000cdcc0cbf295c4f3f00000000f6281cbf3333333f00000000f6281cbf295c4fbf00000000000000000000000000000000abaa653f0000443fabaa633f00001c3eabaa653f00002c3eabaa603f0000493f00003f3f0000493f00003d3f00003e3f00003d3f00001c3e
     m_Bindpose: []
     textureRect:
       serializedVersion: 2
       x: 567
       y: 39
-      width: 122.92388
+      width: 122
       height: 162
     textureRectOffset: {x: 0, y: 0}
     atlasRectOffset: {x: -1, y: -1}
     settingsRaw: 64
-    uvTransform: {x: 100, y: 632, z: 100, w: 120}
+    uvTransform: {x: 100, y: 628, z: 100, w: 120}
     downscaleMultiplier: 1
   m_PhysicsShape:
-  - - {x: 0.5, y: 0.56}
-    - {x: 0.44, y: 0.66999996}
-    - {x: 0.26999998, y: 0.81}
-    - {x: -0.35999998, y: 0.81}
-    - {x: -0.42, y: 0.77}
-    - {x: -0.5, y: 0.65}
-    - {x: -0.65, y: 0.32999998}
-    - {x: -0.65, y: 0.03}
-    - {x: -0.56, y: -0.02}
-    - {x: -0.35999998, y: -0.13}
-    - {x: -0.34, y: -0.65999997}
-    - {x: 0.41, y: -0.65999997}
-    - {x: 0.42, y: -0.64}
-    - {x: 0.5, y: -0.39999998}
+  - - {x: 0.53999996, y: 0.56}
+    - {x: 0.48, y: 0.66999996}
+    - {x: 0.31, y: 0.81}
+    - {x: -0.32, y: 0.81}
+    - {x: -0.38, y: 0.77}
+    - {x: -0.45999998, y: 0.65}
+    - {x: -0.61, y: 0.32999998}
+    - {x: -0.61, y: 0.03}
+    - {x: -0.52, y: -0.02}
+    - {x: -0.32, y: -0.13}
+    - {x: -0.29999998, y: -0.65999997}
+    - {x: 0.45, y: -0.65999997}
+    - {x: 0.45999998, y: -0.64}
+    - {x: 0.53999996, y: -0.39999998}
   m_Bones: []
   m_ScriptableObjects: []
   m_SpriteID: cf0edd6aa64ad1a00800000000000000

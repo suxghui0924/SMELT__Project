@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 1aa2a8d833392ae45ad06ba0922d7794
+guid: 933a341d27d9dca4faff388fc8e2493b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1967473339504806510
-    second: "\uC0AC\uACFC\uC11D_0"
+      213: 5420980187859951205
+    second: steam-and-smoke-isolated-3d-render-png (1)_0
+  - first:
+      213: 1886416299713713419
+    second: steam-and-smoke-isolated-3d-render-png (1)_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC0AC\uACFC\uC11D_0"
+      name: steam-and-smoke-isolated-3d-render-png (1)_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 19
-        width: 132
-        height: 141
+        x: 23
+        y: 234
+        width: 18
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e6a4c32049edd4b10800000000000000
-      internalID: 1967473339504806510
+      spriteID: 56e92df52c03b3b40800000000000000
+      internalID: 5420980187859951205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: steam-and-smoke-isolated-3d-render-png (1)_1
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 38
+        width: 297
+        height: 288
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0551f241a5ed2a10800000000000000
+      internalID: 1886416299713713419
       vertices: []
       indices: 
       edges: []
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\uC0AC\uACFC\uC11D_0": 1967473339504806510
+      steam-and-smoke-isolated-3d-render-png (1)_0: 5420980187859951205
+      steam-and-smoke-isolated-3d-render-png (1)_1: 1886416299713713419
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

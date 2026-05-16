@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 public class EnemySpawn : MonoBehaviour
 {
 
-    [SerializeField] private GameObject[] enemyPrefab;
+    [SerializeField] private GameObject enemyPrefab;
     private float _halfWidth;
     private float _leftX;
     private float _rightX;
@@ -17,12 +17,6 @@ public class EnemySpawn : MonoBehaviour
     public float maxEnemySpawnTimer;
     public float minEnemySpawnTimer;
     private float _timer=0f;
-
-    private void Awake()
-    {
-        //if(gameObject.name==InventoryManager.Instance.CurrentDay.ToString()) gameObject.SetActive(true);
-    }
-
     private void Start()
     {
         _halfWidth = Camera.main.orthographicSize * Camera.main.aspect;
@@ -38,26 +32,17 @@ public class EnemySpawn : MonoBehaviour
            
         if (_timer>=_enemySpawnTimer)
         {
-            int enemyIndex = Random.Range(0, enemyPrefab.Length);
-            Spawn(enemyIndex);
-            
+            _enemySpawnPoint = Random.Range(0, 2);
+            if (_enemySpawnPoint == 0)
+            {
+                GameObject enemy= Instantiate(enemyPrefab,new Vector3(_leftX,_offset,0),Quaternion.Euler(0,180,0));
+            }
+            else if (_enemySpawnPoint == 1)
+            {
+                GameObject enemy= Instantiate(enemyPrefab,new Vector3(_rightX,_offset,0),Quaternion.identity);
+            }
+            _enemySpawnTimer = Random.Range(minEnemySpawnTimer, maxEnemySpawnTimer);
+            _timer = 0;
         }
     }
-
-    private void Spawn(int enemyIndex)
-    {
-        _enemySpawnPoint = Random.Range(0, 2);
-        if (_enemySpawnPoint == 0)
-        {
-            GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_leftX,_offset,0),Quaternion.Euler(0,180,0));
-        }   
-        else if (_enemySpawnPoint == 1)
-        {
-            GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_rightX,_offset,0),Quaternion.identity);
-        }
-        _enemySpawnTimer = Random.Range(minEnemySpawnTimer, maxEnemySpawnTimer);
-        _timer = 0;
-    }
-    
-    
 }

@@ -478,10 +478,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Popup_Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8579362486408989404, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8720070103421858520, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_Camera
       value: 
@@ -1204,7 +1200,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &373089307
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11389,8 +11385,6 @@ MonoBehaviour:
   _playerSprite: {fileID: 1209683134, guid: c1c8832eaec1b9845a6fe492d2e55237, type: 3}
   _playerSize: {x: 0.8, y: 1}
   _animatorController: {fileID: 9100000, guid: 98147b3dcc52eb445a2cea752527dd8b, type: 2}
-  _craftingZonePos: {x: -5.39, y: 3.83, z: 0}
-  _craftingZoneSize: {x: 1, y: 1}
 --- !u!4 &575986587
 Transform:
   m_ObjectHideFlags: 0
@@ -17133,10 +17127,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD_Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 3441598264564723924, guid: c7806a9240f62284986e0028cf071bcf, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5504670032189908111, guid: c7806a9240f62284986e0028cf071bcf, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 763
@@ -17199,7 +17189,7 @@ RectTransform:
   m_Father: {fileID: 2117858009}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -17569,7 +17559,7 @@ RectTransform:
   m_Father: {fileID: 1733836300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
