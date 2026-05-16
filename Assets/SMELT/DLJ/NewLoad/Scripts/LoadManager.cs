@@ -22,12 +22,10 @@ public class LoadManager : MonoBehaviour
         switch(SceneLoader.nextScene.ToString())
         {
             case "House":
-                UICanvasManager.instance.ControlObject(ObjectType.Top, true);
-                UICanvasManager.instance.ControlObject(ObjectType.Bottom, true);
+                UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
                 break;
             case "Lobby":
-                UICanvasManager.instance.ControlObject(ObjectType.Top, false);
-                UICanvasManager.instance.ControlObject(ObjectType.Bottom, false);
+                UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, false);
                 break;
         }
     }
