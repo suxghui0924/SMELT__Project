@@ -148,9 +148,9 @@ public class WeaponCraftUI : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
-    public void Show()   { _rootPanel.SetActive(true);  RefreshAll(); }
-    public void Hide()   { _rootPanel.SetActive(false); }
-    public void Toggle() { if (_rootPanel.activeSelf) Hide(); else Show(); }
+    public void Show()   { if (_rootPanel != null) { _rootPanel.SetActive(true);  RefreshAll(); } PlayerMovement.IsLocked = true; }
+    public void Hide()   { if (_rootPanel != null) _rootPanel.SetActive(false); PlayerMovement.IsLocked = false; }
+    public void Toggle() { if (_rootPanel != null && _rootPanel.activeSelf) Hide(); else Show(); }
 
     // ─────────────────────────────────────────
     // UI 빌드
@@ -378,8 +378,8 @@ public class WeaponCraftUI : MonoBehaviour
         {
             RefreshAll();
             OrderHUD.Instance?.RefreshAll();
-            CraftAnimationController.Instance?.PlayCraftAnimation();
             Hide();
+            CraftAnimationController.Instance?.PlayCraftAnimation();
         }
     }
 
