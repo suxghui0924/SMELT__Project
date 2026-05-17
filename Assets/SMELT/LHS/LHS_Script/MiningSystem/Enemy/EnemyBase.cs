@@ -6,23 +6,24 @@ using Random = UnityEngine.Random;
 
 public class EnemyBase : MonoBehaviour
 {
+    public int CurrentHp{get; private set;}
+    
     [SerializeField] private EnemyDataSO enemyDataSo;
-
     [SerializeField] protected float knockbackTimer;
     [SerializeField] protected float knockbackPower;
+    
     protected Transform _playerTransform;
-    public int CurrentHp{get; private set;}
+    
     protected float _enemySpeed;
     protected int _enemyDamage;
     protected string _enemyName;
     protected Vector3 _enemyDirection;
     protected Collider2D _enemyCollider2D;
-    protected bool _canMove = true;
-    Player_HpScript _playerHpScript;
-
-
-    private float _melonRot=0;
     
+    protected bool _canMove = true;
+    private Player_HpScript _playerHpScript;
+    
+    protected float _melonRot=0;
     private void Start()
     {
        _playerHpScript= GameObject.Find("PlayerHP").GetComponent<Player_HpScript>();
@@ -61,7 +62,14 @@ public class EnemyBase : MonoBehaviour
         if(CurrentHp<=0)
         {
             int randomItemCount = Random.Range(1, 3);
-            ItemSpawnManager.instance.AppleItemSpawn(transform,randomItemCount);
+            switch (_enemyName)
+            {
+                case "Apple":   ItemSpawnManager.instance.SpawnItem(0,transform,randomItemCount); break;
+                case "Melon":   ItemSpawnManager.instance.SpawnItem(1,transform,randomItemCount); break;
+                case "Lemon":   ItemSpawnManager.instance.SpawnItem(2,transform,randomItemCount); break;
+                case "Mandarin":   ItemSpawnManager.instance.SpawnItem(3,transform,randomItemCount); break;
+                case "Grape":   ItemSpawnManager.instance.SpawnItem(4,transform,randomItemCount); break;
+            }
             StartCoroutine(ParticleRoutine());
         }
         else
