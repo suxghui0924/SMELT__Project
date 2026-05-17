@@ -9,8 +9,12 @@ public class HeldItemController : MonoBehaviour
 {
     public static HeldItemController Instance { get; private set; }
 
-    [Tooltip("플레이어 기준 무기 스프라이트 오프셋.")]
-    [SerializeField] private Vector3 _holdOffset = new(0.3f, 0.1f, 0f);
+    [Header("방향별 무기 오프셋 (Inspector에서 조정)")]
+    [SerializeField] private Vector3 _holdOffsetIdle  = new(0.3f, 0.1f, 0f);
+    [SerializeField] private Vector3 _holdOffsetFront = new(0.3f, 0.1f, 0f);
+    [SerializeField] private Vector3 _holdOffsetBack  = new(0.3f, 0.1f, 0f);
+    [SerializeField] private Vector3 _holdOffsetRight = new(0.3f, 0.1f, 0f);
+
     [Tooltip("무기 스프라이트 로컬 스케일.")]
     [SerializeField] private float _itemScale = 0.25f;
     [Tooltip("무기 스프라이트 소팅 오더.")]
@@ -57,7 +61,11 @@ public class HeldItemController : MonoBehaviour
         if (_itemRenderer == null || !_itemRenderer.enabled) return;
         if (_playerTransform == null) return;
 
-        AnimationClip clip = SelectClip(out float mx);
+        GetMoveState(out bool moving, out float mx, out float my);
+
+        _itemRenderer.transform.localPosition = GetCurrentOffset(moving, mx, my);
+
+        AnimationClip clip = SelectClip(moving, mx, my);
         if (clip == null) return;
 
         clip.SampleAnimation(_playerTransform.gameObject, Time.time % clip.length);
@@ -66,11 +74,8 @@ public class HeldItemController : MonoBehaviour
             _playerRenderer.flipX = mx < -0.1f;
     }
 
-    private AnimationClip SelectClip(out float outMx)
+    private void GetMoveState(out bool moving, out float mx, out float my)
     {
-        bool  moving;
-        float mx, my;
-
         if (_playerMovement != null)
         {
             moving = !PlayerMovement.IsLocked && _playerMovement.moveDir.sqrMagnitude > 0.01f;
@@ -83,9 +88,19 @@ public class HeldItemController : MonoBehaviour
             mx     = _playerAnim != null ? _playerAnim.GetFloat(HashMoveX) : 0f;
             my     = _playerAnim != null ? _playerAnim.GetFloat(HashMoveY) : 0f;
         }
+    }
 
-        outMx = mx;
+    private Vector3 GetCurrentOffset(bool moving, float mx, float my)
+    {
+        if (!moving)               return _holdOffsetIdle;
+        if (my > 0.1f)             return _holdOffsetBack;
+        if (my < -0.1f)            return _holdOffsetFront;
+        if (Mathf.Abs(mx) > 0.1f) return _holdOffsetRight;
+        return _holdOffsetFront;
+    }
 
+    private AnimationClip SelectClip(bool moving, float mx, float my)
+    {
         if (!moving) return _holdIdleClip;
 
         if (my > 0.1f)             return _holdBackClip  != null ? _holdBackClip  : _holdFrontClip;
@@ -116,7 +131,7 @@ public class HeldItemController : MonoBehaviour
 
         var child = new GameObject("HeldItemSprite");
         child.transform.SetParent(playerGO.transform, false);
-        child.transform.localPosition    = _holdOffset;
+        child.transform.localPosition    = _holdOffsetIdle;
         child.transform.localScale       = new Vector3(_itemScale, _itemScale, 1f);
         child.transform.localEulerAngles = new Vector3(0f, 0f, _itemRotation);
 
@@ -144,7 +159,6 @@ public class HeldItemController : MonoBehaviour
         if (_playerTransform != null)
             _playerTransform.localScale = _originalScale * _holdingScaleMultiplier;
 
-        // Animator를 끄고 SampleAnimation이 모든 프레임을 완전히 제어
         if (_playerAnim != null)
             _playerAnim.enabled = false;
     }

@@ -23213,7 +23213,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5f9e94e0e8d49c43a64dfaf4fd615fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _holdOffset: {x: 0.1, y: 0.13, z: 0}
+  _holdOffsetIdle: {x: 0, y: -0.2, z: 0}
+  _holdOffsetFront: {x: 0, y: -0.15, z: 0}
+  _holdOffsetBack: {x: 0, y: 0.1, z: 0}
+  _holdOffsetRight: {x: 0, y: 0.1, z: 0}
   _itemScale: 0.25
   _itemSortingOrder: 100
   _holdingScaleMultiplier: 0.75
