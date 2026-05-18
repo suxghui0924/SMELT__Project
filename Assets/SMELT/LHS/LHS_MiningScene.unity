@@ -611,7 +611,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 233491180}
   m_CullTransparentMesh: 1
-<<<<<<< HEAD
 --- !u!1001 &251510886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -624,16 +623,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PostProcess_Manager
       objectReference: {fileID: 0}
-<<<<<<< HEAD
-<<<<<<< HEAD
     - target: {fileID: 254013928692925016, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-=======
->>>>>>> parent of e4d4214 (VolumeFix)
-=======
->>>>>>> parent of a3698fc (Merge branch 'LHS' into base)
     - target: {fileID: 3417067913857967299, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
       propertyPath: weight
       value: 0
@@ -703,8 +696,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6867786449527413193, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
   m_PrefabInstance: {fileID: 251510886}
   m_PrefabAsset: {fileID: 0}
-=======
->>>>>>> parent of 74572de (Merge branch 'feat/suxghui' into base)
 --- !u!1 &260410840
 GameObject:
   m_ObjectHideFlags: 0
