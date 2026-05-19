@@ -21,8 +21,8 @@ public class PrototypeBootstrap : MonoBehaviour
     [Header("캐릭터 이미지")]
     [Tooltip("플레이어 스프라이트. 비워두면 기본 주황 사각형 사용.")]
     [SerializeField] private Sprite _playerSprite;
-    [Tooltip("스프라이트 크기 (단위: 유닛). 기본값 (0.8, 1.0)")]
-    [SerializeField] private Vector2 _playerSize = new Vector2(0.8f, 1.0f);
+    [Tooltip("스프라이트 크기 (단위: 유닛). 기본값 (0.4, 0.5)")]
+    [SerializeField] private Vector2 _playerSize = new Vector2(0.4f, 0.5f);
 
     [Header("캐릭터 애니메이션")]
     [Tooltip("Animator Controller. 비워두면 애니메이션 없이 동작.")]
@@ -56,6 +56,7 @@ public class PrototypeBootstrap : MonoBehaviour
         Ensure<AutoGatherManager>();
         Ensure<Leedoyun_SellManager>();
         Ensure<OrderHUD>();
+        Ensure<HeldItemController>();
     }
 
     private void Start()

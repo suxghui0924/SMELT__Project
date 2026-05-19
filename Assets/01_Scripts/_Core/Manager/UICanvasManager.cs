@@ -55,12 +55,6 @@ public class UICanvasManager : MonoBehaviour
         DG.Tweening.Sequence fadeSequence = DOTween.Sequence();
 //        fadeSequence.Append(DOTween.To(() => 0, color => 1) fadeCanvasGroup.DOFade(1, 1f).SetDelay(.5f).SetEase(Ease.InQuint));
     }
-    private void Start()
-    {
-        gameObject.SetActive(false);
-        gameObject.SetActive(true);
-
-    }
 
     public void SetCanvasActive(CanvasType canvasName, bool isActive)
     {

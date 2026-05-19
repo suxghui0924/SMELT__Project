@@ -152,6 +152,7 @@ Assets/SMELT/gugu/Script/UI&Text/
 Assets/SMELT/Leedoyun/LeedoyunPlayer/
  CraftAnimationController.cs
  CraftSparkParticle.cs
+ HeldItemController.cs
 Assets/SMELT/Leedoyun/LeedoyunSavedata/Item/
  ItemData.cs
  ItemDatabase.cs

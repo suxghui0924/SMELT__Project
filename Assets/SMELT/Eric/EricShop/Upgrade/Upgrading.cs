@@ -1,6 +1,9 @@
+using System;
 using System.Diagnostics;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.TextCore.Text;
 using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
@@ -22,21 +25,36 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private Image _image;
     private Sprite _sprite;
 
-    private void Awake()
+    [SerializeField]private TMP_FontAsset myFontAsset;
+    [SerializeField]private TMP_SpriteAsset mySpriteAsset;
+    
+    [Header("이미지 세팅")]
+    [Range(10f, 300f)] 
+    [SerializeField]private float imageSize = 200f ;      // 이미지 크기 
+
+    [Range(-2f, 2f)] 
+    [SerializeField] private float verticalOffset = 0f; // 위 아래 오프셋
+
+    [Range(-5f, 5f)]
+    [SerializeField]  private float horizontalSpace;  // 좌우 띄어쓰기
+
+    private void Setting()
     {
         _treesUI = transform.Find("TreeUI").gameObject;
         _treesUIScripts =  _treesUI.GetComponent<TreesUI>();
         _image = GetComponent<Image>();
         _thisSprite = transform.Find("CheckMark").GetComponent<Image>();
     }
+    
+    
 
-    private void Start()
+    private void OnEnable()
     {
+        Setting();
         UpdateTreesUI();
         if (upso.needName == "First") 
             _first = true;
         _sprite = _image.sprite;
-        StatText();
     }
     
     private void Update()
@@ -110,18 +128,41 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _treesUI.SetActive(false);
     }
 
-    private void StatText()
+    public void StatText()
     {
+        ResetText();
+        
         _treesUIScripts.icon.sprite = _sprite;
+        
         _treesUIScripts.needMoney.text = upso.needMoney switch
         {
-            >= 1000000000 => $"{(float)upso.needMoney/1000000000:f1} B",
-            >= 1000000 => $"{(float)upso.needMoney/1000000:f1} M",
-            >= 1000 => $"{(float)upso.needMoney/1000:f1} K",
-            >= 0 => $"{(float)upso.needMoney:f0}",
+            >= 1000000000 => $"<space={horizontalSpace}em><size={imageSize}%><voffset={verticalOffset}em><sprite=0><voffset=0></size>{(float)upso.needMoney/1000000000:f1} B",
+            >= 1000000 => $"<space={horizontalSpace}em><size={imageSize}%><voffset={verticalOffset}em><sprite=0><voffset=0></size>{(float)upso.needMoney/1000000:f1} M",
+            >= 1000 => $"<space={horizontalSpace}em><size={imageSize}%><voffset={verticalOffset}em><sprite=0></voffset></size> {(float)upso.needMoney/1000:f1} K",
+            >= 0 => $"<space={horizontalSpace}em><size={imageSize}%><voffset={verticalOffset}em><sprite=0><voffset=0></size>{(float)upso.needMoney:f0}",
             _ => $"Error"
         };
         _treesUIScripts.upName.text = upso.upName;
         _treesUIScripts.detail.text = $"{upso.upTime*100}% plus";
+    }
+
+    private void ResetText()
+    {
+        imageSize = 200f ;
+        verticalOffset = 0f;
+        
+        _treesUIScripts.needMoney.font = myFontAsset;
+        _treesUIScripts.upName.font = myFontAsset;
+        _treesUIScripts.detail.font = myFontAsset;
+        
+        _treesUIScripts.needMoney.spriteAsset = mySpriteAsset;
+        _treesUIScripts.upName.spriteAsset = mySpriteAsset;
+        _treesUIScripts.detail.spriteAsset = mySpriteAsset;
+
+        _treesUIScripts.needMoney.alignment = TextAlignmentOptions.Bottom;
+        
+        _treesUIScripts.needMoney.SetAllDirty();
+        _treesUIScripts.upName.SetAllDirty();
+        _treesUIScripts.detail.SetAllDirty();
     }
 }

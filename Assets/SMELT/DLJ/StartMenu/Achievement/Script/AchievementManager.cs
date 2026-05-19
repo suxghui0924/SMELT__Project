@@ -24,7 +24,6 @@ public class AchievementManager : MonoBehaviour, ISaveable
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
             InitDictionary();
         }
 
@@ -95,10 +94,25 @@ public class AchievementManager : MonoBehaviour, ISaveable
 
     public void AchPopUp(AchievementSO achievementSO)
     {
+        AlarmSound();
         bannerSizer.ChangeSize(0, 1248.5f, 191f, 0.5f);
         bannerSizer.ChangeInsideSize(0, 1, 0.5f);
         achievementImage.sprite = achievementSO.achievementSprite;
         achievementTitleAndDes[0].text = achievementSO.achievementDisplayName;
         achievementTitleAndDes[1].text = achievementSO.achievementDescription;
+    }
+
+    public void AlarmPopUp(string title, string description)
+    {
+        AlarmSound();
+        bannerSizer.ChangeSize(0, 1248.5f, 191f, 0.5f);
+        bannerSizer.ChangeInsideSize(0, 1, 0.5f);
+        achievementTitleAndDes[0].text = title;
+        achievementTitleAndDes[1].text = description;
+    }
+
+    private void AlarmSound()
+    {
+        SoundManager.instance.PlaySFX("Alarm");
     }
 }

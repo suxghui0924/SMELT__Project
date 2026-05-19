@@ -51,14 +51,14 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy
+    uniqueID: 2839955341
+    locked: 0
   - name: UI
     uniqueID: 983429904
     locked: 0
   - name: Achievement
     uniqueID: 4198909209
-    locked: 0
-  - name: Enemy
-    uniqueID: 2839955341
     locked: 0
   m_RenderingLayers:
   - Default

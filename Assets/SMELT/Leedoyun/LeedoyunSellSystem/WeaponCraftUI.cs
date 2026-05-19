@@ -378,8 +378,9 @@ public class WeaponCraftUI : MonoBehaviour
         {
             RefreshAll();
             OrderHUD.Instance?.RefreshAll();
+            Sprite weaponSprite = SafeSprite(_weaponSprites, _selMain * 5 + _selWeapon);
             Hide();
-            CraftAnimationController.Instance?.PlayCraftAnimation();
+            CraftAnimationController.Instance?.PlayCraftAnimation(weaponSprite);
         }
     }
 
@@ -489,6 +490,19 @@ public class WeaponCraftUI : MonoBehaviour
         string typeId = WeaponCraftManager.GetWeaponTypeId(WEAPON_TYPES[weaponIdx]);
         string oreId  = ORE_IDS[mainOreIdx].Replace("fruitstone_", "");
         return $"weapon_{typeId}_{oreId}";
+    }
+
+    private static readonly string[] _weaponTypeIds = { "sword", "axe", "spear", "hammer", "gauntlet" };
+    private static readonly string[] _oreIds        = { "apple", "melon", "orange", "lemon", "grape" };
+
+    public Sprite GetWeaponSprite(string weaponItemId)
+    {
+        string[] p = weaponItemId.Split('_');
+        if (p.Length < 3) return null;
+        int wi = System.Array.IndexOf(_weaponTypeIds, p[1]);
+        int oi = System.Array.IndexOf(_oreIds, p[2]);
+        if (wi < 0 || oi < 0) return null;
+        return SafeSprite(_weaponSprites, oi * 5 + wi);
     }
 
     private static Sprite SafeSprite(Sprite[] arr, int idx)

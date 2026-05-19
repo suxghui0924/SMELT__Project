@@ -17,7 +17,6 @@ public class GameRetry : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            
         }
         else
         {
