@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6559333329826199875}
   - component: {fileID: 8244803698738699481}
   - component: {fileID: 6936023296152999283}
-  - component: {fileID: -4593803077709873590}
+  - component: {fileID: 6582940692190605481}
   m_Layer: 0
-  m_Name: Melon_Material
+  m_Name: Mandarin_Material
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: -1455011955
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9020413293113ff4c8586564064a34f9, type: 2}
+  m_Sprite: {fileID: 21300000, guid: 4609ba6102b36574290faea72c872518, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -207,7 +207,7 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &-4593803077709873590
+--- !u!114 &6582940692190605481
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -216,7 +216,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3830339631575077907}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c689bcc1537d2f94da007b8b4ad6741a, type: 3}
+  m_Script: {fileID: 11500000, guid: b97dadad5eb1eee4d893100e5942c674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8244139977372720405

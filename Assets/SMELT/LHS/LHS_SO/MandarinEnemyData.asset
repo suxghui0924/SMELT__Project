@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a9e2842bf2c266409c6c98dcc3d8d62, type: 3}
-  m_Name: MelonEnemyData
+  m_Name: MandarinEnemyData
   m_EditorClassIdentifier: 
-  enemySpeed: 2
-  enemyMaxHp: 3
+  enemySpeed: 12
+  enemyMaxHp: 2
   enemyDamage: 1
-  enemyName: Melon
+  enemyName: Mandrain

@@ -1,8 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-public class MelonOverride : EnemyBase
+public class MandarinOverride : EnemyBase
 {
+
+
+    private bool isFirstKnockbackDone = false;
     protected override IEnumerator KnockbackRoutine()
     {
         _canMove = false;
@@ -22,7 +25,25 @@ public class MelonOverride : EnemyBase
             timer += Time.deltaTime;
             yield return null;
         }
-        
+
+        if (!isFirstKnockbackDone) isFirstKnockbackDone = true;
         _canMove = true;
+    }
+
+    protected override void Update()
+    {
+        if (_canMove)
+        {
+            if (!isFirstKnockbackDone)
+            {
+                _enemyDirection = (transform.parent.position - _playerTransform.position).normalized;
+                transform.parent.position -= _enemyDirection * (_enemySpeed * Time.deltaTime);
+            }
+            else
+            {
+                _enemyDirection = (transform.parent.position - _playerTransform.position).normalized;
+                transform.parent.position -= _enemyDirection * (_enemySpeed * Time.deltaTime/3);
+            }
+        }
     }
 }
