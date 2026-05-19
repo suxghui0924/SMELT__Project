@@ -24,9 +24,6 @@ public class LoadManager : MonoBehaviour
             case "House":
                 UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
                 break;
-            case "Lobby":
-                UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, false);
-                break;
         }
     }
 }

@@ -11,7 +11,7 @@ public static class SceneLoader
         //{
         //    AchievementManager.Instance.AchievementClear(Achievements.Money);
         //}
-
+        UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, false);
         nextScene = SceneName;
         SceneManager.LoadScene("NewLoading");
     }
