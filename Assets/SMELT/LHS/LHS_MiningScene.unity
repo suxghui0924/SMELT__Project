@@ -689,13 +689,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
---- !u!4 &251510887 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6867786449527413193, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
-  m_PrefabInstance: {fileID: 251510886}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &260410840
 GameObject:
   m_ObjectHideFlags: 0
@@ -3910,11 +3906,11 @@ PrefabInstance:
     - target: {fileID: 3457556894338168227, guid: 3826e9bcacdfb114e8a788cb599ac76c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 0ddb99827dd2f60498b33bc682ca7b7d, type: 2}
+      objectReference: {fileID: 2100000, guid: dfae2263344444f45a0d01ac871c6678, type: 2}
     - target: {fileID: 5084262555597514642, guid: 3826e9bcacdfb114e8a788cb599ac76c, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 3137fdf803ab91840b5a576d38158dc4, type: 2}
+      objectReference: {fileID: 2100000, guid: d3ce697d8fb40ad4aaad5527a60ba9f0, type: 2}
     - target: {fileID: 5651304891957646278, guid: 3826e9bcacdfb114e8a788cb599ac76c, type: 3}
       propertyPath: m_Name
       value: LemonParticle2
@@ -9461,3 +9457,4 @@ SceneRoots:
   - {fileID: 1892626492}
   - {fileID: 223916242}
   - {fileID: 1729871602}
+  - {fileID: 251510886}
