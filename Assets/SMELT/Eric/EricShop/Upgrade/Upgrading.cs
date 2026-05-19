@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
@@ -37,21 +38,23 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     [Range(-5f, 5f)]
     [SerializeField]  private float horizontalSpace;  // 좌우 띄어쓰기
 
-    private void Awake()
+    private void Setting()
     {
         _treesUI = transform.Find("TreeUI").gameObject;
         _treesUIScripts =  _treesUI.GetComponent<TreesUI>();
         _image = GetComponent<Image>();
         _thisSprite = transform.Find("CheckMark").GetComponent<Image>();
     }
+    
+    
 
     private void OnEnable()
     {
+        Setting();
         UpdateTreesUI();
         if (upso.needName == "First") 
             _first = true;
         _sprite = _image.sprite;
-        StatText();
     }
     
     private void Update()
@@ -125,7 +128,7 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _treesUI.SetActive(false);
     }
 
-    private void StatText()
+    public void StatText()
     {
         ResetText();
         
