@@ -37,14 +37,14 @@ public class ItemSpawnManager : MonoBehaviour
         {
             GameObject item;
             if (itemPools[itemIndex].Count > 0)
-            {
                 item = itemPools[itemIndex].Pop();
+            else 
+                item = Instantiate(enemyItemPrefab[itemIndex]);
+            
                 item.transform.position = enemyDeadPos.position;
                 _fruitMaterialLogic = item.GetComponent<FruitMaterialLogic>();
-                if (_fruitMaterialLogic != null) _fruitMaterialLogic.enemyMaterialEnable(_screenPoint);
                 item.SetActive(true);
-            }
-            else item = Instantiate(enemyItemPrefab[itemIndex]);
+                if (_fruitMaterialLogic != null) _fruitMaterialLogic.enemyMaterialEnable(_screenPoint);
         }
     }
 
