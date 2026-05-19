@@ -492,6 +492,19 @@ public class WeaponCraftUI : MonoBehaviour
         return $"weapon_{typeId}_{oreId}";
     }
 
+    private static readonly string[] _weaponTypeIds = { "sword", "axe", "spear", "hammer", "gauntlet" };
+    private static readonly string[] _oreIds        = { "apple", "melon", "orange", "lemon", "grape" };
+
+    public Sprite GetWeaponSprite(string weaponItemId)
+    {
+        string[] p = weaponItemId.Split('_');
+        if (p.Length < 3) return null;
+        int wi = System.Array.IndexOf(_weaponTypeIds, p[1]);
+        int oi = System.Array.IndexOf(_oreIds, p[2]);
+        if (wi < 0 || oi < 0) return null;
+        return SafeSprite(_weaponSprites, oi * 5 + wi);
+    }
+
     private static Sprite SafeSprite(Sprite[] arr, int idx)
         => (arr != null && idx >= 0 && idx < arr.Length) ? arr[idx] : null;
 
