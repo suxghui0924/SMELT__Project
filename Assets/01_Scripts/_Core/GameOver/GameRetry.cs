@@ -17,7 +17,7 @@ public class GameRetry : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            
         }
         else
         {
