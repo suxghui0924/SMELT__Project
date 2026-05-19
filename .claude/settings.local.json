@@ -9,7 +9,8 @@
       "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\Leedoyun\" -Recurse -Force)",
       "Bash(grep -E \"\\\\\\\\.cs$\")",
       "Bash(xargs grep -l \"IsTrigger\\\\|prototype\\\\|Zone\")",
-      "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\" -Filter \"PlayerMovement.cs\" -Recurse)"
+      "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\" -Filter \"PlayerMovement.cs\" -Recurse)",
+      "Bash(xargs grep -l \"class.*Plant\\\\|Plant.*Manager\")"
     ]
   }
 }

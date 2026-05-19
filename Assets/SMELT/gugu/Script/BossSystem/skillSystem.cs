@@ -14,7 +14,7 @@ public class skillSystem : MonoBehaviour
     [SerializeField]private GameObject orePrefab ;
     [SerializeField]private GameObject juicePrefab;
     [SerializeField]private CinemachineImpulseSource impulseSource;
-
+    
     private void FixedUpdate()
     {
         if (shakes)
