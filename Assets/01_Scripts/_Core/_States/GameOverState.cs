@@ -6,6 +6,7 @@ public class GameOverState : IGameState
     public void Enter()
     {
         Time.timeScale = 0f;
+        SoundManager.instance.PlayBGM("Gameover");
         UICanvasManager.instance.ControlObject(ObjectType.GameOver, true);
         UICanvasManager.instance.GetQty();
     }
