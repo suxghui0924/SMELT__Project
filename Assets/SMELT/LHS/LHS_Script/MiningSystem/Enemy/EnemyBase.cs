@@ -15,7 +15,7 @@ public class EnemyBase : MonoBehaviour
     protected Transform _playerTransform;
     
     protected float _enemySpeed;
-    protected int _enemyDamage;
+    protected float _enemyDamage;
     protected string _enemyName;
     protected Vector3 _enemyDirection;
     protected Collider2D _enemyCollider2D;
@@ -115,10 +115,7 @@ public class EnemyBase : MonoBehaviour
              yield return new WaitForSeconds(particleSystem.main.startLifetime.constant);
              Destroy(gameObject);
     }
-    private void OnDestroy()
-    {
-        //TimerAndReward.Instance.ReduceFatigue(1);
-    }
+
 }
 
 
