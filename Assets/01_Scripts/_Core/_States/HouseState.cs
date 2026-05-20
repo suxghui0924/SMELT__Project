@@ -5,7 +5,7 @@ public class HouseState : IGameState
 {
     public void Enter()
     {
-        VolumeManager.instance.VolumeChange("global");
+        VolumeManager.instance.VolumeChange(VolumeType.Global, 0.5f);
         SceneLoader.LoadScene("House");
     }
 
