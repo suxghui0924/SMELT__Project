@@ -1,4 +1,5 @@
 using System;
+using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 using UnityEngine.Rendering.VirtualTexturing;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ public class StaminaUI : MonoBehaviour
 
   private void HandleFatigueChanged(float amount)
   {
-    _staminaUI.fillAmount -= (amount+0.0f)/100f;
+    _staminaUI.fillAmount = (amount+0.0f)/100f;
       
   }
 

@@ -81,6 +81,7 @@ public class UICanvasManager : MonoBehaviour
                 case ObjectType.GameOver: if (SystemObject[1] != null) SystemObject[1].SetActive(isActive); break;
             case ObjectType.Loading: if (SystemObject[2] != null) SystemObject[2].SetActive(isActive); break;
             case ObjectType.Radio: if (PopupObject[3] != null) PopupObject[3].SetActive(isActive); break;
+            case ObjectType.GameDie: if (SystemObject[3] != null)  SystemObject[3].SetActive(isActive); break;
         }
     }
     void UpdateUiTextLabel()

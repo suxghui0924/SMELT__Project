@@ -9279,7 +9279,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxFatigue: 100
   currentFatigue: 0
-  _mp: {fileID: 1007844140}
+  OnFatigueChange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &2110467272
 Transform:
   m_ObjectHideFlags: 0
@@ -9472,6 +9474,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4060eaa780aed42907e45998f1c376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _staminaUI: {fileID: 1007844140}
 --- !u!4 &2132692111
 Transform:
   m_ObjectHideFlags: 0
