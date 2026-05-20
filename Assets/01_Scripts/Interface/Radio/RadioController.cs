@@ -24,6 +24,8 @@ namespace _01_Scripts.Interface.Radio
             SoundManager.instance.PlayBGM(songNames[arg0]);
         }
 
+        
+        
         public void OnButtonClose()
         {
             UICanvasManager.instance.ControlObject(ObjectType.Radio,false);

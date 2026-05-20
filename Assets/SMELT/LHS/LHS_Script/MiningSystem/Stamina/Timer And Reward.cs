@@ -1,3 +1,5 @@
+using System;
+using _01_Scripts._Core._States;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -15,8 +17,10 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
     
         [HideInInspector]
         public UnityEvent<float> OnFatigueChange;
-    
-    
+
+        private bool db = true;
+        
+        
         public void OnSave(SaveData data)
         {
             data.stamina=currentFatigue;
@@ -39,6 +43,10 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
             }
         }
 
+        private void OnEnable()
+        {
+            db = true;
+        }
 
         void Start()
         {
@@ -49,11 +57,14 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
 
         void Update()
         {
-            timer+= Time.deltaTime;
-            if (timer >= 1)
+            if(db)
             {
-                ReduceFatigue(2f);
-                timer = 0;
+                timer += Time.deltaTime;
+                if (timer >= 1)
+                {
+                    ReduceFatigue(2f);
+                    timer = 0;
+                }
             }
         }
     
@@ -75,8 +86,9 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
     
         private void GameOver()
         {
+            db = false;
             Debug.Log("피로도 0 → 게임 오버");
-            UICanvasManager.instance.ControlObject(ObjectType.GameDie, true);
+            GameManager.instance.ChangeState(new GameDieState());
         }
     
     }
