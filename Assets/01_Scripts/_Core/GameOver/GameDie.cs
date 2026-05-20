@@ -7,6 +7,7 @@ namespace _01_Scripts.Player.GameOver
     {
         public void OnButton()
         {
+            UICanvasManager.instance.ControlObject(ObjectType.GameDie, false);
             GameManager.instance.ChangeState(new HouseState());
         }
     }
