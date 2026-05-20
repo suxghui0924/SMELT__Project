@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using JetBrains.Annotations;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class TimerAndReward : MonoBehaviour,ISaveable
@@ -11,8 +12,9 @@ public class TimerAndReward : MonoBehaviour,ISaveable
     public int maxFatigue = 100;
     [HideInInspector]
     public float currentFatigue;
-    public Image _mp;
+    //public Image _mp;
     float timer = 0f;
+     public UnityEvent<float> OnFatigueChange;
     
     
     public void OnSave(SaveData data)
@@ -59,10 +61,10 @@ public class TimerAndReward : MonoBehaviour,ISaveable
 
     public void ReduceFatigue(float amount)
     {
-        _mp.fillAmount -= (amount+0.0f)/100f;
         currentFatigue -= amount;
         currentFatigue = Mathf.Clamp(currentFatigue,0,maxFatigue);
         Debug.Log($"피로도 감소: {amount}, 현재 피로도: {currentFatigue}");
+        OnFatigueChange?.Invoke(currentFatigue);
         if (currentFatigue <= 0)
         {
             currentFatigue = 0;
