@@ -17,7 +17,7 @@ public class DungeonSystemManager : MonoBehaviour
 
    public void OnDead()
    {
-     // UICanvasManager.instance.ControlObject(ObjectType.);
+     UICanvasManager.instance.ControlObject(ObjectType.GameDie,true);
    }
    
 }
