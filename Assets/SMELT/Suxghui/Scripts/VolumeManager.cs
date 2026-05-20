@@ -3,7 +3,17 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
+
+public enum VolumeType
+{
+    Start,
+    Global,
+    Heat,
+    Damage,
+    UI
+}
 
 public class VolumeManager : MonoBehaviour
 {
@@ -11,6 +21,9 @@ public class VolumeManager : MonoBehaviour
 
     [SerializeField] private Volume[] m_Volumes;
     private Volume global, heat, damage, ui;
+
+    private Dictionary<VolumeType, int> _enumCache; 
+    
     void Awake()
     {
         if (instance == null)
@@ -18,7 +31,7 @@ public class VolumeManager : MonoBehaviour
             instance = this;
 
             DontDestroyOnLoad(gameObject);
-            Init();
+            InitDictionary();
         }
         else
         {
@@ -26,33 +39,38 @@ public class VolumeManager : MonoBehaviour
         }
     }
 
-    private void Init()
+    private void InitDictionary()
     {
-        global = m_Volumes[0].GetComponent<Volume>();
-        heat = m_Volumes[1].GetComponent<Volume>();
-        damage = m_Volumes[2].GetComponent<Volume>();
-        ui = m_Volumes[3].GetComponent<Volume>();
+        _enumCache = new Dictionary<VolumeType, int>()
+        {
+            {VolumeType.Start, 0},
+            {VolumeType.Global, 1},
+            {VolumeType.Heat, 2},
+            {VolumeType.Damage, 3},
+            {VolumeType.UI, 4}
+        };
     }
 
-    public void SetVolume(string str_name, float weight)
+    public void SetVolume(VolumeType type, float weight)
     {
-        foreach (var vol in m_Volumes)
+        if (_enumCache.TryGetValue(type, out int index))
         {
-            if (vol.name == str_name.FirstCharacterToUpper() + "_Volume")
+            if (m_Volumes[index] != null)
             {
-                vol.weight = weight;
+                m_Volumes[index].weight = weight;
             }
         }
     }
-    public void VolumeChange(string str_name)
+    public void VolumeChange(VolumeType type, float weight)
     {
-        foreach(var vol in m_Volumes)
+        if (_enumCache.TryGetValue(type, out int index))
         {
-            vol.weight = 0f;
-            if(vol.name == str_name.FirstCharacterToUpper() + "_Volume")
+            foreach(var vol in m_Volumes)
             {
-                vol.weight = 1f;
+                vol.weight = 0.0f;
             }
+
+            m_Volumes[index].weight = weight;
         }
     }
 

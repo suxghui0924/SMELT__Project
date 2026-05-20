@@ -9,10 +9,9 @@ public class PlayerHitBox : MonoBehaviour
     public Collider2D _leftColl { get; private set; }
     public Collider2D _rightColl { get; private set; }
 
-
+[HideInInspector]
     public bool _triggerOn = false;
      
-    [SerializeField]private EnemyBase _enem;
     private PlayerAttack _att;
 
     private void Start()

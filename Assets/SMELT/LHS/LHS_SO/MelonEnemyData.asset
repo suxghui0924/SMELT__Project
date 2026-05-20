@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 2
   enemyMaxHp: 3
-  enemyDamage: 1
+  enemyDamage: 8
   enemyName: Melon

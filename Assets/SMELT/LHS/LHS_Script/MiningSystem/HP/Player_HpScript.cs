@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -6,44 +7,35 @@ using UnityEngine.Serialization;
 
 public class Player_HpScript : MonoBehaviour
 {
-    [Header("최대 HP 설정")]
-    public int _playerMaxHp;
-
-    [FormerlySerializedAs("_playerHpChanged")] [HideInInspector]
-    public UnityEvent<int> PlayerHpChanged;
-    [FormerlySerializedAs("_playerDead")][HideInInspector] public UnityEvent PlayerDead;
 
     [Header("무적 작동시간 설정")]
     public float _playerInvincibleDuration;
 
-    public int PlayerCurrentHp { get; private set; }
+    public float PlayerCurrentHp { get; private set; }
 
     public bool IsPlayerDead { get; private set; }
     public bool IsPlayerInvincible {get; private set; }
     
     private SpriteRenderer _playerSpriteRenderer;
-   [SerializeField] private UI_HpChangingScript _hpChangingUIScript;
     private void Start()
     {
         _playerSpriteRenderer = transform.parent.GetComponentInChildren<SpriteRenderer>();
-        PlayerCurrentHp = _playerMaxHp;
+        PlayerCurrentHp = TimerAndReward.Instance.currentFatigue;
         IsPlayerDead = false;
         IsPlayerInvincible = false;
     }
 
     private void Update()
     {
-        if (Keyboard.current.fKey.wasPressedThisFrame)TakeDamage(1);
+        PlayerCurrentHp = TimerAndReward.Instance.currentFatigue;
     }
-    public void TakeDamage(int damageValue)
+
+    public void TakeDamage(float damageValue)
     {
         if (IsPlayerDead == true || IsPlayerInvincible == true) return;
-        PlayerCurrentHp -= damageValue;
-        PlayerCurrentHp = Mathf.Clamp(PlayerCurrentHp, 0, _playerMaxHp);
-        PlayerHpChanged?.Invoke(PlayerCurrentHp);
+        TimerAndReward.Instance.ReduceFatigue(damageValue);
         if (PlayerCurrentHp > 0)
         {
-            _hpChangingUIScript.HealthViewUpdate(PlayerCurrentHp);
             StartCoroutine(InvisiblePlayer());
         }
         
@@ -73,8 +65,6 @@ public class Player_HpScript : MonoBehaviour
 
     public void PlayerGameOver()
     {
-        _hpChangingUIScript.HealthViewUpdate(PlayerCurrentHp);
-        GameManager.instance.ChangeState(new GameOverState());
         IsPlayerDead = true;
     }
 }

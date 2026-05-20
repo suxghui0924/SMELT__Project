@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -20,12 +21,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        SoundManager.instance.PlayBGM("Lobby");
+    }
+
     void Update()
     {
   
         if (Input.GetKey(KeyCode.RightShift))
         {
-            ChangeState(new MiningState());
+            ChangeState(new GameOverState());
         }
     }
 

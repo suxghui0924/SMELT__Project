@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemySpeed: 12
   enemyMaxHp: 2
-  enemyDamage: 1
+  enemyDamage: 10
   enemyName: Mandrain
