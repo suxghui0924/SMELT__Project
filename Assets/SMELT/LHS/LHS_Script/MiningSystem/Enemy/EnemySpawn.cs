@@ -7,6 +7,10 @@ public class EnemySpawn : MonoBehaviour
 {
 
     [SerializeField] private GameObject[] enemyPrefab;
+    [Header("적 각각의 생성 확률")]
+    [SerializeField] private float[] spawnChance;
+
+    private float _spawnTotalChance;
     private float _halfWidth;
     private float _leftX;
     private float _rightX;
@@ -30,6 +34,10 @@ public class EnemySpawn : MonoBehaviour
         _rightX = Camera.main.transform.position.x + _halfWidth;
 
         _enemySpawnTimer = Random.Range(minEnemySpawnTimer, maxEnemySpawnTimer);
+        for (int i = 0; i < spawnChance.Length; i++)
+        {
+            _spawnTotalChance += spawnChance[i];
+        }
     }
 
     private void Update()
@@ -38,15 +46,28 @@ public class EnemySpawn : MonoBehaviour
            
         if (_timer>=_enemySpawnTimer)
         {
-            int enemyIndex = Random.Range(0, enemyPrefab.Length);
-            Spawn(enemyIndex);
+            
+            Spawn(_spawnTotalChance);
             
         }
     }
 
-    private void Spawn(int enemyIndex)
+    private void Spawn(float total)
     {
+        float currentChance =  Random.Range(0.001f, total);
+        float _totalChance = 0f;
+        int enemyIndex = 0;
+        for (int i = 0; i < spawnChance.Length; i++)
+        {
+            _totalChance += spawnChance[i];
+            if (currentChance < _totalChance)
+            {
+                enemyIndex = i;
+                break;
+            }
+        }
         _enemySpawnPoint = Random.Range(0, 2);
+        
         if (_enemySpawnPoint == 0)
         {
             GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_leftX,_offset,0),Quaternion.Euler(0,180,0));

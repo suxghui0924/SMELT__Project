@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7675631652725182116}
   - component: {fileID: 5538824023769398459}
   - component: {fileID: 3387520613790975910}
+  - component: {fileID: 8069612624583010566}
   m_Layer: 0
   m_Name: ore
   m_TagString: ore
@@ -164,5 +165,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 724372d71e53bdb42908fc3e95dd8551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8069612624583010566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6672166761486969934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3aff3a966455fe4e864b15e5ab9a790, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

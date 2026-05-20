@@ -22,11 +22,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            ChangeState(new GameOverState());
-        }
-        if (Input.GetKey(KeyCode.LeftShift))
+  
+        if (Input.GetKey(KeyCode.RightShift))
         {
             ChangeState(new MiningState());
         }

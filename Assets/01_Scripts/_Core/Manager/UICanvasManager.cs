@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public enum CanvasType { Hud, Popup, System };
-public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading };
+public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading, GameDie };
 
 public class UICanvasManager : MonoBehaviour
 {
@@ -78,6 +78,7 @@ public class UICanvasManager : MonoBehaviour
             case ObjectType.Fade: if (SystemObject[0] != null) SystemObject[0].SetActive(isActive); break;
                 case ObjectType.GameOver: if (SystemObject[1] != null) SystemObject[1].SetActive(isActive); break;
             case ObjectType.Loading: if (SystemObject[2] != null) SystemObject[2].SetActive(isActive); break;
+            case ObjectType.GameDie: if (SystemObject[3] != null) SystemObject[3].SetActive(isActive); break;
         }
     }
     void UpdateUiTextLabel()

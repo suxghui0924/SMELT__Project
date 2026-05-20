@@ -4,6 +4,7 @@
     {
         public void Enter()
         {
+            VolumeManager.instance.VolumeChange("start");
             SceneLoader.LoadScene("Lobby");
         }
 

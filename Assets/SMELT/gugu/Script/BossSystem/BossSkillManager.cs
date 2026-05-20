@@ -19,6 +19,7 @@ public class BossSkillManager : MonoBehaviour
     private bool db = false;
     
     
+    
     private void Awake()
     {
         _impulseSource = GetComponent<CinemachineImpulseSource>();

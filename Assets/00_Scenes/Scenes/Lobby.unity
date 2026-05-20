@@ -571,6 +571,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: PostProcess_Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 3417067913857967299, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
+      propertyPath: priority
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883912474213959095, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
+      propertyPath: m_Volumes.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883912474213959095, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
+      propertyPath: 'm_Volumes.Array.data[4]'
+      value: 
+      objectReference: {fileID: 954253399}
     - target: {fileID: 6867786449527413193, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2219,7 +2231,7 @@ Transform:
   m_GameObject: {fileID: 188612485}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.49, y: -5.23, z: 3.1795793}
+  m_LocalPosition: {x: -6.49, y: -7.21, z: 3.1795793}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2616,17 +2628,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209595585}
   m_CullTransparentMesh: 1
---- !u!114 &212549717 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5885948962057819946, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
-  m_PrefabInstance: {fileID: 921372330}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba7707bd594149de95b4ba6abc24f453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &220542429
 GameObject:
   m_ObjectHideFlags: 0
@@ -10673,6 +10674,7 @@ MonoBehaviour:
   - {fileID: 1652217119}
   - {fileID: 316800612}
   - {fileID: 1153643048}
+  - {fileID: 1949602704}
   fadeCanvasGroup: {fileID: 1652217121}
 --- !u!4 &778061459
 Transform:
@@ -12444,22 +12446,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 778061460}
-    - target: {fileID: 8333386458530496781, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8333386458530496781, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 212549717}
-    - target: {fileID: 8333386458530496781, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GroupBuy
-      objectReference: {fileID: 0}
-    - target: {fileID: 8333386458530496781, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: _01_Scripts.Shop.Pickaxe.PickaxeUI, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 8462674744118227262, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -13025,6 +13011,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &954253399 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 816704474517347359, guid: 851c520e8b88a0c42ba8dc1c9a572897, type: 3}
+  m_PrefabInstance: {fileID: 78056013}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &963175200
@@ -14714,10 +14711,6 @@ PrefabInstance:
     - target: {fileID: 1141962493007431756, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
       propertyPath: m_Name
       value: System_Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2794184441971577209, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7617603972811754086, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
       propertyPath: m_Camera
@@ -16845,7 +16838,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -96058087
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 300
   m_Sprite: {fileID: 21300000, guid: d049099c702c94379ab5445f1cd246b2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -23904,7 +23897,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1235838220}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35535,6 +35528,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1925944498}
   m_CullTransparentMesh: 1
+--- !u!1 &1949602704 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1414107452692851628, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+  m_PrefabInstance: {fileID: 1041730765}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1957648383 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7447282846187055432, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
@@ -36813,7 +36811,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -96058087
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 300
   m_Sprite: {fileID: 21300000, guid: a0bbaf7ca987346de9f30c1144a3944c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -43117,6 +43115,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1819359239}
   - {fileID: 78056013}
-  - {fileID: 1235838223}
   - {fileID: 421376547}
+  - {fileID: 1235838223}
   - {fileID: 717795718}
