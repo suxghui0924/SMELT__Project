@@ -2878,7 +2878,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.18396229, g: 0, b: 0, a: 0.7529412}
+  m_Color: {r: 0.18396229, g: 0, b: 0, a: 0.8039216}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -10964,6 +10964,7 @@ MonoBehaviour:
   - {fileID: 1652217119}
   - {fileID: 316800612}
   - {fileID: 1153643048}
+  - {fileID: 1949602704}
   fadeCanvasGroup: {fileID: 1652217121}
 --- !u!4 &778061459
 Transform:
@@ -12803,6 +12804,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 778061460}
+    - target: {fileID: 6642109772700270953, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: upso
+      value: 
+      objectReference: {fileID: 11400000, guid: c95aedfc719f80a44aaa9bd8c23f101f, type: 2}
     - target: {fileID: 7191480820259174319, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
