@@ -24,6 +24,10 @@ public class LoadManager : MonoBehaviour
             case "House":
                 UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
                 break;
+            case "Lobby":
+                SoundManager.instance.PlayBGM("Lobby");
+                UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
+                break;
         }
     }
 }
