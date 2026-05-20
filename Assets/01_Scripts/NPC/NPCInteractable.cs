@@ -70,8 +70,15 @@ namespace _01_Scripts.NPC
             if (inRange != _isInRange)
                 _isInRange = inRange;
 
+            bool showPrompt = _isInRange && CanSell();
             if (_promptGO != null)
-                _promptGO.SetActive(_isInRange && CanSell());
+            {
+                _promptGO.SetActive(showPrompt);
+                // 프롬프트가 보일 때 이 NPC의 컨테이너를 최상위 형제로 올려
+                // 다른 NPC의 말풍선에 가리지 않도록 함
+                if (showPrompt && _bubbleRoot != null)
+                    _bubbleRoot.transform.SetAsLastSibling();
+            }
 
             if (_isInRange && Input.GetKeyDown(KeyCode.E))
                 Interact();
@@ -148,10 +155,7 @@ namespace _01_Scripts.NPC
 
             var sm = Leedoyun_SellManager.Instance;
             if (sm == null || slotIdx >= sm.ActiveOrders.Count)
-            {
-                if (_bubbleRoot != null) _bubbleRoot.gameObject.SetActive(false);
-                return;
-            }
+                return;  // 주문 수 불일치는 일시적 상태 — 버블 숨기지 않고 재시도 대기
 
             if (_bubbleRoot != null) _bubbleRoot.gameObject.SetActive(true);
 
@@ -165,10 +169,19 @@ namespace _01_Scripts.NPC
                 ? craft.GetWeaponSprite(sm.ActiveOrders[slotIdx].requestedWeaponId)
                 : null;
 
-            _weaponIcon.sprite = spr;
-            _weaponIcon.color  = spr != null ? Color.white : new Color(0.6f, 0.6f, 0.6f, 0.5f);
-
-            if (spr != null) _spriteLoaded = true;
+            if (spr != null)
+            {
+                _weaponIcon.sprite  = spr;
+                _weaponIcon.color   = Color.white;
+                _weaponIcon.enabled = true;
+                _spriteLoaded = true;
+            }
+            else
+            {
+                // 스프라이트 아직 로드 안 됨 — 아이콘 숨기고 다음 프레임 재시도
+                _weaponIcon.enabled = false;
+                _spriteLoaded = false;
+            }
         }
 
         // ─────────────────────────────────────────
@@ -214,10 +227,10 @@ namespace _01_Scripts.NPC
             _bubbleRoot.pivot     = new Vector2(0.5f, 0.5f);
             _bubbleRoot.sizeDelta = new Vector2(130f, 160f);
 
-            // 정렬 순서를 OrderHUD(10)보다 높게
-            var subCanvas = containerGO.AddComponent<Canvas>();
-            subCanvas.overrideSorting = true;
-            subCanvas.sortingOrder    = 20;
+            // Canvas 컴포넌트를 붙이지 않음 — 붙이면 FindFirstObjectByType<Canvas>()로
+            // 다른 NPC가 이 컨테이너를 캔버스로 잡아 자식이 되고, NPC 파괴 시 같이 파괴됨.
+            // 대신 최상위 형제로 배치해 OrderHUD 위에 렌더링되게 함.
+            containerGO.transform.SetAsLastSibling();
 
             var root = containerGO.transform;
 

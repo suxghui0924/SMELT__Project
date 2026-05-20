@@ -169,11 +169,18 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
 
     public void OnLoad(SaveData data)
     {
+        // 기존 활성 주문을 이벤트와 함께 정리해 NPC 큐도 초기화
+        var toExpire = new List<Leedoyun_CustomerOrder>(_activeOrders);
+        _activeOrders.Clear();
+        foreach (var order in toExpire)
+        {
+            order.isExpired = true;
+            OnOrderExpired?.Invoke(order);
+        }
+
         _todayGold  = data.leedoyunTodayGold;
         _totalGold  = data.leedoyunTotalGold;
         _spawnTimer = data.orderSpawnTimer;
-
-        _activeOrders.Clear();
         foreach (var s in data.activeOrders)
         {
             var order = new Leedoyun_CustomerOrder(
@@ -277,8 +284,14 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     public void EndOfDay()
     {
         _todayGold = 0;
-        _activeOrders.Clear();
         _spawnTimer = 0f;
+        var toExpire = new List<Leedoyun_CustomerOrder>(_activeOrders);
+        _activeOrders.Clear();
+        foreach (var order in toExpire)
+        {
+            order.isExpired = true;
+            OnOrderExpired?.Invoke(order);
+        }
         Debug.Log("[SellManager] 하루 종료 → 주문 초기화");
     }
 

@@ -3449,7 +3449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: 3
-  _offset: 1.25
+  _offset: 1.4
 --- !u!114 &-6065533612012586925
 MonoBehaviour:
   m_ObjectHideFlags: 0
