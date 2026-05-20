@@ -3449,7 +3449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: 3
-  _offset: 1
+  _offset: 2
 --- !u!114 &-4137591037969378524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3463,7 +3463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactRadius: 2
-  _bubbleOffset: {x: 0, y: 1.6, z: 0}
   _font: {fileID: 0}
 --- !u!1 &7641525738523129613
 GameObject:

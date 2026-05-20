@@ -7,7 +7,7 @@ public class MelonOverride : EnemyBase
     {
         _canMove = false;
         float timer = 0;
-        Vector3 knockbackDir = (transform.position - _playerTransform.position);
+        Vector3 knockbackDir = (transform.parent.position - _playerTransform.position);
         knockbackDir.y = 0;
         knockbackDir.Normalize();
         float knockbackForce = knockbackPower * 4f;
@@ -17,7 +17,7 @@ public class MelonOverride : EnemyBase
         {
             float progress = timer / knockbackTimer;
             float currentForce = Mathf.Lerp(knockbackForce, 0, progress);
-            transform.position += knockbackDir * (currentForce * Time.deltaTime);
+            transform.parent.position += knockbackDir * (currentForce * Time.deltaTime);
             
             timer += Time.deltaTime;
             yield return null;

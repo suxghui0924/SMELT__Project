@@ -11,6 +11,7 @@ TagManager:
   - Inventory
   - juice
   - ore
+  - Paring
   layers:
   - Default
   - TransparentFX

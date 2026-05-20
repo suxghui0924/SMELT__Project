@@ -6,7 +6,7 @@ Sprite:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Resources_Icons_Outline_23
+  m_Name: Grape_MaterialSprite
   m_Rect:
     serializedVersion: 2
     x: 80

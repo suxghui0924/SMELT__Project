@@ -11,6 +11,7 @@ public class DropShow : MonoBehaviour
     
     Sequence mySequence;
     
+    
     private void Start()
     {
         

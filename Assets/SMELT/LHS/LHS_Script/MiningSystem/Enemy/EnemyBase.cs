@@ -11,7 +11,7 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] private EnemyDataSO enemyDataSo;
     [SerializeField] protected float knockbackTimer;
     [SerializeField] protected float knockbackPower;
-    
+    [SerializeField] private ParticleSystem particleSystem;
     protected Transform _playerTransform;
     
     protected float _enemySpeed;
@@ -24,6 +24,12 @@ public class EnemyBase : MonoBehaviour
     private Player_HpScript _playerHpScript;
     
     protected float _melonRot=0;
+
+    protected virtual void Awake()
+    {
+        _enemyCollider2D=GetComponent<Collider2D>();
+    }
+
     private void Start()
     {
        _playerHpScript= GameObject.Find("PlayerHP").GetComponent<Player_HpScript>();
@@ -32,17 +38,15 @@ public class EnemyBase : MonoBehaviour
         _enemySpeed = enemyDataSo.enemySpeed;
         _enemyDamage = enemyDataSo.enemyDamage;
         _enemyName = enemyDataSo.enemyName;
-        _enemyCollider2D=GetComponent<Collider2D>();
-            _enemyDirection=(transform.position-_playerTransform.position).normalized;
     }
 
 
-    private void Update()
+    protected virtual void Update()
     {
         if (_canMove)
         {
-            
-            transform.position -= _enemyDirection * (_enemySpeed * Time.deltaTime);
+            _enemyDirection = (transform.parent.position - _playerTransform.position).normalized;
+            transform.parent.position -= _enemyDirection * (_enemySpeed * Time.deltaTime);
             if (_enemyName == "Melon") transform.Rotate(0,0,_melonRot++*Time.deltaTime);
         }
     }
@@ -81,7 +85,7 @@ public class EnemyBase : MonoBehaviour
     {
         _canMove = false;
         float timer = 0;
-        Vector3 knockbackDir = (transform.position - _playerTransform.position);
+        Vector3 knockbackDir = (transform.parent.position - _playerTransform.position);
         knockbackDir.y = 0;
         knockbackDir.Normalize();
         float knockbackForce = knockbackPower * 4f; 
@@ -90,7 +94,7 @@ public class EnemyBase : MonoBehaviour
         {
             float progress = timer / knockbackTimer;
             float currentForce = Mathf.Lerp(knockbackForce, 0, progress);
-            transform.position += knockbackDir * (currentForce * Time.deltaTime);
+            transform.parent.position += knockbackDir * (currentForce * Time.deltaTime);
             
             timer += Time.deltaTime;
             yield return null;
@@ -107,7 +111,6 @@ public class EnemyBase : MonoBehaviour
         collider2D.enabled = false;
         spriteRenderer.enabled = false;
         
-        ParticleSystem particleSystem= GetComponentInChildren<ParticleSystem>();
              particleSystem.Play();
              yield return new WaitForSeconds(particleSystem.main.startLifetime.constant);
              Destroy(gameObject);

@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Serialization;
 using UnityEngine;
 using UnityEngine.UI;
@@ -30,5 +31,12 @@ public class BossSystem : MonoBehaviour
         if (_Hp.fillAmount == 1||!isStart) isStart = false;
         _Hp.fillAmount += 1f * Time.deltaTime;
     }
-   
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (TryGetComponent(out BSkillAttack attack))
+        {
+            _Hp.fillAmount -= attack.damage / 100;
+        }
+    }
 }
