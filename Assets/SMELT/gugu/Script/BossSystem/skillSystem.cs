@@ -9,12 +9,16 @@ public class skillSystem : MonoBehaviour
     [SerializeField]private bool isAlive = true;
     private float Damage = 10f;
     private bool shakes = false;
+    public BossSkillManager _BSM;
+    
     public bool IsAlive => isAlive;
     [SerializeField]private GameObject boss;
     [SerializeField]private GameObject orePrefab ;
     [SerializeField]private GameObject juicePrefab;
     [SerializeField]private CinemachineImpulseSource impulseSource;
 
+    
+    
     private void FixedUpdate()
     {
         if (shakes)
@@ -42,20 +46,34 @@ public class skillSystem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isAlive == false) return;
-        if (collision.gameObject.CompareTag("juice"))
-        {
+        
+        ore oreScript = collision.GetComponent<ore>();
+        juice juiceScript = collision.GetComponent<juice>();
 
-            BossSystem.Instance._Hp.fillAmount -= Damage / 200f;
-            Destroy(collision.gameObject);       
+        
+        if (oreScript != null && oreScript.canHitBoss)
+        {
+            
+            if (collision.gameObject.CompareTag("ore"))
+            {
+                BossSystem.Instance._Hp.fillAmount -= Damage / 500f;
+                Destroy(collision.gameObject);
+
+            }
+        }
+
+        if (juiceScript != null && juiceScript.canHitBoss)
+        {
+            if (collision.gameObject.CompareTag("juice"))
+            {
+
+                BossSystem.Instance._Hp.fillAmount -= Damage / 200f;
+                Destroy(collision.gameObject);       
             
     
+            }
         }
-        else if (collision.gameObject.CompareTag("ore"))
-        {
-            BossSystem.Instance._Hp.fillAmount -= Damage / 500f;
-            Destroy(collision.gameObject);
-
-        }
+        
         
 
         if (BossSystem.Instance._Hp.fillAmount <= 0 )

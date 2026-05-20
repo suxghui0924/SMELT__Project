@@ -8,22 +8,15 @@ public class SkillTreeController : MonoBehaviour
 {
     public static SkillTreeController Instance { get; private set; }
 
-    [Tooltip("스킬 트리 패널 오브젝트 (UpgradeTrees)")]
+    [Tooltip("RefreshAll용 — Upgrading 컴포넌트 탐색 기준")]
     [SerializeField] private GameObject _skillTreePanel;
 
-    [Tooltip("스킬 트리 전용 배경 오브젝트")]
-    [SerializeField] private GameObject _background;
-
-    private Canvas _panelCanvas;
-    private Canvas _bgCanvas;
+    private bool _isOpen;
 
     private void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-
-        if (_skillTreePanel != null) _panelCanvas = GetRootCanvas(_skillTreePanel);
-        if (_background     != null) _bgCanvas    = _background.GetComponent<Canvas>();
     }
 
     private void Start()
@@ -38,37 +31,20 @@ public class SkillTreeController : MonoBehaviour
 
     public void Show()
     {
+        _isOpen = true;
         UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
-        if (_background     != null) _background.SetActive(true);
-        if (_skillTreePanel != null) _skillTreePanel.SetActive(true);
-
-        // 스킬트리 패널을 최상위로
-        if (_panelCanvas != null) _panelCanvas.sortingOrder = 500;
-
-        // 배경이 자체 Canvas를 가지면 패널 바로 아래로, 아니면 형제 순서 맨 뒤로
-        if (_background != null)
-        {
-            if (_bgCanvas != null)
-                _bgCanvas.sortingOrder = 499;
-            else
-                _background.transform.SetAsFirstSibling();
-        }
-
         RefreshAll();
     }
 
     public void Hide()
     {
-        
+        _isOpen = false;
         UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, false);
-        if (_skillTreePanel != null) _skillTreePanel.SetActive(false);
-        if (_background     != null) _background.SetActive(false);
     }
 
     public void Toggle()
     {
-        bool isOpen = _skillTreePanel != null && _skillTreePanel.activeSelf;
-        if (isOpen) Hide(); else Show();
+        if (_isOpen) Hide(); else Show();
     }
 
     // 디버그용 — T키로 직접 토글
@@ -82,13 +58,5 @@ public class SkillTreeController : MonoBehaviour
         if (_skillTreePanel == null) return;
         foreach (var up in _skillTreePanel.GetComponentsInChildren<Upgrading>(true))
             up.UpdateTreesUI();
-    }
-
-    private static Canvas GetRootCanvas(GameObject go)
-    {
-        var canvases = go.GetComponentsInParent<Canvas>(true);
-        if (canvases == null || canvases.Length == 0)
-            return go.GetComponent<Canvas>();
-        return canvases[^1]; // 가장 상위 Canvas
     }
 }

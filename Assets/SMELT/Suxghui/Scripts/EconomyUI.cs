@@ -105,7 +105,7 @@ public class EconomyUI : MonoBehaviour
         }
         if (inv == null) return;
 
-        if (Input.GetKeyDown(KeyCode.Space))        inv.AddGold(1_000_000);
+        if (Input.GetKeyUp(KeyCode.Space))        inv.AddGold(100_000_000);
         if (Input.GetKeyDown(KeyCode.Alpha1))       inv.AddItem("fruitstone_apple",  10);
         if (Input.GetKeyDown(KeyCode.Alpha2))       inv.AddItem("fruitstone_melon",  10);
         if (Input.GetKeyDown(KeyCode.Alpha3))       inv.AddItem("fruitstone_orange", 10);

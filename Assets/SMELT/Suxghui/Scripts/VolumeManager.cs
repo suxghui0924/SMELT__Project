@@ -34,6 +34,16 @@ public class VolumeManager : MonoBehaviour
         ui = m_Volumes[3].GetComponent<Volume>();
     }
 
+    public void SetVolume(string str_name, float weight)
+    {
+        foreach (var vol in m_Volumes)
+        {
+            if (vol.name == str_name.FirstCharacterToUpper() + "_Volume")
+            {
+                vol.weight = weight;
+            }
+        }
+    }
     public void VolumeChange(string str_name)
     {
         foreach(var vol in m_Volumes)
