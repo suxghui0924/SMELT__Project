@@ -2840,6 +2840,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &626947318086763319
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,6 +3461,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &748051377639603791
 GameObject:
   m_ObjectHideFlags: 0
@@ -3822,6 +3824,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &789729828252630688
 GameObject:
   m_ObjectHideFlags: 0
@@ -4380,6 +4383,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &941875366056130080
 GameObject:
   m_ObjectHideFlags: 0
@@ -4437,6 +4441,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &960223025824039499
 GameObject:
   m_ObjectHideFlags: 0
@@ -4927,6 +4932,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &1117588105336738566
 GameObject:
   m_ObjectHideFlags: 0
@@ -6532,6 +6538,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &1421549498433070192
 GameObject:
   m_ObjectHideFlags: 0
@@ -7155,6 +7162,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &1509016750650481568
 GameObject:
   m_ObjectHideFlags: 0
@@ -7724,6 +7732,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &1648159072795008388
 GameObject:
   m_ObjectHideFlags: 0
@@ -8740,6 +8749,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &1989095787619144828
 GameObject:
   m_ObjectHideFlags: 0
@@ -11323,6 +11333,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &2661376618827226732
 GameObject:
   m_ObjectHideFlags: 0
@@ -11742,6 +11753,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &2798077596443927064
 GameObject:
   m_ObjectHideFlags: 0
@@ -12573,6 +12585,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &2975005949720596640
 GameObject:
   m_ObjectHideFlags: 0
@@ -13410,6 +13423,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &3142192056517595003
 GameObject:
   m_ObjectHideFlags: 0
@@ -16227,6 +16241,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &3586937550016801626
 GameObject:
   m_ObjectHideFlags: 0
@@ -17588,6 +17603,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &3711473513570979912
 GameObject:
   m_ObjectHideFlags: 0
@@ -17859,6 +17875,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &3799310813946777961
 GameObject:
   m_ObjectHideFlags: 0
@@ -19145,6 +19162,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &4112885113974243238
 GameObject:
   m_ObjectHideFlags: 0
@@ -19783,6 +19801,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &4330536662284354464
 GameObject:
   m_ObjectHideFlags: 0
@@ -19840,6 +19859,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &4332031710937519438
 GameObject:
   m_ObjectHideFlags: 0
@@ -21701,6 +21721,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &4821975703398782290
 GameObject:
   m_ObjectHideFlags: 0
@@ -21758,6 +21779,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &4830009749458828354
 GameObject:
   m_ObjectHideFlags: 0
@@ -22184,6 +22206,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &4895008047728594457
 GameObject:
   m_ObjectHideFlags: 0
@@ -22838,6 +22861,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &4995333076947862585
 GameObject:
   m_ObjectHideFlags: 0
@@ -22970,6 +22994,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &5194909869786399229
 GameObject:
   m_ObjectHideFlags: 0
@@ -23027,6 +23052,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &5201256671556721088
 GameObject:
   m_ObjectHideFlags: 0
@@ -23251,7 +23277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6a5cde34ec2dc4b8483136a709e714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upso: {fileID: 11400000, guid: fea4e0937ce73564eb22029b4ba119fb, type: 2}
+  upso: {fileID: 11400000, guid: 32d6b356dd8ef3c47b955907177cd972, type: 2}
   upgradeButton: {fileID: 8847411014424287416}
   checkMark: {fileID: 3752158430757302420}
   myFontAsset: {fileID: 11400000, guid: 500ed0e39b2984045875418979ce8a83, type: 2}
@@ -23316,6 +23342,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &5240538835597711782
 GameObject:
   m_ObjectHideFlags: 0
@@ -23373,6 +23400,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &5243046527358505554
 GameObject:
   m_ObjectHideFlags: 0
@@ -24218,6 +24246,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &5387325394211944237
 GameObject:
   m_ObjectHideFlags: 0
@@ -25304,6 +25333,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &5635169495431958416
 GameObject:
   m_ObjectHideFlags: 0
@@ -25725,6 +25755,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &5766494069089649995
 GameObject:
   m_ObjectHideFlags: 0
@@ -27645,6 +27676,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &6461939981597861435
 GameObject:
   m_ObjectHideFlags: 0
@@ -27702,6 +27734,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &6478500764610615432
 GameObject:
   m_ObjectHideFlags: 0
@@ -27984,6 +28017,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &6647353614954259831
 GameObject:
   m_ObjectHideFlags: 0
@@ -28410,6 +28444,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &6815383335438166862
 GameObject:
   m_ObjectHideFlags: 0
@@ -29607,6 +29642,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &6995336846219375634
 GameObject:
   m_ObjectHideFlags: 0
@@ -30170,6 +30206,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &7069446595607679573
 GameObject:
   m_ObjectHideFlags: 0
@@ -32466,6 +32503,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &7677201079732794355
 GameObject:
   m_ObjectHideFlags: 0
@@ -32748,6 +32786,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &7803587045791602079
 GameObject:
   m_ObjectHideFlags: 0
@@ -33311,6 +33350,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &7881714012696382696
 GameObject:
   m_ObjectHideFlags: 0
@@ -34103,6 +34143,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &7972261148130503876
 GameObject:
   m_ObjectHideFlags: 0
@@ -34723,6 +34764,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &8188380355527069555
 GameObject:
   m_ObjectHideFlags: 0
@@ -35129,6 +35171,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &8312206441258519485
 GameObject:
   m_ObjectHideFlags: 0
@@ -35845,6 +35888,7 @@ MonoBehaviour:
   needMoney: {fileID: 0}
   upName: {fileID: 0}
   detail: {fileID: 0}
+  upgrade: {fileID: 0}
 --- !u!1 &8668754916378211651
 GameObject:
   m_ObjectHideFlags: 0
