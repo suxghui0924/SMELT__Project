@@ -4,13 +4,12 @@
     {
         public void Enter()
         {
-            VolumeManager.instance.VolumeChange("start");
+            VolumeManager.instance.VolumeChange(VolumeType.Start, 1.0f);
             SceneLoader.LoadScene("Lobby");
         }
 
         public void Execute()
         {
-            throw new System.NotImplementedException();
         }
 
         public void Exit()
