@@ -4,13 +4,14 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum CanvasType { Hud, Popup, System };
-public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading, GameDie };
+public enum CanvasType { Title , Hud, Popup, System };
+public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading, GameDie, Radio };
 
 public class UICanvasManager : MonoBehaviour
 {
     public static UICanvasManager instance;
 
+    [SerializeField] private Canvas _title;
     [SerializeField] private Canvas _hud;
     [SerializeField] private Canvas _popup;
     [SerializeField] private Canvas _system;
@@ -60,6 +61,7 @@ public class UICanvasManager : MonoBehaviour
     {
         switch(canvasName)
         {
+            case CanvasType.Title: _title.gameObject.SetActive(isActive); break;
             case CanvasType.Hud: _hud.gameObject.SetActive(isActive); break;
             case CanvasType.Popup: _popup.gameObject.SetActive(isActive); break;
             case CanvasType.System: _system.gameObject.SetActive(isActive); break;
@@ -78,7 +80,7 @@ public class UICanvasManager : MonoBehaviour
             case ObjectType.Fade: if (SystemObject[0] != null) SystemObject[0].SetActive(isActive); break;
                 case ObjectType.GameOver: if (SystemObject[1] != null) SystemObject[1].SetActive(isActive); break;
             case ObjectType.Loading: if (SystemObject[2] != null) SystemObject[2].SetActive(isActive); break;
-            case ObjectType.GameDie: if (SystemObject[3] != null) SystemObject[3].SetActive(isActive); break;
+            case ObjectType.Radio: if (PopupObject[3] != null) PopupObject[3].SetActive(isActive); break;
         }
     }
     void UpdateUiTextLabel()

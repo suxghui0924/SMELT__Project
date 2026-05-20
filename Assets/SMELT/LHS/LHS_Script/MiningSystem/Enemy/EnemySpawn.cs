@@ -50,9 +50,7 @@ public class EnemySpawn : MonoBehaviour
 
             if (_timer >= _enemySpawnTimer)
             {
-
                 Spawn(_spawnTotalChance);
-
             }
         }
     }

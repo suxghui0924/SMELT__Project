@@ -25,6 +25,12 @@ namespace _01_Scripts.Player.Manager
             OrderHUD.OnOrderEnded += HandleOnRewardOrder;
         }
 
+        private void OnDisable()
+        {
+            OrderHUD.OnOrderCreated -= HandleOnAcceptOrder;
+            OrderHUD.OnOrderEnded -= HandleOnRewardOrder;
+        }
+
         // ReSharper disable Unity.PerformanceAnalysis
         private void HandleOnAcceptOrder(Leedoyun_CustomerOrder order)
         {
@@ -57,7 +63,7 @@ namespace _01_Scripts.Player.Manager
 
             for (int _ = 0; _ < npcList.Count; _++)
             {
-                if (npcList[_] == null) return;
+                if (npcList[_] == null) continue;
                 npcList[_].GetComponent<NPCMovement>().IndexChange(_ + 1);
             }
         }
