@@ -19,8 +19,6 @@ namespace _01_Scripts.Player.Manager
         private List<GameObject> npcList = new List<GameObject>();
         private int MAX_NPC_COUNT = 3;
         
-        private int charCount = 1;
-
         private void OnEnable()
         {
             OrderHUD.OnOrderCreated += HandleOnAcceptOrder;
