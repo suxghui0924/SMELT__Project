@@ -26,9 +26,10 @@ namespace _01_Scripts.NPC
         private int         _lastIndex = -1;
         private bool        _spriteLoaded;
 
-        private Canvas    _worldCanvas;
-        private Image     _weaponIcon;
-        private GameObject _promptGO;
+        private Canvas        _sharedCanvas;
+        private RectTransform _bubbleRoot;
+        private Image         _weaponIcon;
+        private GameObject    _promptGO;
 
         // ─────────────────────────────────────────
         // 초기화
@@ -140,7 +141,7 @@ namespace _01_Scripts.NPC
             int slotIdx = _movement.Index - 1;
             if (slotIdx < 0)
             {
-                if (_worldCanvas != null) _worldCanvas.gameObject.SetActive(false);
+                if (_bubbleRoot != null) _bubbleRoot.gameObject.SetActive(false);
                 _spriteLoaded = true;
                 return;
             }
@@ -148,11 +149,11 @@ namespace _01_Scripts.NPC
             var sm = Leedoyun_SellManager.Instance;
             if (sm == null || slotIdx >= sm.ActiveOrders.Count)
             {
-                if (_worldCanvas != null) _worldCanvas.gameObject.SetActive(false);
+                if (_bubbleRoot != null) _bubbleRoot.gameObject.SetActive(false);
                 return;
             }
 
-            if (_worldCanvas != null) _worldCanvas.gameObject.SetActive(true);
+            if (_bubbleRoot != null) _bubbleRoot.gameObject.SetActive(true);
 
             // 플레이어가 무기를 들고 있으면 말풍선 이미지 숨김
             bool holding = HeldItemController.Instance != null && HeldItemController.Instance.IsHolding;
@@ -173,21 +174,52 @@ namespace _01_Scripts.NPC
         // ─────────────────────────────────────────
         // 말풍선 UI 빌드 (NPC 우측, 꼬리 왼쪽)
         // ─────────────────────────────────────────
+        private void OnDestroy()
+        {
+            if (_bubbleRoot != null)
+                Destroy(_bubbleRoot.gameObject);
+        }
+
+        private void LateUpdate()
+        {
+            if (_bubbleRoot == null || _sharedCanvas == null || Camera.main == null) return;
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position + BUBBLE_OFFSET);
+            if (screenPos.z < 0) return;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                _sharedCanvas.GetComponent<RectTransform>(),
+                new Vector2(screenPos.x, screenPos.y),
+                null,
+                out Vector2 local);
+            _bubbleRoot.anchoredPosition = local;
+        }
+
         private void BuildBubbleUI()
         {
-            var canvasGO = new GameObject("NPCBubble");
-            canvasGO.transform.SetParent(transform);
-            canvasGO.transform.localPosition = BUBBLE_OFFSET;
-            canvasGO.transform.localScale    = Vector3.one * 0.009f;
+            // 기존 ScreenSpaceOverlay 캔버스를 공유해서 사용
+            _sharedCanvas = FindFirstObjectByType<Canvas>();
+            if (_sharedCanvas == null)
+            {
+                var cGO = new GameObject("Canvas");
+                _sharedCanvas = cGO.AddComponent<Canvas>();
+                _sharedCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
+                cGO.AddComponent<CanvasScaler>();
+                cGO.AddComponent<GraphicRaycaster>();
+            }
 
-            _worldCanvas = canvasGO.AddComponent<Canvas>();
-            _worldCanvas.renderMode   = RenderMode.WorldSpace;
-            _worldCanvas.sortingOrder = 50;
+            // 버블 컨테이너 — 공유 캔버스의 자식으로 생성
+            var containerGO = new GameObject("NPCBubble");
+            containerGO.transform.SetParent(_sharedCanvas.transform, false);
+            _bubbleRoot = containerGO.AddComponent<RectTransform>();
+            _bubbleRoot.anchorMin = _bubbleRoot.anchorMax = new Vector2(0.5f, 0.5f);
+            _bubbleRoot.pivot     = new Vector2(0.5f, 0.5f);
+            _bubbleRoot.sizeDelta = new Vector2(130f, 160f);
 
-            var rootRt = canvasGO.GetComponent<RectTransform>();
-            rootRt.sizeDelta = new Vector2(130f, 160f);
+            // 정렬 순서를 OrderHUD(10)보다 높게
+            var subCanvas = containerGO.AddComponent<Canvas>();
+            subCanvas.overrideSorting = true;
+            subCanvas.sortingOrder    = 20;
 
-            var root = canvasGO.transform;
+            var root = containerGO.transform;
 
             // ── 말풍선 배경 (우측에 위치) ──────────────
             const float bubbleW = 100f;
