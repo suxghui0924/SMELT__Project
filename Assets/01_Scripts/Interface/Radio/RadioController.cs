@@ -8,7 +8,8 @@ namespace _01_Scripts.Interface.Radio
     public class RadioController : MonoBehaviour
     {
         [SerializeField] private TMP_Dropdown dropdown;
-        private string[] songNames = {"game", "game2", "game3"};        
+        private string[] songNames = {"game", "game2", "game3"};
+        
         private void OnEnable()
         {   
             dropdown.onValueChanged.AddListener(HandleValueChagned);
@@ -21,11 +22,10 @@ namespace _01_Scripts.Interface.Radio
         
         private void HandleValueChagned(int arg0)
         {
-            SoundManager.instance.PlayBGM(songNames[arg0]);
+            SoundManager.instance.SetHouseSong(songNames[arg0]);
+            SoundManager.instance.PlayBGM(SoundManager.instance.currentHouseSong);
         }
 
-        
-        
         public void OnButtonClose()
         {
             UICanvasManager.instance.ControlObject(ObjectType.Radio,false);
