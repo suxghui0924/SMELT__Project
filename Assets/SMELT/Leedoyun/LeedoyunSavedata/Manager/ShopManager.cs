@@ -3,7 +3,7 @@ using UnityEngine;
 
 /// <summary>
 /// 상점 운영 현황 관리 (판매, 수익 집계, 날짜별 해금).
-/// 담당자: 박성희
+/// 담당자: 이도윤
 /// 무기 판매/가격계산/해금 테이블 추가: 이도윤  // 추가
 /// </summary>
 public class ShopManager : MonoBehaviour, ISaveable
