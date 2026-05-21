@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
+using TMPro;
 using UnityEngine;
 
 namespace _01_Scripts.Player
@@ -36,7 +37,8 @@ namespace _01_Scripts.Player
             if (InventoryManager.Instance.EndOfDay())
             {
                 Debug.Log("넘어갑니다");
-                
+                TimerAndReward.Instance.canEnter = true;
+                TimerAndReward.Instance.FatigueReset();
                 UpdateOutData();
             }
             else
