@@ -7530,8 +7530,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0013999939, y: -0.75810003, z: 0}
-    m_Extent: {x: 8.2683, y: 8.1999, z: 0}
+    m_Center: {x: 0.0019497871, y: -0.6325002, z: 0}
+    m_Extent: {x: 8.177851, y: 8.074301, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.18
@@ -7542,8 +7542,8 @@ MonoBehaviour:
   m_ShapeLightFalloffSize: 7.88
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.38736582, y: -1.0771267, z: 0}
-  - {x: 0.39045215, y: -1.0742013, z: 0}
+  - {x: -0.2977047, y: -0.82607484, z: 0}
+  - {x: 0.3007908, y: -0.8231497, z: 0}
   - {x: 0.13480401, y: -0.43907547, z: 0}
   - {x: -0.18697453, y: -0.43907547, z: 0}
 --- !u!114 &1464221890
@@ -7559,7 +7559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minValue: 0.16
-  maxValue: 1.18
+  maxValue: 0.8
   speed: 13.5
 --- !u!1 &1484130312
 GameObject:
