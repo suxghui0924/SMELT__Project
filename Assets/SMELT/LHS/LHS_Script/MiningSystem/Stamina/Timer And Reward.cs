@@ -2,6 +2,7 @@ using System;
 using _01_Scripts._Core._States;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
 {
@@ -36,10 +37,19 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
             {
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
+                SceneManager.sceneLoaded += OnSceneChanged;
             }
             else
             {
                 Destroy(gameObject);
+            }
+        }
+
+        private void OnSceneChanged(Scene arg0, LoadSceneMode arg1)
+        {
+            if (arg0.name == "LHS_MiningScene")
+            {
+                db = true;
             }
         }
 
@@ -68,8 +78,6 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
             }
         }
     
-        private bool isGameOver = false;
-
         public void ReduceFatigue(float amount)
         {
             currentFatigue -= amount;

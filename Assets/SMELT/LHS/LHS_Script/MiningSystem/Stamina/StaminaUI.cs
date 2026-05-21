@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class StaminaUI : MonoBehaviour
 {
-    
   [SerializeField] private Image _staminaUI;
 
   private void OnEnable()
