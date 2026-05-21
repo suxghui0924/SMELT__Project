@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;

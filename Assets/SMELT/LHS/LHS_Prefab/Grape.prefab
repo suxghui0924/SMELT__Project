@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.28571427, y: 0.28571427, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4136266679100477229}
@@ -4912,6 +4912,7 @@ GameObject:
   - component: {fileID: 3703910454878969110}
   - component: {fileID: 2585449401506428879}
   - component: {fileID: 5833865710295301186}
+  - component: {fileID: 2300254403192451110}
   m_Layer: 9
   m_Name: GrapeSpriteRenderer
   m_TagString: Enemy
@@ -5052,6 +5053,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2300254403192451110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3740622430258003041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d163a72ef39078e468610d49355a5876, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyDataSo: {fileID: 0}
+  knockbackTimer: 0
+  knockbackPower: 0
+  particleSystem: {fileID: 0}
+  lemonFlipTimer: 0
+  lemonFlipDuration: 0
+  lemonJumpPower: 0
+  _lemonSprite2: {fileID: 0}
 --- !u!1 &7880522014629795840
 GameObject:
   m_ObjectHideFlags: 0

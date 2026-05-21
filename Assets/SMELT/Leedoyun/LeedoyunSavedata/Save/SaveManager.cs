@@ -132,4 +132,19 @@ public class SaveManager : MonoBehaviour
     // ─────────────────────────────────────────
     public bool HasSaveData() => File.Exists(SavePath);
     public void DeleteSave()  { if (File.Exists(SavePath)) File.Delete(SavePath); }
+
+    /// <summary>
+    /// 모든 세이브 데이터를 초기화합니다.
+    /// 파일 삭제 후 등록된 모든 매니저를 기본값으로 리셋합니다.
+    /// 가게 폐업(ShopManager.CloseShopPermanently) 시 호출됩니다.
+    /// </summary>
+    public void ResetAllData()
+    {
+        DeleteSave();
+        CurrentData       = new SaveData();
+        _sessionStartTime = Time.time;
+        foreach (var s in _saveables)
+            s.OnLoad(CurrentData);
+        Debug.Log("[SaveManager] 모든 세이브 데이터 초기화 완료");
+    }
 }

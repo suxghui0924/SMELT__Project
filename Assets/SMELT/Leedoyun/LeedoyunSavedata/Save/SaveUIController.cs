@@ -48,11 +48,7 @@ public class SaveUIController : MonoBehaviour
     // ─────────────────────────────────────────
     private void Start()
     {
-        if (saveButton == null) { Debug.LogError("[SaveUIController] saveButton이 Inspector에 연결되지 않았습니다.", this); return; }
-        if (loadButton == null) { Debug.LogError("[SaveUIController] loadButton이 Inspector에 연결되지 않았습니다.", this); return; }
-        if (popupPanel == null) { Debug.LogError("[SaveUIController] popupPanel이 Inspector에 연결되지 않았습니다.", this); return; }
-        if (popupMessage == null) { Debug.LogError("[SaveUIController] popupMessage가 Inspector에 연결되지 않았습니다.", this); return; }
-        if (SaveManager.Instance == null) { Debug.LogError("[SaveUIController] SaveManager가 씬에 없습니다.", this); return; }
+
 
         saveButton.onClick.AddListener(OnSaveClicked);
         loadButton.onClick.AddListener(OnLoadClicked);
