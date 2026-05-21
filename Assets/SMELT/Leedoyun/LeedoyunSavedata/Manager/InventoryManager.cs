@@ -114,6 +114,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
         OnGoldChanged?.Invoke(_gold, _gold);                  // 추가
         foreach (var pair in _inventory)                      // 추가
             OnItemChanged?.Invoke(pair.Key, pair.Value);      // 추가
+        OnDayChanged?.Invoke(_currentDay, _maintenanceCost);  // 추가
     }
 
     // ─────────────────────────────────────────

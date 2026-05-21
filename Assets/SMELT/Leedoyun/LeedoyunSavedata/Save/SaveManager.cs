@@ -145,7 +145,6 @@ public class SaveManager : MonoBehaviour
         _sessionStartTime = Time.time;
         foreach (var s in _saveables)
             s.OnLoad(CurrentData);
-        OnLoadResult?.Invoke(true, "Reset complete");
         Debug.Log("[SaveManager] 모든 세이브 데이터 초기화 완료");
     }
 }

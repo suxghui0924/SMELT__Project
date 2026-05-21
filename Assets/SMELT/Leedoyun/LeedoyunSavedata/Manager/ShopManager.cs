@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 상점 운영 현황 관리 (판매, 수익 집계, 날짜별 해금).
@@ -61,6 +62,9 @@ public class ShopManager : MonoBehaviour, ISaveable
         _todayEarned  = data.todayEarned;
         _salesHistory = data.salesHistory;
     }
+
+    // 폐업 후 씬 로드 완료 시 실행할 콜백용 (ShopManager 파괴 후에도 동작하도록 static)
+    private static GameObject[] _pendingHide;
 
     // ─────────────────────────────────────────
     // 판매 처리
@@ -149,16 +153,38 @@ public class ShopManager : MonoBehaviour, ISaveable
     {
         CloseShop();
         SaveManager.Instance?.ResetAllData();
-
-        if (_persistentUIsToDestroy != null)
-            foreach (var ui in _persistentUIsToDestroy)
-                if (ui != null) ui.SetActive(false);
-
         Debug.Log("[ShopManager] 가게 폐업 — 데이터 초기화 완료");
+
+        // 씬 변경 후 ShopManager가 파괴되므로, 비활성화할 목록을 static에 보관
+        _pendingHide = _persistentUIsToDestroy;
+
         string scene = string.IsNullOrEmpty(_closeSceneName)
-            ? UnityEngine.SceneManagement.SceneManager.GetActiveScene().name
+            ? SceneManager.GetActiveScene().name
             : _closeSceneName;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(scene);
+
+        // 씬 로드 완료 후 UI 정리 (static 콜백 — ShopManager 파괴 이후에도 동작)
+        SceneManager.sceneLoaded += OnPermanentCloseLoaded;
+        SceneManager.LoadScene(scene);
+    }
+
+    private static void OnPermanentCloseLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnPermanentCloseLoaded;
+
+        // 게임 전용 DontDestroyOnLoad UI 비활성화
+        if (_pendingHide != null)
+        {
+            foreach (var ui in _pendingHide)
+                if (ui != null) ui.SetActive(false);
+            _pendingHide = null;
+        }
+
+        // UICanvasManager 복원 및 Title 표시 (부모가 비활성화된 경우 포함)
+        if (UICanvasManager.instance != null)
+        {
+            UICanvasManager.instance.gameObject.SetActive(true);
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
+        }
     }
 
     /// <summary>오늘 판매된 아이템 목록 반환 (UI 표시용).</summary>

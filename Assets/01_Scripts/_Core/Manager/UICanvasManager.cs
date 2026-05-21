@@ -2,6 +2,7 @@ using DG.Tweening;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum CanvasType { Title , Hud, Popup, System };
@@ -31,24 +32,72 @@ public class UICanvasManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+            if (transform.parent == null)
+                DontDestroyOnLoad(gameObject);
+            // 캔버스들도 씬 전환 시 파괴되지 않도록 영속화
+            TryPersist(_title?.gameObject);
+            TryPersist(_hud?.gameObject);
+            TryPersist(_popup?.gameObject);
+            TryPersist(_system?.gameObject);
             Init();
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
-            Destroy(gameObject);
+            // 씬 재로드: 이전 캔버스 교체 + 새 캔버스 영속화 + 참조 갱신
+            SwapCanvas(ref instance._title,  _title);
+            SwapCanvas(ref instance._hud,    _hud);
+            SwapCanvas(ref instance._popup,  _popup);
+            SwapCanvas(ref instance._system, _system);
+            instance._textLabelGameOver = _textLabelGameOver;
+            instance.HudTopObject       = HudTopObject;
+            instance.HudCenterObject    = HudCenterObject;
+            instance.HudBottomObject    = HudBottomObject;
+            instance.PopupObject        = PopupObject;
+            instance.SystemObject       = SystemObject;
+            instance.fadeCanvasGroup    = fadeCanvasGroup;
+            instance.Init();
+            Destroy(this);
+        }
+    }
+
+    private static void TryPersist(GameObject go)
+    {
+        if (go == null || go.transform.parent != null) return;
+        DontDestroyOnLoad(go);
+    }
+
+    private static void SwapCanvas(ref Canvas existing, Canvas replacement)
+    {
+        if (replacement == null) return;
+        if (existing != null && existing != replacement)
+            Destroy(existing.gameObject);
+        TryPersist(replacement.gameObject);
+        existing = replacement;
+    }
+
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "Lobby")
+        {
+            // 비활성화된 경우 gameObject 복원 후 Title 표시
+            if (!gameObject.activeSelf)
+                gameObject.SetActive(true);
+            if (_title != null)
+                SetCanvasActive(CanvasType.Title, true);
         }
     }
 
     public void Init()
     {
-/*        foreach (GameObject obj in PopupObject)
-        {
-            obj.SetActive(false);
-        }*/
+        if (SystemObject == null) return;
         foreach (GameObject obj in SystemObject)
-        {
-            obj.SetActive(false);
-        }
+            if (obj != null) obj.SetActive(false);
     }
 
     public void FadeStart()
@@ -61,10 +110,10 @@ public class UICanvasManager : MonoBehaviour
     {
         switch(canvasName)
         {
-            case CanvasType.Title: _title.gameObject.SetActive(isActive); break;
-            case CanvasType.Hud: _hud.gameObject.SetActive(isActive); break;
-            case CanvasType.Popup: _popup.gameObject.SetActive(isActive); break;
-            case CanvasType.System: _system.gameObject.SetActive(isActive); break;
+            case CanvasType.Title:  if (_title  != null) _title.gameObject.SetActive(isActive);  break;
+            case CanvasType.Hud:    if (_hud    != null) _hud.gameObject.SetActive(isActive);    break;
+            case CanvasType.Popup:  if (_popup  != null) _popup.gameObject.SetActive(isActive);  break;
+            case CanvasType.System: if (_system != null) _system.gameObject.SetActive(isActive); break;
         }
     }
     public void ControlObject(ObjectType canvasName, bool isActive)
