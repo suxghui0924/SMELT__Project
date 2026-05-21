@@ -74,8 +74,8 @@ public class PrototypeZone : MonoBehaviour
             SkillTreeController.Instance?.Toggle();
         if (ZoneType == ZoneType.MineEntrance)
         {
-            GameManager.instance.ChangeState(new MiningState());
             if (!TimerAndReward.Instance.canEnter) return;
+            GameManager.instance.ChangeState(new MiningState());
             TimerAndReward.Instance.db = true;
         }
     }

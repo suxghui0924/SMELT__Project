@@ -8280,14 +8280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   saveButton: {fileID: 233491182}
   loadButton: {fileID: 0}
-  popupPanel: {fileID: 0}
-  popupMessage: {fileID: 0}
-  popupIcon: {fileID: 0}
-  background: {fileID: 0}
-  successSprite: {fileID: 0}
-  failSprite: {fileID: 0}
-  showPopup: 0
-  popupDuration: 2
 --- !u!1 &1814884678
 GameObject:
   m_ObjectHideFlags: 0

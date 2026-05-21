@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EconomyUI : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class EconomyUI : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.sceneLoaded += OnLoadedScene;
         var inv = InventoryManager.Instance;
         if (inv == null) return;
 
@@ -45,8 +47,15 @@ public class EconomyUI : MonoBehaviour
         RefreshAll();
     }
 
+    private void OnLoadedScene(Scene arg0, LoadSceneMode arg1)
+    {
+        if(arg0.name == "House")
+            RefreshAll();
+    }
+
     private void OnDestroy()
     {
+        SceneManager.sceneLoaded -= OnLoadedScene;
         var inv = InventoryManager.Instance;
         if (inv != null)
         {
