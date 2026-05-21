@@ -7348,6 +7348,7 @@ GameObject:
   - component: {fileID: 1464221887}
   - component: {fileID: 1464221886}
   - component: {fileID: 1464221889}
+  - component: {fileID: 1464221890}
   m_Layer: 0
   m_Name: Furnace
   m_TagString: Untagged
@@ -7506,11 +7507,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 2
-  m_LightType: 3
+  m_LightType: 1
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.5
+  m_FalloffIntensity: 1
   m_Color: {r: 0.8207547, g: 0.15546876, b: 0, a: 1}
-  m_Intensity: 0.08
+  m_Intensity: 0.8
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 1
   m_ApplyToSortingLayers: e96c7dd8000000008d4746a910f39d3a194546fa
@@ -7529,8 +7530,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0, y: -0.00000011920929, z: 0}
-    m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
+    m_Center: {x: 0.0013999939, y: -0.75810003, z: 0}
+    m_Extent: {x: 8.2683, y: 8.1999, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.18
@@ -7538,13 +7539,28 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffSize: 7.88
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
-  - {x: -0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: -0.5, z: 0}
-  - {x: 0.5, y: 0.5, z: 0}
-  - {x: -0.5, y: 0.5, z: 0}
+  - {x: -0.38736582, y: -1.0771267, z: 0}
+  - {x: 0.39045215, y: -1.0742013, z: 0}
+  - {x: 0.13480401, y: -0.43907547, z: 0}
+  - {x: -0.18697453, y: -0.43907547, z: 0}
+--- !u!114 &1464221890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464221884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197f16ac5cf9cde4890233c299b74ab5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minValue: 0.16
+  maxValue: 1.18
+  speed: 13.5
 --- !u!1 &1484130312
 GameObject:
   m_ObjectHideFlags: 0
