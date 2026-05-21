@@ -19,8 +19,9 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         [HideInInspector]
         public UnityEvent<float> OnFatigueChange;
 
-        private bool db = true;
-        
+        private bool db = false;
+        [HideInInspector]
+        public bool canEnter = true;
         
         public void OnSave(SaveData data)
         {
@@ -48,26 +49,20 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         private void OnSceneChanged(Scene arg0, LoadSceneMode arg1)
         {
             if (arg0.name == "LHS_MiningScene")
-            {
-                db = true;
+            { 
+                FatigueReset();
             }
         }
-
-        private void OnEnable()
+        
+        public void FatigueReset()
         {
             db = true;
-        }
-
-        void Start()
-        {
             currentFatigue = maxFatigue;
-            //StartCoroutine(DungeonTimer());
-        
         }
-
+    
         void Update()
         {
-            if(db)
+            if(db&&canEnter)
             {
                 timer += Time.deltaTime;
                 if (timer >= 1)
@@ -95,6 +90,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         private void GameOver()
         {
             db = false;
+            canEnter = false;
             Debug.Log("피로도 0 → 게임 오버");
             GameManager.instance.ChangeState(new GameDieState());
         }

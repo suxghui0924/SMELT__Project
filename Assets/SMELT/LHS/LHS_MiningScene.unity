@@ -2449,8 +2449,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 709529982}
-  - component: {fileID: 709529983}
   - component: {fileID: 709529984}
+  - component: {fileID: 709529985}
   m_Layer: 0
   m_Name: SaveButtonHome
   m_TagString: Untagged
@@ -2473,27 +2473,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &709529983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709529981}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5ebe8f356301f479f42be8e28721b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveButton: {fileID: 233491182}
-  loadButton: {fileID: 0}
-  popupPanel: {fileID: 0}
-  popupMessage: {fileID: 0}
-  popupIcon: {fileID: 0}
-  background: {fileID: 0}
-  successSprite: {fileID: 0}
-  failSprite: {fileID: 0}
-  popupDuration: 2
 --- !u!114 &709529984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2506,6 +2485,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffe0c1c0408adb41a8b10049b704c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &709529985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 709529981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 294b6e4ed6e1460794ec56d98ed4cfeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _saveButton: {fileID: 233491182}
 --- !u!1 &714948382
 GameObject:
   m_ObjectHideFlags: 0
@@ -9248,55 +9240,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!1 &2110467270
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2110467272}
-  - component: {fileID: 2110467271}
-  m_Layer: 0
-  m_Name: StaminaManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &2110467271
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110467270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c24afbdc04344b6459dcc682d5aa2e5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxFatigue: 100
-  currentFatigue: 0
-  OnFatigueChange:
-    m_PersistentCalls:
-      m_Calls: []
---- !u!4 &2110467272
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2110467270}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2124142599
 GameObject:
   m_ObjectHideFlags: 0
@@ -9474,7 +9417,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4060eaa780aed42907e45998f1c376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timerAndReward: {fileID: 2110467271}
   _staminaUI: {fileID: 1007844140}
 --- !u!4 &2132692111
 Transform:
@@ -9580,7 +9522,6 @@ SceneRoots:
   - {fileID: 1539708109}
   - {fileID: 1921657669}
   - {fileID: 1291544645}
-  - {fileID: 2110467272}
   - {fileID: 1423051283}
   - {fileID: 262410000}
   - {fileID: 498979423}
