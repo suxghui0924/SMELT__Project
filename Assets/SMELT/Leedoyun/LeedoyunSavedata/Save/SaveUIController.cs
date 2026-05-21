@@ -56,7 +56,7 @@ public class SaveUIController : MonoBehaviour
         SaveManager.Instance.OnSaveResult += ShowPopup;
         SaveManager.Instance.OnLoadResult += ShowPopup;
 
-        popupPanel.SetActive(false);
+        if (popupPanel != null) popupPanel.SetActive(false);
 
         // 세이브 파일 없으면 로드 버튼 비활성화
         loadButton.interactable = SaveManager.Instance.HasSaveData();
@@ -92,6 +92,8 @@ public class SaveUIController : MonoBehaviour
     // ─────────────────────────────────────────
     private void ShowPopup(bool success, string message)
     {
+        if (popupPanel == null || popupMessage == null) return;
+
         if (_popupCoroutine != null)
             StopCoroutine(_popupCoroutine);
 

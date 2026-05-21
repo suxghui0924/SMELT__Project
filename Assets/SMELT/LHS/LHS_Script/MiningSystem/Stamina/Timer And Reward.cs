@@ -46,11 +46,27 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
             }
         }
 
+        private void Start()
+        {
+            if (SaveManager.Instance != null)
+                SaveManager.Instance.Register(this);
+        }
+
         private void OnSceneChanged(Scene arg0, LoadSceneMode arg1)
         {
             if (arg0.name == "LHS_MiningScene")
-            { 
-                FatigueReset();
+            {
+                // 저장 파일이 있으면 저장된 스태미나 값으로 복원, 없으면 최대치로 초기화
+                if (SaveManager.Instance != null && SaveManager.Instance.HasSaveData())
+                {
+                    currentFatigue = SaveManager.Instance.CurrentData.stamina;
+                    db = true;
+                    OnFatigueChange?.Invoke(currentFatigue);
+                }
+                else
+                {
+                    FatigueReset();
+                }
             }
         }
         

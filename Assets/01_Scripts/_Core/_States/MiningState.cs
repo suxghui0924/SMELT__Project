@@ -8,7 +8,7 @@ public class MiningState : IGameState
         GameManager.instance.ChangeState(new LoadingState());
         SoundManager.instance.PlayBGM("Dungeon");
         UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, false);
-        SceneManager.LoadScene("LHS_MiningScene");
+        SceneLoader.LoadScene("LHS_MiningScene");
     }
 
     public void Execute()
