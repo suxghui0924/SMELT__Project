@@ -72,20 +72,20 @@ public class BossSkillManager : MonoBehaviour
         if (skill == 0)
         {
             db = true;
-            yield return new WaitForSeconds(0.5f);
 
-            StartCoroutine(drawOre.SpawnOre());
+            yield return new WaitForSeconds(0.7f);
+            
+            StartCoroutine(drawOre.SpawnOre());      
             db = false;
         }
         else if (skill == 1)
         {
             
             db = true;
-
-            yield return new WaitForSeconds(1f);
             
+            yield return new WaitForSeconds(1f);
+           _prejuice.SpawnJuice();
 
-            _prejuice.SpawnJuice();
             db = false;
             
         }
