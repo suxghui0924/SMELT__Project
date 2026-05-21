@@ -8835,7 +8835,6 @@ GameObject:
   - component: {fileID: 622564706}
   - component: {fileID: 622564705}
   - component: {fileID: 622564704}
-  - component: {fileID: 622564703}
   - component: {fileID: 622564707}
   m_Layer: 5
   m_Name: Canvas
@@ -8874,27 +8873,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &622564703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 622564701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5ebe8f356301f479f42be8e28721b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  saveButton: {fileID: 1728686442}
-  loadButton: {fileID: 1170010052}
-  popupPanel: {fileID: 746585627}
-  popupMessage: {fileID: 1034054373}
-  popupIcon: {fileID: 2121248632}
-  background: {fileID: 0}
-  successSprite: {fileID: -1096105371027078061, guid: cff31084ff1bcb6448c89be3f58fe679, type: 3}
-  failSprite: {fileID: -7962594866118868923, guid: 6b398a9fa8a762143b530e9faeae7559, type: 3}
-  popupDuration: 2
 --- !u!114 &622564704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12384,6 +12362,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 778061459}
     m_Modifications:
+    - target: {fileID: 46311403934564870, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 46311403934564870, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 46311403934564870, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 185221807975496354, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 2
@@ -12447,6 +12437,18 @@ PrefabInstance:
     - target: {fileID: 910842290186969159, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -202.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1039754054052289176, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1039754054052289176, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1039754054052289176, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1083042503644166674, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -12692,6 +12694,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 778061460}
+    - target: {fileID: 5705839963504980030, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5981377522852750527, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
