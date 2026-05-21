@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class FruitMaterialLogic : MonoBehaviour
 {
+    public int amount;
     private Sequence _enemeySequence;
     protected SpriteRenderer _spriteRenderer;
     protected ParticleSystem particleSystem;
-
+    
     protected virtual void Awake()
     {
         particleSystem = GameObject.Find("AppleParticle").GetComponent<ParticleSystem>();
@@ -16,6 +17,8 @@ public class FruitMaterialLogic : MonoBehaviour
 
     public void enemyMaterialEnable(Vector2 screenPoint)
     {
+        Debug.Log("셋스");
+        AddEconomy(amount);
         if(_enemeySequence != null) _enemeySequence.Kill();
         _enemeySequence = DOTween.Sequence();
         
@@ -34,14 +37,18 @@ public class FruitMaterialLogic : MonoBehaviour
                 gameObject.SetActive(false);
             });
     }
-
+    
     private void ParticlePlay()
     {
         particleSystem.transform.position = transform.position;
         particleSystem.Play();
     }
 
-
+    protected virtual void AddEconomy(int amount)
+    {
+        InventoryManager.Instance.AddItem("fruitstone_apple", amount);
+        Debug.Log("AddEconomy" + InventoryManager.Instance.GetQuantity("fruitstone_apple"));
+    }
     protected virtual IEnumerator ParticleRoutine()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -52,4 +59,5 @@ public class FruitMaterialLogic : MonoBehaviour
         gameObject.SetActive(false);
         ItemSpawnManager.instance.itemPools[0].Push(gameObject);
     }
+     
 }
