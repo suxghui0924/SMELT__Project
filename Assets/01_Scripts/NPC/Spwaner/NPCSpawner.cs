@@ -19,12 +19,16 @@ namespace _01_Scripts.Player.Manager
         private List<GameObject> npcList = new List<GameObject>();
         private int MAX_NPC_COUNT = 3;
         
-        private int charCount = 1;
-
         private void OnEnable()
         {
             OrderHUD.OnOrderCreated += HandleOnAcceptOrder;
             OrderHUD.OnOrderEnded += HandleOnRewardOrder;
+        }
+
+        private void OnDisable()
+        {
+            OrderHUD.OnOrderCreated -= HandleOnAcceptOrder;
+            OrderHUD.OnOrderEnded -= HandleOnRewardOrder;
         }
 
         // ReSharper disable Unity.PerformanceAnalysis
@@ -59,7 +63,7 @@ namespace _01_Scripts.Player.Manager
 
             for (int _ = 0; _ < npcList.Count; _++)
             {
-                if (npcList[_] == null) return;
+                if (npcList[_] == null) continue;
                 npcList[_].GetComponent<NPCMovement>().IndexChange(_ + 1);
             }
         }

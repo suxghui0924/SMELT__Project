@@ -8,6 +8,8 @@ public class
     SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
+    public string currentHouseSong { get; private set; } = "game";
+
     private Dictionary<string, AudioClip> soundDict;
     [SerializeField] private AudioSource _bgmSource;
     [SerializeField] private AudioSource _sfxSource;
@@ -87,4 +89,9 @@ public class
         }
     }
     #endregion
+    
+    public void SetHouseSong(string songName)
+    {
+        currentHouseSong = songName;
+    }
 }

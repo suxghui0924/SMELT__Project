@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Volumes:
+  - {fileID: 816704474517347359}
   - {fileID: 3417067913857967299}
   - {fileID: 4425002520432760650}
   - {fileID: 3548681480436670849}
@@ -295,7 +296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
-  priority: 0
+  priority: 2
   blendDistance: 0
   weight: 0
   sharedProfile: {fileID: 11400000, guid: 6958bd7abc223e7449d74126a14b464d, type: 2}

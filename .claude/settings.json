@@ -6,7 +6,9 @@
       "Bash(awk '/m_Name: Ground/{found=1} found && /m_TileSprites:/{inSprites=1; next} inSprites && /m_Sprites:/{next} inSprites && /- {fileID:/{match\\($0, /guid: \\([a-z0-9]+\\)/, g\\); print g[1]; exit} inSprites && /m_StaticTilesInfo:/{exit}' \"Assets/00_Scenes/Scenes/House.unity\")",
       "Bash(awk 'prev_line ~ /^--- !u!/ && /m_LocalPosition/{print NR\": \"prev_line; print NR\": \"$0} {prev_line=$0}')",
       "Bash(awk '/^--- !u!4 &1376788376$/{found=1} found && /m_LocalPosition/{print; exit}' \"Assets/00_Scenes/Scenes/House.unity\")",
-      "Bash(awk '/!u!1001 &1708944158/{found=1} found && /m_TransformModifications/{inMods=1} inMods && /propertyPath: m_LocalPosition/{pos=1} pos && /value:/{print; exit} found && /^--- !u!/{if\\(found>0\\) exit; found++}' \"Assets/00_Scenes/Scenes/House.unity\")"
+      "Bash(awk '/!u!1001 &1708944158/{found=1} found && /m_TransformModifications/{inMods=1} inMods && /propertyPath: m_LocalPosition/{pos=1} pos && /value:/{print; exit} found && /^--- !u!/{if\\(found>0\\) exit; found++}' \"Assets/00_Scenes/Scenes/House.unity\")",
+      "Bash(grep -E \"\\\\.\\(cs|asset|prefab\\)$\")",
+      "Bash(grep -E \"\\\\.cs$\")"
     ]
   }
 }

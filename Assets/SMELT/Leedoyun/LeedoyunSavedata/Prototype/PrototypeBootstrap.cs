@@ -61,7 +61,7 @@ public class PrototypeBootstrap : MonoBehaviour
 
     private void Start()
     {
-        SetupCamera();
+        //SetupCamera();
 
         // HUD 먼저 생성 (Zone / Player가 HUD를 참조하므로)
         new GameObject("HUD").AddComponent<PrototypeHUD>();

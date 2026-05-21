@@ -32,6 +32,8 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     [SerializeField] private float orderSpawnInterval = 25f;
     [Tooltip("주문 1건의 제한 시간(초)")]
     [SerializeField] private float orderTimeLimit     = 60f;
+    [Tooltip("가게 열기 후 첫 손님이 나올 때까지 대기 시간(초)")]
+    [SerializeField] private float firstOrderDelay    = 60f;
 
     // ─────────────────────────────────────────
     // 런타임 데이터
@@ -40,9 +42,11 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     private float _spawnTimer  = 0f;  // 다음 주문 생성까지 남은 시간
     private int   _todayGold   = 0;   // 오늘 판매 수익
     private int   _totalGold   = 0;   // 누적 판매 수익
+    private bool  _isShopOpen  = false; // 가게 열림 여부
 
-    public int TodayGold  => _todayGold;
-    public int TotalGold  => _totalGold;
+    public int  TodayGold  => _todayGold;
+    public int  TotalGold  => _totalGold;
+    public bool IsShopOpen => _isShopOpen;
 
     /// <summary>현재 활성 주문 목록 (읽기 전용 복사본)</summary>
     public IReadOnlyList<Leedoyun_CustomerOrder> ActiveOrders => _activeOrders;
@@ -130,8 +134,8 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
             }
         }
 
-        // 새 주문 생성 타이머
-        if (_activeOrders.Count < maxActiveOrders)
+        // 새 주문 생성 타이머 — 가게가 열려 있을 때만 동작
+        if (_isShopOpen && _activeOrders.Count < maxActiveOrders)
         {
             _spawnTimer += dt;
             if (_spawnTimer >= orderSpawnInterval)
@@ -169,11 +173,18 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
 
     public void OnLoad(SaveData data)
     {
+        // 기존 활성 주문을 이벤트와 함께 정리해 NPC 큐도 초기화
+        var toExpire = new List<Leedoyun_CustomerOrder>(_activeOrders);
+        _activeOrders.Clear();
+        foreach (var order in toExpire)
+        {
+            order.isExpired = true;
+            OnOrderExpired?.Invoke(order);
+        }
+
         _todayGold  = data.leedoyunTodayGold;
         _totalGold  = data.leedoyunTotalGold;
         _spawnTimer = data.orderSpawnTimer;
-
-        _activeOrders.Clear();
         foreach (var s in data.activeOrders)
         {
             var order = new Leedoyun_CustomerOrder(
@@ -267,6 +278,41 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     }
 
     // ─────────────────────────────────────────
+    // 가게 열기 / 닫기
+    // ─────────────────────────────────────────
+
+    /// <summary>
+    /// 가게 열기 — NPC 입장 및 주문 생성을 시작합니다.
+    /// "가게 열기" 버튼에서 호출하거나 ShopManager.OpenShop()을 통해 사용하세요.
+    /// </summary>
+    public void OpenShop()
+    {
+        if (_isShopOpen) return;
+        _isShopOpen = true;
+        _spawnTimer = orderSpawnInterval - firstOrderDelay; // firstOrderDelay 후 첫 주문 생성
+        Debug.Log("[SellManager] 가게 열기");
+    }
+
+    /// <summary>
+    /// 가게 닫기 — NPC 입장 차단, 현재 활성 주문 모두 만료 처리.
+    /// "가게 폐업하기" 또는 하루 종료 전에 호출하세요.
+    /// </summary>
+    public void CloseShop()
+    {
+        if (!_isShopOpen) return;
+        _isShopOpen = false;
+        var toExpire = new List<Leedoyun_CustomerOrder>(_activeOrders);
+        _activeOrders.Clear();
+        foreach (var order in toExpire)
+        {
+            order.isExpired = true;
+            OnOrderExpired?.Invoke(order);
+        }
+        _spawnTimer = 0f;
+        Debug.Log("[SellManager] 가게 닫기");
+    }
+
+    // ─────────────────────────────────────────
     // 하루 종료 처리
     // ─────────────────────────────────────────
 
@@ -277,8 +323,14 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     public void EndOfDay()
     {
         _todayGold = 0;
-        _activeOrders.Clear();
         _spawnTimer = 0f;
+        var toExpire = new List<Leedoyun_CustomerOrder>(_activeOrders);
+        _activeOrders.Clear();
+        foreach (var order in toExpire)
+        {
+            order.isExpired = true;
+            OnOrderExpired?.Invoke(order);
+        }
         Debug.Log("[SellManager] 하루 종료 → 주문 초기화");
     }
 

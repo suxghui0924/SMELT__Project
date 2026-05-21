@@ -13,9 +13,9 @@ public class Player_DamageVolume : MonoBehaviour
 
     void Update()
     {
-        if (_playerHpScript.IsPlayerDead == false &&_playerHpScript.IsPlayerInvincible == true)
+        /*if (_playerHpScript.IsPlayerDead == false &&_playerHpScript.IsPlayerInvincible == true)
         {
             VolumeManager.instance.VolumeStart("damage", "right", 0.15f);
-        }
+        }*/
     }
 }

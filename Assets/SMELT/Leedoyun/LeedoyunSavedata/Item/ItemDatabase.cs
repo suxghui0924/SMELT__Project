@@ -4,10 +4,6 @@ using UnityEngine;
 /// <summary>
 /// 모든 ItemData 에셋을 등록해두고 ID로 조회하는 데이터베이스.
 /// 
-/// [설정 방법]
-///   1. 빈 GameObject 생성 후 이 스크립트 부착
-///   2. Inspector의 items 리스트에 ItemData 에셋을 드래그로 등록
-/// 
 /// [사용 예시]
 ///   ItemData data = ItemDatabase.Instance.Get("fruitstone_strawberry");
 ///   icon.sprite   = data.icon;

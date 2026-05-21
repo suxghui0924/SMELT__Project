@@ -94,10 +94,12 @@ namespace _01_Scripts.Shop.Pickaxe
                 SoundManager.instance.PlaySFX("UIClick");
                 getCurPickaxeDataSO();
                 GroupBuyCancel();
+                AchievementManager.Instance.AlarmPopUp("상점 알리미",$"성공적으로 {curPickaxeDataSO.name} 구매를 하였습니다.");
             }
             else
             {
                 SoundManager.instance.PlaySFX("failed");
+                AchievementManager.Instance.AlarmPopUp("상점 알리미",$"성공적으로 {curPickaxeDataSO.name} 구매를 하지 못했습니다.");
                 //N
             }
             

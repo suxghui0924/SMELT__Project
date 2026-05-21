@@ -10,6 +10,8 @@ public class EnemySpawn : MonoBehaviour
     [Header("적 각각의 생성 확률")]
     [SerializeField] private float[] spawnChance;
 
+
+    private bool _isGameObjectCurrentDay = false;
     private float _spawnTotalChance;
     private float _halfWidth;
     private float _leftX;
@@ -22,9 +24,9 @@ public class EnemySpawn : MonoBehaviour
     public float minEnemySpawnTimer;
     private float _timer=0f;
 
-    private void Awake()
+    private void OnEnable()
     {
-        //if(gameObject.name==InventoryManager.Instance.CurrentDay.ToString()) gameObject.SetActive(true);
+        if(gameObject.name==InventoryManager.Instance.CurrentDay.ToString()) _isGameObjectCurrentDay = true;
     }
 
     private void Start()
@@ -42,13 +44,14 @@ public class EnemySpawn : MonoBehaviour
 
     private void Update()
     {
-        _timer += Time.deltaTime;
-           
-        if (_timer>=_enemySpawnTimer)
+        if (_isGameObjectCurrentDay)
         {
-            
-            Spawn(_spawnTotalChance);
-            
+            _timer += Time.deltaTime;
+
+            if (_timer >= _enemySpawnTimer)
+            {
+                Spawn(_spawnTotalChance);
+            }
         }
     }
 

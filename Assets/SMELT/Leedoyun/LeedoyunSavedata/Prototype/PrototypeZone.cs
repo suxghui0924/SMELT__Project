@@ -1,3 +1,4 @@
+using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 
 public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance }
@@ -72,6 +73,10 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.SkillTree)
             SkillTreeController.Instance?.Toggle();
         if (ZoneType == ZoneType.MineEntrance)
+        {
             GameManager.instance.ChangeState(new MiningState());
+            if (!TimerAndReward.Instance.canEnter) return;
+            TimerAndReward.Instance.db = true;
+        }
     }
 }

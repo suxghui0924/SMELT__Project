@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 33894947}
   - component: {fileID: 33894948}
   - component: {fileID: 33894949}
+  - component: {fileID: 33894950}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -188,9 +189,9 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -6248741079362886434, guid: 6275f5c97e7c21a41a4e481c1114a0ab, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
@@ -208,8 +209,8 @@ Transform:
   m_GameObject: {fileID: 33894936}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7, y: 8, z: 0}
-  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
+  m_LocalPosition: {x: 6, y: 9, z: 0}
+  m_LocalScale: {x: 3.3, y: 3.3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1171383369}
@@ -250,7 +251,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.2, y: -0.3}
   m_Radius: 0.5
 --- !u!50 &33894940
 Rigidbody2D:
@@ -407,6 +408,28 @@ MonoBehaviour:
   orePrefab: {fileID: 6672166761486969934, guid: 68e84cf3df6d249439e2c7e9b24e70da, type: 3}
   juicePrefab: {fileID: 2384462126000575630, guid: 181fc3e1146e54747a6efe5c73bfc22d, type: 3}
   impulseSource: {fileID: 716449940}
+--- !u!95 &33894950
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 33894936}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 145bef50f33f7014995651742568e170, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &713281581
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,7 +627,6 @@ GameObject:
   - component: {fileID: 940480892}
   - component: {fileID: 940480896}
   - component: {fileID: 940480895}
-  - component: {fileID: 940480894}
   - component: {fileID: 940480897}
   - component: {fileID: 940480900}
   m_Layer: 0
@@ -685,20 +707,6 @@ Transform:
   - {fileID: 1178623150}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &940480894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 940480891}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50321a6a198891a4e9f2e3c7679c0c3e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 15
-  moveDir: {x: 0, y: 0}
 --- !u!50 &940480895
 Rigidbody2D:
   serializedVersion: 5
@@ -935,7 +943,7 @@ Transform:
   m_GameObject: {fileID: 1171383368}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -953,8 +961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1281a418139eda94e807aeabf1d4f4c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prejuice: {fileID: 2072362471}
-  _bossJump: {fileID: 33894947}
   spawnPoints: {fileID: 1171383369}
   ore: {fileID: 6672166761486969934, guid: 68e84cf3df6d249439e2c7e9b24e70da, type: 3}
 --- !u!1 &1178623149
@@ -1310,7 +1316,7 @@ Transform:
   m_GameObject: {fileID: 2072362469}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
