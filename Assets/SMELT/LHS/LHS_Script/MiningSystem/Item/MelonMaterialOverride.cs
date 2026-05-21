@@ -18,4 +18,9 @@ public class MelonMaterialOverride : FruitMaterialLogic
         gameObject.SetActive(false);
         ItemSpawnManager.instance.itemPools[1].Push(gameObject);
     }
+    
+    protected override void AddEconomy(int amount)
+    { 
+        InventoryManager.Instance.AddItem("fruitstone_melon", amount);
+    }
 }

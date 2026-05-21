@@ -45,8 +45,6 @@ public class PrototypeZone : MonoBehaviour
 
     public void OnPlayerEnter()
     {
-        if (!TimerAndReward.Instance.canEnter) return;
-        TimerAndReward.Instance.db = true;
         _playerInside = true;
         _gatherTimer  = 0f;
         PrototypeHUD.Instance?.OnZoneEnter(ZoneType);
@@ -75,6 +73,10 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.SkillTree)
             SkillTreeController.Instance?.Toggle();
         if (ZoneType == ZoneType.MineEntrance)
+        {
+            if (!TimerAndReward.Instance.canEnter) return;
             GameManager.instance.ChangeState(new MiningState());
+            TimerAndReward.Instance.db = true;
+        }
     }
 }
