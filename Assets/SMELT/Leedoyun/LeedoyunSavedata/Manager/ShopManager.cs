@@ -1,14 +1,21 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 상점 운영 현황 관리 (판매, 수익 집계, 날짜별 해금).
-/// 담당자: 박성희
+/// 담당자: 이도윤
 /// 무기 판매/가격계산/해금 테이블 추가: 이도윤  // 추가
 /// </summary>
 public class ShopManager : MonoBehaviour, ISaveable
 {
     public static ShopManager Instance { get; private set; }
+
+    [Header("폐업 후 이동할 씬 (비워두면 현재 씬 재로드)")]
+    [SerializeField] private string _closeSceneName = "";
+
+    [Header("폐업 시 파괴할 DontDestroyOnLoad 오브젝트들")]
+    [SerializeField] private GameObject[] _persistentUIsToDestroy;
 
     // ─────────────────────────────────────────
     // 런타임 데이터
@@ -56,6 +63,9 @@ public class ShopManager : MonoBehaviour, ISaveable
         _salesHistory = data.salesHistory;
     }
 
+    // 폐업 후 씬 로드 완료 시 실행할 콜백용 (ShopManager 파괴 후에도 동작하도록 static)
+    private static GameObject[] _pendingHide;
+
     // ─────────────────────────────────────────
     // 판매 처리
     // ─────────────────────────────────────────
@@ -91,6 +101,90 @@ public class ShopManager : MonoBehaviour, ISaveable
     {
         _todayEarned = 0;
         _salesHistory.Clear();
+    }
+
+    // ─────────────────────────────────────────
+    // 가게 열기 / 닫기 / 폐업
+    // 버튼 OnClick에서 ShopManager.Instance.OpenShop() 형태로 호출하세요.
+    // ─────────────────────────────────────────
+
+    /// <summary>가게 상태 변경 이벤트. true = 열림, false = 닫힘.</summary>
+    public static event System.Action<bool> OnShopToggled;
+
+    /// <summary>현재 가게가 열려 있는지 여부.</summary>
+    public bool IsShopOpen =>
+        Leedoyun_SellManager.Instance != null && Leedoyun_SellManager.Instance.IsShopOpen;
+
+    /// <summary>
+    /// 가게 열기 — NPC 입장 및 주문 생성을 허용합니다.
+    /// </summary>
+    public void OpenShop()
+    {
+        Leedoyun_SellManager.Instance?.OpenShop();
+        OnShopToggled?.Invoke(true);
+    }
+
+    /// <summary>
+    /// 가게 닫기 — NPC 입장을 차단하고 현재 주문을 모두 만료시킵니다.
+    /// </summary>
+    public void CloseShop()
+    {
+        Leedoyun_SellManager.Instance?.CloseShop();
+        OnShopToggled?.Invoke(false);
+    }
+
+    /// <summary>
+    /// 가게 열기/닫기 토글 — 열려 있으면 닫고, 닫혀 있으면 엽니다.
+    /// 하나의 버튼 OnClick에 연결하세요.
+    /// </summary>
+    public void ToggleShop()
+    {
+        if (IsShopOpen)
+            CloseShop();
+        else
+            OpenShop();
+    }
+
+    /// <summary>
+    /// 가게 폐업 — 가게를 닫고 모든 세이브 데이터를 초기화합니다.
+    /// "가게 폐업하기" 버튼 OnClick에 연결하세요.
+    /// </summary>
+    public void CloseShopPermanently()
+    {
+        CloseShop();
+        SaveManager.Instance?.ResetAllData();
+        Debug.Log("[ShopManager] 가게 폐업 — 데이터 초기화 완료");
+
+        // 씬 변경 후 ShopManager가 파괴되므로, 비활성화할 목록을 static에 보관
+        _pendingHide = _persistentUIsToDestroy;
+
+        string scene = string.IsNullOrEmpty(_closeSceneName)
+            ? SceneManager.GetActiveScene().name
+            : _closeSceneName;
+
+        // 씬 로드 완료 후 UI 정리 (static 콜백 — ShopManager 파괴 이후에도 동작)
+        SceneManager.sceneLoaded += OnPermanentCloseLoaded;
+        SceneManager.LoadScene(scene);
+    }
+
+    private static void OnPermanentCloseLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SceneManager.sceneLoaded -= OnPermanentCloseLoaded;
+
+        // 게임 전용 DontDestroyOnLoad UI 비활성화
+        if (_pendingHide != null)
+        {
+            foreach (var ui in _pendingHide)
+                if (ui != null) ui.SetActive(false);
+            _pendingHide = null;
+        }
+
+        // UICanvasManager 복원 및 Title 표시 (부모가 비활성화된 경우 포함)
+        if (UICanvasManager.instance != null)
+        {
+            UICanvasManager.instance.gameObject.SetActive(true);
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
+        }
     }
 
     /// <summary>오늘 판매된 아이템 목록 반환 (UI 표시용).</summary>

@@ -31,10 +31,6 @@ public class Enemy : MonoBehaviour
         }
 
     }
-    void OnDestroy()
-    {
-        TimerAndReward.Instance.ReduceFatigue(2);
-        TimerAndReward.Instance._mp.fillAmount -= 0.02f;
-    }
+
 
 }
