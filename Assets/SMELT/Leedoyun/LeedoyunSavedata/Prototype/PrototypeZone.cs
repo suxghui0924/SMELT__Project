@@ -46,6 +46,7 @@ public class PrototypeZone : MonoBehaviour
     public void OnPlayerEnter()
     {
         if (!TimerAndReward.Instance.canEnter) return;
+        TimerAndReward.Instance.db = true;
         _playerInside = true;
         _gatherTimer  = 0f;
         PrototypeHUD.Instance?.OnZoneEnter(ZoneType);

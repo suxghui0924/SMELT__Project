@@ -19,7 +19,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         [HideInInspector]
         public UnityEvent<float> OnFatigueChange;
 
-        private bool db = false;
+        public bool db = false;
         [HideInInspector]
         public bool canEnter = true;
         
