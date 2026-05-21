@@ -17,6 +17,7 @@ public class BossSkillManager : MonoBehaviour
     public float timer = 0;
     int skillNum = 0;
     private bool db = false;
+    public bool stack = true;
     
     
     
@@ -27,7 +28,7 @@ public class BossSkillManager : MonoBehaviour
     }
     private void Start()
     {
-        timer = 3f;
+        timer = 2f;
 
     }
 
@@ -51,13 +52,15 @@ public class BossSkillManager : MonoBehaviour
             }
    
         }
-        
-        timer -= Time.deltaTime;
+
+        if (stack)
+        {
+            timer -= Time.deltaTime;
+        }
 
         if (timer < 0 && !db)
         {
-            timer = 3f;
-            yield return new WaitForSeconds(2f);
+            timer = 1f;
             Skills(Random.Range(0, 3));
         }
     }
@@ -72,20 +75,24 @@ public class BossSkillManager : MonoBehaviour
         if (skill == 0)
         {
             db = true;
-
+            stack = false;
+            
             yield return new WaitForSeconds(0.7f);
             
-            StartCoroutine(drawOre.SpawnOre());      
+            StartCoroutine(drawOre.SpawnOre());
+            
             db = false;
         }
         else if (skill == 1)
         {
             
             db = true;
-            
-            yield return new WaitForSeconds(1f);
-           _prejuice.SpawnJuice();
+            stack = false;
 
+            yield return new WaitForSeconds(1f);
+            
+           _prejuice.SpawnJuice();
+           
             db = false;
             
         }
@@ -93,10 +100,12 @@ public class BossSkillManager : MonoBehaviour
         {
            
             db = true;
+            stack = false;
 
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.1f);
             
             StartCoroutine(_bossJump.JumpTo());
+            
             db = false;
         }
     }

@@ -37,9 +37,11 @@ public class DrowOre : MonoBehaviour
             _bossSKillAnim.SetTrigger("BossSkill");
             Vector3 randomOffset = new Vector3(Random.Range(-0.5f, 0.5f),Random.Range(-0.5f, 0.5f));
             Instantiate(ore, spawnPoints.position + randomOffset, Quaternion.identity);
-            BossSkillManager.Instance.timer = 5f;
             yield return new WaitForSeconds(Delays);
 
         }
+        BossSkillManager.Instance.timer = 1.5f;
+        BossSkillManager.Instance.stack = true;
+
     }
 }
