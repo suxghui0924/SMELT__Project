@@ -8275,18 +8275,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1790501440}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac5ebe8f356301f479f42be8e28721b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bd8426c5f138444aa955e6637a3c652, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   saveButton: {fileID: 233491182}
-  loadButton: {fileID: 0}
-  popupPanel: {fileID: 0}
-  popupMessage: {fileID: 0}
-  popupIcon: {fileID: 0}
-  background: {fileID: 0}
-  successSprite: {fileID: 0}
-  failSprite: {fileID: 0}
-  popupDuration: 2
 --- !u!1 &1814884678
 GameObject:
   m_ObjectHideFlags: 0
