@@ -1,3 +1,4 @@
+using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 
 public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance }
@@ -44,6 +45,7 @@ public class PrototypeZone : MonoBehaviour
 
     public void OnPlayerEnter()
     {
+        if (!TimerAndReward.Instance.canEnter) return;
         _playerInside = true;
         _gatherTimer  = 0f;
         PrototypeHUD.Instance?.OnZoneEnter(ZoneType);
