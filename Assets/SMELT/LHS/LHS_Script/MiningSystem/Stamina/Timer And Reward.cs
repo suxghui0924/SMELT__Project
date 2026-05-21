@@ -68,6 +68,10 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                     FatigueReset();
                 }
             }
+            else
+            {
+                db = false; // 채광 씬이 아니면 스태미나 감소 중지
+            }
         }
         
         public void FatigueReset()
