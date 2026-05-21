@@ -15,6 +15,8 @@ public class LoadManager : MonoBehaviour
 
     IEnumerator LoadAsyncScene()
     {
+        minLoadTime = 0;
+        yield return null;
         // 매니저에 저장된 다음 씬 이름을 비동기로 로드
         AsyncOperation op = SceneManager.LoadSceneAsync(SceneLoader.nextScene);
         op.allowSceneActivation = false; // 100% 로드되어도 바로 넘어가지 않게 방지
