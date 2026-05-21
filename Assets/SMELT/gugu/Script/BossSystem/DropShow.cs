@@ -17,7 +17,7 @@ public class DropShow : MonoBehaviour
         
         
         if(gameObject.name == "Player")
-            mySequence.Append(transform.DOMoveY(-2, 1.5f).SetEase(Ease.OutBounce));
+            mySequence.Append(transform.DOMoveY(-3, 1.5f).SetEase(Ease.OutBounce));
         else
             mySequence.Append(transform.DOMoveY(target.position.y, 1.5f).SetEase(Ease.OutBounce));
         shake = true;
