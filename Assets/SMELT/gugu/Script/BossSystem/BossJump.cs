@@ -13,18 +13,19 @@ public class BossJump : MonoBehaviour
         Vector3 startPos = transform.position;
 
         float targetX;
+        bool flipValue;
 
         // 현재 오른쪽이면 왼쪽으로
         if (transform.position.x > 0)
         {
             targetX = leftX;
-            spriteRenderer.flipX = true;
+            flipValue = false;
         }
         // 현재 왼쪽이면 오른쪽으로
         else
         {
             targetX = rightX;
-            spriteRenderer.flipX = false;
+            flipValue = true;
         }
 
         Vector3 targetPos = new Vector3(targetX, startPos.y, startPos.z);
@@ -51,5 +52,8 @@ public class BossJump : MonoBehaviour
         }
 
         transform.position = targetPos;
+
+        // 착지 후 방향 전환
+        spriteRenderer.flipX = flipValue;
     }
 }
