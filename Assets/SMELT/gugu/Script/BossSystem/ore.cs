@@ -9,7 +9,7 @@ public class ore : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private float speed = 3f;
+    private float speed = 4.5f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

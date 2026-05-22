@@ -18,4 +18,8 @@ public class MandarinMaterialOverride : FruitMaterialLogic
         gameObject.SetActive(false);
         ItemSpawnManager.instance.itemPools[2].Push(gameObject);
     }
+    protected override void AddEconomy(int amount)
+    { 
+        InventoryManager.Instance.AddItem("fruitstone_orange", amount);
+    }
 }
