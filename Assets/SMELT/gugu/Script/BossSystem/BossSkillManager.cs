@@ -72,41 +72,46 @@ public class BossSkillManager : MonoBehaviour
 
     IEnumerator SkillDelay(int skill)
     {
-        if (skill == 0)
+        if (_skillSystem.IsAlive == true)
         {
-            db = true;
-            stack = false;
+            if (skill == 0)
+            {
+                db = true;
+                stack = false;
             
-            yield return new WaitForSeconds(0.7f);
+                yield return new WaitForSeconds(0.7f);
             
-            StartCoroutine(drawOre.SpawnOre());
+                StartCoroutine(drawOre.SpawnOre());
             
-            db = false;
-        }
-        else if (skill == 1)
-        {
+                db = false;
+            }
+            else if (skill == 1)
+            {
             
-            db = true;
-            stack = false;
+                db = true;
+                stack = false;
 
-            yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1f);
             
-           _prejuice.SpawnJuice();
+                _prejuice.SpawnJuice();
            
-            db = false;
+                db = false;
             
-        }
-        else if (skill == 2)
-        {
+            }
+            else if (skill == 2)
+            {
            
-            db = true;
-            stack = false;
+                db = true;
+                stack = false;
 
-            yield return new WaitForSeconds(0.1f);
+                yield return new WaitForSeconds(0.1f);
             
-            StartCoroutine(_bossJump.JumpTo());
+                StartCoroutine(_bossJump.JumpTo());
             
-            db = false;
+                db = false;
+            }
         }
+       
     }
 }
+    
