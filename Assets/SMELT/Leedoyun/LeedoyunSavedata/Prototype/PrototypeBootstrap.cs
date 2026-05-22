@@ -53,7 +53,6 @@ public class PrototypeBootstrap : MonoBehaviour
         Ensure<InventoryManager>();
         Ensure<PlayerStatManager>();
         Ensure<WeaponCraftManager>();
-        Ensure<AutoGatherManager>();
         Ensure<Leedoyun_SellManager>();
         Ensure<OrderHUD>();
         Ensure<HeldItemController>();

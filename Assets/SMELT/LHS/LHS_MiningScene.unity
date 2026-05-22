@@ -2450,7 +2450,6 @@ GameObject:
   m_Component:
   - component: {fileID: 709529982}
   - component: {fileID: 709529984}
-  - component: {fileID: 709529985}
   m_Layer: 0
   m_Name: SaveButtonHome
   m_TagString: Untagged
@@ -2485,19 +2484,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffe0c1c0408adb41a8b10049b704c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &709529985
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 709529981}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 294b6e4ed6e1460794ec56d98ed4cfeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _saveButton: {fileID: 233491182}
 --- !u!1 &714948382
 GameObject:
   m_ObjectHideFlags: 0
@@ -8248,6 +8234,52 @@ Transform:
   - {fileID: 616271019}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1790501440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1790501442}
+  - component: {fileID: 1790501443}
+  m_Layer: 0
+  m_Name: SteminaSaveController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1790501442
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790501440}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.8351014, y: -3.2833686, z: 386.204}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1790501443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790501440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac5ebe8f356301f479f42be8e28721b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  saveButton: {fileID: 233491182}
+  loadButton: {fileID: 0}
 --- !u!1 &1814884678
 GameObject:
   m_ObjectHideFlags: 0
@@ -9531,3 +9563,4 @@ SceneRoots:
   - {fileID: 1729871602}
   - {fileID: 709529982}
   - {fileID: 2132692111}
+  - {fileID: 1790501442}
