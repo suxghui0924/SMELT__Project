@@ -34,9 +34,9 @@ public class skillSystem : MonoBehaviour
         {
             for (int i = 0; i < 1; i++)
             {
-                impulseSource.GenerateImpulseWithVelocity(new Vector3(0, 0.4f, 0));
+                impulseSource.GenerateImpulseWithVelocity(new Vector3(0, 0.5f, 0));
                 yield return new WaitForSeconds(0.01f);
-                impulseSource.GenerateImpulseWithVelocity(new Vector3(0, -0.4f, 0));
+                impulseSource.GenerateImpulseWithVelocity(new Vector3(0, -0.5f, 0));
             }
             yield return  new WaitForSeconds(3f);
             shakes = false;
@@ -56,7 +56,7 @@ public class skillSystem : MonoBehaviour
             
             if (collision.gameObject.CompareTag("ore"))
             {
-                BossSystem.Instance._Hp.fillAmount -= Damage / 500f;
+                BossSystem.Instance._Hp.fillAmount -= Damage / 200f;
                 Destroy(collision.gameObject);
 
             }
@@ -67,7 +67,7 @@ public class skillSystem : MonoBehaviour
             if (collision.gameObject.CompareTag("juice"))
             {
 
-                BossSystem.Instance._Hp.fillAmount -= Damage / 200f;
+                BossSystem.Instance._Hp.fillAmount -= Damage / 100f;
                 Destroy(collision.gameObject);       
             
     
@@ -89,7 +89,7 @@ public class skillSystem : MonoBehaviour
     {
 
         shakes = true;
-
+        BossSkillManager.Instance.stack = false;
         yield return new WaitForSeconds(3f);
 
         OnAnimationEnd();

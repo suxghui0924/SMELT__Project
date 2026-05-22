@@ -30,7 +30,7 @@ public class BossJump : MonoBehaviour
 
         Vector3 targetPos = new Vector3(targetX, startPos.y, startPos.z);
 
-        float duration = 1f;
+        float duration = 0.5f;
         float height = 3f;
 
         float time = 0f;
@@ -55,5 +55,8 @@ public class BossJump : MonoBehaviour
 
         // 착지 후 방향 전환
         spriteRenderer.flipX = flipValue;
+        BossSkillManager.Instance.timer = 1.5f;
+        BossSkillManager.Instance.stack = true;
+
     }
 }
