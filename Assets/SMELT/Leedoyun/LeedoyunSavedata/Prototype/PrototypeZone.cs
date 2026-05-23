@@ -85,7 +85,9 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.StoreStateZone)
             UICanvasManager.instance.ControlObject(ObjectType.Radio, true);
         if (ZoneType == ZoneType.NextDay)
+        {
             UICanvasManager.instance.ControlObject(ObjectType.DayNext, true);
+        }
 
         if (ZoneType == ZoneType.Door)
         {
