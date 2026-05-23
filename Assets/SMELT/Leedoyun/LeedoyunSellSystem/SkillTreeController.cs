@@ -32,14 +32,16 @@ public class SkillTreeController : MonoBehaviour
     public void Show()
     {
         _isOpen = true;
-        UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
+        if (UICanvasManager.instance != null)
+            UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
         RefreshAll();
     }
 
     public void Hide()
     {
         _isOpen = false;
-        UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, false);
+        if (UICanvasManager.instance != null)
+            UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, false);
     }
 
     public void Toggle()
