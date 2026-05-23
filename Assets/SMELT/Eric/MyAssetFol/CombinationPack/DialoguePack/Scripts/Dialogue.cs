@@ -39,7 +39,7 @@ public class Dialogue : MonoBehaviour
             if (active)
             {
                 textBox.text += letter;
-                yield return new WaitForSeconds(typingSpeed);
+                yield return new WaitForSecondsRealtime(typingSpeed);
                 animController.ResetTrigger("Appear");
 
             }
@@ -61,7 +61,7 @@ public class Dialogue : MonoBehaviour
             {
                 StartCoroutine(Type());
             }            
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSecondsRealtime(duration);
             if (index < sentences.Length)
             {
                 index++;
@@ -71,7 +71,7 @@ public class Dialogue : MonoBehaviour
                 
                 //Debug.Log("Should Shrink");
                 animController.SetTrigger("Disappear");
-                
+                Time.timeScale = 1f;
             }
             
         }
@@ -134,13 +134,13 @@ public class Dialogue : MonoBehaviour
             if (active)
             {
                 active = false;
-                Invoke("SkipInvoke", 1f);
+                StartCoroutine(SkipInvokeRoutine());
             }
             else
             {
                 index++;
                 StartCoroutine(Type());
-                Invoke("SkipInvoke", 1f);
+                StartCoroutine(SkipInvokeRoutine());
             }
         }
         else
@@ -150,9 +150,10 @@ public class Dialogue : MonoBehaviour
         }
            
     }
-
-    private void SkipInvoke()
+    
+    private IEnumerator SkipInvokeRoutine()
     {
+        yield return new WaitForSecondsRealtime(1f);
         active = true;
     }
 
@@ -162,7 +163,7 @@ public class Dialogue : MonoBehaviour
         sentences = null;
         UpdateName();
         textBox.text = "";
-
+    Time.timeScale = 1f;
     }
 }
 
