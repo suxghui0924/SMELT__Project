@@ -87,7 +87,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                 timer += Time.deltaTime;
                 if (timer >= 1)
                 {
-                    ReduceFatigue(2f);
+                    ReduceFatigue(1f);
                     timer = 0;
                 }
             }

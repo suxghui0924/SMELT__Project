@@ -31,9 +31,10 @@ public class Player_HpScript : MonoBehaviour
         PlayerCurrentHp = TimerAndReward.Instance.currentFatigue;
     }
 
-    public void TakeDamage(float damageValue)
+    public void TakeDamage(float damageValue,string dir)
     {
         if (IsPlayerDead == true || IsPlayerInvincible == true) return;
+        VolumeManager.instance.VolumeStart("damage",dir,0.1f);
         TimerAndReward.Instance.ReduceFatigue(damageValue);
         if (PlayerCurrentHp > 0)
         {
