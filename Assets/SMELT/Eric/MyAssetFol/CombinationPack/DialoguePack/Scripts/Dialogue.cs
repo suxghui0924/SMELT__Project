@@ -71,7 +71,7 @@ public class Dialogue : MonoBehaviour
             else
             {
                 
-                //Debug.Log("Should Shrink");
+                //Debug.Log("Should TutoHit");
                 animController.SetTrigger("Disappear");
                 if (!TutoManager.Instance.TutoSaying.tuRAttack&&!TutoManager.Instance.TutoSaying.tuLAttack)
                 {

@@ -14,6 +14,8 @@ TagManager:
   - Paring
   - EnterDungeon
   - EnterUpgrade
+  - RightHit
+  - LeftHit
   layers:
   - Default
   - TransparentFX

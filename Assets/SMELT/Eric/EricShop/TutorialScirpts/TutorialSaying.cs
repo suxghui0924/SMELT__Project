@@ -51,6 +51,8 @@ public class TutorialSaying : MonoBehaviour
                                 TutoManager.Instance.Dialogue.canMove = true;
                                 tuRAttack = false;
                                 TutoManager.Instance.Dialogue.Skip();
+                                
+                                Destroy(TutoManager.Instance.TutoRAttack.otherCollider.gameObject);
                         }
                 }
                 if(tuLAttack)
@@ -60,6 +62,8 @@ public class TutorialSaying : MonoBehaviour
                                 TutoManager.Instance.Dialogue.canMove = true;
                                 tuLAttack = false;
                                 TutoManager.Instance.Dialogue.Skip();
+                                
+                                Destroy(TutoManager.Instance.TutoLAttack.otherCollider.gameObject);
                         }      
                 }
         }

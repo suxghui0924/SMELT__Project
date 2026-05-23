@@ -19,5 +19,6 @@ public class TutoManager : MonoBehaviour
     [field:SerializeField]public TutoOnTrigger TutoOnTrigger{ get;private set; }
     [field:SerializeField]public TutorialLine TutoLine{ get;private set; }
     [field:SerializeField]public TutorialSaying TutoSaying{ get;private set; }
+    [field:SerializeField]public TutoHit TutoHit{ get;private set; }
     [field:SerializeField]public Dialogue Dialogue{ get;private set; }
 }
