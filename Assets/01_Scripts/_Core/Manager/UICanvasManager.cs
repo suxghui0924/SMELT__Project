@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum CanvasType { Title , Hud, Popup, System };
-public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading, GameDie, Radio };
+public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading, GameDie, Radio, StoreState };
 
 public class UICanvasManager : MonoBehaviour
 {
@@ -16,23 +16,34 @@ public class UICanvasManager : MonoBehaviour
     [SerializeField] private Canvas _hud;
     [SerializeField] private Canvas _popup;
     [SerializeField] private Canvas _system;
+    
     [SerializeField] TextMeshProUGUI _textLabelGameOver;
+    
     [SerializeField] GameObject HudTopObject;
     [SerializeField] GameObject HudCenterObject;
     [SerializeField] GameObject HudBottomObject;
+    
     [SerializeField] GameObject[] PopupObject;
     [SerializeField] GameObject[] SystemObject;
+    
     [SerializeField] CanvasGroup fadeCanvasGroup;
+    
     int[] Qty = new int[6];
+    
     string[] itemIds = { "fruitstone_apple", "fruitstone_melon", "fruitstone_orange", "fruitstone_lemon", "fruitstone_grape" };
 
+    private bool isRadioActive = false;
+    
+    private bool isNextActive = false;
 
+    private bool isStoreStateActive = false;
+    
     private void Awake()
     {
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             /*// 캔버스들도 씬 전환 시 파괴되지 않도록 영속화
             TryPersist(_title?.gameObject);
             TryPersist(_hud?.gameObject);
@@ -93,13 +104,26 @@ public class UICanvasManager : MonoBehaviour
             case ObjectType.Center: if (HudCenterObject != null) HudCenterObject.SetActive(isActive); break;
             case ObjectType.Bottom: if (HudBottomObject != null) HudBottomObject.SetActive(isActive); break;
             case ObjectType.ShopASkill: if (PopupObject[0] != null) PopupObject[0].SetActive(isActive); break;
-            case ObjectType.DayNext: if (PopupObject[1] != null) PopupObject[1].SetActive(isActive); break;
+            case ObjectType.DayNext: if (PopupObject[1] != null)
+            {
+                PopupObject[1].SetActive(isActive);
+                isNextActive = !isActive;
+            } break;
             case ObjectType.Setting: if (PopupObject[2] != null) PopupObject[2].SetActive(isActive); break;
             case ObjectType.Fade: if (SystemObject[0] != null) SystemObject[0].SetActive(isActive); break;
                 case ObjectType.GameOver: if (SystemObject[1] != null) SystemObject[1].SetActive(isActive); break;
             case ObjectType.Loading: if (SystemObject[2] != null) SystemObject[2].SetActive(isActive); break;
-            case ObjectType.Radio: if (PopupObject[3] != null) PopupObject[3].SetActive(isActive); break;
+            case ObjectType.Radio: if (PopupObject[3] != null)
+            {
+                PopupObject[3].SetActive(isActive);
+                isRadioActive = !isActive;
+            } break;
             case ObjectType.GameDie: if (SystemObject[3] != null)  SystemObject[3].SetActive(isActive); break;
+            case ObjectType.StoreState: if (SystemObject[4] != null)
+            {
+                SystemObject[4].SetActive(isActive);
+                isStoreStateActive = !isActive;
+            } break;
         }
     }
     void UpdateUiTextLabel()
