@@ -43,6 +43,12 @@ public class PrototypeZone : MonoBehaviour
         _playerInside = true;
         _gatherTimer  = 0f;
         PrototypeHUD.Instance?.OnZoneEnter(ZoneType);
+
+        if (ZoneType == ZoneType.Door && PrototypeHUD.Instance != null)
+        {
+            string hint = _isDoorOpen ? "문  —  [ E ] 문 닫기" : "문  —  [ E ] 문 열기";
+            PrototypeHUD.Instance.SetZoneHint(hint);
+        }
     }
 
     public void OnPlayerExit()
