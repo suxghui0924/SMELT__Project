@@ -3,16 +3,6 @@ using UnityEngine;
 
 public class TutorialLine : MonoBehaviour
 {
-    public static TutorialLine Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
-
     public string[] start =
     {
         "안녕? 난 이 섬의 공주야, 잘부탁해!",
@@ -88,7 +78,7 @@ public class TutorialLine : MonoBehaviour
 
     public string[] store2 =
     {
-        "업그레이드를 해보자!",
+        "E 키를 눌러 창을 연 다음 업그레이드를 해보자!",
     };
     public string[] store3 =
     {

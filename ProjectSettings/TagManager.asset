@@ -12,6 +12,8 @@ TagManager:
   - juice
   - ore
   - Paring
+  - EnterDungeon
+  - EnterUpgrade
   layers:
   - Default
   - TransparentFX
