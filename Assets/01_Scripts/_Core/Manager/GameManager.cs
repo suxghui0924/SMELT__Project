@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +19,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(gameObject);
+            Destroy(this);
         }
     }
 
@@ -30,6 +31,16 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Lobby" && UICanvasManager.instance != null)
+        {
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
+            StartCoroutine(EnsureLobbyTitle());
+        }
+    }
+
+    private IEnumerator EnsureLobbyTitle()
+    {
+        yield return null;
+        if (UICanvasManager.instance != null)
             UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
     }
 
@@ -41,7 +52,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
   
-        if (Input.GetKey(KeyCode.RightShift))
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             ChangeState(new GameOverState());
         }
