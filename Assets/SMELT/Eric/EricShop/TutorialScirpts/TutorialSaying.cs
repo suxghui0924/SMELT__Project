@@ -18,7 +18,8 @@ public class TutorialSaying : MonoBehaviour
 
         public IEnumerator SayingCoroutine(string[] texts)
         {
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSecondsRealtime(0.5f);
+                Time.timeScale = 0f;
                 lines = texts;
                 dialogue.typingSpeed = typingSpeed;
                 dialogue.Say(lines, characterName, delayBetweenLines);

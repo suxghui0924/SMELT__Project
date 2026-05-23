@@ -21,6 +21,9 @@ public class GrapeMaterialOverride : FruitMaterialLogic
 
     protected override void AddEconomy(int amount)
     { 
-        InventoryManager.Instance.AddItem("fruitstone_grape", amount);
+        SaveData data = SaveManager.Instance.CurrentData;
+        float bonus = data.getGrape + data.getFriuts;
+        int finalAmount = Mathf.RoundToInt(amount * (1 + bonus));
+        InventoryManager.Instance.AddItem("fruitstone_grape", finalAmount);
     }
 }
