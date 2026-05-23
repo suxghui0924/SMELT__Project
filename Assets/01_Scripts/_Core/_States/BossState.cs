@@ -7,7 +7,8 @@ namespace _01_Scripts._Core._States
     {
         public void Enter()
         {
-            
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, false);
+            SceneLoader.LoadScene("Work_boss_kgz");
         }
 
         public void Execute()

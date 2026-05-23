@@ -13,7 +13,6 @@ public class HouseState : IGameState
 
     public void Execute()
     {
-        throw new System.NotImplementedException();
     }
 
     public void Exit()

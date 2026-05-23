@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum CanvasType { Title , Hud, Popup, System };
-public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading, GameDie, Radio };
+public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading, GameDie, Radio, Tutorial };
 
 public class UICanvasManager : MonoBehaviour
 {
@@ -100,6 +100,7 @@ public class UICanvasManager : MonoBehaviour
             case ObjectType.Loading: if (SystemObject[2] != null) SystemObject[2].SetActive(isActive); break;
             case ObjectType.Radio: if (PopupObject[3] != null) PopupObject[3].SetActive(isActive); break;
             case ObjectType.GameDie: if (SystemObject[3] != null)  SystemObject[3].SetActive(isActive); break;
+            case ObjectType.Tutorial: if (PopupObject[4] != null)  PopupObject[4].SetActive(isActive); break;
         }
     }
     void UpdateUiTextLabel()
