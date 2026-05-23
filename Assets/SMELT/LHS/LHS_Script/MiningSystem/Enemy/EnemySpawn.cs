@@ -26,7 +26,8 @@ public class EnemySpawn : MonoBehaviour
 
     private void OnEnable()
     {
-        if(gameObject.name==InventoryManager.Instance.CurrentDay.ToString()) _isGameObjectCurrentDay = true;
+       string Currentday = Mathf.Clamp( InventoryManager.Instance.CurrentDay,1,7).ToString();
+        if(gameObject.name==Currentday) _isGameObjectCurrentDay = true;
     }
 
     private void Start()

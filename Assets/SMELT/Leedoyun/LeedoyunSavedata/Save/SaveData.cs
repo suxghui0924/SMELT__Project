@@ -75,7 +75,7 @@ public class SaveData
     public List<OrderSaveData> activeOrders = new List<OrderSaveData>();
 
     // ─────────────────────────────────────────
-    // 피로도 담당자: 이도윤                          // 추가
+    // 피로도 담당자: 이호승                          // 추가
     // ─────────────────────────────────────────
     [Header("Stamina")]                               // 추가
     public float stamina = 100f; // 현재 피로도 (0~100)  // 추가
