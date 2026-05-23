@@ -12,9 +12,12 @@ public class TutoAttack : MonoBehaviour
             if(gameObject.CompareTag("RightHit"))
             {
                 StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon3));
+                TutoManager.Instance.TutoEnemySpawn.Spawn(false);
             }
-            if(gameObject.CompareTag("LeftHit"))  StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon4));
-
+            if(gameObject.CompareTag("LeftHit"))
+            {
+                StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon4));
+            }
         }
     }
 }

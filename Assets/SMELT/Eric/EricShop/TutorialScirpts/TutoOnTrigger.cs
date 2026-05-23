@@ -9,7 +9,6 @@ public class TutoOnTrigger : MonoBehaviour
         {      
             Debug.Log(other.name);
             StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon2));
-            gameObject.SetActive(false);
         }
     }
 }

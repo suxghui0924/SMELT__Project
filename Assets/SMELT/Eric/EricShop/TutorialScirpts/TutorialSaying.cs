@@ -14,6 +14,8 @@ public class TutorialSaying : MonoBehaviour
         public bool tuRAttack;
         public bool tuLAttack;
 
+        public bool canExitDungeon;
+
         private void Start()
         {
                 StartCoroutine(SayingCoroutine(TutoManager.Instance.TutoLine.start));
@@ -62,7 +64,8 @@ public class TutorialSaying : MonoBehaviour
                                 TutoManager.Instance.Dialogue.canMove = true;
                                 tuLAttack = false;
                                 TutoManager.Instance.Dialogue.Skip();
-                                
+                              StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon5)) ;
+                              canExitDungeon = true;
                                 Destroy(TutoManager.Instance.TutoLAttack.otherCollider.gameObject);
                         }      
                 }

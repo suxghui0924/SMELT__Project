@@ -5,21 +5,12 @@ using UnityEngine;
 using TMPro;
 
 
-// IMPORTANT Public METHODS and their use
-
-// Say() can take a string or string array, and proceeds to print it one character at a time. It can also take a character name, and a line delay.
-// Skip() skips to the end of the line and then running skip again with 1 second of the first takes you to the next line in the index. 
-// Clear() clears the stored data and closes the text box. 
-
-
 public class Dialogue : MonoBehaviour
 {
     [Header("Setup")]
     public TextMeshProUGUI textBox;
     public TextMeshProUGUI nameBox;
     public Animator animController;
-
-    
 
     [Header("Input")]
     [HideInInspector]
@@ -30,10 +21,8 @@ public class Dialogue : MonoBehaviour
     private bool active = true;
     public bool canMove = true;
     
-
     IEnumerator Type()
     {
-        
         animController.ResetTrigger("Disappear");
         textBox.text = "";
         foreach (var letter in sentences[index].ToCharArray())
@@ -43,49 +32,36 @@ public class Dialogue : MonoBehaviour
                 textBox.text += letter;
                 yield return new WaitForSecondsRealtime(typingSpeed);
                 animController.ResetTrigger("Appear");
-
             }
             else
             {
                 textBox.text = sentences[index];
+                break; 
             }
-
         }
-
     }
 
     IEnumerator TypeMany()
     {
-        for (int i = 0; i < sentences.Length+1; i++)
+        while (index < sentences.Length)
         {
+            yield return StartCoroutine(Type()); 
             
-            if (index < sentences.Length)
-            {
-                StartCoroutine(Type());
-            }            
             yield return new WaitForSecondsRealtime(duration);
-            if (index < sentences.Length)
-            {
-                index++;
-            }
-            else
-            {
-                
-                //Debug.Log("Should TutoHit");
-                animController.SetTrigger("Disappear");
-                if (!TutoManager.Instance.TutoSaying.tuRAttack&&!TutoManager.Instance.TutoSaying.tuLAttack)
-                {
-                    canMove = true;
-                }
-            }
+            index++;
+        }
+
+        animController.SetTrigger("Disappear");
+        if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)
+        {
+            canMove = true;
         }
     }
 
     private void Update()
     {
-                if(canMove)  Time.timeScale = 1f;
+        if(canMove) Time.timeScale = 1f;
     }
-
 
     //Character Socket
     public void UpdateName(string name = null)
@@ -104,11 +80,13 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-
     public void Say(string _text, string _characterName = null, float _duration = 0)
     {
+        StopAllCoroutines(); 
+        active = true; 
+        
         animController.SetTrigger("Appear");
-        string[] phrase = { _text};
+        string[] phrase = { _text };
         sentences = phrase;
 
         index = 0;
@@ -122,11 +100,14 @@ public class Dialogue : MonoBehaviour
 
     public void Say(string[] _text, string _characterName = null, float _duration = 0)
     {
+        StopAllCoroutines(); 
+        active = true;  
+        
         canMove = false;
         animController.SetTrigger("Appear");
         sentences = _text;
         index = 0;
-        if (_duration>0)
+        if (_duration > 0)
         {
             duration = _duration;
         }
@@ -134,10 +115,9 @@ public class Dialogue : MonoBehaviour
         StartCoroutine(TypeMany());
     }
 
-
     public void Skip()
     {
-        if (index < sentences.Length-1)
+        if (index < sentences.Length - 1)
         {
             if (active)
             {
@@ -153,9 +133,8 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Should Shrink");
             animController.SetTrigger("Disappear");
-            if (!TutoManager.Instance.TutoSaying.tuRAttack&&!TutoManager.Instance.TutoSaying.tuLAttack)
+            if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)
             {
                 canMove = true;
             }
@@ -170,12 +149,10 @@ public class Dialogue : MonoBehaviour
 
     public void Clear()
     {
+        StopAllCoroutines(); 
         animController.SetTrigger("Disappear");
         sentences = null;
         UpdateName();
         textBox.text = "";
     }
 }
-
-
-
