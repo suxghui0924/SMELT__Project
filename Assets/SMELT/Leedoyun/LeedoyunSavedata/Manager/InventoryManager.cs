@@ -17,8 +17,8 @@ public class InventoryManager : MonoBehaviour, ISaveable
     private Dictionary<string, int> _inventory = new Dictionary<string, int>();
 
     private int _currentDay      = 1;
-    private int _gold            = 0;
-    private int _maintenanceCost = 100;
+    private ulong _gold           = 0;
+    private ulong _maintenanceCost = 100;
     private int _techLevel       = 1;
 
     private List<string> _unlockedTechs = new List<string>();
@@ -27,19 +27,19 @@ public class InventoryManager : MonoBehaviour, ISaveable
     // 이벤트 (UI가 구독해서 변경 감지)           // 추가
     // ─────────────────────────────────────────
     /// <summary>골드 변경 시 발생. (이전값, 새값)</summary>
-    public event Action<int, int> OnGoldChanged;    // 추가
+    public event Action<ulong, ulong> OnGoldChanged;    // 추가
 
     /// <summary>아이템 수량 변경 시 발생. (itemId, 새 수량)</summary>
     public event Action<string, int> OnItemChanged; // 추가
     // 위와 같음 현재 일차, 유지비용 --이도윤씨가 만든거 사용함. by 박성희
-    public event Action<int, int> OnDayChanged;
+    public event Action<int, ulong> OnDayChanged;
 
     // ─────────────────────────────────────────
     // 프로퍼티 (읽기 전용 - 외부 접근용)
     // ─────────────────────────────────────────
     public int CurrentDay      => _currentDay;
-    public int Gold            => _gold;
-    public int MaintenanceCost => _maintenanceCost;
+    public ulong Gold            => _gold;
+    public ulong MaintenanceCost => _maintenanceCost;
     public int TechLevel       => _techLevel;
 
     // ─────────────────────────────────────────
@@ -162,22 +162,22 @@ public class InventoryManager : MonoBehaviour, ISaveable
     // ─────────────────────────────────────────
 
     /// <summary>골드 추가.</summary>
-    public void AddGold(int amount)
+    public void AddGold(ulong amount)
     {
-        int prev = _gold;   // 추가
+        ulong prev = _gold;   // 추가
         _gold += amount;
         OnGoldChanged?.Invoke(prev, _gold); // 추가
     }
 
     /// <summary>골드 차감. 부족하면 false 반환.</summary>
-    public bool SpendGold(int amount)
+    public bool SpendGold(ulong amount)
     {
         if (_gold < amount)
         {
             Debug.LogWarning($"[Economy] 골드 부족 (필요: {amount}, 보유: {_gold})");
             return false;
         }
-        int prev = _gold;   // 추가
+        ulong prev = _gold;   // 추가
         _gold -= amount;
         OnGoldChanged?.Invoke(prev, _gold); // 추가
         return true;
@@ -193,7 +193,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
         }
 
         _currentDay++;
-        _maintenanceCost = Mathf.RoundToInt(_maintenanceCost * 1.2f);  // 유지비 20% 증가
+        _maintenanceCost =(ulong)Mathf.RoundToInt(_maintenanceCost * 1.2f);  // 유지비 20% 증가
         OnDayChanged?.Invoke(_currentDay, _maintenanceCost); // 추가
         return true;
     }

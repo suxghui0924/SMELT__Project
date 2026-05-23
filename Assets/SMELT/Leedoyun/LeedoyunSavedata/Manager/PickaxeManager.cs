@@ -96,7 +96,7 @@ public class PickaxeManager : MonoBehaviour, ISaveable
         var inv = InventoryManager.Instance;
 
         // 골드 사전 확인
-        if (pickaxe.goldPrice > 0 && inv.Gold < pickaxe.goldPrice)
+        if (pickaxe.goldPrice > 0 && inv.Gold < (ulong)pickaxe.goldPrice)
         {
             Debug.LogWarning($"[PickaxeManager] 골드 부족 (필요: {pickaxe.goldPrice}G, 보유: {inv.Gold}G)");
             return false;

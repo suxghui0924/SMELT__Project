@@ -37,7 +37,7 @@ public class GameRetry : MonoBehaviour
     public void GetQty()
     {
         Qty[0] = InventoryManager.Instance.CurrentDay;
-        Qty[1] = InventoryManager.Instance.Gold;
+        Qty[1] = (int)InventoryManager.Instance.Gold;
         /*       Qty[3] = InventoryManager.Instance.Gold;
                Qty[4] = InventoryManager.Instance.Gold;
                Qty[5] = InventoryManager.Instance.Gold;*/

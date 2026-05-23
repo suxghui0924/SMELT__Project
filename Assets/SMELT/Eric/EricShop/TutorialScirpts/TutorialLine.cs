@@ -3,23 +3,15 @@ using UnityEngine;
 
 public class TutorialLine : MonoBehaviour
 {
-    public static TutorialLine Instance { get; private set; }
-
-    private void Awake()
+    public string[] start =
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-    }
-
-    public string[] enterDungeon1 =
-    {
+        "안녕? 난 이 섬의 공주야, 잘부탁해!",
+        "넌 지금부터 이 상점을 운영 하게 될 거야",
         "우선 무기 제작에 필요한 재료를 모아보자!",
         "WASD를 눌러서 오른쪽에 있는 빨간 카펫으로 이동해 보자!",
     };
 
-    public string[] enterDungeon2 =
+    public string[] enterDungeon1 =
     {
         "E키를 눌러서 입장해보자.",
     };
@@ -40,7 +32,7 @@ public class TutorialLine : MonoBehaviour
     };   
     public string[] dungeon4 =
     {
-        "4마리만 더 공격해보자!",
+        "A키를 눌러 공격해보자!",
     };
     public string[] dungeon5 =
     {
@@ -86,7 +78,7 @@ public class TutorialLine : MonoBehaviour
 
     public string[] store2 =
     {
-        "업그레이드를 해보자!",
+        "E 키를 눌러 창을 연 다음 업그레이드를 해보자!",
     };
     public string[] store3 =
     {

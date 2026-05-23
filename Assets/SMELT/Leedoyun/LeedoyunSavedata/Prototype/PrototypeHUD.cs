@@ -38,7 +38,7 @@ public class PrototypeHUD : MonoBehaviour
         public Color  WeaponColor;
         public string Symbol;
         public (string id, int amount)[] Ingredients;
-        public int SellPrice;
+        public ulong SellPrice;
     }
 
     private static readonly Recipe[] RECIPES =
@@ -158,22 +158,30 @@ public class PrototypeHUD : MonoBehaviour
         if (_zoneHintGO == null) return;
         _zoneHintText.text = type switch
         {
-            ZoneType.Crafting     => "대장간  —  [ E ] 무기 제작",
-            ZoneType.SkillTree    => "상점  —  [ E ] 스킬 트리 / 곡괭이",
-            ZoneType.MineEntrance => "광산 입구  —  [ E ] 광산으로 이동",
-            ZoneType.NextDay => "캘린더  —  [ E ] 다음날로 넘어가기",
+            ZoneType.Crafting       => "대장간  —  [ E ] 무기 제작",
+            ZoneType.SkillTree      => "상점  —  [ E ] 스킬 트리 / 곡괭이",
+            ZoneType.MineEntrance   => "광산 입구  —  [ E ] 광산으로 이동",
+            ZoneType.NextDay        => "캘린더  —  [ E ] 다음날로 넘어가기",
             ZoneType.StoreRadioZone => "라디오 — [ E ] 가게 음악 설정",
             ZoneType.StoreStateZone => "두꺼비집 — [ E ] 가게 관련 설정",
-            _                     => ""
+            ZoneType.Door           => "문  —  [ E ] 문 열기",
+            _                       => ""
         };
+        _zoneHintGO.SetActive(true);
+    }
+
+    public void SetZoneHint(string text)
+    {
+        if (_zoneHintGO == null || _zoneHintText == null) return;
+        _zoneHintText.text = text;
         _zoneHintGO.SetActive(true);
     }
 
     public void OnZoneExit(ZoneType type)
     {
-        if (type == ZoneType.Crafting && _craftPanel != null) _craftPanel.SetActive(false);
-        if (type == ZoneType.Selling  && _sellPanel  != null) _sellPanel.SetActive(false);
-        if (_zoneHintGO != null) _zoneHintGO.SetActive(false);
+        _craftPanel?.SetActive(false);
+        _sellPanel?.SetActive(false);
+        _zoneHintGO?.SetActive(false);
     }
 
     public void OnOreGathered(string oreId) { }

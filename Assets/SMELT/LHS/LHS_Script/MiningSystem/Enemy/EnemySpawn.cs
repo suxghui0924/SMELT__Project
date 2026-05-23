@@ -26,7 +26,8 @@ public class EnemySpawn : MonoBehaviour
 
     private void OnEnable()
     {
-        if(gameObject.name==InventoryManager.Instance.CurrentDay.ToString()) _isGameObjectCurrentDay = true;
+       string Currentday = Mathf.Clamp( InventoryManager.Instance.CurrentDay,1,7).ToString();
+        if(gameObject.name==Currentday) _isGameObjectCurrentDay = true;
     }
 
     private void Start()
@@ -70,14 +71,35 @@ public class EnemySpawn : MonoBehaviour
             }
         }
         _enemySpawnPoint = Random.Range(0, 2);
-        
+
         if (_enemySpawnPoint == 0)
         {
-            GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_leftX,_offset,0),Quaternion.Euler(0,180,0));
+           GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_leftX,_offset,0),Quaternion.Euler(0,180,0));
+           if (enemy.name != "Grape")
+           {
+               EnemyBase enemyBaseScript = enemy.GetComponentInChildren<EnemyBase>();
+               enemyBaseScript.GetVolumeDir(0);
+           }
+           else
+           {
+               GrapeBase grapeBase = enemy.GetComponentInChildren<GrapeBase>();
+               grapeBase.GetVolumeDir(0);
+           }
         }   
         else if (_enemySpawnPoint == 1)
-        {
+        {  
+            
             GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_rightX,_offset,0),Quaternion.identity);
+            if (enemy.name != "Grape")
+            {
+                EnemyBase enemyBaseScript = enemy.GetComponentInChildren<EnemyBase>();
+                enemyBaseScript.GetVolumeDir(1);
+            }
+            else
+            {
+                GrapeBase grapeBase = enemy.GetComponentInChildren<GrapeBase>();
+                grapeBase.GetVolumeDir(1);
+            }
         }
         _enemySpawnTimer = Random.Range(minEnemySpawnTimer, maxEnemySpawnTimer);
         _timer = 0;

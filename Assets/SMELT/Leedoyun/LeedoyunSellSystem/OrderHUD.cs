@@ -99,6 +99,15 @@ public class OrderHUD : MonoBehaviour
         SyncExistingOrders();
         InvokeRepeating(nameof(RefreshDeliverButtons), 0.5f, 0.5f);
         SceneManager.activeSceneChanged += OnSceneChanged;
+
+        bool isHouseNow = SceneManager.GetActiveScene().name == HOUSE_SCENE;
+        if (_hudRoot != null)
+            _hudRoot.SetActive(isHouseNow);
+        if (isHouseNow && UICanvasManager.instance != null)
+        {
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
+            UICanvasManager.instance.ControlObject(ObjectType.Bottom, true);
+        }
     }
 
     private void OnDestroy()
@@ -111,8 +120,20 @@ public class OrderHUD : MonoBehaviour
 
     private void OnSceneChanged(Scene _, Scene next)
     {
+        bool isHouse = next.name == HOUSE_SCENE;
         if (_hudRoot != null)
-            _hudRoot.SetActive(next.name == HOUSE_SCENE);
+            _hudRoot.SetActive(isHouse);
+
+        if (UICanvasManager.instance == null) return;
+
+        if (isHouse)
+        {
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
+            UICanvasManager.instance.ControlObject(ObjectType.Bottom, true);
+        }
+
+        if (next.name == "Lobby")
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
     }
 
     private void Update()
@@ -293,8 +314,7 @@ public class OrderHUD : MonoBehaviour
             _koreanFont = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FONT_PATH);
 #endif
 
-        Canvas canvas = FindFirstObjectByType<Canvas>();
-        Transform canvasT = canvas != null ? canvas.transform : BuildCanvas();
+        Transform canvasT = BuildCanvas();
 
         float headerH = 30f;
         float panelW  = HUD_W + 16f;

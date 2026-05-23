@@ -12,6 +12,9 @@ public class SkillTreeController : MonoBehaviour
     [SerializeField] private GameObject _skillTreePanel;
 
     private bool _isOpen;
+    public bool IsOpen => _isOpen;
+
+    public static event System.Action<bool> OnStateChanged;
 
     private void Awake()
     {
@@ -32,14 +35,18 @@ public class SkillTreeController : MonoBehaviour
     public void Show()
     {
         _isOpen = true;
-        UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
+        if (UICanvasManager.instance != null)
+            UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
         RefreshAll();
+        OnStateChanged?.Invoke(true);
     }
 
     public void Hide()
     {
         _isOpen = false;
-        UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, false);
+        if (UICanvasManager.instance != null)
+            UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, false);
+        OnStateChanged?.Invoke(false);
     }
 
     public void Toggle()

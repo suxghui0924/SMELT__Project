@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class Dialogue : MonoBehaviour
     public float typingSpeed = 0.02f;
     public float duration = 4f;
     private bool active = true;
+    public bool canMove = true;
     
 
     IEnumerator Type()
@@ -39,7 +41,7 @@ public class Dialogue : MonoBehaviour
             if (active)
             {
                 textBox.text += letter;
-                yield return new WaitForSeconds(typingSpeed);
+                yield return new WaitForSecondsRealtime(typingSpeed);
                 animController.ResetTrigger("Appear");
 
             }
@@ -61,7 +63,7 @@ public class Dialogue : MonoBehaviour
             {
                 StartCoroutine(Type());
             }            
-            yield return new WaitForSeconds(duration);
+            yield return new WaitForSecondsRealtime(duration);
             if (index < sentences.Length)
             {
                 index++;
@@ -69,15 +71,20 @@ public class Dialogue : MonoBehaviour
             else
             {
                 
-                //Debug.Log("Should Shrink");
+                //Debug.Log("Should TutoHit");
                 animController.SetTrigger("Disappear");
-                
+                if (!TutoManager.Instance.TutoSaying.tuRAttack&&!TutoManager.Instance.TutoSaying.tuLAttack)
+                {
+                    canMove = true;
+                }
             }
-            
         }
-        
     }
 
+    private void Update()
+    {
+                if(canMove)  Time.timeScale = 1f;
+    }
 
 
     //Character Socket
@@ -115,6 +122,7 @@ public class Dialogue : MonoBehaviour
 
     public void Say(string[] _text, string _characterName = null, float _duration = 0)
     {
+        canMove = false;
         animController.SetTrigger("Appear");
         sentences = _text;
         index = 0;
@@ -134,25 +142,29 @@ public class Dialogue : MonoBehaviour
             if (active)
             {
                 active = false;
-                Invoke("SkipInvoke", 1f);
+                StartCoroutine(SkipInvokeRoutine());
             }
             else
             {
                 index++;
                 StartCoroutine(Type());
-                Invoke("SkipInvoke", 1f);
+                StartCoroutine(SkipInvokeRoutine());
             }
         }
         else
         {
             //Debug.Log("Should Shrink");
             animController.SetTrigger("Disappear");
+            if (!TutoManager.Instance.TutoSaying.tuRAttack&&!TutoManager.Instance.TutoSaying.tuLAttack)
+            {
+                canMove = true;
+            }
         }
-           
     }
-
-    private void SkipInvoke()
+    
+    private IEnumerator SkipInvokeRoutine()
     {
+        yield return new WaitForSecondsRealtime(1f);
         active = true;
     }
 
@@ -162,7 +174,6 @@ public class Dialogue : MonoBehaviour
         sentences = null;
         UpdateName();
         textBox.text = "";
-
     }
 }
 

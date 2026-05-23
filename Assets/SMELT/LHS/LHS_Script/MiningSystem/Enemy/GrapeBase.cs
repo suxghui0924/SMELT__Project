@@ -10,14 +10,16 @@ public class GrapeBase : MonoBehaviour
     private float _spawntimer = 0f;
     private bool _canMove = true;
     private bool _grapeSpawnStart = false;
-
+    
+    private int _volumeDirect;
+    
     [SerializeField] private GameObject grapePrefab;
     [SerializeField] private int grapeCount;
     [SerializeField] private float grapeSpeed;
     [SerializeField] private float spawnDuration;
     [SerializeField] private float timerWhenStop;
     
-
+    
     private void Start()
     {
         _playerTransform = GameObject.FindWithTag("Player").transform;
@@ -44,7 +46,9 @@ public class GrapeBase : MonoBehaviour
             _spawntimer += Time.deltaTime;
             if (_spawntimer >= spawnDuration)
             {
-                Instantiate(grapePrefab, transform.parent);
+               GameObject grapeEnemy = Instantiate(grapePrefab, transform.parent);
+               EnemyBase grapeEnemyBase = GetComponentInChildren<EnemyBase>();
+               grapeEnemyBase.GetVolumeDir(_volumeDirect);
                 _spawntimer = 0;
                 grapeCount--;
             }
@@ -56,4 +60,8 @@ public class GrapeBase : MonoBehaviour
         }
     }
     
+    public void GetVolumeDir(int dir)
+    {
+        _volumeDirect = dir;
+    }
 }

@@ -12,7 +12,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         [HideInInspector]
         public int maxFatigue = 100;
         [HideInInspector]
-        public float currentFatigue;
+        public float currentFatigue = 100;
         //public Image _mp;
         float timer = 0f;
     
@@ -60,6 +60,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                 if (SaveManager.Instance != null && SaveManager.Instance.HasSaveData())
                 {
                     currentFatigue = SaveManager.Instance.CurrentData.stamina;
+                    canEnter = true;
                     db = true;
                     OnFatigueChange?.Invoke(currentFatigue);
                 }
@@ -78,6 +79,8 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         {
             db = true;
             currentFatigue = maxFatigue;
+            OnFatigueChange?.Invoke(currentFatigue);
+            Debug.Log("스테미나 초기화: "+currentFatigue);
         }
     
         void Update()
@@ -87,7 +90,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                 timer += Time.deltaTime;
                 if (timer >= 1)
                 {
-                    ReduceFatigue(2f);
+                    ReduceFatigue(1f);
                     timer = 0;
                 }
             }
@@ -97,7 +100,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         {
             currentFatigue -= amount;
             currentFatigue = Mathf.Clamp(currentFatigue, 0, maxFatigue);
-            Debug.Log($"스테미나 감소: {amount}, 현재 스테미나: {currentFatigue}");
+                    Debug.Log($"스테미나 감소: {amount}, 현재 스테미나: {currentFatigue}");
             OnFatigueChange?.Invoke(currentFatigue);
             if (currentFatigue <= 0)
             {

@@ -110,10 +110,10 @@ public class UICanvasManager : MonoBehaviour
     {
         Qty[2] = 0;
         Qty[0] = InventoryManager.Instance.CurrentDay;
-        Qty[1] = InventoryManager.Instance.Gold;
-        Qty[3] = InventoryManager.Instance.Gold;
-        Qty[4] = InventoryManager.Instance.Gold;
-        Qty[5] = InventoryManager.Instance.Gold;
+        Qty[1] = (int)InventoryManager.Instance.Gold;
+        Qty[3] = (int)InventoryManager.Instance.Gold;
+        Qty[4] = (int)InventoryManager.Instance.Gold;
+        Qty[5] = (int)InventoryManager.Instance.Gold;
         for (int i = 0; i < itemIds.Length; i++)
         {
             Qty[2] += InventoryManager.Instance.GetQuantity(itemIds[i]);

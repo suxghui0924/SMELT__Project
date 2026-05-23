@@ -1,20 +1,15 @@
 using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 
-public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone ,NextDay }
+public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone, NextDay, Door }
 
-/// <summary>
-/// 각 구역의 동작 정의.
-///
-/// Mining   : 플레이어가 머무는 동안 1.5초마다 랜덤 과일석 +1 자동 채집
-/// Crafting : E키 → 무기 제작 패널 열기/닫기
-/// Selling  : E키 → 판매 패널 열기/닫기
-/// SkillTree: E키 → 스킬 트리 패널 열기/닫기 (SkillTreeController)
-/// </summary>
 public class PrototypeZone : MonoBehaviour
 {
     [SerializeField] private ZoneType _zoneType;
     public ZoneType ZoneType { get => _zoneType; set => _zoneType = value; }
+
+    [SerializeField] private GameObject        _doorObject;
+    [SerializeField] private SkillTreeZoneVisual _skillTreeVisual;
 
     private const float GATHER_INTERVAL = 1.5f;
 
@@ -29,6 +24,10 @@ public class PrototypeZone : MonoBehaviour
 
     private bool  _playerInside;
     private float _gatherTimer;
+    private bool  _isDoorOpen    = false;
+    private bool  _isRadioOpen   = false;
+    private bool  _isDayNextOpen = false;
+    private bool  _isSkillOpen   = false;
 
     private void Update()
     {
@@ -45,11 +44,15 @@ public class PrototypeZone : MonoBehaviour
 
     public void OnPlayerEnter()
     {
-        if (!TimerAndReward.Instance.canEnter) return;
-        TimerAndReward.Instance.db = true;
         _playerInside = true;
         _gatherTimer  = 0f;
         PrototypeHUD.Instance?.OnZoneEnter(ZoneType);
+
+        if (ZoneType == ZoneType.Door && PrototypeHUD.Instance != null)
+        {
+            string hint = _isDoorOpen ? "문  —  [ E ] 문 닫기" : "문  —  [ E ] 문 열기";
+            PrototypeHUD.Instance.SetZoneHint(hint);
+        }
     }
 
     public void OnPlayerExit()
@@ -57,10 +60,26 @@ public class PrototypeZone : MonoBehaviour
         _playerInside = false;
         PrototypeHUD.Instance?.OnZoneExit(ZoneType);
 
-        if (ZoneType == ZoneType.Crafting)
-            WeaponCraftUI.Instance?.Hide();
+        // Zone을 벗어나면 모든 UI 닫기
+        WeaponCraftUI.Instance?.Hide();
+        NPCOrderPopup.Instance?.Close();
+        SkillTreeController.Instance?.Hide();
+
         if (ZoneType == ZoneType.SkillTree)
-            SkillTreeController.Instance?.Hide();
+        {
+            _skillTreeVisual?.SetInteracting(false);
+            _isSkillOpen = false;
+        }
+        if (ZoneType == ZoneType.StoreRadioZone || ZoneType == ZoneType.StoreStateZone)
+        {
+            UICanvasManager.instance?.ControlObject(ObjectType.Radio, false);
+            _isRadioOpen = false;
+        }
+        if (ZoneType == ZoneType.NextDay)
+        {
+            UICanvasManager.instance?.ControlObject(ObjectType.DayNext, false);
+            _isDayNextOpen = false;
+        }
     }
 
     public void Interact()
@@ -73,15 +92,49 @@ public class PrototypeZone : MonoBehaviour
                 PrototypeHUD.Instance?.ToggleCraftPanel();
         }
         if (ZoneType == ZoneType.SkillTree)
-            SkillTreeController.Instance?.Toggle();
+        {
+            if (SkillTreeController.Instance != null)
+            {
+                SkillTreeController.Instance.Toggle();
+                _skillTreeVisual?.SetInteracting(SkillTreeController.Instance.IsOpen);
+            }
+            else if (UICanvasManager.instance != null)
+            {
+                _isSkillOpen = !_isSkillOpen;
+                UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, _isSkillOpen);
+            }
+        }
         if (ZoneType == ZoneType.MineEntrance)
-            GameManager.instance.ChangeState(new MiningState());
-        if (ZoneType == ZoneType.StoreRadioZone)
-            UICanvasManager.instance.ControlObject(ObjectType.Radio, true);        
-        if (ZoneType == ZoneType.StoreStateZone)
-            UICanvasManager.instance.ControlObject(ObjectType.Radio, true);
+        {
+            if (TimerAndReward.Instance != null && !TimerAndReward.Instance.canEnter) return;
+            if (TimerAndReward.Instance != null) TimerAndReward.Instance.db = true;
+            if (GameManager.instance != null)
+                GameManager.instance.ChangeState(new MiningState());
+        }
+
+        if (ZoneType == ZoneType.StoreRadioZone || ZoneType == ZoneType.StoreStateZone)
+        {
+            _isRadioOpen = !_isRadioOpen;
+            UICanvasManager.instance?.ControlObject(ObjectType.Radio, _isRadioOpen);
+        }
         if (ZoneType == ZoneType.NextDay)
-            UICanvasManager.instance.ControlObject(ObjectType.DayNext, true);
-            
+        {
+            _isDayNextOpen = !_isDayNextOpen;
+            UICanvasManager.instance?.ControlObject(ObjectType.DayNext, _isDayNextOpen);
+        }
+
+        if (ZoneType == ZoneType.Door)
+        {
+            _isDoorOpen = !_isDoorOpen;
+            if (_doorObject != null)
+                _doorObject.SetActive(!_isDoorOpen);
+            if (ShopManager.Instance != null)
+            {
+                if (_isDoorOpen) ShopManager.Instance.OpenShop();
+                else             ShopManager.Instance.CloseShop();
+            }
+            string hint = _isDoorOpen ? "문  —  [ E ] 문 닫기" : "문  —  [ E ] 문 열기";
+            if (PrototypeHUD.Instance != null) PrototypeHUD.Instance.SetZoneHint(hint);
+        }
     }
 }

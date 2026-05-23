@@ -98,7 +98,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         }
 
         // 골드 차감
-        if (!InventoryManager.Instance.SpendGold((int)cost))
+        if (!InventoryManager.Instance.SpendGold((ulong)cost))
             return false;
 
         // 업그레이드 적용
@@ -113,6 +113,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         switch (id)
         {
             case "AllUp1":
+                UpGetFruits += times;
                  break;
             case "AllUp2":
                 UpGetFruits += times;
@@ -247,6 +248,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
                 Debug.LogWarning($"[Upgrade] 알 수 없는 업그레이드: {id}");
                 break;
         }
+        SaveManager.Instance.Save();
     }
 
     public bool IsUpgradePurchased(string upgradeId)
@@ -257,6 +259,6 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     // ─────────────────────────────────────────
 
     /// <summary>판매 가격에 수익 보너스 적용. ex) 기본가 100 → 105 (5% 보너스 시)</summary>
-    public int ApplySalesBonus(int basePrice)
-        => Mathf.RoundToInt(basePrice * (1f + UpMoreSell));
+    public ulong ApplySalesBonus(int basePrice)
+        => (ulong)Mathf.RoundToInt(basePrice * (1f + UpMoreSell));
 }

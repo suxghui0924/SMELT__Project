@@ -11,7 +11,7 @@ public class ShopManager : MonoBehaviour, ISaveable
 {
     public static ShopManager Instance { get; private set; }
 
-    [Header("폐업 후 이동할 씬 (비워두면 현재 씬 재로드)")]
+    [Header("폐업 후 이동할 씬 (비워두면 Lobby로 이동)")]
     [SerializeField] private string _closeSceneName = "";
 
     [Header("폐업 시 파괴할 DontDestroyOnLoad 오브젝트들")]
@@ -63,9 +63,6 @@ public class ShopManager : MonoBehaviour, ISaveable
         _salesHistory = data.salesHistory;
     }
 
-    // 폐업 후 씬 로드 완료 시 실행할 콜백용 (ShopManager 파괴 후에도 동작하도록 static)
-    private static GameObject[] _pendingHide;
-
     // ─────────────────────────────────────────
     // 판매 처리
     // ─────────────────────────────────────────
@@ -85,12 +82,12 @@ public class ShopManager : MonoBehaviour, ISaveable
         if (itemData == null) return false;
 
         // 판매 수익 보너스 적용 (이윤건 담당 PlayerStatManager)
-        int finalPrice = PlayerStatManager.Instance.ApplySalesBonus(itemData.sellPrice);
+        ulong finalPrice = PlayerStatManager.Instance.ApplySalesBonus(itemData.sellPrice);
 
         // 골드 지급 및 기록
         InventoryManager.Instance.AddGold(finalPrice);
-        _todayEarned  += finalPrice;
-        _totalEarned  += finalPrice;
+        _todayEarned  += (int)finalPrice;
+        _totalEarned  += (int)finalPrice;
         _salesHistory.Add(itemId);
 
         return true;
@@ -155,36 +152,17 @@ public class ShopManager : MonoBehaviour, ISaveable
         SaveManager.Instance?.ResetAllData();
         Debug.Log("[ShopManager] 가게 폐업 — 데이터 초기화 완료");
 
-        // 씬 변경 후 ShopManager가 파괴되므로, 비활성화할 목록을 static에 보관
-        _pendingHide = _persistentUIsToDestroy;
-
-        string scene = string.IsNullOrEmpty(_closeSceneName)
-            ? SceneManager.GetActiveScene().name
-            : _closeSceneName;
-
-        // 씬 로드 완료 후 UI 정리 (static 콜백 — ShopManager 파괴 이후에도 동작)
-        SceneManager.sceneLoaded += OnPermanentCloseLoaded;
-        SceneManager.LoadScene(scene);
-    }
-
-    private static void OnPermanentCloseLoaded(Scene scene, LoadSceneMode mode)
-    {
-        SceneManager.sceneLoaded -= OnPermanentCloseLoaded;
-
-        // 게임 전용 DontDestroyOnLoad UI 비활성화
-        if (_pendingHide != null)
+        // DontDestroyOnLoad UI를 씬 전환 전에 즉시 비활성화
+        if (_persistentUIsToDestroy != null)
         {
-            foreach (var ui in _pendingHide)
+            foreach (var ui in _persistentUIsToDestroy)
                 if (ui != null) ui.SetActive(false);
-            _pendingHide = null;
         }
 
-        // UICanvasManager 복원 및 Title 표시 (부모가 비활성화된 경우 포함)
-        if (UICanvasManager.instance != null)
-        {
-            UICanvasManager.instance.gameObject.SetActive(true);
-            UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
-        }
+        // SceneLoader를 통해 정상 로딩 흐름(NewLoading → LoadManager)으로 이동
+        // _closeSceneName이 비어있을 경우 Lobby로 기본값 설정
+        string scene = string.IsNullOrEmpty(_closeSceneName) ? "Lobby" : _closeSceneName;
+        SceneLoader.LoadScene(scene);
     }
 
     /// <summary>오늘 판매된 아이템 목록 반환 (UI 표시용).</summary>
@@ -218,10 +196,10 @@ public class ShopManager : MonoBehaviour, ISaveable
             return false;
 
         // 가격 계산 후 골드 지급
-        int price = GetWeaponPrice(weaponItemId);
+        ulong price = GetWeaponPrice(weaponItemId);
         InventoryManager.Instance.AddGold(price);
-        _todayEarned += price;
-        _totalEarned += price;
+        _todayEarned += (int)price;
+        _totalEarned += (int)price;
         _salesHistory.Add(weaponItemId);
 
         Debug.Log($"[ShopManager] 무기 판매: {weaponItemId} → {price}G");
@@ -234,7 +212,7 @@ public class ShopManager : MonoBehaviour, ISaveable
     /// </summary>
     /// <param name="weaponItemId">인벤토리 무기 ID</param>
     /// <returns>계산된 판매 가격 (파싱 실패 시 0)</returns>
-    public int GetWeaponPrice(string weaponItemId)                                       // 추가
+    public ulong GetWeaponPrice(string weaponItemId)                                       // 추가
     {
         if (!WeaponCraftManager.TryParseWeaponItemId(weaponItemId,
             out WeaponType weaponType, out string mainOreId))
@@ -253,7 +231,7 @@ public class ShopManager : MonoBehaviour, ISaveable
 
         // (무기 기본금 + 메인 가치 × 메인 개수) × (1 + moreSell)
         int rawPrice = recipe.basePrice + oreValue * recipe.mainCount;
-        return Mathf.RoundToInt(rawPrice * (1f + moreSell));
+        return (ulong)Mathf.RoundToInt(rawPrice * (1f + moreSell));
     }
 
     // ─────────────────────────────────────────

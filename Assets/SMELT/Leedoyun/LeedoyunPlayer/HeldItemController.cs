@@ -182,4 +182,11 @@ public class HeldItemController : MonoBehaviour
     }
 
     public bool IsHolding => _itemRenderer != null && _itemRenderer.enabled;
+
+    // 제작 애니메이션 중 무기를 숨김 (스프라이트 데이터는 유지, 아이템 손실 없음)
+    public void HideForCraft()
+    {
+        if (_itemRenderer != null)
+            _itemRenderer.enabled = false;
+    }
 }
