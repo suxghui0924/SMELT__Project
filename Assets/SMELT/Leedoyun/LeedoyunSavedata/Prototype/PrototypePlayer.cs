@@ -22,6 +22,7 @@ public class PrototypePlayer : MonoBehaviour
     private Animator      _anim;
     private SpriteRenderer _sr;
     private PrototypeZone _currentZone;
+    private PrototypeZone _openDoorZone;
 
     // Animator 파라미터 해시 (문자열 조회보다 빠름)
     private static readonly int HashIsMoving = Animator.StringToHash("IsMoving");
@@ -72,8 +73,16 @@ public class PrototypePlayer : MonoBehaviour
             _sr.sortingOrder = SORT_BASE - Mathf.RoundToInt(transform.position.y * 10);
 
         // 상호작용 (대장간 / 상점)
-        if (Input.GetKeyDown(KeyCode.E) && _currentZone != null)
-            _currentZone.Interact();
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (_currentZone != null)
+                _currentZone.Interact();
+            else if (_openDoorZone != null)
+            {
+                _openDoorZone.Interact();
+                _openDoorZone = null;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -82,6 +91,8 @@ public class PrototypePlayer : MonoBehaviour
         if (zone == null) return;
         _currentZone = zone;
         zone.OnPlayerEnter();
+        if (zone.ZoneType == ZoneType.Door)
+            _openDoorZone = zone;
     }
 
     private void OnTriggerExit2D(Collider2D other)
