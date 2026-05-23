@@ -6,48 +6,68 @@ using UnityEngine.InputSystem;
 
 public class TutorialSaying : MonoBehaviour
 {
-        public Dialogue dialogue;
         [SerializeField] private float typingSpeed;
         [SerializeField] private string characterName;
         [SerializeField] private float delayBetweenLines;
         [SerializeField] private string[] lines;
-        [SerializeField] private bool attack;
+        
+        public bool tuRAttack;
+        public bool tuLAttack;
+
+        public bool canExitDungeon;
 
         private void Start()
         {
-                StartCoroutine(SayingCoroutine(TutorialLine.Instance.dungeon3));
+                StartCoroutine(SayingCoroutine(TutoManager.Instance.TutoLine.start));
         }
 
         public IEnumerator SayingCoroutine(string[] texts)
         {
-                dialogue.canMove = false;
-      
+                TutoManager.Instance.Dialogue.canMove = false;
+                Time.timeScale = 0f;
                 yield return new WaitForSecondsRealtime(0.5f);
-                Time.timeScale = 0f;        
-                if(TutorialLine.Instance.dungeon3 == texts)
+                if(TutoManager.Instance.TutoLine.dungeon3 == texts)
                 {
-                        attack = true;
+                        tuRAttack = true;
+                }
+                if(TutoManager.Instance.TutoLine.dungeon4 == texts)
+                {
+                        tuLAttack = true;
                 }
                 lines = texts;
-                dialogue.typingSpeed = typingSpeed;
-                dialogue.Say(lines, characterName, delayBetweenLines);
+                TutoManager.Instance.Dialogue.typingSpeed = typingSpeed;
+                TutoManager.Instance.Dialogue.Say(lines, characterName, delayBetweenLines);
         }
 
         private void Update()
         {
                 if (Input.GetMouseButtonDown(0))
                 {
-                        dialogue.Skip();
+                        TutoManager.Instance.Dialogue.Skip();
                 }
 
-                if(attack)
+                if(tuRAttack)
                 {
                         if (Keyboard.current.dKey.wasPressedThisFrame)
                         {
-                                dialogue.canMove = true;
-                                attack = false;
-                                dialogue.Skip();
+                                TutoManager.Instance.Dialogue.canMove = true;
+                                tuRAttack = false;
+                                TutoManager.Instance.Dialogue.Skip();
+                                
+                                Destroy(TutoManager.Instance.TutoRAttack.otherCollider.gameObject);
                         }
+                }
+                if(tuLAttack)
+                {
+                        if (Keyboard.current.aKey.wasPressedThisFrame)
+                        {
+                                TutoManager.Instance.Dialogue.canMove = true;
+                                tuLAttack = false;
+                                TutoManager.Instance.Dialogue.Skip();
+                              StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon5)) ;
+                              canExitDungeon = true;
+                                Destroy(TutoManager.Instance.TutoLAttack.otherCollider.gameObject);
+                        }      
                 }
         }
 }

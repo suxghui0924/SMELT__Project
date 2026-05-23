@@ -8,7 +8,8 @@ public class PrototypeZone : MonoBehaviour
     [SerializeField] private ZoneType _zoneType;
     public ZoneType ZoneType { get => _zoneType; set => _zoneType = value; }
 
-    [SerializeField] private GameObject _doorObject;
+    [SerializeField] private GameObject        _doorObject;
+    [SerializeField] private SkillTreeZoneVisual _skillTreeVisual;
 
     private const float GATHER_INTERVAL = 1.5f;
 
@@ -23,7 +24,10 @@ public class PrototypeZone : MonoBehaviour
 
     private bool  _playerInside;
     private float _gatherTimer;
-    private bool  _isDoorOpen = false;
+    private bool  _isDoorOpen    = false;
+    private bool  _isRadioOpen   = false;
+    private bool  _isDayNextOpen = false;
+    private bool  _isSkillOpen   = false;
 
     private void Update()
     {
@@ -56,10 +60,26 @@ public class PrototypeZone : MonoBehaviour
         _playerInside = false;
         PrototypeHUD.Instance?.OnZoneExit(ZoneType);
 
-        if (ZoneType == ZoneType.Crafting)
-            WeaponCraftUI.Instance?.Hide();
+        // Zone을 벗어나면 모든 UI 닫기
+        WeaponCraftUI.Instance?.Hide();
+        NPCOrderPopup.Instance?.Close();
+        SkillTreeController.Instance?.Hide();
+
         if (ZoneType == ZoneType.SkillTree)
-            SkillTreeController.Instance?.Hide();
+        {
+            _skillTreeVisual?.SetInteracting(false);
+            _isSkillOpen = false;
+        }
+        if (ZoneType == ZoneType.StoreRadioZone || ZoneType == ZoneType.StoreStateZone)
+        {
+            UICanvasManager.instance?.ControlObject(ObjectType.Radio, false);
+            _isRadioOpen = false;
+        }
+        if (ZoneType == ZoneType.NextDay)
+        {
+            UICanvasManager.instance?.ControlObject(ObjectType.DayNext, false);
+            _isDayNextOpen = false;
+        }
     }
 
     public void Interact()
@@ -74,9 +94,15 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.SkillTree)
         {
             if (SkillTreeController.Instance != null)
+            {
                 SkillTreeController.Instance.Toggle();
+                _skillTreeVisual?.SetInteracting(SkillTreeController.Instance.IsOpen);
+            }
             else if (UICanvasManager.instance != null)
-                UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
+            {
+                _isSkillOpen = !_isSkillOpen;
+                UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, _isSkillOpen);
+            }
         }
         if (ZoneType == ZoneType.MineEntrance)
         {
@@ -86,13 +112,15 @@ public class PrototypeZone : MonoBehaviour
                 GameManager.instance.ChangeState(new MiningState());
         }
 
-        if (ZoneType == ZoneType.StoreRadioZone)
-            UICanvasManager.instance.ControlObject(ObjectType.Radio, true);        
-        if (ZoneType == ZoneType.StoreStateZone)
-            UICanvasManager.instance.ControlObject(ObjectType.Radio, true);
+        if (ZoneType == ZoneType.StoreRadioZone || ZoneType == ZoneType.StoreStateZone)
+        {
+            _isRadioOpen = !_isRadioOpen;
+            UICanvasManager.instance?.ControlObject(ObjectType.Radio, _isRadioOpen);
+        }
         if (ZoneType == ZoneType.NextDay)
         {
-            UICanvasManager.instance.ControlObject(ObjectType.DayNext, true);
+            _isDayNextOpen = !_isDayNextOpen;
+            UICanvasManager.instance?.ControlObject(ObjectType.DayNext, _isDayNextOpen);
         }
 
         if (ZoneType == ZoneType.Door)
