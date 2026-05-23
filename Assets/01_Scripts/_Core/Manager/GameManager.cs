@@ -38,6 +38,11 @@ public class GameManager : MonoBehaviour
             UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
             StartCoroutine(EnsureLobbyTitle());
         }
+        else if (scene.name == "House" && UICanvasManager.instance != null)
+        {
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
+            UICanvasManager.instance.ControlObject(ObjectType.Top, true);
+        }
     }
 
     private IEnumerator EnsureLobbyTitle()
