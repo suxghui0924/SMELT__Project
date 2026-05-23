@@ -2750,9 +2750,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: _01_Scripts.Player.NextDay, Assembly-CSharp
-        m_MethodName: NextDayCancelButton
+      - m_Target: {fileID: 780673077414039908}
+        m_TargetAssemblyTypeName: _01_Scripts.Interface.Tutorial.TutorialController,
+          Assembly-CSharp
+        m_MethodName: OnMouseCloseClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7453,7 +7454,7 @@ MonoBehaviour:
       - m_Target: {fileID: 780673077414039908}
         m_TargetAssemblyTypeName: _01_Scripts.Interface.Tutorial.TutorialController,
           Assembly-CSharp
-        m_MethodName: OnMouseClick
+        m_MethodName: OnMouseOpenClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
