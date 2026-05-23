@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needName: First
   upName: AllUp1
-  upTime: 2
-  needMoney: 1000
+  upTime: 1
+  needMoney: 5000

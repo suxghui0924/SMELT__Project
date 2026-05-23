@@ -442,7 +442,7 @@ public class WeaponCraftUI : MonoBehaviour
         int price;
         if (ShopManager.Instance != null)
         {
-            price = ShopManager.Instance.GetWeaponPrice(weaponItemId);
+            price = (int)ShopManager.Instance.GetWeaponPrice(weaponItemId);
         }
         else
         {
