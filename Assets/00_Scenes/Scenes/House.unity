@@ -5746,7 +5746,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7447282846187055432, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8579362486408989404, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: m_Name
@@ -13963,6 +13963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _koreanFont: {fileID: 11400000, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
+  _bgSprite: {fileID: 0}
   _weaponTypeSprites:
   - {fileID: -7030652864475459087, guid: 8f3fb3070ccb01149b796ff68fe65119, type: 3}
   - {fileID: -1093005795639087412, guid: 32eba95596e2c5c46be2374ecb563e5d, type: 3}

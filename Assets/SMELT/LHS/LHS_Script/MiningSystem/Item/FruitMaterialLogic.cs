@@ -48,6 +48,7 @@ public class FruitMaterialLogic : MonoBehaviour
         SaveData data = SaveManager.Instance.CurrentData;
         float bonus = data.getApple + data.getFriuts;
         int finalAmount = Mathf.RoundToInt(amount * (bonus));
+        finalAmount = Mathf.Clamp(finalAmount, 1, 10000);
         InventoryManager.Instance.AddItem("fruitstone_apple", finalAmount);
         Debug.Log("AddEconomy" + InventoryManager.Instance.GetQuantity("fruitstone_apple"));
     }
