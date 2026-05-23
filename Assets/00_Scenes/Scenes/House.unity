@@ -360,7 +360,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.38458112, y: 2.0264163}
+  m_Offset: {x: 0.070355505, y: 1.9901575}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -370,7 +370,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.5738265, y: 1.0353956}
+  m_Size: {x: 0.86388, y: 1.6880219}
   m_EdgeRadius: 0
 --- !u!114 &83341350
 MonoBehaviour:
@@ -4685,6 +4685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 828682934}
   - component: {fileID: 828682935}
+  - component: {fileID: 828682936}
   m_Layer: 0
   m_Name: Radio
   m_TagString: Untagged
@@ -4702,7 +4703,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -11, y: 4, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1865189393}
@@ -4763,6 +4764,30 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &828682936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828682933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da5c0f0e78f036a43b974d7e4e794b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noteSprites:
+  - {fileID: -3598916374439202735, guid: d4ad2a8038dc11f4c9d605f593a60010, type: 3}
+  - {fileID: -733219096263470103, guid: d4ad2a8038dc11f4c9d605f593a60010, type: 3}
+  spawnInterval: 0.65
+  floatHeight: 1
+  duration: 1.4
+  noteScale: 0.25
+  spawnOffsetY: 0.3
+  spreadX: 0.15
+  sortingLayerName: Default
+  sortingOrder: 10
+  noteColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &886814478
 GameObject:
   m_ObjectHideFlags: 0
@@ -6222,7 +6247,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -12.072, y: 3.08, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 83341351}
@@ -6241,7 +6266,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29653f6fccc18eb498fbb9275dcfe9b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _animator: {fileID: 1175738029}
   _glowLight: {fileID: 2066484304}
   _lightMinIntensity: 0.8
   _lightMaxIntensity: 2
@@ -6873,7 +6897,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -9.6, y: 3.9, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1745186057}
@@ -14485,7 +14509,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _koreanFont: {fileID: 11400000, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
-  _bgSprite: {fileID: 0}
+  _bgSprite: {fileID: 21300000, guid: 0c6d66359586f4ee0b9b2cdeeac98e7f, type: 3}
   _weaponTypeSprites:
   - {fileID: -7030652864475459087, guid: 8f3fb3070ccb01149b796ff68fe65119, type: 3}
   - {fileID: -1093005795639087412, guid: 32eba95596e2c5c46be2374ecb563e5d, type: 3}
@@ -25341,7 +25365,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.8855629, y: -0.3353901}
+  m_Offset: {x: -0.8855629, y: -0.5207031}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25351,7 +25375,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.38171387, y: 0.65395784}
+  m_Size: {x: 0.38171387, y: 1.0245838}
   m_EdgeRadius: 0
 --- !u!4 &1745186057
 Transform:
@@ -27305,7 +27329,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.702331, y: -0.3629237}
+  m_Offset: {x: -3.726502, y: -0.5804645}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -27315,7 +27339,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.4433527, y: 0.70902497}
+  m_Size: {x: 0.9428911, y: 1.1441066}
   m_EdgeRadius: 0
 --- !u!4 &1865189393
 Transform:

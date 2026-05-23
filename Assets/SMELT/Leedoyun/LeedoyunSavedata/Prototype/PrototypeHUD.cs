@@ -179,9 +179,9 @@ public class PrototypeHUD : MonoBehaviour
 
     public void OnZoneExit(ZoneType type)
     {
-        if (type == ZoneType.Crafting && _craftPanel != null) _craftPanel.SetActive(false);
-        if (type == ZoneType.Selling  && _sellPanel  != null) _sellPanel.SetActive(false);
-        if (_zoneHintGO != null) _zoneHintGO.SetActive(false);
+        _craftPanel?.SetActive(false);
+        _sellPanel?.SetActive(false);
+        _zoneHintGO?.SetActive(false);
     }
 
     public void OnOreGathered(string oreId) { }
