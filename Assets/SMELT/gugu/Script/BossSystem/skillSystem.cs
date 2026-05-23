@@ -12,6 +12,8 @@ public class skillSystem : MonoBehaviour
     private bool shakes = false;
     public BossSkillManager _BSM;
     
+    private ulong _gold           = 0;
+    
     public bool IsAlive => isAlive;
     [SerializeField]private GameObject boss;
     [SerializeField]private GameObject orePrefab ;
