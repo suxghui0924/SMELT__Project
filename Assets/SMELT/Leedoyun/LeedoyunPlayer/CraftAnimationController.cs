@@ -86,6 +86,7 @@ public class CraftAnimationController : MonoBehaviour
         PlayerMovement.IsLocked = true;
         if (_followTarget != null)
             _followTarget.position = new Vector3(_craftPosition.x, _craftPosition.y, _followTarget.position.z);
+        HeldItemController.Instance?.HideForCraft();
         SetPlayerVisible(false);
         StartCoroutine(ReturnToIdle(resultSprite));
     }

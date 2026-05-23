@@ -45,7 +45,12 @@ public class FruitMaterialLogic : MonoBehaviour
 
     protected virtual void AddEconomy(int amount)
     {
-        InventoryManager.Instance.AddItem("fruitstone_apple", amount);
+        Debug.Log("테스트테스트 "+ PlayerStatManager.Instance.UpGetFruits);
+        SaveData data = SaveManager.Instance.CurrentData;
+        float bonus = data.getApple + data.getFriuts;
+        Debug.Log("테스트테스트2 "+ bonus);
+        int finalAmount = Mathf.RoundToInt(amount * (1 + bonus));
+        InventoryManager.Instance.AddItem("fruitstone_apple", finalAmount);
         Debug.Log("AddEconomy" + InventoryManager.Instance.GetQuantity("fruitstone_apple"));
     }
     protected virtual IEnumerator ParticleRoutine()

@@ -9,7 +9,9 @@
       "Bash(awk '/!u!1001 &1708944158/{found=1} found && /m_TransformModifications/{inMods=1} inMods && /propertyPath: m_LocalPosition/{pos=1} pos && /value:/{print; exit} found && /^--- !u!/{if\\(found>0\\) exit; found++}' \"Assets/00_Scenes/Scenes/House.unity\")",
       "Bash(grep -E \"\\\\.\\(cs|asset|prefab\\)$\")",
       "Bash(grep -E \"\\\\.cs$\")",
-      "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\LeeDoYun\" -Directory)"
+      "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\LeeDoYun\" -Directory)",
+      "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\Leedoyun\" -Recurse -File)",
+      "Bash(Sort-Object)"
     ]
   }
 }
