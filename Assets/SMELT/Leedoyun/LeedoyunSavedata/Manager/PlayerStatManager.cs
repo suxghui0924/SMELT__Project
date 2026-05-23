@@ -113,6 +113,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         switch (id)
         {
             case "AllUp1":
+                UpGetFruits += times;
                  break;
             case "AllUp2":
                 UpGetFruits += times;
