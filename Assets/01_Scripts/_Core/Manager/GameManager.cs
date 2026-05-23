@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
-    
-    
+
+
     private IGameState curState;
     void Awake()
     {
@@ -19,7 +19,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            var uiCanvas = GetComponentInChildren<UICanvasManager>(true);
+            if (uiCanvas != null)
+                uiCanvas.transform.SetParent(null);
+            Destroy(gameObject);
         }
     }
 
@@ -42,8 +45,6 @@ public class GameManager : MonoBehaviour
         yield return null;
         if (UICanvasManager.instance != null)
             UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
-        else if(scene.name == "House" && UICanvasManager.instance != null)
-            UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
     }
 
     private void Start()
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-  
+
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
             ChangeState(new GameOverState());
@@ -74,4 +75,4 @@ public class GameManager : MonoBehaviour
     }
 }
 
-// 
+//
