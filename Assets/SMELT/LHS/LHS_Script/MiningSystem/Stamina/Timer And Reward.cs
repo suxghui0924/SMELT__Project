@@ -100,7 +100,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         {
             currentFatigue -= amount;
             currentFatigue = Mathf.Clamp(currentFatigue, 0, maxFatigue);
-            Debug.Log($"스테미나 감소: {amount}, 현재 스테미나: {currentFatigue}");
+                    Debug.Log($"스테미나 감소: {amount}, 현재 스테미나: {currentFatigue}");
             OnFatigueChange?.Invoke(currentFatigue);
             if (currentFatigue <= 0)
             {

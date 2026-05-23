@@ -127,7 +127,7 @@ public class EnemyBase : MonoBehaviour
         
              particleSystem.Play();
              yield return new WaitForSeconds(particleSystem.main.startLifetime.constant);
-             Destroy(gameObject);
+             Destroy(transform.parent.gameObject);
     }
 
 }

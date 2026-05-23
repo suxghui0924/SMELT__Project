@@ -71,8 +71,12 @@ public class Dialogue : MonoBehaviour
             else
             {
                 
-                //Debug.Log("Should Shrink");
+                //Debug.Log("Should TutoHit");
                 animController.SetTrigger("Disappear");
+                if (!TutoManager.Instance.TutoSaying.tuRAttack&&!TutoManager.Instance.TutoSaying.tuLAttack)
+                {
+                    canMove = true;
+                }
             }
         }
     }
@@ -151,8 +155,11 @@ public class Dialogue : MonoBehaviour
         {
             //Debug.Log("Should Shrink");
             animController.SetTrigger("Disappear");
+            if (!TutoManager.Instance.TutoSaying.tuRAttack&&!TutoManager.Instance.TutoSaying.tuLAttack)
+            {
+                canMove = true;
+            }
         }
-           
     }
     
     private IEnumerator SkipInvokeRoutine()
