@@ -31,6 +31,8 @@ public class GameManager : MonoBehaviour
     {
         if (scene.name == "Lobby" && UICanvasManager.instance != null)
             UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
+        else if(scene.name == "House" && UICanvasManager.instance != null)
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
     }
 
     private void Start()
