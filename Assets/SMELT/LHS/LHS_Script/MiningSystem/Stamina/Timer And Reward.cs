@@ -60,6 +60,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                 if (SaveManager.Instance != null && SaveManager.Instance.HasSaveData())
                 {
                     currentFatigue = SaveManager.Instance.CurrentData.stamina;
+                    canEnter = true;
                     db = true;
                     OnFatigueChange?.Invoke(currentFatigue);
                 }
