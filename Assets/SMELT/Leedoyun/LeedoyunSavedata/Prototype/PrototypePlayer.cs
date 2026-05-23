@@ -37,6 +37,10 @@ public class PrototypePlayer : MonoBehaviour
 
     private void Update()
     {
+        // IsLocked 상태에서도 E키로 UI 닫기 허용
+        if (Input.GetKeyDown(KeyCode.E) && _currentZone != null)
+            _currentZone.Interact();
+
         if (PlayerMovement.IsLocked)
         {
             _rb.linearVelocity = Vector2.zero;
@@ -70,10 +74,6 @@ public class PrototypePlayer : MonoBehaviour
         // Y축 기준 정렬 — Y가 낮을수록(화면 아래) 앞에 그려짐
         if (_sr != null)
             _sr.sortingOrder = SORT_BASE - Mathf.RoundToInt(transform.position.y * 10);
-
-        // 상호작용 (대장간 / 상점)
-        if (Input.GetKeyDown(KeyCode.E) && _currentZone != null)
-            _currentZone.Interact();
     }
 
     private void OnTriggerEnter2D(Collider2D other)

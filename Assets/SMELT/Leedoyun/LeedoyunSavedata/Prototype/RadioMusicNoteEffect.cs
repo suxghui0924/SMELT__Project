@@ -78,7 +78,7 @@ public class RadioMusicNoteEffect : MonoBehaviour
         while (elapsed < duration)
         {
             elapsed += Time.deltaTime;
-            float t = elapsed / duration;
+            float t = Mathf.Clamp01(elapsed / duration);
 
             // 위로 ease-out 이동
             float y = Mathf.Lerp(0f, floatHeight, 1f - Mathf.Pow(1f - t, 2.2f));
