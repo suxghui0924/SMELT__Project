@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
         yield return null;
         if (UICanvasManager.instance != null)
             UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
+        else if(scene.name == "House" && UICanvasManager.instance != null)
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
     }
 
     private void Start()

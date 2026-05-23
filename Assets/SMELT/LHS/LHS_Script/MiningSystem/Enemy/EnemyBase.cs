@@ -12,8 +12,8 @@ public class EnemyBase : MonoBehaviour
     [SerializeField] protected float knockbackTimer;
     [SerializeField] protected float knockbackPower;
     [SerializeField] private ParticleSystem particleSystem;
-    protected Transform _playerTransform;
     
+    protected Transform _playerTransform;
     protected float _enemySpeed;
     protected float _enemyDamage;
     protected string _enemyName;
@@ -25,6 +25,19 @@ public class EnemyBase : MonoBehaviour
     
     protected float _melonRot=0;
 
+    private string _volumeDirect;
+    public void GetVolumeDir(int dir)
+    {
+        if (dir == 0) //왼쪽에서 적옴 --> 오른쪽으로 볼륨 출력
+        {
+            _volumeDirect = "right";
+        }
+        else if (dir == 1) //오른쪽에서 적옴 --> 왼쪽으로 볼륨 출력
+        {
+            _volumeDirect = "left";
+        }
+    }
+    
     protected virtual void Awake()
     {
         _enemyCollider2D=GetComponent<Collider2D>();
@@ -40,7 +53,7 @@ public class EnemyBase : MonoBehaviour
         _enemyName = enemyDataSo.enemyName;
     }
 
-
+    
     protected virtual void Update()
     {
         if (_canMove)
@@ -56,12 +69,13 @@ public class EnemyBase : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
-            _playerHpScript.TakeDamage(_enemyDamage);
+            _playerHpScript.TakeDamage(_enemyDamage,_volumeDirect);
         }
     }
-
+    
     public void OnEnemyDamaged(int damage)
     {
+        CameraImpulseSetting.OnEnemyHit();
         CurrentHp -= damage;
         if(CurrentHp<=0)
         {

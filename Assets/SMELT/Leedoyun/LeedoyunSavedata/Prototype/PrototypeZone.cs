@@ -1,7 +1,7 @@
 using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 
-public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance }
+public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone ,NextDay }
 
 /// <summary>
 /// 각 구역의 동작 정의.
@@ -75,8 +75,16 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.MineEntrance)
         {
             if (!TimerAndReward.Instance.canEnter) return;
-            GameManager.instance.ChangeState(new MiningState());
             TimerAndReward.Instance.db = true;
+            GameManager.instance.ChangeState(new MiningState());
         }
+
+        if (ZoneType == ZoneType.StoreRadioZone)
+            UICanvasManager.instance.ControlObject(ObjectType.Radio, true);        
+        if (ZoneType == ZoneType.StoreStateZone)
+            UICanvasManager.instance.ControlObject(ObjectType.Radio, true);
+        if (ZoneType == ZoneType.NextDay)
+            UICanvasManager.instance.ControlObject(ObjectType.DayNext, true);
+            
     }
 }
