@@ -7,6 +7,7 @@ namespace _01_Scripts._Core._States
         public void Enter()
         {
             UICanvasManager.instance.SetCanvasActive(CanvasType.Title, false);
+            UICanvasManager.instance.ControlObject(ObjectType.Tutorial, false);
             SceneLoader.LoadScene("TutorialScene");
         }
 
