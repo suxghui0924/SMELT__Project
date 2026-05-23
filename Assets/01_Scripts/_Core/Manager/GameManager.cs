@@ -1,12 +1,13 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance { get; private set; }
-    
-    
+
+
     private IGameState curState;
     void Awake()
     {
@@ -18,6 +19,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            var uiCanvas = GetComponentInChildren<UICanvasManager>(true);
+            if (uiCanvas != null)
+                uiCanvas.transform.SetParent(null);
             Destroy(gameObject);
         }
     }
@@ -30,6 +34,16 @@ public class GameManager : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "Lobby" && UICanvasManager.instance != null)
+        {
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
+            StartCoroutine(EnsureLobbyTitle());
+        }
+    }
+
+    private IEnumerator EnsureLobbyTitle()
+    {
+        yield return null;
+        if (UICanvasManager.instance != null)
             UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
     }
 
@@ -40,8 +54,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-  
-        if (Input.GetKey(KeyCode.RightShift))
+
+        if (Input.GetKeyDown(KeyCode.RightShift))
         {
             ChangeState(new GameOverState());
         }
@@ -61,4 +75,4 @@ public class GameManager : MonoBehaviour
     }
 }
 
-// 
+//

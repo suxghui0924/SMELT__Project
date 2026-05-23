@@ -70,14 +70,19 @@ public class EnemySpawn : MonoBehaviour
             }
         }
         _enemySpawnPoint = Random.Range(0, 2);
-        
+
         if (_enemySpawnPoint == 0)
         {
-            GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_leftX,_offset,0),Quaternion.Euler(0,180,0));
+           GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_leftX,_offset,0),Quaternion.Euler(0,180,0));
+          EnemyBase enemyBaseScript = enemy.GetComponentInChildren<EnemyBase>();
+            enemyBaseScript.GetVolumeDir(0);
         }   
         else if (_enemySpawnPoint == 1)
-        {
+        {  
+            
             GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_rightX,_offset,0),Quaternion.identity);
+            EnemyBase enemyBaseScript = enemy.GetComponentInChildren<EnemyBase>();
+            enemyBaseScript.GetVolumeDir(1);
         }
         _enemySpawnTimer = Random.Range(minEnemySpawnTimer, maxEnemySpawnTimer);
         _timer = 0;

@@ -1,20 +1,14 @@
 using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 
-public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance }
+public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone, NextDay, Door }
 
-/// <summary>
-/// 각 구역의 동작 정의.
-///
-/// Mining   : 플레이어가 머무는 동안 1.5초마다 랜덤 과일석 +1 자동 채집
-/// Crafting : E키 → 무기 제작 패널 열기/닫기
-/// Selling  : E키 → 판매 패널 열기/닫기
-/// SkillTree: E키 → 스킬 트리 패널 열기/닫기 (SkillTreeController)
-/// </summary>
 public class PrototypeZone : MonoBehaviour
 {
     [SerializeField] private ZoneType _zoneType;
     public ZoneType ZoneType { get => _zoneType; set => _zoneType = value; }
+
+    [SerializeField] private GameObject _doorObject;
 
     private const float GATHER_INTERVAL = 1.5f;
 
@@ -29,6 +23,7 @@ public class PrototypeZone : MonoBehaviour
 
     private bool  _playerInside;
     private float _gatherTimer;
+    private bool  _isDoorOpen = false;
 
     private void Update()
     {
@@ -71,12 +66,39 @@ public class PrototypeZone : MonoBehaviour
                 PrototypeHUD.Instance?.ToggleCraftPanel();
         }
         if (ZoneType == ZoneType.SkillTree)
-            SkillTreeController.Instance?.Toggle();
+        {
+            if (SkillTreeController.Instance != null)
+                SkillTreeController.Instance.Toggle();
+            else if (UICanvasManager.instance != null)
+                UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
+        }
         if (ZoneType == ZoneType.MineEntrance)
         {
-            if (!TimerAndReward.Instance.canEnter) return;
-            GameManager.instance.ChangeState(new MiningState());
-            TimerAndReward.Instance.db = true;
+            if (TimerAndReward.Instance != null && !TimerAndReward.Instance.canEnter) return;
+            if (TimerAndReward.Instance != null) TimerAndReward.Instance.db = true;
+            if (GameManager.instance != null)
+                GameManager.instance.ChangeState(new MiningState());
+        }
+
+        if (ZoneType == ZoneType.StoreRadioZone)
+            UICanvasManager.instance.ControlObject(ObjectType.Radio, true);        
+        if (ZoneType == ZoneType.StoreStateZone)
+            UICanvasManager.instance.ControlObject(ObjectType.Radio, true);
+        if (ZoneType == ZoneType.NextDay)
+            UICanvasManager.instance.ControlObject(ObjectType.DayNext, true);
+
+        if (ZoneType == ZoneType.Door)
+        {
+            _isDoorOpen = !_isDoorOpen;
+            if (_doorObject != null)
+                _doorObject.SetActive(!_isDoorOpen);
+            if (ShopManager.Instance != null)
+            {
+                if (_isDoorOpen) ShopManager.Instance.OpenShop();
+                else             ShopManager.Instance.CloseShop();
+            }
+            string hint = _isDoorOpen ? "문  —  [ E ] 문 닫기" : "문  —  [ E ] 문 열기";
+            if (PrototypeHUD.Instance != null) PrototypeHUD.Instance.SetZoneHint(hint);
         }
     }
 }

@@ -17,7 +17,6 @@ public class FruitMaterialLogic : MonoBehaviour
 
     public void enemyMaterialEnable(Vector2 screenPoint)
     {
-        Debug.Log("셋스");
         AddEconomy(amount);
         if(_enemeySequence != null) _enemeySequence.Kill();
         _enemeySequence = DOTween.Sequence();

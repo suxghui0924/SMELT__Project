@@ -32,19 +32,19 @@ public class UICanvasManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            if (transform.parent == null)
-                DontDestroyOnLoad(gameObject);
-            // 캔버스들도 씬 전환 시 파괴되지 않도록 영속화
+            DontDestroyOnLoad(gameObject);
+            /*// 캔버스들도 씬 전환 시 파괴되지 않도록 영속화
             TryPersist(_title?.gameObject);
             TryPersist(_hud?.gameObject);
             TryPersist(_popup?.gameObject);
-            TryPersist(_system?.gameObject);
+            TryPersist(_system?.gameObject);*/
             Init();
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            //SceneManager.sceneLoaded += OnSceneLoaded;
         }
         else
         {
-            // 씬 재로드: 이전 캔버스 교체 + 새 캔버스 영속화 + 참조 갱신
+            Destroy(gameObject);
+            /*// 씬 재로드: 이전 캔버스 교체 + 새 캔버스 영속화 + 참조 갱신
             SwapCanvas(ref instance._title,  _title);
             SwapCanvas(ref instance._hud,    _hud);
             SwapCanvas(ref instance._popup,  _popup);
@@ -55,44 +55,13 @@ public class UICanvasManager : MonoBehaviour
             instance.HudBottomObject    = HudBottomObject;
             instance.PopupObject        = PopupObject;
             instance.SystemObject       = SystemObject;
-            instance.fadeCanvasGroup    = fadeCanvasGroup;
-            instance.Init();
-            Destroy(this);
+            instance.fadeCanvasGroup    = fadeCanvasGroup;*/
+            /*instance.Init();
+            Destroy(this);*/
         }
     }
-
-    private static void TryPersist(GameObject go)
-    {
-        if (go == null || go.transform.parent != null) return;
-        DontDestroyOnLoad(go);
-    }
-
-    private static void SwapCanvas(ref Canvas existing, Canvas replacement)
-    {
-        if (replacement == null) return;
-        if (existing != null && existing != replacement)
-            Destroy(existing.gameObject);
-        TryPersist(replacement.gameObject);
-        existing = replacement;
-    }
-
-    private void OnDestroy()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        if (scene.name == "Lobby")
-        {
-            // 비활성화된 경우 gameObject 복원 후 Title 표시
-            if (!gameObject.activeSelf)
-                gameObject.SetActive(true);
-            if (_title != null)
-                SetCanvasActive(CanvasType.Title, true);
-        }
-    }
-
+    
+    
     public void Init()
     {
         if (SystemObject == null) return;
@@ -139,6 +108,7 @@ public class UICanvasManager : MonoBehaviour
     }
     public void GetQty()
     {
+        Qty[2] = 0;
         Qty[0] = InventoryManager.Instance.CurrentDay;
         Qty[1] = InventoryManager.Instance.Gold;
         Qty[3] = InventoryManager.Instance.Gold;

@@ -29,17 +29,6 @@ public class LoadManager : MonoBehaviour
             {
                 UICanvasManager.instance.FadeStart();
                 op.allowSceneActivation = true;
-                switch (SceneLoader.nextScene)
-                {
-                    case "House":
-                        Debug.Log("asd");
-                        UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
-                        break;
-                    case "Lobby":
-                        SoundManager.instance.PlayBGM("Lobby");
-                        UICanvasManager.instance.SetCanvasActive(CanvasType.Title, true);
-                        break;
-                }
             }
         }
 

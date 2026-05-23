@@ -158,11 +158,22 @@ public class PrototypeHUD : MonoBehaviour
         if (_zoneHintGO == null) return;
         _zoneHintText.text = type switch
         {
-            ZoneType.Crafting     => "대장간  —  [ E ] 무기 제작",
-            ZoneType.SkillTree    => "스킬 트리  —  [ E ] 열기",
-            ZoneType.MineEntrance => "광산 입구  —  [ E ] 광산으로 이동",
-            _                     => ""
+            ZoneType.Crafting       => "대장간  —  [ E ] 무기 제작",
+            ZoneType.SkillTree      => "상점  —  [ E ] 스킬 트리 / 곡괭이",
+            ZoneType.MineEntrance   => "광산 입구  —  [ E ] 광산으로 이동",
+            ZoneType.NextDay        => "캘린더  —  [ E ] 다음날로 넘어가기",
+            ZoneType.StoreRadioZone => "라디오 — [ E ] 가게 음악 설정",
+            ZoneType.StoreStateZone => "두꺼비집 — [ E ] 가게 관련 설정",
+            ZoneType.Door           => "문  —  [ E ] 문 열기",
+            _                       => ""
         };
+        _zoneHintGO.SetActive(true);
+    }
+
+    public void SetZoneHint(string text)
+    {
+        if (_zoneHintGO == null || _zoneHintText == null) return;
+        _zoneHintText.text = text;
         _zoneHintGO.SetActive(true);
     }
 

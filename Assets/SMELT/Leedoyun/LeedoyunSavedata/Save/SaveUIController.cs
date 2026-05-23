@@ -12,20 +12,20 @@ public class SaveUIController : MonoBehaviour
 {
     [Header("버튼")]
     [SerializeField] private Button saveButton;
-    [SerializeField] private Button loadButton;
+    //[SerializeField] private Button loadButton;
 
     private void Start()
     {
         saveButton.onClick.AddListener(OnSaveClicked);
-        loadButton.onClick.AddListener(OnLoadClicked);
+       // loadButton.onClick.AddListener(OnLoadClicked);
 
-        loadButton.interactable = SaveManager.Instance.HasSaveData();
+     //   loadButton.interactable = SaveManager.Instance.HasSaveData();
     }
 
     private void OnDestroy()
     {
         saveButton.onClick.RemoveListener(OnSaveClicked);
-        loadButton.onClick.RemoveListener(OnLoadClicked);
+   //     loadButton.onClick.RemoveListener(OnLoadClicked);
     }
 
     private void OnSaveClicked()
@@ -33,13 +33,13 @@ public class SaveUIController : MonoBehaviour
         saveButton.interactable = false;
         SaveManager.Instance.Save();
         saveButton.interactable = true;
-        loadButton.interactable = true;
+      // loadButton.interactable = true;
     }
 
     private void OnLoadClicked()
     {
-        loadButton.interactable = false;
+      //  loadButton.interactable = false;
         SaveManager.Instance.Load();
-        loadButton.interactable = true;
+   //     loadButton.interactable = true;
     }
 }
