@@ -21,6 +21,9 @@ public class LemonMaterialOverride : FruitMaterialLogic
     
     protected override void AddEconomy(int amount)
     { 
-        InventoryManager.Instance.AddItem("fruitstone_lemon", amount);
+        SaveData data = SaveManager.Instance.CurrentData;
+        float bonus = data.getLemon + data.getFriuts;
+        int finalAmount = Mathf.RoundToInt(amount * (1 + bonus));
+        InventoryManager.Instance.AddItem("fruitstone_lemon", finalAmount);
     }
 }

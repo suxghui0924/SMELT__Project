@@ -20,6 +20,9 @@ public class MandarinMaterialOverride : FruitMaterialLogic
     }
     protected override void AddEconomy(int amount)
     { 
-        InventoryManager.Instance.AddItem("fruitstone_orange", amount);
+        SaveData data = SaveManager.Instance.CurrentData;
+        float bonus = data.getOrange + data.getFriuts;
+        int finalAmount = Mathf.RoundToInt(amount * (1 + bonus));
+        InventoryManager.Instance.AddItem("fruitstone_orange", finalAmount);
     }
 }
