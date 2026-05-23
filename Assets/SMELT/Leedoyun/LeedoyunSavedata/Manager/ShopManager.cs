@@ -82,12 +82,12 @@ public class ShopManager : MonoBehaviour, ISaveable
         if (itemData == null) return false;
 
         // 판매 수익 보너스 적용 (이윤건 담당 PlayerStatManager)
-        int finalPrice = PlayerStatManager.Instance.ApplySalesBonus(itemData.sellPrice);
+        ulong finalPrice = PlayerStatManager.Instance.ApplySalesBonus(itemData.sellPrice);
 
         // 골드 지급 및 기록
         InventoryManager.Instance.AddGold(finalPrice);
-        _todayEarned  += finalPrice;
-        _totalEarned  += finalPrice;
+        _todayEarned  += (int)finalPrice;
+        _totalEarned  += (int)finalPrice;
         _salesHistory.Add(itemId);
 
         return true;
@@ -196,10 +196,10 @@ public class ShopManager : MonoBehaviour, ISaveable
             return false;
 
         // 가격 계산 후 골드 지급
-        int price = GetWeaponPrice(weaponItemId);
+        ulong price = GetWeaponPrice(weaponItemId);
         InventoryManager.Instance.AddGold(price);
-        _todayEarned += price;
-        _totalEarned += price;
+        _todayEarned += (int)price;
+        _totalEarned += (int)price;
         _salesHistory.Add(weaponItemId);
 
         Debug.Log($"[ShopManager] 무기 판매: {weaponItemId} → {price}G");
@@ -212,7 +212,7 @@ public class ShopManager : MonoBehaviour, ISaveable
     /// </summary>
     /// <param name="weaponItemId">인벤토리 무기 ID</param>
     /// <returns>계산된 판매 가격 (파싱 실패 시 0)</returns>
-    public int GetWeaponPrice(string weaponItemId)                                       // 추가
+    public ulong GetWeaponPrice(string weaponItemId)                                       // 추가
     {
         if (!WeaponCraftManager.TryParseWeaponItemId(weaponItemId,
             out WeaponType weaponType, out string mainOreId))
@@ -231,7 +231,7 @@ public class ShopManager : MonoBehaviour, ISaveable
 
         // (무기 기본금 + 메인 가치 × 메인 개수) × (1 + moreSell)
         int rawPrice = recipe.basePrice + oreValue * recipe.mainCount;
-        return Mathf.RoundToInt(rawPrice * (1f + moreSell));
+        return (ulong)Mathf.RoundToInt(rawPrice * (1f + moreSell));
     }
 
     // ─────────────────────────────────────────

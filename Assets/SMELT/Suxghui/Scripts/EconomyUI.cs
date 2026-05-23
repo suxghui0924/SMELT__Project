@@ -84,10 +84,10 @@ public class EconomyUI : MonoBehaviour
         UpdateUICurDayMaintenanceCost(inv.CurrentDay, inv.MaintenanceCost);
     }
 
-    private void UpdateUIGoldState(int _, int newGold)
+    private void UpdateUIGoldState(ulong _, ulong newGold)
     {
         if (_goldText != null)
-            _goldText.text = Mathf.Clamp(newGold, 0, 200_000_000).ToString("N0");
+            _goldText.text = Mathf.Clamp(newGold, 0, 200_000_000_000_000).ToString("N0");
     }
 
     private void UpdateUIItemState(string itemId, int newValue)
@@ -97,7 +97,7 @@ public class EconomyUI : MonoBehaviour
             _itemTexts[idx].text = Mathf.Clamp(newValue, 0, 10_000).ToString("N0");
     }
 
-    public void UpdateUICurDayMaintenanceCost(int curDay, int maintenance)
+    public void UpdateUICurDayMaintenanceCost(int curDay, ulong maintenance)
     {
         if (_curDayText != null)      _curDayText.text      = $"{curDay} 일차";
         if (_maintenanceText != null) _maintenanceText.text = $"유지비용 : {maintenance:N0}";

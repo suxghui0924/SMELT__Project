@@ -12,7 +12,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         [HideInInspector]
         public int maxFatigue = 100;
         [HideInInspector]
-        public float currentFatigue;
+        public float currentFatigue = 100;
         //public Image _mp;
         float timer = 0f;
     

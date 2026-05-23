@@ -38,7 +38,7 @@ public class PrototypeHUD : MonoBehaviour
         public Color  WeaponColor;
         public string Symbol;
         public (string id, int amount)[] Ingredients;
-        public int SellPrice;
+        public ulong SellPrice;
     }
 
     private static readonly Recipe[] RECIPES =
