@@ -63,7 +63,7 @@ namespace _01_Scripts.NPC
             }
             else
             {
-                Vector3 targetPosition = _lastPos.position + (Vector3.down * ((Index - 1) * _offset));
+                Vector3 targetPosition = _lastPos.position + (Vector3.left * ((Index - 1) * _offset));
                 _moveTweener = transform.DOMove(targetPosition, _timer).SetEase(Ease.OutQuad);
             }
         }

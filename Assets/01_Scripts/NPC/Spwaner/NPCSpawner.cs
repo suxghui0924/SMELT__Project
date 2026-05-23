@@ -25,7 +25,7 @@ namespace _01_Scripts.Player.Manager
             OrderHUD.OnOrderEnded += HandleOnRewardOrder;
         }
 
-        private void OnDisable()
+            private void OnDisable()
         {
             OrderHUD.OnOrderCreated -= HandleOnAcceptOrder;
             OrderHUD.OnOrderEnded -= HandleOnRewardOrder;
