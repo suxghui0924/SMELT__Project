@@ -22,8 +22,8 @@ public class SaveData
     // ─────────────────────────────────────────
     [Header("Economy")]
     public int currentDay = 1; // 현재 날짜
-    public int gold = 0; // 보유 골드
-    public int maintenanceCost = 100; // 오늘의 유지비 (날마다 증가)
+    public ulong gold = 0; // 보유 골드
+    public ulong maintenanceCost = 100; // 오늘의 유지비 (날마다 증가)
 
     [Header("FruitStones")]  // 추가
     public int fruitStoneApple  = 0; // 사과 과일석 개수  // 추가
@@ -75,7 +75,7 @@ public class SaveData
     public List<OrderSaveData> activeOrders = new List<OrderSaveData>();
 
     // ─────────────────────────────────────────
-    // 피로도 담당자: 이도윤                          // 추가
+    // 피로도 담당자: 이호승                          // 추가
     // ─────────────────────────────────────────
     [Header("Stamina")]                               // 추가
     public float stamina = 100f; // 현재 피로도 (0~100)  // 추가
@@ -120,7 +120,7 @@ public class OrderSaveData
     public string    requestedWeaponId;
     public int       weaponType;
     public string    mainOreId;
-    public int       rewardGold;
+    public ulong       rewardGold;
     public float     timeLimit;
     public float     elapsedTime;
 }

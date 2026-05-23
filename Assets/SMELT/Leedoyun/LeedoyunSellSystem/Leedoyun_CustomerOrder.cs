@@ -35,7 +35,7 @@ public class Leedoyun_CustomerOrder
     // 보상 / 시간
     // ─────────────────────────────────────────
     /// <summary>납품 성공 시 지급 골드</summary>
-    public int rewardGold;
+    public ulong rewardGold;
 
     /// <summary>주문 제한 시간 (초)</summary>
     public float timeLimit;
@@ -70,7 +70,7 @@ public class Leedoyun_CustomerOrder
         this.orderId     = Guid.NewGuid().ToString("N").Substring(0, 8); // 짧은 ID
         this.weaponType  = weaponType;
         this.mainOreId   = mainOreId;
-        this.rewardGold  = rewardGold;
+        this.rewardGold  = (ulong)rewardGold;
         this.timeLimit   = timeLimit;
         this.elapsedTime = 0f;
         this.isFulfilled = false;
