@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using System.Collections;
 using Unity.Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class skillSystem : MonoBehaviour
 {
@@ -97,12 +98,14 @@ public class skillSystem : MonoBehaviour
     public void OnAnimationEnd()
     {
         Destroy(boss);
+        
+        
     }
 
     private void DestroyAllSkills()
     {
         GameObject[] ores = GameObject.FindGameObjectsWithTag("ore");
-
+        
         foreach (GameObject ore in ores)
         {
             Destroy(ore);
