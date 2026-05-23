@@ -11,7 +11,10 @@
       "Bash(grep -E \"\\\\.cs$\")",
       "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\LeeDoYun\" -Directory)",
       "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\Leedoyun\" -Recurse -File)",
-      "Bash(Sort-Object)"
+      "Bash(Sort-Object)",
+      "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\Leedoyun\" -Recurse)",
+      "Bash(Format-Table -AutoSize)",
+      "PowerShell(ls -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\\" | Where-Object {$_.PSIsContainer})"
     ]
   }
 }

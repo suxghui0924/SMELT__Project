@@ -188,7 +188,7 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         foreach (var s in data.activeOrders)
         {
             var order = new Leedoyun_CustomerOrder(
-                (WeaponType)s.weaponType, s.mainOreId, s.rewardGold, s.timeLimit);
+                (WeaponType)s.weaponType, s.mainOreId, (int)s.rewardGold, s.timeLimit);
             order.orderId     = s.orderId;
             order.elapsedTime = s.elapsedTime;
             _activeOrders.Add(order);
@@ -240,14 +240,14 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         // 골드 지급
         int prev = _todayGold;
         InventoryManager.Instance.AddGold(order.rewardGold);
-        _todayGold += order.rewardGold;
-        _totalGold += order.rewardGold;
+        _todayGold += (int)order.rewardGold;
+        _totalGold += (int)order.rewardGold;
         OnTodayGoldChanged?.Invoke(prev, _todayGold);
 
         // 주문 완료 처리
         order.isFulfilled = true;
         _activeOrders.Remove(order);
-        OnOrderFulfilled?.Invoke(order, order.rewardGold);
+        OnOrderFulfilled?.Invoke(order, (int)order.rewardGold);
 
         if (AchievementClear.instance != null) AchievementClear.instance.ClearAchievement(Achievements.FirstSell);
 
@@ -361,7 +361,7 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         string weaponTypeId  = GetWeaponTypeId(weaponType);
         string weaponItemId  = $"weapon_{weaponTypeId}_{oreShortName}";
         int    rewardGold    = ShopManager.Instance != null
-                                 ? ShopManager.Instance.GetWeaponPrice(weaponItemId)
+                                 ? (int)ShopManager.Instance.GetWeaponPrice(weaponItemId)
                                  : CalculateFallbackPrice(weaponType, oreId);
 
         // 주문 생성

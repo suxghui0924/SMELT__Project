@@ -8,7 +8,8 @@ public class PrototypeZone : MonoBehaviour
     [SerializeField] private ZoneType _zoneType;
     public ZoneType ZoneType { get => _zoneType; set => _zoneType = value; }
 
-    [SerializeField] private GameObject _doorObject;
+    [SerializeField] private GameObject        _doorObject;
+    [SerializeField] private SkillTreeZoneVisual _skillTreeVisual;
 
     private const float GATHER_INTERVAL = 1.5f;
 
@@ -43,6 +44,12 @@ public class PrototypeZone : MonoBehaviour
         _playerInside = true;
         _gatherTimer  = 0f;
         PrototypeHUD.Instance?.OnZoneEnter(ZoneType);
+
+        if (ZoneType == ZoneType.Door && PrototypeHUD.Instance != null)
+        {
+            string hint = _isDoorOpen ? "문  —  [ E ] 문 닫기" : "문  —  [ E ] 문 열기";
+            PrototypeHUD.Instance.SetZoneHint(hint);
+        }
     }
 
     public void OnPlayerExit()
@@ -53,7 +60,10 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.Crafting)
             WeaponCraftUI.Instance?.Hide();
         if (ZoneType == ZoneType.SkillTree)
+        {
             SkillTreeController.Instance?.Hide();
+            _skillTreeVisual?.SetInteracting(false);
+        }
     }
 
     public void Interact()
@@ -68,7 +78,10 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.SkillTree)
         {
             if (SkillTreeController.Instance != null)
+            {
                 SkillTreeController.Instance.Toggle();
+                _skillTreeVisual?.SetInteracting(SkillTreeController.Instance.IsOpen);
+            }
             else if (UICanvasManager.instance != null)
                 UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
         }

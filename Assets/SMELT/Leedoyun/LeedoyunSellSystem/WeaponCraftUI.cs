@@ -24,6 +24,9 @@ public class WeaponCraftUI : MonoBehaviour
     [Tooltip("한국어 TMP 폰트. 비워두면 에셋에서 자동 로드.")]
     [SerializeField] private TMP_FontAsset _koreanFont;
 
+    [Header("뒷배경 이미지 (비워두면 단색 사용)")]
+    [SerializeField] private Sprite _bgSprite;
+
     private const string FONT_PATH = "Assets/SMELT/Suxghui/Galmuri9 SDF.asset";
 
     [Header("무기 종류 버튼 아이콘 5개 (검 / 도끼 / 창 / 망치 / 건틀릿 — 흑백 실루엣 권장)")]
@@ -44,7 +47,7 @@ public class WeaponCraftUI : MonoBehaviour
     private const float BTN_SIZE = 80f;
     private const float BTN_GAP  = 10f;
     private const float SEC_LEFT = -155f;
-    private const float PREV_X   = 330f;
+    private const float PREV_X   = 295f;
     private const float PREV_W   = 200f;
     private const float PREV_H   = 400f;
 
@@ -85,19 +88,19 @@ public class WeaponCraftUI : MonoBehaviour
     private static readonly int[] ORE_VALUES = { 1000, 2000, 3000, 4000, 5000 };
 
     // ─────────────────────────────────────────
-    // 색상 상수
+    // 색상 상수 (따뜻한 나무/모래 RPG 톤)
     // ─────────────────────────────────────────
-    private static readonly Color CLR_BG         = new Color(0.08f, 0.08f, 0.14f, 0.97f);
-    private static readonly Color CLR_PREVIEW_BG = new Color(0.11f, 0.12f, 0.20f);
-    private static readonly Color CLR_BTN_NORMAL = new Color(0.16f, 0.18f, 0.24f);
-    private static readonly Color CLR_BTN_SEL    = new Color(0.24f, 0.28f, 0.42f);
-    private static readonly Color CLR_BTN_DIM    = new Color(0.10f, 0.11f, 0.14f);
+    private static readonly Color CLR_BG         = new Color(0.35f, 0.25f, 0.14f, 0.97f);
+    private static readonly Color CLR_PREVIEW_BG = new Color(0.26f, 0.18f, 0.10f);
+    private static readonly Color CLR_BTN_NORMAL = new Color(0.48f, 0.35f, 0.20f);
+    private static readonly Color CLR_BTN_SEL    = new Color(0.68f, 0.52f, 0.20f);
+    private static readonly Color CLR_BTN_DIM    = new Color(0.26f, 0.18f, 0.10f);
     private static readonly Color CLR_OUTLINE_ON  = new Color(1.00f, 0.85f, 0.20f);
     private static readonly Color CLR_OUTLINE_OFF = new Color(0f, 0f, 0f, 0f);
-    private static readonly Color CLR_CRAFT_OK   = new Color(0.15f, 0.52f, 0.22f);
-    private static readonly Color CLR_CRAFT_FAIL = new Color(0.32f, 0.32f, 0.32f);
-    private static readonly Color CLR_LABEL      = new Color(0.70f, 0.72f, 0.80f);
-    private static readonly Color CLR_DIVIDER    = new Color(0.28f, 0.30f, 0.40f, 0.6f);
+    private static readonly Color CLR_CRAFT_OK   = new Color(0.18f, 0.50f, 0.22f);
+    private static readonly Color CLR_CRAFT_FAIL = new Color(0.32f, 0.24f, 0.15f);
+    private static readonly Color CLR_LABEL      = new Color(0.93f, 0.85f, 0.65f);
+    private static readonly Color CLR_DIVIDER    = new Color(0.60f, 0.45f, 0.25f, 0.6f);
 
     // ─────────────────────────────────────────
     // 선택 상태
@@ -166,12 +169,19 @@ public class WeaponCraftUI : MonoBehaviour
         _rootPanel = MakePanel(canvasT, "WeaponCraftUI",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
             Vector2.zero, new Vector2(PANEL_W, PANEL_H), CLR_BG);
+        if (_bgSprite != null)
+        {
+            var bgImg = _rootPanel.GetComponent<Image>();
+            bgImg.sprite = _bgSprite;
+            bgImg.type   = Image.Type.Sliced;
+            bgImg.color  = new Color(1f, 1f, 1f, 0.97f);
+        }
         var root = _rootPanel.transform;
 
         float topY = PANEL_H / 2f - 28f;
 
         var title = MakeTxt(root, "대장간", 24, FontStyles.Bold, Color.white,
-            new Vector2(-10f, topY), new Vector2(700f, 40f));
+            new Vector2(-10f, topY - 18f), new Vector2(700f, 40f));
         title.alignment = TextAlignmentOptions.Left;
 
         MakeBtn(root, "X",
@@ -246,7 +256,7 @@ public class WeaponCraftUI : MonoBehaviour
         var imgGO = MakePanel(panel, "WeaponImg",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
             new Vector2(0f, imgY), new Vector2(imgSize, imgSize),
-            new Color(0.18f, 0.20f, 0.30f));
+            new Color(0.22f, 0.15f, 0.08f));
         _previewImg = imgGO.GetComponent<Image>();
         _previewImg.preserveAspect = true;
 
@@ -314,7 +324,7 @@ public class WeaponCraftUI : MonoBehaviour
         Color bgColor = sprite != null ? new Color(0f, 0f, 0f, 0f) : fallbackColor;
         var iconGO  = MakePanel(t, "Icon",
             new Vector2(0.5f, 1f), new Vector2(0.5f, 1f),
-            new Vector2(0f, -5f), new Vector2(size.x - 10f, iconH),
+            new Vector2(0f, -12f), new Vector2(size.x - 10f, iconH),
             bgColor);
         var iconImg = iconGO.GetComponent<Image>();
         iconImg.raycastTarget = false;
@@ -442,7 +452,7 @@ public class WeaponCraftUI : MonoBehaviour
         int price;
         if (ShopManager.Instance != null)
         {
-            price = ShopManager.Instance.GetWeaponPrice(weaponItemId);
+            price = (int)ShopManager.Instance.GetWeaponPrice(weaponItemId);
         }
         else
         {
