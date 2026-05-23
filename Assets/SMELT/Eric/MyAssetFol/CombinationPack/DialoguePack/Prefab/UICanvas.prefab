@@ -375,6 +375,7 @@ MonoBehaviour:
   - 'This is the last one. '
   typingSpeed: 0.02
   duration: 4
+  canMove: 1
 --- !u!1 &1594472085409806546
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,7 +467,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a9587f64b4befed47ab913f1641addc3, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0

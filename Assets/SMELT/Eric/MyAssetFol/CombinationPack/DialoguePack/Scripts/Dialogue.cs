@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,6 +28,7 @@ public class Dialogue : MonoBehaviour
     public float typingSpeed = 0.02f;
     public float duration = 4f;
     private bool active = true;
+    public bool canMove = true;
     
 
     IEnumerator Type()
@@ -71,13 +73,14 @@ public class Dialogue : MonoBehaviour
                 
                 //Debug.Log("Should Shrink");
                 animController.SetTrigger("Disappear");
-                Time.timeScale = 1f;
             }
-            
         }
-        
     }
 
+    private void Update()
+    {
+                if(canMove)  Time.timeScale = 1f;
+    }
 
 
     //Character Socket
@@ -115,6 +118,7 @@ public class Dialogue : MonoBehaviour
 
     public void Say(string[] _text, string _characterName = null, float _duration = 0)
     {
+        canMove = false;
         animController.SetTrigger("Appear");
         sentences = _text;
         index = 0;
@@ -163,7 +167,6 @@ public class Dialogue : MonoBehaviour
         sentences = null;
         UpdateName();
         textBox.text = "";
-    Time.timeScale = 1f;
     }
 }
 
