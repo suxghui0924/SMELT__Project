@@ -186,7 +186,7 @@ public class WeaponCraftUI : MonoBehaviour
         const float LBL_W        = 90f;
         float rowStartX = LBL_CENTER_X + LBL_W / 2f + 10f + BTN_SIZE / 2f;
 
-        float FIRST_ROW_Y = topY - 92f;
+        float FIRST_ROW_Y = topY - 140f;
         float ROW_GAP     = BTN_SIZE + 18f;
 
         // 무기 종류 행 — 흑백 실루엣 아이콘 사용

@@ -17,8 +17,18 @@ public class CraftAnimationController : MonoBehaviour
     [Tooltip("Animator Controller Trigger 파라미터 이름.")]
     [SerializeField] private string _animationTrigger = "CraftPlay";
 
-    [Tooltip("파티클 발동 타이밍 (0 = 애니메이션 시작, 1 = 끝). 치는 순간에 맞게 조절.")]
+    [Tooltip("파티클·사운드 발동 타이밍 (0 = 애니메이션 시작, 1 = 끝). 치는 순간에 맞게 조절.")]
     [SerializeField] [Range(0f, 1f)] private float _sparkNormalizedTime = 0.5f;
+
+    [Header("타격 사운드")]
+    [Tooltip("망치 타격음을 재생할 AudioSource 컴포넌트를 연결하세요.")]
+    [SerializeField] private AudioSource _audioSource;
+
+    [Tooltip("타격 사운드 클립. 클립 길이에 맞게 애니메이션 속도가 자동 조정됩니다.")]
+    [SerializeField] private AudioClip _hammerSound;
+
+    [Tooltip("전체 타격 속도 배율. 1.0 = 사운드 기준 자동 속도, 낮출수록 느려집니다.")]
+    [SerializeField] [Range(0.5f, 1.5f)] private float _speedMultiplier = 1f;
 
     [Header("위치 설정")]
     [Tooltip("제작 시 플레이어가 이동할 고정 위치.")]
@@ -82,13 +92,26 @@ public class CraftAnimationController : MonoBehaviour
 
     private IEnumerator ReturnToIdle(Sprite resultSprite)
     {
-        for (int i = 0; i < 3; i++)
+        const int hitCount = 4;
+
+        // 사운드 전체를 한 번에 재생
+        if (_audioSource != null && _hammerSound != null)
+            _audioSource.PlayOneShot(_hammerSound);
+
+        for (int i = 0; i < hitCount; i++)
         {
             _craftAnimator.SetTrigger(_animationTrigger);
 
             // 애니메이션 상태로 전환될 때까지 대기
             yield return new WaitUntil(() =>
                 _craftAnimator.GetCurrentAnimatorStateInfo(0).IsName("Craft Animation"));
+
+            // 속도 계산: 4사이클이 사운드 전체 길이에 맞도록, 배율 적용
+            if (i == 0 && _hammerSound != null)
+            {
+                float animLength = _craftAnimator.GetCurrentAnimatorStateInfo(0).length;
+                _craftAnimator.speed = (animLength * hitCount) / _hammerSound.length * _speedMultiplier;
+            }
 
             // 치는 타이밍에 파티클 발동
             yield return new WaitUntil(() =>
@@ -102,6 +125,7 @@ public class CraftAnimationController : MonoBehaviour
                 _craftAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f);
         }
 
+        _craftAnimator.speed = 1f;
         _craftAnimator.Play(HashNewState);
         SetPlayerVisible(true);
         PlayerMovement.IsLocked = false;
