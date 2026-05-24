@@ -18,8 +18,9 @@ MonoBehaviour:
   name: "?? \uACE1\uAD2D\uC774"
   desc: "\uC660\uC9C0 \uD788\uB4E0 \uC544\uC774\uD15C\uC778\uAC70 \uAC19\uB2E4."
   damage: 100000000
+  speed: 100
   goldPrice: 0
   fruitPrice: 0000000000000000000000000000000000000000
-  hitboxSquare: 1.2
+  hitboxSquare: 1.5
   bought: 0
   eqiuqed: 0
