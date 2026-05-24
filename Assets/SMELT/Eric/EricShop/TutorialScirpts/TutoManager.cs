@@ -7,7 +7,7 @@ public class TutoManager : MonoBehaviour
 {
     public static TutoManager Instance;
 
-    [SerializeField] private GameObject skillTreeUI;
+   public GameObject skillTreeUI;
     [SerializeField] private GameObject[] lastObjects;
 
     public bool canLast;
