@@ -15,6 +15,7 @@ public class skillSystem : MonoBehaviour
     
     
     public bool IsAlive => isAlive;
+    private StartBtn _startBtn;
     [SerializeField]private GameObject boss;
     [SerializeField]private GameObject orePrefab ;
     [SerializeField]private GameObject juicePrefab;
@@ -105,7 +106,9 @@ public class skillSystem : MonoBehaviour
     {
         Destroy(boss);
         _text.gameObject.SetActive(true);
+        StartCoroutine(Managers());
         Debug.Log("10만 골드 지급, ??? 획득");
+        GameManager.instance.ChangeState(new HouseState());
 
 
     }

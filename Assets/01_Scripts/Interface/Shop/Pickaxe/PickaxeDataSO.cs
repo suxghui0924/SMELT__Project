@@ -9,6 +9,7 @@ public class PickaxeDataSO : ScriptableObject
     public Sprite icon;
     public new string name;
     public string desc;
+    public int damage;
     public ulong goldPrice;
     public int[] fruitPrice;
     public double hitboxSquare;

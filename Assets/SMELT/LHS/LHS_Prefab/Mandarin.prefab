@@ -4913,6 +4913,7 @@ GameObject:
   - component: {fileID: 7674868267486799029}
   - component: {fileID: 6544974013279057923}
   - component: {fileID: 7053440081083407922}
+  - component: {fileID: 4778288138837865786}
   m_Layer: 9
   m_Name: MandarinSpriteRenderer
   m_TagString: Enemy
@@ -5069,6 +5070,28 @@ MonoBehaviour:
   knockbackTimer: 1
   knockbackPower: 3
   particleSystem: {fileID: 9174689402991412142}
+--- !u!95 &4778288138837865786
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5798968236281295660}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 67a84cecd550751409fe64d649b8f366, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7880522014629795840
 GameObject:
   m_ObjectHideFlags: 0
