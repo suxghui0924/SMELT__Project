@@ -1713,7 +1713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillInput: {fileID: 11400000, guid: 403745cc5736617438b00711bd2c8771, type: 2}
-  _skillCoolDown: 0.7
+  _skillCoolDown: 0.6
   _nextAttackTime: 0.1
 --- !u!1 &1885004983
 GameObject:

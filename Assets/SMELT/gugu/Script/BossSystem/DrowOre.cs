@@ -38,7 +38,7 @@ public class DrowOre : MonoBehaviour
             
 
         }
-        BossSkillManager.Instance.timer = 1f;
+        BossSkillManager.Instance.timer = 0.5f;
         BossSkillManager.Instance.stack = true;
 
     }
