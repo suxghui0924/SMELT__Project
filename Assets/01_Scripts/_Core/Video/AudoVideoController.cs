@@ -39,6 +39,8 @@ namespace DefaultNamespace
             yield return wait;
             UICanvasManager.instance.ControlObject(ObjectType.Hackboom, false);
             GameManager.instance.ChangeState(new LobbyState());
+            if (SaveManager.Instance != null)
+                SaveManager.Instance.ResetAllData();
         }
     }
 }

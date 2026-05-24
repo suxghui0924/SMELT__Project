@@ -7,6 +7,7 @@
             SoundManager.instance.StopBGM();
             SoundManager.instance.PlaySFX("BrokenStart");
             UICanvasManager.instance.ControlObject(ObjectType.Hackboom, true);
+            
         }
 
         public void Execute()
