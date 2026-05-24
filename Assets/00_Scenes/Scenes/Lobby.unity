@@ -15926,10 +15926,47 @@ PrefabInstance:
       propertyPath: m_Name
       value: System_Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1414107452692851628, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503536659259741063, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1500.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503536659259741063, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 197.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503536659259741063, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286099699031928948, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_text
+      value: "\uAE30\uB825\uC774 \uC804\uBD80 \uC18C\uBAA8\uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+        \uAC00\uAC8C\uB85C \uB3CC\uC544\uAC11\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286099699031928948, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_fontSize
+      value: 83.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286099699031928948, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_margin.z
+      value: 384.3167
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286099699031928948, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 83.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7617603972811754086, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1819359238}
+    - target: {fileID: 8187257556304056906, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_text
+      value: GAME OVER
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
