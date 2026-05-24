@@ -17,15 +17,15 @@ public class ShopUI : MonoBehaviour
     private bool db = true;
     
     #region OnEnable / Init
-    void OnEnable()
+    /*void OnEnable()
     {
         if (objectShop.activeSelf)
-            count = 1;
-        else if (objectSkillTree.activeSelf)
             count = 2;
+        else if (objectSkillTree.activeSelf)
+            count = 1;
         else
             Debug.LogWarning("Not Found objectUI Or objectActiveSelf ");
-    }
+    }*/
     #endregion
     #region Change Group Frame
 
@@ -46,7 +46,7 @@ public class ShopUI : MonoBehaviour
             }
             else if (count == 2)
             {
-                count--;
+                count = 1;
                 objectShop.transform.localPosition = new Vector2(0, -1000);
                 DoTweenSequence(objectShop, 0, objectSkillTree, 1000);
             }
@@ -55,13 +55,13 @@ public class ShopUI : MonoBehaviour
         {
             if (count == 1)
             {
-                count++;
+                count = 2;
                 objectSkillTree.transform.localPosition = new Vector2(0, 1000);
                 DoTweenSequence(objectShop, -1000, objectSkillTree, 0);
             }
             else if (count == 2)
             {
-                count--;
+                count = 1;
                 objectShop.transform.localPosition = new Vector2(0, 1000);
                 DoTweenSequence(objectShop, 0, objectSkillTree, -1000);
             }
