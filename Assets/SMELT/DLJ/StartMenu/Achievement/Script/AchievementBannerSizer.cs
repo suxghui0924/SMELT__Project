@@ -49,7 +49,7 @@ public class AchievementBannerSizer : MonoBehaviour
 
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
 
             float t = timer / duration;
 
@@ -68,7 +68,7 @@ public class AchievementBannerSizer : MonoBehaviour
 
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
 
             float t = timer / duration;
 
@@ -94,7 +94,7 @@ public class AchievementBannerSizer : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             float t = timer / duration;
 
 

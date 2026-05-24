@@ -11,6 +11,12 @@ public class TutoAttackAnim1 : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
+        a = transform.localScale;
+    }
+
+    private void Start()
+    {
+        a = transform.localScale;
     }
 
     private void Update()
@@ -18,7 +24,6 @@ public class TutoAttackAnim1 : MonoBehaviour
         if (Keyboard.current.dKey.wasPressedThisFrame)
         {
             animator.SetTrigger("l");
-            a = transform.localScale;
             transform.localScale = new Vector3(-a.x, a.y, a.z);
         }
         if (Keyboard.current.aKey.wasPressedThisFrame)
@@ -26,7 +31,7 @@ public class TutoAttackAnim1 : MonoBehaviour
             animator.SetTrigger("r");
             if(a.x < 0)
             {
-                transform.localScale = new Vector3(-a.x, a.y, a.z);
+                transform.localScale = new Vector3(a.x, a.y, a.z);
             }
         }
     }
