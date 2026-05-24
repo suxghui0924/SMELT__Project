@@ -16,6 +16,7 @@ public class SaveUIController : MonoBehaviour
     private CanvasGroup _toastGroup;
     private Text _toastText;
     private Coroutine _toastCoroutine;
+    private static readonly WaitForSeconds WaitLoadCooldown = new WaitForSeconds(1.5f);
     private GameObject _toastGO;
 
     private void Awake()
@@ -55,10 +56,17 @@ public class SaveUIController : MonoBehaviour
 
     private void OnLoadClicked()
     {
-        loadButton.interactable = false;
+        if (loadButton != null) loadButton.interactable = false;
         SaveManager.Instance.Load();
-        loadButton.interactable = true;
         ShowToast("로드 되었습니다");
+        StartCoroutine(ReenableLoadButton());
+    }
+
+    private IEnumerator ReenableLoadButton()
+    {
+        yield return WaitLoadCooldown;
+        if (loadButton != null)
+            loadButton.interactable = SaveManager.Instance != null && SaveManager.Instance.HasSaveData();
     }
 
     private void ShowToast(string message)
