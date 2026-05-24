@@ -202,10 +202,10 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
                 UpMakeSpeedWeapon += times;
                 break;
             case "UpParryRange1":
-                UpMakeSpeedWeapon += times;
+                UpParryRange += times;
                 break;
             case "UpParryRange2":
-                UpMakeSpeedWeapon += times;
+                UpParryRange += times;
                 break;
             case "AttackSpeedUp1":
                 UpAttackSpeed += times;

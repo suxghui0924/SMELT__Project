@@ -15,6 +15,8 @@ public class TutoDungeonAndUpgrade : MonoBehaviour
         {
             if (gameObject.CompareTag("EnterDungeon"))
             {
+                TutoManager.Instance.Triggered();
+                
                 StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.enterDungeon1));
             }
             _canTouch = true;

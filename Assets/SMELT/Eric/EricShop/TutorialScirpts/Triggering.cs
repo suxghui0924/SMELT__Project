@@ -46,6 +46,7 @@ public class Triggering : MonoBehaviour
 
                 if (door)
                 {
+                        TutoManager.Instance.Triggered();
                         door = false;
                         TutoManager.Instance.Dialogue.canMakePoint = true;
                         StartCoroutine(
