@@ -66,6 +66,7 @@ namespace _01_Scripts.Player
                 if (InventoryManager.Instance.EndOfDay())
                 {
                     AchievementManager.Instance.AlarmPopUp("유지비 납부 성공", "가게 유지비를 납부하여 다음날로 넘어갑니다.");
+                    ShopManager.Instance?.CloseShop();
                     TimerAndReward.Instance.canEnter = true;
                     TimerAndReward.Instance.FatigueReset();
                     DayTimer.Instance?.ResetTimer();

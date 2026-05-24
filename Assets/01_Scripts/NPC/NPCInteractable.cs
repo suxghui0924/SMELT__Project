@@ -210,16 +210,13 @@ namespace _01_Scripts.NPC
 
         private void BuildBubbleUI()
         {
-            // 기존 ScreenSpaceOverlay 캔버스를 공유해서 사용
-            _sharedCanvas = FindFirstObjectByType<Canvas>();
-            if (_sharedCanvas == null)
-            {
-                var cGO = new GameObject("Canvas");
-                _sharedCanvas = cGO.AddComponent<Canvas>();
-                _sharedCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-                cGO.AddComponent<CanvasScaler>();
-                cGO.AddComponent<GraphicRaycaster>();
-            }
+            // NPC 버블 전용 캔버스 생성 — 씬 로컬이므로 씬 전환 시 자동 파괴됨
+            var cGO = new GameObject("NPCBubbleCanvas");
+            _sharedCanvas = cGO.AddComponent<Canvas>();
+            _sharedCanvas.renderMode  = RenderMode.ScreenSpaceOverlay;
+            _sharedCanvas.sortingOrder = 100;
+            cGO.AddComponent<CanvasScaler>();
+            cGO.AddComponent<GraphicRaycaster>();
 
             // 버블 컨테이너 — 공유 캔버스의 자식으로 생성
             var containerGO = new GameObject("NPCBubble");
