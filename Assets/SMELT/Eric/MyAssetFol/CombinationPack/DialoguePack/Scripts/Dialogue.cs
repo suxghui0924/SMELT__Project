@@ -22,6 +22,29 @@ public class Dialogue : MonoBehaviour
     
     public bool canMove = true;
     public bool last = false;
+    public int pointsNum = 0;
+    public bool canMakePoint =false;
+
+    private void Dissapear()
+    {
+        animController.SetTrigger("Disappear");
+        if (TutoManager.Instance.TutoSaying.canGetOrder2)  TutoManager.Instance.TutoSaying.canGetOrder2 = false;
+        if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)  canMove = true;
+        if (last)
+        {
+            last = false;
+            TutoManager.Instance.canLast = true;
+        }
+        Check();
+    }
+
+    private void Check()
+    {
+        if (pointsNum >= 10||!canMakePoint) return;
+        TutoManager.Instance.TargetPos(pointsNum);
+        pointsNum++;
+        canMakePoint = false;
+    }
     
     IEnumerator Type()
     {
@@ -56,20 +79,8 @@ public class Dialogue : MonoBehaviour
             index++;
         }
 
-        animController.SetTrigger("Disappear");
-        if ( TutoManager.Instance.TutoSaying.canGetOrder2)
-        {
-            TutoManager.Instance.TutoSaying.canGetOrder2 = false;
-        }
-        if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)
-        {
-            canMove = true;
-        }
-        if (last)
-        {
-            last = false;
-            TutoManager.Instance.canLast = true;
-        }
+        Dissapear();
+
     }
 
     private void Update()
@@ -148,21 +159,7 @@ public class Dialogue : MonoBehaviour
             else
             {
                 StopAllCoroutines();
-                animController.SetTrigger("Disappear");
-                if ( TutoManager.Instance.TutoSaying.canGetOrder2)
-                {
-                    TutoManager.Instance.TutoSaying.canGetOrder2 = false;
-                }
-                if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)
-                {
-                    canMove = true;
-                }
-
-                if (last)
-                {
-                    last = false;
-                    TutoManager.Instance.canLast = true;
-                }
+                Dissapear();
             }
         }
     }

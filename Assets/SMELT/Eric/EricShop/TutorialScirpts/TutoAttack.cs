@@ -4,10 +4,15 @@ using UnityEngine;
 public class TutoAttack : MonoBehaviour
 {
     public Collider2D otherCollider;
+    private Rigidbody2D rb;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
+            if (other.TryGetComponent(out rb))
+            {
+                rb.bodyType = RigidbodyType2D.Static;
+            }
             otherCollider = other;
             if(gameObject.CompareTag("RightHit"))
             {
