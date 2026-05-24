@@ -94,4 +94,8 @@ public class
     {
         currentHouseSong = songName;
     }
+
+    public float BgmProgress    => (_bgmSource != null && _bgmSource.clip != null) ? _bgmSource.time / _bgmSource.clip.length : 0f;
+    public float BgmCurrentTime => _bgmSource != null ? _bgmSource.time : 0f;
+    public float BgmDuration    => (_bgmSource != null && _bgmSource.clip != null) ? _bgmSource.clip.length : 0f;
 }

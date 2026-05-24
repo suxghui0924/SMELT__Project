@@ -151,8 +151,8 @@ public class WeaponCraftUI : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
-    public void Show()   { if (_rootPanel != null) { _rootPanel.SetActive(true);  RefreshAll(); } PlayerMovement.IsLocked = true; }
-    public void Hide()   { if (_rootPanel != null) _rootPanel.SetActive(false); PlayerMovement.IsLocked = false; }
+    public void Show()   { if (_rootPanel != null) { LeedoyunUIManager.NotifyOpen(Hide); _rootPanel.SetActive(true); RefreshAll(); } }
+    public void Hide()   { if (_rootPanel != null) _rootPanel.SetActive(false); }
     public void Toggle() { if (_rootPanel != null && _rootPanel.activeSelf) Hide(); else Show(); }
 
     // ─────────────────────────────────────────

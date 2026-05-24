@@ -20,6 +20,8 @@ using UnityEngine.InputSystem;
 /// </summary>
 public class SettingUI : MonoBehaviour, ISaveable
 {
+    public static SettingUI Instance { get; private set; }
+
     [Header("UI 패널")]
     [SerializeField] private GameObject settingPanel;
     [SerializeField] private Image      dimBackground;     // 반투명 어두운 오버레이
@@ -39,6 +41,17 @@ public class SettingUI : MonoBehaviour, ISaveable
     // -----------------------------------------
     // 초기화
     // -----------------------------------------
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
+        Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this) Instance = null;
+    }
+
     private void Start()
     {
         // SettingUI가 속한 루트 Canvas를 찾아 카메라 연결
@@ -108,6 +121,7 @@ public class SettingUI : MonoBehaviour, ISaveable
     {
         if (settingPanel == null) return;
         bool opening = !settingPanel.activeSelf;
+        if (opening) LeedoyunUIManager.NotifyOpen(ClosePanel);
         settingPanel.SetActive(opening);
         FadeDim(opening);
     }
