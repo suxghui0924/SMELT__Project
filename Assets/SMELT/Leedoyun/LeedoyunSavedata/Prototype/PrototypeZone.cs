@@ -30,6 +30,16 @@ public class PrototypeZone : MonoBehaviour
     private bool  _isDayNextOpen = false;
     private bool  _isSkillOpen   = false;
 
+    private void Start()
+    {
+        if (_zoneType == ZoneType.Door)
+        {
+            _isDoorOpen = ShopManager.Instance != null && ShopManager.Instance.IsShopOpen;
+            if (_doorObject != null)
+                _doorObject.SetActive(!_isDoorOpen);
+        }
+    }
+
     private void OnEnable()
     {
         LeedoyunUIManager.OnAnyUIOpened += OnLeedoyunUIOpened;

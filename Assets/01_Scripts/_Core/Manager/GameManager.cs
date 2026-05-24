@@ -42,6 +42,8 @@ public class GameManager : MonoBehaviour
         {
             UICanvasManager.instance.SetCanvasActive(CanvasType.Hud, true);
             UICanvasManager.instance.ControlObject(ObjectType.Top, true);
+            // House 씬 진입 시 타이머 초기화 표시
+            UICanvasManager.instance.UpdateTimerDisplay("10:00", false);
         }
     }
 

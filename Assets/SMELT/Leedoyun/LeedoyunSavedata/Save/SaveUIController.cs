@@ -16,6 +16,7 @@ public class SaveUIController : MonoBehaviour
     private CanvasGroup _toastGroup;
     private Text _toastText;
     private Coroutine _toastCoroutine;
+    private GameObject _toastGO;
 
     private void Awake()
     {
@@ -38,6 +39,8 @@ public class SaveUIController : MonoBehaviour
         saveButton.onClick.RemoveListener(OnSaveClicked);
         if (loadButton != null)
             loadButton.onClick.RemoveListener(OnLoadClicked);
+        if (_toastGO != null)
+            Destroy(_toastGO);
     }
 
     private void OnSaveClicked()
@@ -98,7 +101,8 @@ public class SaveUIController : MonoBehaviour
             canvas = FindFirstObjectByType<Canvas>();
 
         // 토스트 패널
-        GameObject toastGO = new("Toast");
+        _toastGO = new("Toast");
+        GameObject toastGO = _toastGO;
         toastGO.transform.SetParent(canvas.transform, false);
 
         RectTransform toastRect = toastGO.AddComponent<RectTransform>();
