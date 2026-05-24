@@ -7,7 +7,7 @@ public class TutoDungeonAndUpgrade : MonoBehaviour
 {
     private bool _canTouch;
     [SerializeField] private GameObject[] mining;
-    [SerializeField] private GameObject playerHouse;
+    [SerializeField] private GameObject[] playerHouse;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -16,16 +16,13 @@ public class TutoDungeonAndUpgrade : MonoBehaviour
             {
                 StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.enterDungeon1));
             }
-            else if (gameObject.CompareTag("EnterUpgrade"))
-            {
-                StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.store2));
-            }
             _canTouch = true;
         }
     }
 
     private void Update()
     {
+        if (playerHouse[1] == null) playerHouse[1] = GameObject.Find("Player");
         if (_canTouch)
         {
             if (Keyboard.current.eKey.wasPressedThisFrame&&TutoManager.Instance.Dialogue.canMove)
@@ -33,7 +30,8 @@ public class TutoDungeonAndUpgrade : MonoBehaviour
                 if (gameObject.CompareTag("EnterDungeon"))
                 {
                     StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon1));
-                    playerHouse.gameObject.SetActive(false);
+                    playerHouse[0].gameObject.SetActive(false);
+                    playerHouse[1].gameObject.SetActive(false);
                     mining[0].gameObject.SetActive(true);
                     mining[1].gameObject.SetActive(true);
                     TutoManager.Instance.TutoEnemySpawn.Spawn(true);
