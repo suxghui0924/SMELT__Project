@@ -45,6 +45,13 @@ namespace _01_Scripts.NPC
             BuildBubbleUI();
         }
 
+        private void OnEnable()
+        {
+            // 씬 복귀로 오브젝트가 다시 활성화될 때 말풍선 재생성
+            if (_movement != null && _bubbleRoot == null)
+                BuildBubbleUI();
+        }
+
         // ─────────────────────────────────────────
         // 업데이트
         // ─────────────────────────────────────────
@@ -189,10 +196,22 @@ namespace _01_Scripts.NPC
         // ─────────────────────────────────────────
         // 말풍선 UI 빌드 (NPC 우측, 꼬리 왼쪽)
         // ─────────────────────────────────────────
+        private void OnDisable()
+        {
+            if (_bubbleRoot != null)
+            {
+                if (_sharedCanvas != null) Destroy(_sharedCanvas.gameObject); // 전용 캔버스까지 파괴
+                _bubbleRoot = null;
+                _sharedCanvas = null;
+                _weaponIcon = null;
+                _promptGO = null;
+            }
+        }
+
         private void OnDestroy()
         {
             if (_bubbleRoot != null)
-                Destroy(_bubbleRoot.gameObject);
+                Destroy(_sharedCanvas != null ? _sharedCanvas.gameObject : _bubbleRoot.gameObject);
         }
 
         private void LateUpdate()
