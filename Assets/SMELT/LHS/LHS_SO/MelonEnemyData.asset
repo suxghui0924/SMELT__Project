@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a9e2842bf2c266409c6c98dcc3d8d62, type: 3}
   m_Name: MelonEnemyData
   m_EditorClassIdentifier: 
-  enemySpeed: 2
+  enemySpeed: 3
   enemyMaxHp: 3
   enemyDamage: 8
   enemyName: Melon

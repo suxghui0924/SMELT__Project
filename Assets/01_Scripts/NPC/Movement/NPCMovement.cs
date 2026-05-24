@@ -36,6 +36,7 @@ namespace _01_Scripts.NPC
                 _turnPos = _spawner.TurnPos;
                 _lastPos = _spawner.LastPos;  
             }
+            IndexChange(Index);
         }
         
         #region test
