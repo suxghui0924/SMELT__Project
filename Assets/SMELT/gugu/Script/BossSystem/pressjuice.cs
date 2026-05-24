@@ -27,7 +27,7 @@ public class pressjuice : MonoBehaviour
         {
             Vector3 randomOffset = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f));
             Instantiate(juice, spawnPoints.position + randomOffset, Quaternion.identity);
-            BossSkillManager.Instance.timer = 1.5f;
+            BossSkillManager.Instance.timer = 0.7f;
             BossSkillManager.Instance.stack = true;
         }
     }

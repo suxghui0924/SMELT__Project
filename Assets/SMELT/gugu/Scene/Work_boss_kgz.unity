@@ -403,7 +403,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49f715517c488334a8e381dacda3dc40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 0
+  isAlive: 1
+  Weccs: 0
   _BSM: {fileID: 33894944}
   boss: {fileID: 33894936}
   orePrefab: {fileID: 6672166761486969934, guid: 68e84cf3df6d249439e2c7e9b24e70da, type: 3}
@@ -1712,7 +1713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _skillInput: {fileID: 11400000, guid: 403745cc5736617438b00711bd2c8771, type: 2}
-  _skillCoolDown: 0.2
+  _skillCoolDown: 0.6
   _nextAttackTime: 0.1
 --- !u!1 &1885004983
 GameObject:

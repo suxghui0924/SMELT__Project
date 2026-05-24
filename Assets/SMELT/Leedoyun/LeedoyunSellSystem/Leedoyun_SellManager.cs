@@ -287,6 +287,19 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     }
 
     /// <summary>
+    /// 플레이어가 주문을 직접 포기할 때 호출. 패널티 없음.
+    /// </summary>
+    public void AbandonOrder(string orderId)
+    {
+        int idx = _activeOrders.FindIndex(o => o.orderId == orderId);
+        if (idx < 0) return;
+        var order = _activeOrders[idx];
+        order.isExpired = true;
+        _activeOrders.RemoveAt(idx);
+        OnOrderExpired?.Invoke(order);
+    }
+
+    /// <summary>
     /// 인벤토리에 있는 무기를 주문에 자동 매칭하여 납품.
     /// 플레이어가 무기를 손님에게 드래그&드롭할 때 사용.
     /// ex) TryFulfillByWeapon("weapon_sword_apple")

@@ -12,6 +12,7 @@ public class skillSystem : MonoBehaviour
     [SerializeField]private bool isAlive = true;
     private float Damage = 10f;
     private bool shakes = false;
+    public bool Weccs = false;
     public BossSkillManager _BSM;
     
     
@@ -110,6 +111,7 @@ public class skillSystem : MonoBehaviour
         _text.gameObject.SetActive(true);
         StartCoroutine(Managers());
         Debug.Log("10만 골드 지급, ??? 획득");
+        Weccs = true;
         homeBtn.enabled = true;
         homeBtnImage.enabled = true;
     }

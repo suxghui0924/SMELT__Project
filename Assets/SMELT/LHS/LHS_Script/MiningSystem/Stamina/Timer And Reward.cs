@@ -26,7 +26,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         public bool db = false;
         [HideInInspector]
         public bool canEnter = true;
-        
+        public bool isNextDay = false;
         public void OnSave(SaveData data)
         {
             data.stamina=currentFatigue;
@@ -82,12 +82,20 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                if(playerAttack!=null) playerAttack.SkillCooldownUpdate(attackSpeed);
                
                 // 저장 파일이 있으면 저장된 스태미나 값으로 복원, 없으면 최대치로 초기화
-                if (SaveManager.Instance != null && SaveManager.Instance.HasSaveData())
+                if (SaveManager.Instance != null && SaveManager.Instance.HasSaveData() && !isNextDay)
                 {
                     currentFatigue = SaveManager.Instance.CurrentData.stamina;
                     canEnter = true;
                     db = true;
                     OnFatigueChange?.Invoke(currentFatigue);
+                }
+                else if (SaveManager.Instance != null && SaveManager.Instance.HasSaveData() && isNextDay)
+                {
+                    FatigueReset();
+                    canEnter = true;
+                    db = true;
+                    OnFatigueChange?.Invoke(currentFatigue);
+                    isNextDay = false;
                 }
                 else
                 {
@@ -106,6 +114,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
             currentFatigue = maxFatigue;
             OnFatigueChange?.Invoke(currentFatigue);
             Debug.Log("스테미나 초기화: "+currentFatigue);
+            db = false;
         }
     
         void Update()

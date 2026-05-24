@@ -30,17 +30,14 @@ public class AchievementBannerSizer : MonoBehaviour
         image.color = Color.white;
         if (bannerSizeCoroutine != null)
             StopCoroutine(bannerSizeCoroutine);
-        StartCoroutine(DisableBanner());
-
         bannerSizeCoroutine = StartCoroutine(SizeRoutine(startWidth, targetWidth, height, duration));
-        
+        //StartCoroutine(DisableBanner());
     }
     public void ChangeInsideSize(float startSize, float targetSize, float duration)
     {
         if (insideSizeCoroutine != null)
             StopCoroutine(insideSizeCoroutine);
-
-        bannerSizeCoroutine = StartCoroutine(InsideSizer(startSize, targetSize, duration));
+        insideSizeCoroutine = StartCoroutine(InsideSizer(startSize, targetSize, duration));
     }
 
     private IEnumerator SizeRoutine(float startWidth, float targetWidth, float height, float duration)
@@ -49,7 +46,7 @@ public class AchievementBannerSizer : MonoBehaviour
 
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
 
             float t = timer / duration;
 
@@ -61,6 +58,7 @@ public class AchievementBannerSizer : MonoBehaviour
         }
 
         tr.sizeDelta = new Vector2(targetWidth, height);
+        StartCoroutine(DisableBanner());
     }
     private IEnumerator InsideSizer(float startSize, float targetSize, float duration)
     {
@@ -68,7 +66,7 @@ public class AchievementBannerSizer : MonoBehaviour
 
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
 
             float t = timer / duration;
 
@@ -94,7 +92,7 @@ public class AchievementBannerSizer : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         while (timer < duration)
         {
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             float t = timer / duration;
 
 
@@ -109,5 +107,6 @@ public class AchievementBannerSizer : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         gameObject.SetActive(false);
+        StopAllCoroutines();
     }
 }

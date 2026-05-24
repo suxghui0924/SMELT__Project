@@ -24,6 +24,7 @@ namespace _01_Scripts.NPC
         private bool _checkLastPos;
 
         private Tween _moveTweener;
+        private Sequence _turnSequence;
         private Sequence _exitSequence;
         private NPCSpawner _spawner;
 
@@ -36,6 +37,7 @@ namespace _01_Scripts.NPC
                 _turnPos = _spawner.TurnPos;
                 _lastPos = _spawner.LastPos;  
             }
+            IndexChange(Index);
         }
         
         #region test
@@ -71,9 +73,14 @@ namespace _01_Scripts.NPC
         private void ExitQuene()
         {
             _exitSequence = DOTween.Sequence();
+            
+            if (!_isTurn)
+            {
+                _exitSequence.Append(transform.DOMove(_turnPos.position, _timer * 0.5f).SetEase(Ease.Linear))
+                    .OnComplete(() => _isTurn = true);  
+            }
 
-            _exitSequence.Append(transform.DOMove(_turnPos.position, _timer * 0.5f).SetEase(Ease.Linear))
-                .Append(transform.DOMoveX(_startPos.position.x, _timer).SetEase(Ease.Linear))
+            _exitSequence.Append(transform.DOMoveX(_startPos.position.x, _timer).SetEase(Ease.Linear))
                 .OnComplete(() => Destroy(gameObject));
         }
 
