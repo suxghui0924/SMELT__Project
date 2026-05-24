@@ -29,6 +29,9 @@ public class CacheResetConfirm : MonoBehaviour
 
         gameObject.SetActive(false);
 
+        if (UICanvasManager.instance != null)
+            UICanvasManager.instance.SetCanvasActive(CanvasType.Title, false);
+
         SceneLoader.nextScene = "Lobby";
         SceneManager.LoadScene("NewLoading");
     }

@@ -103,7 +103,7 @@ public class EconomyUI : MonoBehaviour
         if (_maintenanceText != null) _maintenanceText.text = $"유지비용 : {maintenance:N0}";
     }
 
-    // ─── 테스트 입력 (빠른 확인용) ───────────────────────────────
+    /*// ─── 테스트 입력 (빠른 확인용) ───────────────────────────────
     private void Update()
     {
         var inv = InventoryManager.Instance;
@@ -126,5 +126,5 @@ public class EconomyUI : MonoBehaviour
             if (!inv.EndOfDay())
                 Debug.LogWarning("[Economy] 골드 부족 - 다음 날로 넘어갈 수 없습니다.");
         }
-    }
+    }*/
 }

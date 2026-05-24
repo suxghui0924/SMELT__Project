@@ -29,10 +29,7 @@ public class ItemDatabase : MonoBehaviour
         {
             if (item == null) continue;
             if (_dict.ContainsKey(item.itemId))
-            {
-                Debug.LogWarning($"[ItemDatabase] 중복 ID 발견: {item.itemId}");
                 continue;
-            }
             _dict[item.itemId] = item;
         }
     }
@@ -41,7 +38,6 @@ public class ItemDatabase : MonoBehaviour
     public ItemData Get(string itemId)
     {
         if (_dict.TryGetValue(itemId, out var data)) return data;
-        Debug.LogWarning($"[ItemDatabase] 아이템 없음: {itemId}");
         return null;
     }
 
