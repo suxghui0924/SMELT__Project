@@ -18,7 +18,7 @@ MonoBehaviour:
   name: "\uADE4 \uACE1\uAD2D\uC774"
   desc: "\uC81C\uC8FC\uB3C4 \uC7A5\uC778\uC774 \uB9CC\uB4E0 \uADE4 \uACE1\uAD2D\uC774"
   damage: 2
-  goldPrice: 5000
+  goldPrice: 12500
   fruitPrice: 0400000002000000030000000000000000000000
   hitboxSquare: 0.8
   bought: 1
