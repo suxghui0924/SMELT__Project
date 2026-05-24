@@ -8,6 +8,7 @@ namespace _01_Scripts.Player.Portal
         private void OnEnable()
         {
             InventoryManager.Instance.OnDayChanged += HandleDayChanged;
+            HandleDayChanged(InventoryManager.Instance.CurrentDay, InventoryManager.Instance.MaintenanceCost);
         }
 
         private void OnDisable()
