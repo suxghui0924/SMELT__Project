@@ -14,7 +14,7 @@ public class skillSystem : MonoBehaviour
     private bool shakes = false;
     public bool Weccs = false;
     public BossSkillManager _BSM;
-    
+    public bool CanbuyPickaxe;
     
     public bool IsAlive => isAlive;
     private StartBtn _startBtn;
@@ -102,7 +102,7 @@ public class skillSystem : MonoBehaviour
         shakes = true;
         BossSkillManager.Instance.stack = false;
         yield return new WaitForSeconds(3f);
-
+        
         OnAnimationEnd();
     }
     public void OnAnimationEnd()
@@ -114,8 +114,15 @@ public class skillSystem : MonoBehaviour
         Weccs = true;
         homeBtn.enabled = true;
         homeBtnImage.enabled = true;
+        InventoryManager.Instance.AddGold(50000);
+        if(!CanbuyPickaxe)PickaxeDataSend();
+        
     }
 
+    private void PickaxeDataSend()
+    {
+        CanbuyPickaxe = true;
+    }
     private void DestroyAllSkills()
     {
         GameObject[] ores = GameObject.FindGameObjectsWithTag("ore");
