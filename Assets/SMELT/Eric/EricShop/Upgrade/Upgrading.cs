@@ -40,13 +40,14 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     [Range(-5f, 5f)]
     [SerializeField]  private float horizontalSpace;  // 좌우 띄어쓰기
+    
 
     private void Setting()
     {
-        _treesUI = transform.Find("TreeUI").gameObject;
-        _treesUIScripts =  _treesUI.GetComponent<TreesUI>();
-        _image = GetComponent<Image>();
-        _thisSprite = transform.Find("CheckMark").GetComponent<Image>();
+        if(_treesUI == null) _treesUI = transform.Find("TreeUI").gameObject;
+        if(_treesUIScripts == null)_treesUIScripts =  _treesUI.GetComponent<TreesUI>();
+        if (_image == null) _image = GetComponent<Image>();
+        if (_thisSprite == null) _thisSprite = transform.Find("CheckMark").GetComponent<Image>();
     }
     
     

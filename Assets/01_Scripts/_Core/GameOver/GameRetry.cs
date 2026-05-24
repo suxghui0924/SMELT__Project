@@ -53,12 +53,15 @@ public class GameRetry : MonoBehaviour
         Debug.Log("버튼 클릭됨!");
         Qty = new int[6];
 
-        // 게임 오버 시 세이브 데이터 초기화 (일차·골드·인벤토리 리셋)
-        SaveManager.Instance?.ResetAllData();
         // 가게·주문 초기화 → NPC 퇴장
         ShopManager.Instance?.CloseShop();
+        // 게임 오버 시 세이브 데이터 초기화 (일차·골드·인벤토리 리셋)
+        SaveManager.Instance?.ResetAllData();
+        // 타이머 초기화 (DDOL이라 직접 리셋 필요)
+        DayTimer.Instance?.ResetTimer();
 
         UICanvasManager.instance.ControlObject(ObjectType.GameOver, false);
+        UICanvasManager.instance.ControlObject(ObjectType.StoreBroken, false);
         GameManager.instance.ChangeState(new LobbyState());
     }
 }

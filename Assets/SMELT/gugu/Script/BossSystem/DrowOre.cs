@@ -10,7 +10,7 @@ public class DrowOre : MonoBehaviour
     private Animator _bossSKillAnim;
     [SerializeField] skillSystem _skillSystem;
      private int spawnCount = 3;// 생성 개수 (변경 가능)
-     private float Delays = 1f;
+     private float Delays = 0.75f;
 
     
 
@@ -38,7 +38,7 @@ public class DrowOre : MonoBehaviour
             
 
         }
-        BossSkillManager.Instance.timer = 1.5f;
+        BossSkillManager.Instance.timer = 0.5f;
         BossSkillManager.Instance.stack = true;
 
     }

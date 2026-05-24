@@ -8,7 +8,7 @@ public class ore : MonoBehaviour
     private Transform bossTrm;
     private Rigidbody2D rb;
 
-    private float speed = 4.5f;
+    private float speed = 6.5f;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

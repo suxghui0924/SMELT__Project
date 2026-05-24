@@ -25,10 +25,11 @@ public class PrototypeZone : MonoBehaviour
 
     private bool  _playerInside;
     private float _gatherTimer;
-    private bool  _isDoorOpen    = false;
-    private bool  _isRadioOpen   = false;
-    private bool  _isDayNextOpen = false;
-    private bool  _isSkillOpen   = false;
+    private bool  _isDoorOpen       = false;
+    private bool  _isRadioOpen     = false;
+    private bool  _isDayNextOpen   = false;
+    private bool  _isSkillOpen     = false;
+    private bool  _isStoreBrokenOpen = false;
 
     private void Start()
     {
@@ -122,9 +123,12 @@ public class PrototypeZone : MonoBehaviour
         UICanvasManager.instance?.ControlObject(ObjectType.Radio, false);
         UICanvasManager.instance?.ControlObject(ObjectType.DayNext, false);
         UICanvasManager.instance?.ControlObject(ObjectType.Setting, false);
-        _isSkillOpen   = false;
-        _isRadioOpen   = false;
-        _isDayNextOpen = false;
+        if (UICanvasManager.instance != null)
+            UICanvasManager.instance.ControlObject(ObjectType.StoreBroken, false);
+        _isSkillOpen       = false;
+        _isRadioOpen       = false;
+        _isDayNextOpen     = false;
+        _isStoreBrokenOpen = false;
 
         if (ZoneType == ZoneType.SkillTree)
             _skillTreeVisual?.SetInteracting(false);
@@ -202,8 +206,10 @@ public class PrototypeZone : MonoBehaviour
 
         if (ZoneType == ZoneType.StoreBroken)
         {
-            if (GameManager.instance != null)
-                UICanvasManager.instance.ControlObject(ObjectType.StoreBroken, true);
+            _isStoreBrokenOpen = !_isStoreBrokenOpen;
+            if (_isStoreBrokenOpen) LeedoyunUIManager.CloseAll();
+            if (UICanvasManager.instance != null)
+                UICanvasManager.instance.ControlObject(ObjectType.StoreBroken, _isStoreBrokenOpen);
         }
     }
 }

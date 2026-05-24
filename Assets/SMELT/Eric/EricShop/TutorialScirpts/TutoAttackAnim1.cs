@@ -24,15 +24,12 @@ public class TutoAttackAnim1 : MonoBehaviour
         if (Keyboard.current.dKey.wasPressedThisFrame)
         {
             animator.SetTrigger("l");
-            transform.localScale = new Vector3(-a.x, a.y, a.z);
+            transform.localScale = new Vector3(a.x, a.y, a.z);
         }
         if (Keyboard.current.aKey.wasPressedThisFrame)
         {
             animator.SetTrigger("r");
-            if(a.x < 0)
-            {
-                transform.localScale = new Vector3(a.x, a.y, a.z);
-            }
+                transform.localScale = new Vector3(-a.x, a.y, a.z);
         }
     }
 }
