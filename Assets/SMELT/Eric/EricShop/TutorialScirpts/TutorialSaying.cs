@@ -47,6 +47,7 @@ public class TutorialSaying : MonoBehaviour
 
         private void Start()
         {
+                TutoManager.Instance.Dialogue.canMakePoint = true;
                 StartCoroutine(SayingCoroutine(TutoManager.Instance.TutoLine.start));
                 if (Leedoyun_SellManager.Instance != null)
                         Leedoyun_SellManager.Instance.OnOrderFulfilled += HandleOrderFulfilled;
@@ -81,7 +82,9 @@ public class TutorialSaying : MonoBehaviour
         {
                 if (ui1)
                 {
+                        TutoManager.Instance.Triggered();
                         ui1 = false;
+                        TutoManager.Instance.Dialogue.canMakePoint = true;
                         StartCoroutine(
                                 TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.ui1));
                 }
@@ -97,8 +100,6 @@ public class TutorialSaying : MonoBehaviour
                                 TutoManager.Instance.Dialogue.canMove = true;
                                 tuRAttack = false;
                                 TutoManager.Instance.Dialogue.Skip();
-                                
-                                Destroy(TutoManager.Instance.TutoRAttack.otherCollider.gameObject);
                         }
                 }
                 if(tuLAttack)
@@ -108,9 +109,9 @@ public class TutorialSaying : MonoBehaviour
                                 TutoManager.Instance.Dialogue.canMove = true;
                                 tuLAttack = false;
                                 TutoManager.Instance.Dialogue.Skip();
+                                TutoManager.Instance.Dialogue.canMakePoint = true;
                                 StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon5));
                                 canExitDungeon = true;
-                                Destroy(TutoManager.Instance.TutoLAttack.otherCollider.gameObject);
                         }      
                 }
         }

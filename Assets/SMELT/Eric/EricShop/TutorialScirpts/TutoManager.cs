@@ -13,6 +13,20 @@ public class TutoManager : MonoBehaviour
     public bool canLast;
     public bool canLastCoroutine = true;
 
+    public Vector3[] targets;
+    public GameObject[] targetObjects;
+
+    public void TargetPos(int index)
+    {
+        targetObjects[0].transform.position = targets[index];
+        targetObjects[1].SetActive(true);
+    }
+
+    public void Triggered()
+    {
+        targetObjects[1].SetActive(false);
+    }
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,30 +53,37 @@ public class TutoManager : MonoBehaviour
     private IEnumerator LastCoroutine()
     {
         yield return null;
+        TutoManager.Instance.Triggered();
+        TutoManager.Instance.Dialogue.canMakePoint = true;
         StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.store4));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if (canLast)
         {
+            TutoManager.Instance.Triggered();
+            TutoManager.Instance.Dialogue.canMakePoint = true;
             StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.changeBgm2));
             canLast = false;
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if (canLast)
         {
+            TutoManager.Instance.Triggered();
+            TutoManager.Instance.Dialogue.canMakePoint = true;
             StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.nextDay2));
             canLast = false;
 
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if (canLast)
         {
+            TutoManager.Instance.Triggered();
             StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.last));
             canLast = false;
             
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
     }
 
     [field:SerializeField]public TutoAttack TutoRAttack { get;private set; }

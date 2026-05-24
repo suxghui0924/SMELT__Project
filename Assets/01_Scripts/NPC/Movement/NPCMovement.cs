@@ -42,7 +42,7 @@ namespace _01_Scripts.NPC
         
         #region test
 
-        private int f = 3;
+        //private int f = 3;
         /*private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F))
