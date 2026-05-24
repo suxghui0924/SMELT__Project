@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 4
   pickaxeId: pickaxe_grape
-  icon: {fileID: 0}
+  icon: {fileID: 6870616878993603242, guid: 5b836332cd979b0429312d2990e0a133, type: 3}
   name: "\uD3EC\uB3C4 \uACE1\uAD2D\uC774"
   desc: "\uD3EC\uB3C4\uC11D\uC774\uC9C0\uB9CC \uBE14\uB8E8\uBCA0\uB9AC \uB0C4\uC0C8\uAC00
     \uB0A9\uB2C8\uB2E4."
