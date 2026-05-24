@@ -43,11 +43,21 @@ public class PrototypeZone : MonoBehaviour
     private void OnEnable()
     {
         LeedoyunUIManager.OnAnyUIOpened += OnLeedoyunUIOpened;
+        Leedoyun_SellManager.OnShopClosed += OnShopForceClosed;
     }
 
     private void OnDisable()
     {
         LeedoyunUIManager.OnAnyUIOpened -= OnLeedoyunUIOpened;
+        Leedoyun_SellManager.OnShopClosed -= OnShopForceClosed;
+    }
+
+    private void OnShopForceClosed()
+    {
+        if (_zoneType != ZoneType.Door) return;
+        _isDoorOpen = false;
+        if (_doorObject != null)
+            _doorObject.SetActive(true); // 문 닫힘 = 오브젝트 활성
     }
 
     // Leedoyun UI가 열릴 때 라디오·달력·스킬 팝업을 닫고 상태 초기화
