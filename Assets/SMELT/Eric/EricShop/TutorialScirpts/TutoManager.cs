@@ -34,6 +34,14 @@ public class TutoManager : MonoBehaviour
         canLastCoroutine = true;
     }
 
+    private void Start()
+    {
+        if (!Upgrading.isTutorial)
+        {
+            Upgrading.isTutorial = true;
+        }
+    }
+
     private void Update()
     {
         if (skillTreeUI == null )
@@ -97,6 +105,7 @@ public class TutoManager : MonoBehaviour
     [field:SerializeField]public TutoHit TutoHit{ get;private set; }
     [field:SerializeField]public TutoOpenTrigger TutoOpenTrigger{ get;private set; }
     [field:SerializeField]public Dialogue Dialogue{ get;private set; }
+    [field:SerializeField]public Upgrading Upgrading{ get;private set; }
 
 
 }
