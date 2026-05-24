@@ -8,6 +8,10 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
 {
     public class TimerAndReward : MonoBehaviour,ISaveable
     {
+        private HitBoxOnTrigger hitBoxOnTrigger1;
+        private HitBoxOnTrigger hitBoxOnTrigger2;
+        private PlayerHitBox playerHitBox;
+        private PlayerAttack playerAttack;
         public static TimerAndReward Instance;
         [HideInInspector]
         public int maxFatigue = 100;
@@ -15,7 +19,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         public float currentFatigue = 100;
         //public Image _mp;
         float timer = 0f;
-    
+        
         [HideInInspector]
         public UnityEvent<float> OnFatigueChange;
 
@@ -54,8 +58,29 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
 
         private void OnSceneChanged(Scene arg0, LoadSceneMode arg1)
         {
+            
             if (arg0.name == "LHS_MiningScene")
             {
+                playerAttack = new PlayerAttack();
+                hitBoxOnTrigger1 = new HitBoxOnTrigger();
+                hitBoxOnTrigger2 = new HitBoxOnTrigger();
+                playerHitBox = new PlayerHitBox();
+                playerAttack = GameObject.Find("PlayerVisual").GetComponent<PlayerAttack>();
+                playerHitBox = GameObject.Find("HitBox").GetComponent<PlayerHitBox>();
+                hitBoxOnTrigger1 = GameObject.Find("LeftHitBox").GetComponent<HitBoxOnTrigger>();
+                hitBoxOnTrigger2 = GameObject.Find("RightHitBox").GetComponent<HitBoxOnTrigger>();
+                if (PickaxeManager.Instance.EquippedPickaxe != null)
+                {
+                    hitBoxOnTrigger1.GetPickaxeData(PickaxeManager.Instance.EquippedPickaxe);
+                    hitBoxOnTrigger2.GetPickaxeData(PickaxeManager.Instance.EquippedPickaxe);
+                }
+
+                SaveData data = SaveManager.Instance.CurrentData;
+               float parry = data.parryRange;
+               float attackSpeed = data.attackSpeed;
+               if(playerHitBox!=null) playerHitBox.HitboxUpdate(parry);
+               if(playerAttack!=null) playerAttack.SkillCooldownUpdate(attackSpeed);
+               
                 // 저장 파일이 있으면 저장된 스태미나 값으로 복원, 없으면 최대치로 초기화
                 if (SaveManager.Instance != null && SaveManager.Instance.HasSaveData())
                 {

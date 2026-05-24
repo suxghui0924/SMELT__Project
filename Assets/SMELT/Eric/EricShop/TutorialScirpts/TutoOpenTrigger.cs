@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -8,13 +9,16 @@ public class TutoOpenTrigger : MonoBehaviour
         public bool canSell = false;
         public bool isMade = false;
         public bool isMadeFirst = false;
+        public bool door = false;
+
+        public int count;
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
                 if(gameObject.name == "CraftingZone")
                 {
-                        if (!TutoManager.Instance.TutoSaying.canGetOrder1) return;
+                        if (!TutoManager.Instance.TutoSaying.canGetOrder1&&TutoManager.Instance.TutoSaying.canGetOrder2) return;
                         TutoManager.Instance.TutoSaying.canGetOrder2 = true;
                         StartCoroutine(
                                 TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
@@ -60,13 +64,38 @@ public class TutoOpenTrigger : MonoBehaviour
                                     Destroy(transform.parent.gameObject);
                                     canSell = false;
                             }
+
+                            if (gameObject.name == "DoorZone")
+                            {
+                                    door = true;
+                            }
                     }
             }
     }
 
+    private void Start()
+    {
+            count = InventoryManager.Instance._inventory.Count;
+    }
+
+    private IEnumerator DoorCoroutine()
+    {
+            yield return null;
+            
+            StartCoroutine(
+                    TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
+                            .getOrder1));
+    }
+
     private void Update()
     {
-            if (InventoryManager.Instance._inventory != null&&!isMadeFirst)
+
+            if (door)
+            {
+                    StartCoroutine(DoorCoroutine());
+                    door = false;
+            }
+            if (InventoryManager.Instance._inventory.Count > count&&!isMadeFirst)
             {
                     isMade = true;
                     isMadeFirst = true;

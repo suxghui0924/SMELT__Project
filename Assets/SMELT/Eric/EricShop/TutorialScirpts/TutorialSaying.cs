@@ -38,6 +38,11 @@ public class TutorialSaying : MonoBehaviour
                 {
                         tuLAttack = true;
                 }
+
+                if (texts == TutoManager.Instance.TutoLine.store4 ||
+                    texts == TutoManager.Instance.TutoLine.changeBgm2 ||
+                    texts == TutoManager.Instance.TutoLine.nextDay2)
+                        TutoManager.Instance.canLast = true;
                 yield return new WaitForSecondsRealtime(0.5f);
 
                 lines = texts;

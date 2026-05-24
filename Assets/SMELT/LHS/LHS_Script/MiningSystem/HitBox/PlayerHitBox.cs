@@ -2,8 +2,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 public class PlayerHitBox : MonoBehaviour
-{
-    [SerializeField] PickaxeSO _pickaxeSO;
+{ 
     private GameObject[]  _hitBoxes;
     private PlayerAnimation _anim;
     public Collider2D _leftColl { get; private set; }
@@ -13,6 +12,7 @@ public class PlayerHitBox : MonoBehaviour
     public bool _triggerOn = false;
      
     private PlayerAttack _att;
+
 
     private void Start()
     {
@@ -33,6 +33,16 @@ public class PlayerHitBox : MonoBehaviour
       
     }
     
+    public void HitboxUpdate(float bonus)
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            var scale = transform.GetChild(i).gameObject.transform.localScale;
+            scale.x = scale.x * bonus;
+            transform.GetChild(i).gameObject.transform.localScale = scale;
+            Debug.Log("히박 범위 업데이트도미 "+ i+ " : " + transform.GetChild(i).gameObject.transform.localScale.x);
+        }
+    }
 
     public void CheckHit(int direction)
     {
