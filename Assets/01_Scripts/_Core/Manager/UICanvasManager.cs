@@ -33,7 +33,7 @@ public class UICanvasManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             /*// 캔버스들도 씬 전환 시 파괴되지 않도록 영속화
             TryPersist(_title?.gameObject);
             TryPersist(_hud?.gameObject);
