@@ -20,7 +20,7 @@ MonoBehaviour:
     \uB0A9\uB2C8\uB2E4."
   damage: 3
   goldPrice: 5000
-  fruitPrice: 0000000000000000000000000000000005000000
+  fruitPrice: 0a00000004000000030000000200000004000000
   hitboxSquare: 1
   bought: 1
   eqiuqed: 0

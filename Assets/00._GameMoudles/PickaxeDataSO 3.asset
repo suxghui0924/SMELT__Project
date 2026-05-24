@@ -20,7 +20,7 @@ MonoBehaviour:
     \uACE1\uAD2D\uC774"
   damage: 2
   goldPrice: 5000
-  fruitPrice: 0000000000000000000000000500000000000000
+  fruitPrice: 0400000002000000030000000500000000000000
   hitboxSquare: 0.9
   bought: 1
   eqiuqed: 0
