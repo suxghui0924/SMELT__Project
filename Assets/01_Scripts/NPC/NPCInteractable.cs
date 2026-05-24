@@ -169,14 +169,6 @@ namespace _01_Scripts.NPC
                 return;
             }
 
-            // 플레이어가 무기를 들고 있으면 아이콘만 숨김 (캐시 유지)
-            bool holding = HeldItemController.Instance != null && HeldItemController.Instance.IsHolding;
-            if (holding)
-            {
-                _weaponIcon.enabled = false;
-                return;
-            }
-
             string weaponId = sm.ActiveOrders[slotIdx].requestedWeaponId;
 
             // 같은 무기면 캐시 그대로 표시
