@@ -17,6 +17,7 @@ public class UICanvasManager : MonoBehaviour
     [SerializeField] private Canvas _popup;
     [SerializeField] private Canvas _system;
     [SerializeField] TextMeshProUGUI _textLabelGameOver;
+    [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] GameObject HudTopObject;
     [SerializeField] GameObject HudCenterObject;
     [SerializeField] GameObject HudBottomObject;
@@ -124,6 +125,13 @@ public class UICanvasManager : MonoBehaviour
 
         UpdateUiTextLabel();
     }
+    public void UpdateTimerDisplay(string text, bool isWarning)
+    {
+        if (_timerText == null) return;
+        _timerText.text = text;
+        _timerText.color = isWarning ? Color.red : Color.white;
+    }
+
     public void RestartButton()
     {
         Debug.Log("��ư Ŭ����!");

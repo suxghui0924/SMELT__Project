@@ -3376,50 +3376,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267200607}
   m_CullTransparentMesh: 1
---- !u!1 &268815786
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 268815787}
-  - component: {fileID: 268815788}
-  m_Layer: 0
-  m_Name: TutorialController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &268815787
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268815786}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.4130771, y: 2.9537263, z: 0.028739579}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &268815788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 268815786}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f8a0fed00b940ea8c9bcd237dc58edf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &269389313
 GameObject:
   m_ObjectHideFlags: 0
@@ -5468,7 +5424,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 22a5110b7275f7b458ce50cda813548a, type: 3}
   - {fileID: 8300000, guid: f6abf568afafcea49bb9411ee1af6703, type: 3}
   - {fileID: 8300000, guid: b8e6cb084edca334782c5f2bb1881bc1, type: 3}
-  - {fileID: 8300000, guid: 8ba837390d15f8f42a41392e069e175b, type: 3}
   _bgmVolumeSlider: {fileID: 792210233}
   _sfxVolumeSlider: {fileID: 2119518506}
 --- !u!1 &360140276
@@ -11495,7 +11450,6 @@ MonoBehaviour:
   - {fileID: 316800612}
   - {fileID: 1153643048}
   - {fileID: 1949602704}
-  - {fileID: 1734100124}
   fadeCanvasGroup: {fileID: 1652217121}
 --- !u!4 &778061459
 Transform:
@@ -15972,21 +15926,51 @@ PrefabInstance:
       propertyPath: m_Name
       value: System_Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 6625502919456489446, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 1
+    - target: {fileID: 1414107452692851628, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503536659259741063, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1500.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503536659259741063, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 197.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2503536659259741063, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286099699031928948, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_text
+      value: "\uAE30\uB825\uC774 \uC804\uBD80 \uC18C\uBAA8\uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+        \uAC00\uAC8C\uB85C \uB3CC\uC544\uAC11\uB2C8\uB2E4."
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286099699031928948, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_fontSize
+      value: 83.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286099699031928948, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_margin.z
+      value: 384.3167
+      objectReference: {fileID: 0}
+    - target: {fileID: 4286099699031928948, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 83.8
       objectReference: {fileID: 0}
     - target: {fileID: 7617603972811754086, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1819359238}
+    - target: {fileID: 8187257556304056906, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
+      propertyPath: m_text
+      value: GAME OVER
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3485320297781548879, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1734100126}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
 --- !u!114 &1041730766 stripped
 MonoBehaviour:
@@ -34872,23 +34856,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730623517}
   m_CullTransparentMesh: 1
---- !u!1 &1734100124 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3485320297781548879, guid: ce4b84ac7332ab44ebf4d8f444ae62c5, type: 3}
-  m_PrefabInstance: {fileID: 1041730765}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1734100126
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1734100124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f481a27072146bf848f464de1c8a27b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1741402854
 GameObject:
   m_ObjectHideFlags: 0
@@ -45529,4 +45496,3 @@ SceneRoots:
   - {fileID: 421376547}
   - {fileID: 1235838223}
   - {fileID: 717795718}
-  - {fileID: 268815787}

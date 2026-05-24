@@ -15,4 +15,5 @@ MonoBehaviour:
   needName: MelonUp4
   upName: CoinUp5
   upTime: 0.05
-  needMoney: 58000
+  needMoney: 115000
+  icon: {fileID: 0}

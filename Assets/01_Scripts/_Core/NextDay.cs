@@ -45,7 +45,7 @@ namespace _01_Scripts.Player
                 {
                     if (InventoryManager.Instance.EndOfDay())
                     {
-                        AchievementManager.Instance.AlarmPopUp("유지비 송금 성공", "집 주인이게 송금을 하였기에 다음날로 넘어갑니다.");
+                        AchievementManager.Instance.AlarmPopUp("유지비 납부 성공", "가게 유지비를 납부하여 다음날로 넘어갑니다.");
                         TimerAndReward.Instance.canEnter = true;
                         TimerAndReward.Instance.FatigueReset();
                         UpdateOutData();
@@ -65,9 +65,10 @@ namespace _01_Scripts.Player
             {*/
                 if (InventoryManager.Instance.EndOfDay())
                 {
-                    AchievementManager.Instance.AlarmPopUp("유지비 송금 성공", "집 주인이게 송금을 하였기에 다음날로 넘어갑니다.");
+                    AchievementManager.Instance.AlarmPopUp("유지비 납부 성공", "가게 유지비를 납부하여 다음날로 넘어갑니다.");
                     TimerAndReward.Instance.canEnter = true;
                     TimerAndReward.Instance.FatigueReset();
+                    DayTimer.Instance?.ResetTimer();
                     UpdateOutData();
                     NextDayOnViusalButton();
                 }

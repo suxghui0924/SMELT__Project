@@ -15,4 +15,5 @@ MonoBehaviour:
   needName: First
   upName: AllUp1
   upTime: 1
-  needMoney: 5000
+  needMoney: 8000
+  icon: {fileID: 0}

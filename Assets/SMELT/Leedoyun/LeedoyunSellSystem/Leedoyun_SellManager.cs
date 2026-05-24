@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using SMELT.DLJ.StartMenu.Achievement.Script;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// 오버쿡즈 스타일 무기 납품 판매 시스템.
@@ -110,6 +111,7 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Start()
@@ -159,8 +161,9 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
             }
         }
 
-        // 새 주문 생성 타이머 — 가게가 열려 있을 때만 동작
-        if (_isShopOpen && _activeOrders.Count < maxActiveOrders)
+        // 새 주문 생성 타이머 — 가게가 열려 있고 House 씬일 때만 동작
+        if (_isShopOpen && _activeOrders.Count < maxActiveOrders
+            && SceneManager.GetActiveScene().name == "House")
         {
             int day = InventoryManager.Instance != null ? InventoryManager.Instance.CurrentDay : 1;
             _spawnTimer += dt;
