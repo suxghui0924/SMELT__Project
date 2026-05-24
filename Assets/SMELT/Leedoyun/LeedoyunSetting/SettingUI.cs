@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 /// <summary>
 /// ESC 키로 설정 패널을 열고 닫는 UI 컨트롤러.
@@ -37,6 +38,7 @@ public class SettingUI : MonoBehaviour, ISaveable
     [SerializeField] private Button            loadButton;
     [SerializeField] private Button            quitButton;
     [SerializeField] private Button            closeButton;
+
 
     // -----------------------------------------
     // 초기화
@@ -103,6 +105,7 @@ public class SettingUI : MonoBehaviour, ISaveable
 
         if (closeButton != null)
             closeButton.onClick.AddListener(ClosePanel);
+
     }
 
     // -----------------------------------------
