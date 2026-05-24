@@ -1,9 +1,6 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 namespace _01_Scripts.NPC
 {
@@ -15,7 +12,6 @@ namespace _01_Scripts.NPC
 
         [Header("폰트 (비워두면 에디터에서 자동 로드)")]
         [SerializeField] private TMP_FontAsset _font;
-        private const string FONT_PATH = "Assets/SMELT/Suxghui/Galmuri9 SDF.asset";
 
         // 말풍선 위치: NPC 우측
         private static readonly Vector3 BUBBLE_OFFSET = new Vector3(0.9f, 0.2f, 0f);  // NPC 우측
@@ -24,7 +20,8 @@ namespace _01_Scripts.NPC
         private Transform   _playerTransform;
         private bool        _isInRange;
         private int         _lastIndex = -1;
-        private bool        _spriteLoaded;
+        private Sprite      _cachedSprite;
+        private string      _cachedWeaponId;
 
         private Canvas        _sharedCanvas;
         private RectTransform _bubbleRoot;
@@ -36,10 +33,7 @@ namespace _01_Scripts.NPC
         // ─────────────────────────────────────────
         private void Start()
         {
-#if UNITY_EDITOR
-            if (_font == null)
-                _font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FONT_PATH);
-#endif
+            if (_font == null) _font = FontLoader.Galmuri9;
             _movement = GetComponent<NPCMovement>();
             TryFindPlayer();
             BuildBubbleUI();
@@ -59,16 +53,14 @@ namespace _01_Scripts.NPC
         {
             if (_playerTransform == null) TryFindPlayer();
 
-            // 인덱스 변경되면 이미지 재시도
             if (_movement.Index != _lastIndex)
             {
-                _lastIndex    = _movement.Index;
-                _spriteLoaded = false;
+                _lastIndex      = _movement.Index;
+                _cachedSprite   = null;
+                _cachedWeaponId = null;
             }
 
-            // 스프라이트 로드 성공할 때까지 매 프레임 시도
-            if (!_spriteLoaded)
-                UpdateWeaponDisplay();
+            UpdateWeaponDisplay();
 
             // 플레이어 거리 체크
             bool inRange = _playerTransform != null &&
@@ -158,38 +150,59 @@ namespace _01_Scripts.NPC
             if (slotIdx < 0)
             {
                 if (_bubbleRoot != null) _bubbleRoot.gameObject.SetActive(false);
-                _spriteLoaded = true;
                 return;
             }
 
-            var sm = Leedoyun_SellManager.Instance;
-            if (sm == null || slotIdx >= sm.ActiveOrders.Count)
-                return;  // 주문 수 불일치는 일시적 상태 — 버블 숨기지 않고 재시도 대기
-
             if (_bubbleRoot != null) _bubbleRoot.gameObject.SetActive(true);
 
-            // 플레이어가 무기를 들고 있으면 말풍선 이미지 숨김
-            bool holding = HeldItemController.Instance != null && HeldItemController.Instance.IsHolding;
-            _weaponIcon.enabled = !holding;
-            if (holding) { _spriteLoaded = false; return; }
+            var sm = Leedoyun_SellManager.Instance;
 
+            // 주문 만료·삭제로 인덱스 초과 — 캐시된 스프라이트 유지 (NPC가 아직 떠나지 않음)
+            if (sm == null || slotIdx >= sm.ActiveOrders.Count)
+            {
+                if (_cachedSprite != null)
+                {
+                    _weaponIcon.sprite  = _cachedSprite;
+                    _weaponIcon.color   = Color.white;
+                    _weaponIcon.enabled = true;
+                }
+                return;
+            }
+
+            // 플레이어가 무기를 들고 있으면 아이콘만 숨김 (캐시 유지)
+            bool holding = HeldItemController.Instance != null && HeldItemController.Instance.IsHolding;
+            if (holding)
+            {
+                _weaponIcon.enabled = false;
+                return;
+            }
+
+            string weaponId = sm.ActiveOrders[slotIdx].requestedWeaponId;
+
+            // 같은 무기면 캐시 그대로 표시
+            if (_cachedSprite != null && _cachedWeaponId == weaponId)
+            {
+                _weaponIcon.sprite  = _cachedSprite;
+                _weaponIcon.color   = Color.white;
+                _weaponIcon.enabled = true;
+                return;
+            }
+
+            // 새 스프라이트 로드 시도
             var craft = WeaponCraftUI.Instance;
-            Sprite spr = craft != null
-                ? craft.GetWeaponSprite(sm.ActiveOrders[slotIdx].requestedWeaponId)
-                : null;
+            Sprite spr = craft != null ? craft.GetWeaponSprite(weaponId) : null;
 
             if (spr != null)
             {
+                _cachedSprite       = spr;
+                _cachedWeaponId     = weaponId;
                 _weaponIcon.sprite  = spr;
                 _weaponIcon.color   = Color.white;
                 _weaponIcon.enabled = true;
-                _spriteLoaded = true;
             }
             else
             {
-                // 스프라이트 아직 로드 안 됨 — 아이콘 숨기고 다음 프레임 재시도
                 _weaponIcon.enabled = false;
-                _spriteLoaded = false;
             }
         }
 

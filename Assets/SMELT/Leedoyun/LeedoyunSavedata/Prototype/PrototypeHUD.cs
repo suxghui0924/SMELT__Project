@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 /// <summary>
 /// 프로토타입 전체 HUD.
@@ -23,8 +20,8 @@ public class PrototypeHUD : MonoBehaviour
     // ─────────────────────────────────────────
     public static PrototypeHUD Instance { get; private set; }
 
-    // 한국어 폰트 (빌드 시 캐시)
-    private static TMP_FontAsset _korFont;
+    [SerializeField] private TMP_FontAsset _korFontAsset; // Inspector에서 지정
+    private static TMP_FontAsset _korFont;               // MakeText/MakeBtn 헬퍼용 static 캐시
 
     private const string KOR_FONT_PATH = "Assets/SMELT/Suxghui/GmarketSansTTFMedium SDF.asset";
 
@@ -211,10 +208,8 @@ public class PrototypeHUD : MonoBehaviour
     // ─────────────────────────────────────────
     private void BuildUI()
     {
-        // 한국어 폰트 로드 (에디터 전용 - 프로토타입이므로 AssetDatabase 사용)
-#if UNITY_EDITOR
-        _korFont = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(KOR_FONT_PATH);
-#endif
+        if (_korFontAsset == null) _korFontAsset = FontLoader.GmarketMedium;
+        _korFont = _korFontAsset;
 
         var canvasGO = new GameObject("ProtoCanvas");
         var canvas   = canvasGO.AddComponent<Canvas>();

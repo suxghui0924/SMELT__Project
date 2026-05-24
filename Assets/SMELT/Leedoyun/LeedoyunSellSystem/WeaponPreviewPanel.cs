@@ -1,9 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 /// <summary>
 /// 무기 미리보기 패널.
@@ -76,10 +73,7 @@ public class WeaponPreviewPanel : MonoBehaviour
     // ─────────────────────────────────────────
     private void BuildPanel()
     {
-#if UNITY_EDITOR
-        if (_koreanFont == null)
-            _koreanFont = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FONT_PATH);
-#endif
+        if (_koreanFont == null) _koreanFont = FontLoader.Galmuri9;
         Canvas canvas = FindFirstObjectByType<Canvas>();
         Transform canvasT = canvas != null ? canvas.transform : BuildCanvas();
 

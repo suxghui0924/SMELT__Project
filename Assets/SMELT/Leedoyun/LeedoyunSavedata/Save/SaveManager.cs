@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -26,6 +27,19 @@ public class SaveManager : MonoBehaviour
         Instance = this;
         //DontDestroyOnLoad(gameObject);
         _sessionStartTime = Time.time;
+    }
+
+    private void Start()
+    {
+        StartCoroutine(AutoLoadOnStart());
+    }
+
+    private IEnumerator AutoLoadOnStart()
+    {
+        // 모든 매니저의 Start()가 끝나 Register()를 완료한 뒤 로드
+        yield return null;
+        if (HasSaveData())
+            Load();
     }
 
     // ─────────────────────────────────────────

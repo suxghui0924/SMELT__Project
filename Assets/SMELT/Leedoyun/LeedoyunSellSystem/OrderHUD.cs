@@ -3,9 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 /// <summary>
 /// 주문 HUD — 화면 우측 상단에 항상 표시.
@@ -334,10 +331,7 @@ public class OrderHUD : MonoBehaviour
     // ─────────────────────────────────────────
     private void BuildHUD()
     {
-#if UNITY_EDITOR
-        if (_koreanFont == null)
-            _koreanFont = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FONT_PATH);
-#endif
+        if (_koreanFont == null) _koreanFont = FontLoader.Galmuri9;
 
         Transform canvasT = BuildCanvas();
 
