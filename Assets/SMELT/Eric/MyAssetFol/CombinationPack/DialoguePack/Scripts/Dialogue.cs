@@ -54,6 +54,10 @@ public class Dialogue : MonoBehaviour
         }
 
         animController.SetTrigger("Disappear");
+        if ( TutoManager.Instance.TutoSaying.canGetOrder2)
+        {
+            TutoManager.Instance.TutoSaying.canGetOrder2 = false;
+        }
         if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)
         {
             canMove = true;
@@ -137,6 +141,10 @@ public class Dialogue : MonoBehaviour
             {
                 StopAllCoroutines();
                 animController.SetTrigger("Disappear");
+                if ( TutoManager.Instance.TutoSaying.canGetOrder2)
+                {
+                    TutoManager.Instance.TutoSaying.canGetOrder2 = false;
+                }
                 if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)
                 {
                     canMove = true;

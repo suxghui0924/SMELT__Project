@@ -13,8 +13,12 @@ public class TutorialSaying : MonoBehaviour
         
         public bool tuRAttack;
         public bool tuLAttack;
+        public bool ui1;
 
         public bool canExitDungeon;
+        public bool makeWeapon1 = true;
+        public bool canGetOrder1 = true;
+        public bool canGetOrder2 = true;
 
         private void Start()
         {
@@ -43,6 +47,12 @@ public class TutorialSaying : MonoBehaviour
 
         private void Update()
         {
+                if (ui1)
+                {
+                        ui1 = false;
+                        StartCoroutine(
+                                TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.ui1));
+                }
                 if (Input.GetMouseButtonDown(0))
                 {
                         TutoManager.Instance.Dialogue.Skip();

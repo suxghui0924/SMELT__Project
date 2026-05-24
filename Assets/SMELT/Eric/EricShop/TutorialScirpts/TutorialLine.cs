@@ -53,9 +53,14 @@ public class TutorialLine : MonoBehaviour
         "모루가 있는 곳으로 이동해보자!",
     };
 
-    public string[] makeWeapon1 =
+    public string[] getOrder2 =
     {
         "E키를 눌러보자",
+    };    
+    public string[] makeWeapon1 =
+    {
+        "상단은 무기의 종류, 중간은 주 재료, 하단은 부 재료야.",
+        "주 재료에 따라 무기의 이름과 외형이 바뀌어.",
         "사과석 검을 만들어 달라고 했고 멜론석도 섞어달라고 했으니 만들어 보자.",
     };
     public string[] sellWeapon1 =
