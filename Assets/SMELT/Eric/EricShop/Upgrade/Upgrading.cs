@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Diagnostics;
 using TMPro;
 using UnityEngine;
@@ -24,6 +25,8 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     
     private Image _image;
     private Sprite _sprite;
+
+    [SerializeField] private bool isTutorial;
 
     [SerializeField]private TMP_FontAsset myFontAsset;
     [SerializeField]private TMP_SpriteAsset mySpriteAsset;
@@ -52,8 +55,11 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         Setting();
         UpdateTreesUI();
-        if (upso.needName == "First") 
+        if (upso.needName == "First")
+        {
             _first = true;
+            isTutorial = true;
+        }
         _sprite = _image.sprite;
     }
     
@@ -82,6 +88,12 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     {
         bool isSuccess = PlayerStatManager.Instance.BuyUpgrade(upso.upName, upso.needMoney, upso.upTime);
 
+        if (isSuccess && isTutorial)
+        {
+            StartCoroutine(TutoCoroutine());
+            Debug.Log("업그레이드 성공!");
+            UpdateTreesUI();
+        }
         if (isSuccess)
         {
             Debug.Log("업그레이드 성공!");
@@ -164,5 +176,11 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         _treesUIScripts.needMoney.SetAllDirty();
         _treesUIScripts.upName.SetAllDirty();
         _treesUIScripts.detail.SetAllDirty();
+    }
+
+    private IEnumerator TutoCoroutine()
+    {
+        yield return null;
+        StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.store3));
     }
 }
