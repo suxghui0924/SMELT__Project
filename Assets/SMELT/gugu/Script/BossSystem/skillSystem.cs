@@ -8,7 +8,8 @@ using UnityEngine.UI;
 
 public class skillSystem : MonoBehaviour
 {
-    
+    private ulong _gold = 0;
+    public ulong Gold => _gold;
     [SerializeField]private bool isAlive = true;
     private float Damage = 10f;
     private bool shakes = false;
@@ -108,9 +109,11 @@ public class skillSystem : MonoBehaviour
     public void OnAnimationEnd()
     {
         Destroy(boss);
-        _text.gameObject.SetActive(true);
+        _text.gameObject.SetActive(true);   
         StartCoroutine(Managers());
-        Debug.Log("10만 골드 지급, ??? 획득");
+        Debug.Log("5만 골드 지급, ??? 획득");
+        InventoryManager.Instance.AddGold(50000);
+        Debug.Log("지급 완료");
         Weccs = true;
         homeBtn.enabled = true;
         homeBtnImage.enabled = true;
@@ -132,4 +135,5 @@ public class skillSystem : MonoBehaviour
             Destroy(juice);
         }
     }
+    
 }
