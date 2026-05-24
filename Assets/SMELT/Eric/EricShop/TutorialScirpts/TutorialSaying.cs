@@ -25,7 +25,7 @@ public class TutorialSaying : MonoBehaviour
         {
                 TutoManager.Instance.Dialogue.canMove = false;
                 Time.timeScale = 0f;
-                yield return new WaitForSecondsRealtime(0.5f);
+                
                 if(TutoManager.Instance.TutoLine.dungeon3 == texts)
                 {
                         tuRAttack = true;
@@ -34,6 +34,8 @@ public class TutorialSaying : MonoBehaviour
                 {
                         tuLAttack = true;
                 }
+                yield return new WaitForSecondsRealtime(0.5f);
+
                 lines = texts;
                 TutoManager.Instance.Dialogue.typingSpeed = typingSpeed;
                 TutoManager.Instance.Dialogue.Say(lines, characterName, delayBetweenLines);
@@ -64,8 +66,8 @@ public class TutorialSaying : MonoBehaviour
                                 TutoManager.Instance.Dialogue.canMove = true;
                                 tuLAttack = false;
                                 TutoManager.Instance.Dialogue.Skip();
-                              StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon5)) ;
-                              canExitDungeon = true;
+                                StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon5));
+                                canExitDungeon = true;
                                 Destroy(TutoManager.Instance.TutoLAttack.otherCollider.gameObject);
                         }      
                 }
