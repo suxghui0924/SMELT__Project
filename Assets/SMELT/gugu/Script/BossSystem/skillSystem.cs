@@ -22,7 +22,8 @@ public class skillSystem : MonoBehaviour
     [SerializeField]private GameObject juicePrefab;
     [SerializeField]private CinemachineImpulseSource impulseSource;
     [SerializeField]private TextMeshProUGUI _text;
-    [SerializeField] private GameObject homebtn;
+    [SerializeField] private Button homeBtn;
+    [SerializeField] private Image homeBtnImage;
     private void Start()
     {
         _text.gameObject.SetActive(false);
@@ -109,7 +110,8 @@ public class skillSystem : MonoBehaviour
         _text.gameObject.SetActive(true);
         StartCoroutine(Managers());
         Debug.Log("10만 골드 지급, ??? 획득");
-        homebtn.SetActive(true);
+        homeBtn.enabled = true;
+        homeBtnImage.enabled = true;
     }
 
     private void DestroyAllSkills()

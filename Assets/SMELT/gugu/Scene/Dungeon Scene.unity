@@ -442,7 +442,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24afbdc04344b6459dcc682d5aa2e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _mp: {fileID: 1793017356}
+  maxFatigue: 100
+  currentFatigue: 100
+  OnFatigueChange:
+    m_PersistentCalls:
+      m_Calls: []
+  db: 0
+  canEnter: 1
 --- !u!4 &1385956381
 Transform:
   m_ObjectHideFlags: 0
