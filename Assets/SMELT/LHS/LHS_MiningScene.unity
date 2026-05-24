@@ -1586,10 +1586,10 @@ MonoBehaviour:
   - {fileID: 4813902131418854710, guid: 7f25d13d9ede21e44acca9029be994aa, type: 3}
   - {fileID: 7880522014629795840, guid: d179cd84c1dd1b74a89a68cc7d6e2e65, type: 3}
   spawnChance:
-  - 0.9
-  - 0.1
+  - 0.7
+  - 0.3
   maxEnemySpawnTimer: 4
-  minEnemySpawnTimer: 2
+  minEnemySpawnTimer: 3
 --- !u!1 &425754004
 GameObject:
   m_ObjectHideFlags: 0
@@ -4399,8 +4399,8 @@ MonoBehaviour:
   - 0.2
   - 0.25
   - 0.25
-  maxEnemySpawnTimer: 3
-  minEnemySpawnTimer: 0.8
+  maxEnemySpawnTimer: 4
+  minEnemySpawnTimer: 1.4
 --- !u!1 &1291544644
 GameObject:
   m_ObjectHideFlags: 0

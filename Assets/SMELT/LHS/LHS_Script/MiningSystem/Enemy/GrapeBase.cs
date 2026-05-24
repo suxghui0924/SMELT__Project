@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GrapeBase : MonoBehaviour
 {
@@ -47,16 +48,19 @@ public class GrapeBase : MonoBehaviour
             if (_spawntimer >= spawnDuration)
             {
                GameObject grapeEnemy = Instantiate(grapePrefab, transform.parent);
-               EnemyBase grapeEnemyBase = GetComponentInChildren<EnemyBase>();
+               EnemyBase grapeEnemyBase = grapeEnemy.GetComponentInChildren<EnemyBase>();
                grapeEnemyBase.GetVolumeDir(_volumeDirect);
                 _spawntimer = 0;
                 grapeCount--;
             }
-            else if(grapeCount<=0) _grapeSpawnStart = false;
         }
-        else if (!_grapeSpawnStart && !_canMove)
+        else if(grapeCount<=0) _grapeSpawnStart = false;
+        if (!_grapeSpawnStart && !_canMove)
         {
-            Destroy(gameObject);      
+            Destroy(transform.parent.gameObject);
+            int randomItemCount = Random.Range(1, 3);
+            ItemSpawnManager.instance.SpawnItem(4,transform,randomItemCount);
+            Debug.Log("펑");
         }
     }
     

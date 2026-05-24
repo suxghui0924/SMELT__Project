@@ -75,7 +75,7 @@ public class EnemySpawn : MonoBehaviour
         if (_enemySpawnPoint == 0)
         {
            GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_leftX,_offset,0),Quaternion.Euler(0,180,0));
-           if (enemy.name != "Grape")
+           if (enemy.name != "Grape"&&enemy.name!="GrapeEnemy")
            {
                EnemyBase enemyBaseScript = enemy.GetComponentInChildren<EnemyBase>();
                enemyBaseScript.GetVolumeDir(0);
@@ -90,7 +90,7 @@ public class EnemySpawn : MonoBehaviour
         {  
             
             GameObject enemy= Instantiate(enemyPrefab[enemyIndex],new Vector3(_rightX,_offset,0),Quaternion.identity);
-            if (enemy.name != "Grape")
+            if (enemy.name !=null)
             {
                 EnemyBase enemyBaseScript = enemy.GetComponentInChildren<EnemyBase>();
                 enemyBaseScript.GetVolumeDir(1);
