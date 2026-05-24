@@ -15,4 +15,5 @@ MonoBehaviour:
   needName: WeaponUp1
   upName: UpParryRange1
   upTime: 0.2
-  needMoney: 4000000
+  needMoney: 50000
+  icon: {fileID: 0}
