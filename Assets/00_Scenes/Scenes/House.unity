@@ -961,7 +961,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.00000011920929}
+  m_Offset: {x: 0, y: 0.08979952}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -971,7 +971,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 0.904299}
+  m_Size: {x: 2, y: 0.72469974}
   m_EdgeRadius: 0
 --- !u!212 &225109290
 SpriteRenderer:
@@ -25366,7 +25366,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.72348547, y: -0.5207031}
+  m_Offset: {x: -0.6140876, y: -0.5207031}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25376,7 +25376,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.49491024, y: 1.0245838}
+  m_Size: {x: 0.32217693, y: 1.0245838}
   m_EdgeRadius: 0
 --- !u!4 &1745186057
 Transform:
@@ -27165,7 +27165,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.0047855377, y: 0.019140005}
+  m_Offset: {x: 0.0047855377, y: 0.056116223}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -27175,7 +27175,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.8755894, y: 0.77031755}
+  m_Size: {x: 1.8755894, y: 0.6963651}
   m_EdgeRadius: 0
 --- !u!212 &1844114992
 SpriteRenderer:
@@ -27330,7 +27330,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.702083, y: -0.56697214}
+  m_Offset: {x: -3.7409463, y: -0.5525383}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -27340,7 +27340,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.7056799, y: 1.1171219}
+  m_Size: {x: 0.33570385, y: 1.0882542}
   m_EdgeRadius: 0
 --- !u!4 &1865189393
 Transform:

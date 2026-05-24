@@ -31,7 +31,7 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     [Tooltip("새 주문이 생성되는 주기(초)")]
     [SerializeField] private float orderSpawnInterval = 25f;
     [Tooltip("주문 1건의 제한 시간(초)")]
-    [SerializeField] private float orderTimeLimit     = 60f;
+    [SerializeField] private float orderTimeLimit     = 30f;
     [Tooltip("가게 열기 후 첫 손님이 나올 때까지 대기 시간(초)")]
     [SerializeField] private float firstOrderDelay    = 60f;
 
@@ -128,9 +128,22 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
             if (order.elapsedTime >= order.timeLimit)
             {
                 order.isExpired = true;
+
+                // 10% 패널티 차감
+                int penalty = Mathf.RoundToInt(order.rewardGold * 0.1f);
+                if (penalty > 0 && InventoryManager.Instance != null)
+                {
+                    InventoryManager.Instance.SpendGold((ulong)penalty);
+                    int prevGold = _todayGold;
+                    _todayGold = Mathf.Max(0, _todayGold - penalty);
+                    _totalGold -= penalty;
+                    OnTodayGoldChanged?.Invoke(prevGold, _todayGold);
+                    GoldPopup.Show(GetPlayerWorldPos(), -penalty);
+                }
+
                 OnOrderExpired?.Invoke(order);
                 _activeOrders.RemoveAt(i);
-                Debug.Log($"[SellManager] 주문 만료: {order.requestedWeaponId} (ID: {order.orderId})");
+                Debug.Log($"[SellManager] 주문 만료: {order.requestedWeaponId} / 패널티: -{penalty}G");
             }
         }
 
@@ -211,15 +224,15 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     /// </summary>
     /// <param name="orderId">납품할 주문의 ID</param>
     /// <param name="weaponItemId">인벤토리에서 납품할 무기 ID</param>
-    /// <returns>납품 성공 여부</returns>
-    public bool FulfillOrder(string orderId, string weaponItemId)
+    /// <returns>실제 지급된 골드 (실패 시 -1)</returns>
+    public int FulfillOrder(string orderId, string weaponItemId)
     {
         // 주문 찾기
         Leedoyun_CustomerOrder order = _activeOrders.Find(o => o.orderId == orderId);
         if (order == null)
         {
             Debug.LogWarning($"[SellManager] 주문 없음: {orderId}");
-            return false;
+            return -1;
         }
 
         // 요청 무기와 납품 무기 일치 확인
@@ -227,33 +240,37 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         {
             Debug.LogWarning($"[SellManager] 무기 불일치 " +
                              $"(요청: {order.requestedWeaponId}, 납품: {weaponItemId})");
-            return false;
+            return -1;
         }
 
         // 인벤토리에서 무기 소모
         if (!InventoryManager.Instance.RemoveItem(weaponItemId, 1))
         {
             Debug.LogWarning($"[SellManager] 인벤토리에 무기 없음: {weaponItemId}");
-            return false;
+            return -1;
         }
+
+        // 시간 비례 보상 계산 (초록 100% / 노랑 75% / 빨강 50%)
+        int actualGold = CalculateTimedReward(order);
 
         // 골드 지급
         int prev = _todayGold;
-        InventoryManager.Instance.AddGold(order.rewardGold);
-        _todayGold += (int)order.rewardGold;
-        _totalGold += (int)order.rewardGold;
+        InventoryManager.Instance.AddGold((ulong)actualGold);
+        _todayGold += actualGold;
+        _totalGold += actualGold;
         OnTodayGoldChanged?.Invoke(prev, _todayGold);
 
         // 주문 완료 처리
         order.isFulfilled = true;
         _activeOrders.Remove(order);
-        OnOrderFulfilled?.Invoke(order, (int)order.rewardGold);
+        OnOrderFulfilled?.Invoke(order, actualGold);
 
         if (AchievementClear.instance != null) AchievementClear.instance.ClearAchievement(Achievements.FirstSell);
 
-        Debug.Log($"[SellManager] 납품 완료: {weaponItemId} → +{order.rewardGold}G " +
+        Debug.Log($"[SellManager] 납품 완료: {weaponItemId} → +{actualGold}G " +
+                  $"(기본 {order.rewardGold}G / 남은 비율 {order.RemainingRatio:P0}) " +
                   $"(오늘 합계: {_todayGold}G)");
-        return true;
+        return actualGold;
     }
 
     /// <summary>
@@ -274,7 +291,7 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
             return false;
         }
 
-        return FulfillOrder(match.orderId, weaponItemId);
+        return FulfillOrder(match.orderId, weaponItemId) >= 0;
     }
 
     // ─────────────────────────────────────────
@@ -370,6 +387,20 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         OnOrderAdded?.Invoke(order);
 
         Debug.Log($"[SellManager] 새 주문: {order.requestedWeaponId} / {rewardGold}G / {orderTimeLimit}초");
+    }
+
+    /// <summary>남은 시간 비율에 따른 실제 보상 계산 (초록 100% / 노랑 75% / 빨강 50%).</summary>
+    private static int CalculateTimedReward(Leedoyun_CustomerOrder order)
+    {
+        float ratio      = order.RemainingRatio;
+        float multiplier = ratio > 0.5f ? 1.0f : ratio > 0.25f ? 0.75f : 0.5f;
+        return Mathf.RoundToInt(order.rewardGold * multiplier);
+    }
+
+    private static Vector3 GetPlayerWorldPos()
+    {
+        var player = GameObject.FindGameObjectWithTag("Player");
+        return player != null ? player.transform.position + Vector3.up * 0.5f : Vector3.zero;
     }
 
     /// <summary>ShopManager 없을 때 대비 fallback 가격 계산.</summary>

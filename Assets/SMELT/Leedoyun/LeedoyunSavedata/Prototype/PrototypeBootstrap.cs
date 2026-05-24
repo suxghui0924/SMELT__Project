@@ -135,6 +135,8 @@ public class PrototypeBootstrap : MonoBehaviour
             anim.runtimeAnimatorController = animCtrl;
         }
 
+        go.tag = "Player";
+
         var rb = go.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0f;
         rb.constraints  = RigidbodyConstraints2D.FreezeRotation;

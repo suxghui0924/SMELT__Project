@@ -17,6 +17,11 @@ public class AchievementBannerSizer : MonoBehaviour
     {
         if (image == null)
             image = GetComponent<Image>();
+
+        // 도전과제 배너가 항상 모든 UI 위에 표시되도록 루트 Canvas의 sortingOrder를 최상단으로 설정
+        Canvas rootCanvas = GetComponentInParent<Canvas>();
+        if (rootCanvas != null)
+            rootCanvas.rootCanvas.sortingOrder = 1000;
     }
 
     public void ChangeSize(float startWidth, float targetWidth, float height, float duration)

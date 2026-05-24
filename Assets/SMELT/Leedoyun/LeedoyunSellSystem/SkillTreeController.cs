@@ -35,6 +35,7 @@ public class SkillTreeController : MonoBehaviour
     public void Show()
     {
         _isOpen = true;
+        LeedoyunUIManager.NotifyOpen(Hide);
         if (UICanvasManager.instance != null)
             UICanvasManager.instance.ControlObject(ObjectType.ShopASkill, true);
         RefreshAll();
