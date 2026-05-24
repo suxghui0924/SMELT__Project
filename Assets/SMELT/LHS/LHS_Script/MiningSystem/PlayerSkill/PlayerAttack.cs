@@ -43,6 +43,7 @@ public class PlayerAttack : MonoBehaviour
             _nextAttackTime = Time.time + _skillCoolDown;
             
             _skillAnim.OnPlayerAttack(dirX);
+            SoundManager.instance.PlaySFX("Attack");
         }
     }
 }
