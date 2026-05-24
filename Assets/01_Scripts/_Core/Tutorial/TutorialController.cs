@@ -12,7 +12,7 @@ namespace _01_Scripts.Player.Tutorial
 
         private void HandleFirstJoinCheck()
         {
-            if()
+            //if()
         }
     }
 }
