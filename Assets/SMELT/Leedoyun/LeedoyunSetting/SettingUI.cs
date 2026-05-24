@@ -210,8 +210,6 @@ public class SettingUI : MonoBehaviour, ISaveable
     {
         if (SaveManager.Instance != null)
             SaveManager.Instance.Save();
-        else
-            Debug.LogWarning("[SettingUI] SaveManager 인스턴스를 찾을 수 없습니다.");
     }
 
     // -----------------------------------------
@@ -221,8 +219,6 @@ public class SettingUI : MonoBehaviour, ISaveable
     {
         if (SaveManager.Instance != null)
             SaveManager.Instance.Load();
-        else
-            Debug.LogWarning("[SettingUI] SaveManager 인스턴스를 찾을 수 없습니다.");
     }
 
     // -----------------------------------------

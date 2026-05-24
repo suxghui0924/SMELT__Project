@@ -60,9 +60,11 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
             _first = true;
             isTutorial = true;
         }
+        if (upso != null && upso.icon != null)
+            _image.sprite = upso.icon;
         _sprite = _image.sprite;
     }
-    
+
     private void Update()
     {
         if (!_first)

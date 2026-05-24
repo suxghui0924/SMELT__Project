@@ -29,6 +29,12 @@ public class juice : MonoBehaviour
         {
             canHitBoss = true;
         }
+        else if (collision.gameObject.tag == "Player")
+        {
+            BossScenePlayerHP _playerHp = collision.gameObject.GetComponentInChildren<BossScenePlayerHP>();
+            _playerHp.TakeDamage(15);
+            Destroy(gameObject);
+        }
     }
 
    

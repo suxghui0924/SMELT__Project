@@ -20,9 +20,36 @@ public class TutorialSaying : MonoBehaviour
         public bool canGetOrder1 = true;
         public bool canGetOrder2 = true;
 
+        public bool weaponCrafted;
+        public bool weaponSold;
+
+        private void OnEnable()
+        {
+                WeaponCraftManager.OnWeaponCrafted += HandleWeaponCrafted;
+        }
+
+        private void OnDisable()
+        {
+                WeaponCraftManager.OnWeaponCrafted -= HandleWeaponCrafted;
+                if (Leedoyun_SellManager.Instance != null)
+                        Leedoyun_SellManager.Instance.OnOrderFulfilled -= HandleOrderFulfilled;
+        }
+
+        private void HandleWeaponCrafted(string weaponItemId)
+        {
+                weaponCrafted = true;
+        }
+
+        private void HandleOrderFulfilled(Leedoyun_CustomerOrder order, int gold)
+        {
+                weaponSold = true;
+        }
+
         private void Start()
         {
                 StartCoroutine(SayingCoroutine(TutoManager.Instance.TutoLine.start));
+                if (Leedoyun_SellManager.Instance != null)
+                        Leedoyun_SellManager.Instance.OnOrderFulfilled += HandleOrderFulfilled;
         }
 
         public IEnumerator SayingCoroutine(string[] texts)
@@ -42,7 +69,7 @@ public class TutorialSaying : MonoBehaviour
                 if (texts == TutoManager.Instance.TutoLine.store4 ||
                     texts == TutoManager.Instance.TutoLine.changeBgm2 ||
                     texts == TutoManager.Instance.TutoLine.nextDay2)
-                        TutoManager.Instance.canLast = true;
+                        TutoManager.Instance.Dialogue.last = true;
                 yield return new WaitForSecondsRealtime(0.5f);
 
                 lines = texts;

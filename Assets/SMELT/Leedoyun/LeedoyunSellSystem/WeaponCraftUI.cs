@@ -379,11 +379,6 @@ public class WeaponCraftUI : MonoBehaviour
         bool ok = WeaponCraftManager.Instance.CraftWeapon(
             ORE_IDS[_selMain], ORE_IDS[_selSub], WEAPON_TYPES[_selWeapon]);
 
-        SetStatus(ok
-            ? $"    {ORE_NAMES[_selMain]} {WEAPON_NAMES[_selWeapon]} 제작 완료! 판매 구역에서 납품하세요."
-            : "재료가 부족합니다.",
-            ok ? new Color(0.4f, 1f, 0.5f) : new Color(1f, 0.4f, 0.4f));
-
         if (ok)
         {
             RefreshAll();

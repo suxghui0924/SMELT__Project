@@ -82,25 +82,16 @@ public class PickaxeManager : MonoBehaviour, ISaveable
     public bool BuyPickaxe(PickaxeDataSO pickaxe) // 수정 (PickaxeSO → PickaxeDataSO)
     {
         if (pickaxe == null)
-        {
-            Debug.LogWarning("[PickaxeManager] 구매 대상 곡괭이가 null입니다.");
             return false;
-        }
 
         if (_purchasedPickaxeIds.Contains(pickaxe.pickaxeId))
-        {
-            Debug.LogWarning($"[PickaxeManager] 이미 구매한 곡괭이: {pickaxe.pickaxeId}");
             return false;
-        }
 
         var inv = InventoryManager.Instance;
 
         // 골드 사전 확인
         if (pickaxe.goldPrice > 0 && inv.Gold < (ulong)pickaxe.goldPrice)
-        {
-            Debug.LogWarning($"[PickaxeManager] 골드 부족 (필요: {pickaxe.goldPrice}G, 보유: {inv.Gold}G)");
             return false;
-        }
 
         // 광석 사전 확인 (fruitPrice 배열 순회) // 추가
         if (_dataList != null && pickaxe.fruitPrice != null)
@@ -116,11 +107,7 @@ public class PickaxeManager : MonoBehaviour, ISaveable
                 if (string.IsNullOrEmpty(itemId)) continue;
 
                 if (!inv.HasItem(itemId, pickaxe.fruitPrice[i]))
-                {
-                    Debug.LogWarning($"[PickaxeManager] 광석 부족: {itemId} " +
-                                     $"(필요: {pickaxe.fruitPrice[i]}, 보유: {inv.GetQuantity(itemId)})");
                     return false;
-                }
             }
         }
 
@@ -145,7 +132,6 @@ public class PickaxeManager : MonoBehaviour, ISaveable
         }
 
         _purchasedPickaxeIds.Add(pickaxe.pickaxeId);
-        Debug.Log($"[PickaxeManager] 구매 완료: {pickaxe.pickaxeId}");
         return true;
     }
 
@@ -158,19 +144,12 @@ public class PickaxeManager : MonoBehaviour, ISaveable
     public bool EquipPickaxe(PickaxeDataSO pickaxe) // 수정 (PickaxeSO → PickaxeDataSO)
     {
         if (pickaxe == null)
-        {
-            Debug.LogWarning("[PickaxeManager] 장착 대상 곡괭이가 null입니다.");
             return false;
-        }
 
         if (!_purchasedPickaxeIds.Contains(pickaxe.pickaxeId))
-        {
-            Debug.LogWarning($"[PickaxeManager] 구매하지 않은 곡괭이: {pickaxe.pickaxeId}");
             return false;
-        }
 
         _equippedPickaxe = pickaxe;
-        Debug.Log($"[PickaxeManager] 장착: {pickaxe.pickaxeId}");
         return true;
     }
 
@@ -192,10 +171,8 @@ public class PickaxeManager : MonoBehaviour, ISaveable
             if (p.pickaxeId == _pendingEquippedId)
             {
                 _equippedPickaxe = p;
-                Debug.Log($"[PickaxeManager] 장착 곡괭이 복원: {p.pickaxeId}");
                 return;
             }
         }
-        Debug.LogWarning($"[PickaxeManager] 장착 곡괭이 SO를 찾지 못했습니다: {_pendingEquippedId}");
     }
 }

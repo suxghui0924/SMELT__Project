@@ -64,6 +64,17 @@ public class OrderHUD : MonoBehaviour
     // ─────────────────────────────────────────
     private static readonly string[] WEAPON_TYPE_IDS = { "sword", "axe", "spear", "hammer", "gauntlet" };
 
+    // 광석 ID → 색상 폴백용 (WeaponCraftUI 없을 때 무기 실루엣에 색 입힘)
+    private static readonly string[] ORE_SHORT_IDS = { "apple", "melon", "orange", "lemon", "grape" };
+    private static readonly Color[] ORE_COLORS =
+    {
+        new Color(1.00f, 0.25f, 0.25f), // apple  - 빨강
+        new Color(0.25f, 0.85f, 0.25f), // melon  - 초록
+        new Color(1.00f, 0.55f, 0.15f), // orange - 주황
+        new Color(1.00f, 0.90f, 0.15f), // lemon  - 노랑
+        new Color(0.65f, 0.25f, 1.00f), // grape  - 보라
+    };
+
     // ─────────────────────────────────────────
     // 내부 슬롯 클래스
     // ─────────────────────────────────────────
@@ -247,26 +258,39 @@ public class OrderHUD : MonoBehaviour
         if (!hasOrder) return;
 
         slot.weaponTxt.text = WeaponDisplayName(slot.order.requestedWeaponId);
-        slot.goldTxt.text   = $"{slot.order.rewardGold:N0} G";
 
-        Sprite spr = WeaponCraftUI.Instance != null
-            ? WeaponCraftUI.Instance.GetWeaponSprite(slot.order.requestedWeaponId)
-            : null;
-        if (spr != null)
-        {
-            slot.weaponIcon.sprite = spr;
-            slot.weaponIcon.color  = Color.white;
-        }
+        float salesMult = PlayerStatManager.Instance != null
+            ? (1f + PlayerStatManager.Instance.UpMoreSell) : 1f;
+        int displayGold = Mathf.RoundToInt(slot.order.rewardGold * salesMult);
+        slot.goldTxt.text = $"{displayGold:N0} G";
+
+        SetWeaponIcon(slot, slot.order.requestedWeaponId);
 
         RefreshStock(i);
     }
 
     private void RefreshStockAll()
     {
+        float salesMult = PlayerStatManager.Instance != null
+            ? (1f + PlayerStatManager.Instance.UpMoreSell) : 1f;
+
         for (int i = 0; i < SLOT_COUNT; i++)
         {
-            if (_slots[i].order != null && _slots[i].order.IsActive)
-                RefreshStock(i);
+            if (_slots[i].order == null || !_slots[i].order.IsActive) continue;
+            RefreshStock(i);
+            int displayGold = Mathf.RoundToInt(_slots[i].order.rewardGold * salesMult);
+            _slots[i].goldTxt.text = $"{displayGold:N0} G";
+
+            // WeaponCraftUI가 이제 생겼으면 고화질 스프라이트로 교체
+            if (WeaponCraftUI.Instance != null)
+            {
+                Sprite spr = WeaponCraftUI.Instance.GetWeaponSprite(_slots[i].order.requestedWeaponId);
+                if (spr != null && _slots[i].weaponIcon.sprite != spr)
+                {
+                    _slots[i].weaponIcon.sprite = spr;
+                    _slots[i].weaponIcon.color  = Color.white;
+                }
+            }
         }
     }
 
@@ -447,6 +471,43 @@ public class OrderHUD : MonoBehaviour
     // ─────────────────────────────────────────
     // 유틸
     // ─────────────────────────────────────────
+
+    /// <summary>
+    /// 무기 아이콘 표시.
+    /// WeaponCraftUI가 있으면 25종 고화질 스프라이트 사용,
+    /// 없으면 무기 실루엣(_weaponSprites)에 광석 색상을 입혀 표시.
+    /// </summary>
+    private void SetWeaponIcon(OrderSlotUI slot, string weaponItemId)
+    {
+        slot.weaponIcon.sprite = null;
+        slot.weaponIcon.color  = new Color(0f, 0f, 0f, 0f);
+
+        // 1순위: WeaponCraftUI의 25종 스프라이트
+        if (WeaponCraftUI.Instance != null)
+        {
+            Sprite spr = WeaponCraftUI.Instance.GetWeaponSprite(weaponItemId);
+            if (spr != null)
+            {
+                slot.weaponIcon.sprite = spr;
+                slot.weaponIcon.color  = Color.white;
+                return;
+            }
+        }
+
+        // 2순위: 무기 실루엣 + 광석 색상 폴백
+        string[] p = weaponItemId.Split('_');
+        if (p.Length < 3) return;
+
+        int wi = System.Array.IndexOf(WEAPON_TYPE_IDS, p[1]);
+        int oi = System.Array.IndexOf(ORE_SHORT_IDS,   p[2]);
+
+        if (wi >= 0 && _weaponSprites != null && wi < _weaponSprites.Length && _weaponSprites[wi] != null)
+        {
+            slot.weaponIcon.sprite = _weaponSprites[wi];
+            slot.weaponIcon.color  = oi >= 0 ? ORE_COLORS[oi] : Color.white;
+        }
+    }
+
     private static int GetWeaponTypeIndex(string weaponItemId)
     {
         string[] p = weaponItemId.Split('_');

@@ -6,7 +6,6 @@ public class ore : MonoBehaviour
     public bool canHitBoss = false;
     private Transform playerTrm;
     private Transform bossTrm;
-
     private Rigidbody2D rb;
 
     private float speed = 4.5f;
@@ -16,6 +15,12 @@ public class ore : MonoBehaviour
         if (collision.gameObject.tag == "Paring")
         {
             canHitBoss = true;
+        }
+        else if (collision.gameObject.tag == "Player")
+        {
+            BossScenePlayerHP _playerHp = collision.gameObject.GetComponentInChildren<BossScenePlayerHP>();
+            _playerHp.TakeDamage(7);
+            Destroy(gameObject);
         }
     }
 
