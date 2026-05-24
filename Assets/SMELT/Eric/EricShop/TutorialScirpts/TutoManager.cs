@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 public class TutoManager : MonoBehaviour
@@ -10,7 +11,16 @@ public class TutoManager : MonoBehaviour
         if (Instance == null)
             Instance = this;
     }
-    
+
+    private void Start()
+    {
+        if (InventoryManager.Instance._inventory != null)
+        {
+            string temp = InventoryManager.Instance._inventory.First().Key;
+            InventoryManager.Instance._inventory.Remove(temp);
+        }
+    }
+
     [field:SerializeField]public TutoAttack TutoRAttack { get;private set; }
     [field:SerializeField]public TutoAttack TutoLAttack { get;private set; }
     [field:SerializeField]public TutoDungeonAndUpgrade TutoDungeon { get;private set; }

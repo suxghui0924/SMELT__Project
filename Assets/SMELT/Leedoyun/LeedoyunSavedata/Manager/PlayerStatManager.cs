@@ -14,7 +14,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     // ─────────────────────────────────────────
 
     public float UpMakeSpeedJuice { get; private set; } = 1.0f;//판매 수익 보너스 (0.05 = 5%)
-    public float UpMakeSpeedWeapon { get; private set; } = 1.0f;//판매 수익 보너스 (0.05 = 5%)
+    public float UpMakeSpeedWeapon { get; private set; } = 1.0f;//무기 제작 속도 (0.05 = 5%)
     public float UpParryRange { get; private set; } =   1.0f;   // 패링 판정 범위 배율 (0.05 = 5%)
     public float UpMoreSell { get; private set; } =     0.0f;   //판매 수익 보너스 (0.05 = 5%)
     public float UpAttackSpeed { get; private set; } =  0.0f;   //공속 (0.05 = 5%)

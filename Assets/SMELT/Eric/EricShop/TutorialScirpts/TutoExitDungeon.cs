@@ -27,7 +27,6 @@ public class TutoExitDungeon : MonoBehaviour
         house[0].SetActive(true);
         house[1].SetActive(true);
         house[2].SetActive(true);
-        house[3].SetActive(true);
         
         
     }

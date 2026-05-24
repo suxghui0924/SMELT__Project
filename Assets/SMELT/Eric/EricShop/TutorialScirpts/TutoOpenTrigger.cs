@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -60,8 +61,25 @@ public class TutoOpenTrigger : MonoBehaviour
                                     Destroy(transform.parent.gameObject);
                                     canSell = false;
                             }
+
+                            if (gameObject.name == "DoorZone")
+                            {
+                            }
                     }
             }
+    }
+
+    private IEnumerator DoorCoroutine()
+    {
+            
+            StartCoroutine(
+                    TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
+                            .openDoor1));
+            yield return new WaitForSeconds(1.5f);
+            
+            StartCoroutine(
+                    TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
+                            .getOrder1));
     }
 
     private void Update()
