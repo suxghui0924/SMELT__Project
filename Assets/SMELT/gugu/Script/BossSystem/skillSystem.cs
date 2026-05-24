@@ -20,11 +20,14 @@ public class skillSystem : MonoBehaviour
     [SerializeField]private GameObject orePrefab ;
     [SerializeField]private GameObject juicePrefab;
     [SerializeField]private CinemachineImpulseSource impulseSource;
-    [SerializeField]private TextMeshProUGUI _text;  
+    [SerializeField]private TextMeshProUGUI _text;
+    [SerializeField]private TextMeshProUGUI _Infinity;
+
 
     private void Start()
     {
         _text.gameObject.SetActive(false);
+        _Infinity.gameObject.SetActive(false);
     }
 
     private void FixedUpdate()
@@ -106,6 +109,7 @@ public class skillSystem : MonoBehaviour
     {
         Destroy(boss);
         _text.gameObject.SetActive(true);
+        _Infinity.gameObject.SetActive(true);
         StartCoroutine(Managers());
         Debug.Log("10만 골드 지급, ??? 획득");
         GameManager.instance.ChangeState(new HouseState());
