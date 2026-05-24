@@ -24,17 +24,17 @@ namespace _01_Scripts.Player.Manager
         {
             OrderHUD.OnOrderCreated += HandleOnAcceptOrder;
             OrderHUD.OnOrderEnded   += HandleOnRewardOrder;
-            SceneManager.sceneLoaded += OnSceneLoaded;
+            //SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         private void OnDisable()
         {
             OrderHUD.OnOrderCreated  -= HandleOnAcceptOrder;
             OrderHUD.OnOrderEnded    -= HandleOnRewardOrder;
-            SceneManager.sceneLoaded -= OnSceneLoaded;
+            //SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        /*private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
             bool isHouse = scene.name == "House";
             for (int i = npcList.Count - 1; i >= 0; i--)
@@ -46,7 +46,7 @@ namespace _01_Scripts.Player.Manager
                     Destroy(npcList[i]);
             }
             if (!isHouse) npcList.Clear();
-        }
+        }*/
 
         // ReSharper disable Unity.PerformanceAnalysis
         private void HandleOnAcceptOrder(Leedoyun_CustomerOrder order)
