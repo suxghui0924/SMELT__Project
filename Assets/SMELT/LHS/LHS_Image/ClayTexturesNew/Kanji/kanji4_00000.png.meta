@@ -1,0 +1,507 @@
+fileFormatVersion: 2
+guid: 0d8ff2fbc1372c9439e0f872a66ab275
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1915162463042142102
+    second: kanji4_00000_0
+  - first:
+      213: -2576024839772465458
+    second: kanji4_00000_1
+  - first:
+      213: -5351975859788421186
+    second: kanji4_00000_2
+  - first:
+      213: -8015906643095969619
+    second: kanji4_00000_3
+  - first:
+      213: -4729811019795788969
+    second: kanji4_00000_4
+  - first:
+      213: 2684439050837660729
+    second: kanji4_00000_5
+  - first:
+      213: 2131681242757388345
+    second: kanji4_00000_6
+  - first:
+      213: -1645311569332833126
+    second: kanji4_00000_7
+  - first:
+      213: 3945350612356717239
+    second: kanji4_00000_8
+  - first:
+      213: 8199659829136792947
+    second: kanji4_00000_9
+  - first:
+      213: 1486786590955303557
+    second: kanji4_00000_10
+  - first:
+      213: -5239023785820584275
+    second: kanji4_00000_11
+  - first:
+      213: 3058932247589095074
+    second: kanji4_00000_12
+  - first:
+      213: -7417403797311267671
+    second: kanji4_00000_13
+  - first:
+      213: -2499447497990745429
+    second: kanji4_00000_14
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: kanji4_00000_0
+      rect:
+        serializedVersion: 2
+        x: 439
+        y: 803
+        width: 155
+        height: 158
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69ff9c8fc16049a10800000000000000
+      internalID: 1915162463042142102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_1
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 802
+        width: 53
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec697cc7e0f104cd0800000000000000
+      internalID: -2576024839772465458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_2
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 590
+        width: 166
+        height: 153
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb768debf46f9b5b0800000000000000
+      internalID: -5351975859788421186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_3
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 381
+        width: 133
+        height: 148
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da02291d067c1c090800000000000000
+      internalID: -8015906643095969619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_4
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 209
+        width: 30
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75b0856efe55c5eb0800000000000000
+      internalID: -4729811019795788969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_5
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 156
+        width: 67
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9349d5e081b014520800000000000000
+      internalID: 2684439050837660729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_6
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 52
+        width: 46
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 938dae0dbc0459d10800000000000000
+      internalID: 2131681242757388345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_7
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 52
+        width: 41
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a94731d48ddaa29e0800000000000000
+      internalID: -1645311569332833126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_8
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 52
+        width: 31
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ba54e38a73b0c630800000000000000
+      internalID: 3945350612356717239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_9
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 53
+        width: 35
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37d1db2cb2b0bc170800000000000000
+      internalID: 8199659829136792947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_10
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 53
+        width: 35
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 58274b2f68022a410800000000000000
+      internalID: 1486786590955303557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_11
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 52
+        width: 41
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da68754df9f3b47b0800000000000000
+      internalID: -5239023785820584275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_12
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 53
+        width: 42
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2a609891ca2837a20800000000000000
+      internalID: 3058932247589095074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_13
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 53
+        width: 20
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9acd0a1ab86101990800000000000000
+      internalID: -7417403797311267671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji4_00000_14
+      rect:
+        serializedVersion: 2
+        x: 728
+        y: 53
+        width: 44
+        height: 44
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba2d5834ebd205dd0800000000000000
+      internalID: -2499447497990745429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      kanji4_00000_0: 1915162463042142102
+      kanji4_00000_1: -2576024839772465458
+      kanji4_00000_10: 1486786590955303557
+      kanji4_00000_11: -5239023785820584275
+      kanji4_00000_12: 3058932247589095074
+      kanji4_00000_13: -7417403797311267671
+      kanji4_00000_14: -2499447497990745429
+      kanji4_00000_2: -5351975859788421186
+      kanji4_00000_3: -8015906643095969619
+      kanji4_00000_4: -4729811019795788969
+      kanji4_00000_5: 2684439050837660729
+      kanji4_00000_6: 2131681242757388345
+      kanji4_00000_7: -1645311569332833126
+      kanji4_00000_8: 3945350612356717239
+      kanji4_00000_9: 8199659829136792947
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

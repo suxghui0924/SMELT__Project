@@ -1,0 +1,663 @@
+fileFormatVersion: 2
+guid: e2fb8cd5d1b2b9f47b38a3c4863c3e62
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6913228975221568848
+    second: kanji5_000005_0
+  - first:
+      213: -3605754780870106386
+    second: kanji5_000005_1
+  - first:
+      213: -4925338677996663703
+    second: kanji5_000005_2
+  - first:
+      213: -8384986735814388137
+    second: kanji5_000005_3
+  - first:
+      213: -3513048422461611562
+    second: kanji5_000005_4
+  - first:
+      213: 2595117287104897736
+    second: kanji5_000005_5
+  - first:
+      213: -7686079965236557048
+    second: kanji5_000005_6
+  - first:
+      213: 1076423223239736875
+    second: kanji5_000005_7
+  - first:
+      213: 8697564480161607078
+    second: kanji5_000005_8
+  - first:
+      213: 2070204588257782073
+    second: kanji5_000005_9
+  - first:
+      213: 359132335531834945
+    second: kanji5_000005_10
+  - first:
+      213: -645996089527611433
+    second: kanji5_000005_11
+  - first:
+      213: -8485268682229594277
+    second: kanji5_000005_12
+  - first:
+      213: -4032386655846003021
+    second: kanji5_000005_13
+  - first:
+      213: -6699254956184898323
+    second: kanji5_000005_14
+  - first:
+      213: -5067904796694220897
+    second: kanji5_000005_15
+  - first:
+      213: 3624304564691659644
+    second: kanji5_000005_16
+  - first:
+      213: 3085834795619508195
+    second: kanji5_000005_17
+  - first:
+      213: 2168705727415970684
+    second: kanji5_000005_18
+  - first:
+      213: -3559058235253689203
+    second: kanji5_000005_19
+  - first:
+      213: 679456952882125399
+    second: kanji5_000005_20
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: kanji5_000005_0
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 595
+        width: 30
+        height: 56
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ba0bf8ffd64f00a0800000000000000
+      internalID: -6913228975221568848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_1
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 623
+        width: 140
+        height: 147
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ee222138129c5fdc0800000000000000
+      internalID: -3605754780870106386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_2
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 594
+        width: 133
+        height: 72
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96c4483619ea5abb0800000000000000
+      internalID: -4925338677996663703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_3
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 639
+        width: 51
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 756db654dfa82ab80800000000000000
+      internalID: -8384986735814388137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_4
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 347
+        width: 197
+        height: 173
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d1ed6c92152f3fc0800000000000000
+      internalID: -3513048422461611562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_5
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 249
+        width: 27
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c2ec505c65b30420800000000000000
+      internalID: 2595117287104897736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_6
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 249
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80b04d48efe855590800000000000000
+      internalID: -7686079965236557048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_7
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 249
+        width: 15
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2e7f29e73930fe00800000000000000
+      internalID: 1076423223239736875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_8
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 249
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ad661320d4f3b870800000000000000
+      internalID: 8697564480161607078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_9
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 249
+        width: 39
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9392d77ca18dabc10800000000000000
+      internalID: 2070204588257782073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_10
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 249
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14e3bb6d4f4ebf400800000000000000
+      internalID: 359132335531834945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_11
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 249
+        width: 19
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7df4a6daaf5f807f0800000000000000
+      internalID: -645996089527611433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_12
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 249
+        width: 30
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b5745f327154e3a80800000000000000
+      internalID: -8485268682229594277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_13
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 249
+        width: 36
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3be064573b51a08c0800000000000000
+      internalID: -4032386655846003021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_14
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 249
+        width: 32
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de4f2dc8c177703a0800000000000000
+      internalID: -6699254956184898323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_15
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 249
+        width: 35
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9fea85307f2ba9b0800000000000000
+      internalID: -5067904796694220897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_16
+      rect:
+        serializedVersion: 2
+        x: 657
+        y: 249
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7be5489ccd1c4230800000000000000
+      internalID: 3624304564691659644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_17
+      rect:
+        serializedVersion: 2
+        x: 706
+        y: 249
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3efd07ca56613da20800000000000000
+      internalID: 3085834795619508195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_18
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 249
+        width: 19
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c7bebf86e5ac81e10800000000000000
+      internalID: 2168705727415970684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_19
+      rect:
+        serializedVersion: 2
+        x: 788
+        y: 249
+        width: 38
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d8476c8446fab9ec0800000000000000
+      internalID: -3559058235253689203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: kanji5_000005_20
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 249
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75a55bcaf7aed6900800000000000000
+      internalID: 679456952882125399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      kanji5_000005_0: -6913228975221568848
+      kanji5_000005_1: -3605754780870106386
+      kanji5_000005_10: 359132335531834945
+      kanji5_000005_11: -645996089527611433
+      kanji5_000005_12: -8485268682229594277
+      kanji5_000005_13: -4032386655846003021
+      kanji5_000005_14: -6699254956184898323
+      kanji5_000005_15: -5067904796694220897
+      kanji5_000005_16: 3624304564691659644
+      kanji5_000005_17: 3085834795619508195
+      kanji5_000005_18: 2168705727415970684
+      kanji5_000005_19: -3559058235253689203
+      kanji5_000005_2: -4925338677996663703
+      kanji5_000005_20: 679456952882125399
+      kanji5_000005_3: -8384986735814388137
+      kanji5_000005_4: -3513048422461611562
+      kanji5_000005_5: 2595117287104897736
+      kanji5_000005_6: -7686079965236557048
+      kanji5_000005_7: 1076423223239736875
+      kanji5_000005_8: 8697564480161607078
+      kanji5_000005_9: 2070204588257782073
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
