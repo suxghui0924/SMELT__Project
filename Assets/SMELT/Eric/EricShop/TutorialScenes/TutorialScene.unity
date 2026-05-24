@@ -12130,6 +12130,7 @@ MonoBehaviour:
   <TutoHit>k__BackingField: {fileID: 0}
   <TutoOpenTrigger>k__BackingField: {fileID: 0}
   <Dialogue>k__BackingField: {fileID: 1866439608}
+  <Upgrading>k__BackingField: {fileID: 0}
 --- !u!114 &1128825364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20630,7 +20631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!156049354 &1512159798
 Grid:
   m_ObjectHideFlags: 0
@@ -23701,7 +23702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1674124611
 Transform:
   m_ObjectHideFlags: 0
@@ -25642,49 +25643,7 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0
-  m_ColliderPaths:
-  - m_Collider: {fileID: 1944646246}
-    m_ColliderPaths:
-    - - X: 189000000
-        Y: 61916060
-      - X: 175500016
-        Y: 61916060
-      - X: 175500016
-        Y: -61916060
-      - X: 189000000
-        Y: -61916060
-    - - X: -175500016
-        Y: 61916060
-      - X: -189000000
-        Y: 61916060
-      - X: -189000000
-        Y: -61916060
-      - X: -175500016
-        Y: -61916060
-    - - X: -13500001
-        Y: -12383211
-      - X: -175500000
-        Y: -12383211
-      - X: -175500000
-        Y: -61916060
-      - X: -13500001
-        Y: -61916060
-    - - X: 13500000
-        Y: -12383211
-      - X: -13500000
-        Y: -12383211
-      - X: -13500000
-        Y: -61916060
-      - X: 13500000
-        Y: -61916060
-    - - X: 175500000
-        Y: -12383211
-      - X: 13500001
-        Y: -12383211
-      - X: 13500001
-        Y: -61916060
-      - X: 175500000
-        Y: -61916060
+  m_ColliderPaths: []
   m_CompositePaths:
     m_Paths:
     - - {x: 18.899971, y: -6.191606}
