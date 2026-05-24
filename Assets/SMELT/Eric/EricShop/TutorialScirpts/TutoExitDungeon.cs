@@ -12,5 +12,6 @@ public class TutoExitDungeon : MonoBehaviour
         dungeon[1].SetActive(false);
         house[0].SetActive(true);
         house[1].SetActive(true);
+        StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.ui1));
     }
 }

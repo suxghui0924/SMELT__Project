@@ -7290,6 +7290,7 @@ MonoBehaviour:
   _playerSprite: {fileID: 1209683134, guid: c1c8832eaec1b9845a6fe492d2e55237, type: 3}
   _playerSize: {x: 1, y: 1}
   _animatorController: {fileID: 9100000, guid: 98147b3dcc52eb445a2cea752527dd8b, type: 2}
+  _playerSpawnPos: {x: 0, y: 0, z: -1}
   _craftingZonePos: {x: -5.39, y: 3.83, z: 0}
   _craftingZoneSize: {x: 0.2, y: 1.1}
 --- !u!4 &1356672108
@@ -25365,7 +25366,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.8855629, y: -0.5207031}
+  m_Offset: {x: -0.72348547, y: -0.5207031}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -25375,7 +25376,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.38171387, y: 1.0245838}
+  m_Size: {x: 0.49491024, y: 1.0245838}
   m_EdgeRadius: 0
 --- !u!4 &1745186057
 Transform:
@@ -27329,7 +27330,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -3.726502, y: -0.5804645}
+  m_Offset: {x: -3.702083, y: -0.56697214}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -27339,7 +27340,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.9428911, y: 1.1441066}
+  m_Size: {x: 0.7056799, y: 1.1171219}
   m_EdgeRadius: 0
 --- !u!4 &1865189393
 Transform:

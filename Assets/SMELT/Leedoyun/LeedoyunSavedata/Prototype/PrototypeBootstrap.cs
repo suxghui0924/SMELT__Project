@@ -28,6 +28,9 @@ public class PrototypeBootstrap : MonoBehaviour
     [Tooltip("Animator Controller. 비워두면 애니메이션 없이 동작.")]
     [SerializeField] private RuntimeAnimatorController _animatorController;
 
+    [Header("플레이어 시작 위치")]
+    [SerializeField] private Vector3 _playerSpawnPos = new Vector3(-6.5f, -3.5f, -1f);
+
     [Header("제작 구역")]
     [Tooltip("CraftingZone 중심 위치")]
     [SerializeField] private Vector3 _craftingZonePos = new Vector3(-5.39f, 3.83f, 0f);
@@ -69,8 +72,7 @@ public class PrototypeBootstrap : MonoBehaviour
         CreateZone("CraftingZone", _craftingZonePos, _craftingZoneSize,
             ZoneType.Crafting, new Color(0.38f, 0.26f, 0.14f, 0f));
 
-        // 플레이어: 광석 채취 구역 하단에 시작
-        CreatePlayer(new Vector3(-6.5f, -3.5f, -1f), _playerSprite, _playerSize, _animatorController);
+        CreatePlayer(_playerSpawnPos, _playerSprite, _playerSize, _animatorController);
     }
 
     // ─────────────────────────────────────────

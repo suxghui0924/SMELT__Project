@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
 public class Dialogue : MonoBehaviour
 {
     [Header("Setup")]
@@ -25,6 +24,7 @@ public class Dialogue : MonoBehaviour
     {
         animController.ResetTrigger("Disappear");
         textBox.text = "";
+        
         foreach (var letter in sentences[index].ToCharArray())
         {
             if (active)
@@ -39,6 +39,8 @@ public class Dialogue : MonoBehaviour
                 break; 
             }
         }
+        
+        active = false; 
     }
 
     IEnumerator TypeMany()
@@ -117,34 +119,30 @@ public class Dialogue : MonoBehaviour
 
     public void Skip()
     {
-        if (index < sentences.Length - 1)
+        if (sentences == null || sentences.Length == 0) return;
+
+        if (active)
         {
-            if (active)
-            {
-                active = false;
-                StartCoroutine(SkipInvokeRoutine());
-            }
-            else
-            {
-                index++;
-                StartCoroutine(Type());
-                StartCoroutine(SkipInvokeRoutine());
-            }
+            active = false; 
         }
         else
         {
-            animController.SetTrigger("Disappear");
-            if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)
+            if (index < sentences.Length - 1)
             {
-                canMove = true;
+                index++;
+                StopAllCoroutines(); 
+                StartCoroutine(TypeMany());
+            }
+            else
+            {
+                StopAllCoroutines();
+                animController.SetTrigger("Disappear");
+                if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)
+                {
+                    canMove = true;
+                }
             }
         }
-    }
-    
-    private IEnumerator SkipInvokeRoutine()
-    {
-        yield return new WaitForSecondsRealtime(1f);
-        active = true;
     }
 
     public void Clear()
