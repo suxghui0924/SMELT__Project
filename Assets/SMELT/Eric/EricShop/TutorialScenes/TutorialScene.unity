@@ -3601,7 +3601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftUI: {fileID: 0}
-  playerHouse: []
+  playerHouse:
+  - {fileID: 0}
 --- !u!1 &548593531
 GameObject:
   m_ObjectHideFlags: 0
