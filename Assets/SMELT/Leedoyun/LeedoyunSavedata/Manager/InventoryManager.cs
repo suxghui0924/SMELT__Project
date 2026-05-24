@@ -18,8 +18,18 @@ public class InventoryManager : MonoBehaviour, ISaveable
 
     private int _currentDay      = 1;
     private ulong _gold           = 0;
-    private ulong _maintenanceCost = 100;
+    private ulong _maintenanceCost = 10_000;
     private int _techLevel       = 1;
+
+    // 일차별 유지비 고정 테이블 (1일차~7일차+)
+    private static readonly ulong[] s_dailyCost =
+        { 6_000, 9_000, 13_000, 18_000, 25_000, 33_000, 45_000 };
+
+    private static ulong GetMaintenanceCostForDay(int day)
+    {
+        int idx = Mathf.Clamp(day - 1, 0, s_dailyCost.Length - 1);
+        return s_dailyCost[idx];
+    }
 
     private List<string> _unlockedTechs = new List<string>();
 
@@ -95,7 +105,10 @@ public class InventoryManager : MonoBehaviour, ISaveable
     {
         _currentDay      = data.currentDay;
         _gold            = data.gold;
-        _maintenanceCost = data.maintenanceCost;
+        // 구버전 세이브(100G 기준)는 테이블로 재계산
+        _maintenanceCost = data.maintenanceCost < 1000
+            ? GetMaintenanceCostForDay(_currentDay)
+            : data.maintenanceCost;
         _techLevel       = data.currentTechLevel;
         _unlockedTechs   = data.unlockedTechs;
 
@@ -136,10 +149,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     public bool RemoveItem(string itemId, int amount = 1)
     {
         if (!HasItem(itemId, amount))
-        {
-            Debug.LogWarning($"[Inventory] 수량 부족: {itemId} (필요: {amount}, 보유: {GetQuantity(itemId)})");
             return false;
-        }
         _inventory[itemId] -= amount;
         int remaining = _inventory[itemId];
         if (remaining <= 0)
@@ -173,10 +183,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     public bool SpendGold(ulong amount)
     {
         if (_gold < amount)
-        {
-            Debug.LogWarning($"[Economy] 골드 부족 (필요: {amount}, 보유: {_gold})");
             return false;
-        }
         ulong prev = _gold;   // 추가
         _gold -= amount;
         OnGoldChanged?.Invoke(prev, _gold); // 추가
@@ -187,14 +194,11 @@ public class InventoryManager : MonoBehaviour, ISaveable
     public bool EndOfDay()
     {
         if (!SpendGold(_maintenanceCost))
-        {
-            Debug.LogWarning("[Economy] 유지비 부족 → 게임 오버 처리 필요");
-            return false;  // 골드 부족 → 게임 오버
-        }
+            return false;
 
         _currentDay++;
-        _maintenanceCost =(ulong)Mathf.RoundToInt(_maintenanceCost * 1.2f);  // 유지비 20% 증가
-        OnDayChanged?.Invoke(_currentDay, _maintenanceCost); // 추가
+        _maintenanceCost = GetMaintenanceCostForDay(_currentDay);
+        OnDayChanged?.Invoke(_currentDay, _maintenanceCost);
         return true;
     }
 

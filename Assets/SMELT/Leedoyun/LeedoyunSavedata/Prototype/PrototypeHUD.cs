@@ -165,6 +165,7 @@ public class PrototypeHUD : MonoBehaviour
             ZoneType.StoreRadioZone => "라디오 — [ E ] 가게 음악 설정",
             ZoneType.StoreStateZone => "두꺼비집 — [ E ] 가게 관련 설정",
             ZoneType.Door           => "문  —  [ E ] 문 열기",
+            ZoneType.Portal           => "포탈  —  [ E ] 들어가기",
             _                       => ""
         };
         _zoneHintGO.SetActive(true);
@@ -212,8 +213,6 @@ public class PrototypeHUD : MonoBehaviour
         // 한국어 폰트 로드 (에디터 전용 - 프로토타입이므로 AssetDatabase 사용)
 #if UNITY_EDITOR
         _korFont = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(KOR_FONT_PATH);
-        if (_korFont == null)
-            Debug.LogWarning($"[PrototypeHUD] 한국어 폰트를 찾을 수 없습니다: {KOR_FONT_PATH}");
 #endif
 
         var canvasGO = new GameObject("ProtoCanvas");

@@ -80,6 +80,8 @@ public class PrototypePlayer : MonoBehaviour
     {
         var zone = other.GetComponent<PrototypeZone>();
         if (zone == null) return;
+        if (_currentZone != null && _currentZone != zone)
+            _currentZone.OnPlayerExit();
         _currentZone = zone;
         zone.OnPlayerEnter();
     }

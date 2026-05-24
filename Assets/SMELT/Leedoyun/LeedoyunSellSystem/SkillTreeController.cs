@@ -55,11 +55,11 @@ public class SkillTreeController : MonoBehaviour
         if (_isOpen) Hide(); else Show();
     }
 
-    // 디버그용 — T키로 직접 토글
+    /*// 디버그용 — T키로 직접 토글
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T)) Toggle();
-    }
+    }*/
 
     private void RefreshAll()
     {

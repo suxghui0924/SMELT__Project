@@ -11,6 +11,8 @@ public class TutoOpenTrigger : MonoBehaviour
         public bool isMadeFirst = false;
         public bool door = false;
 
+        [SerializeField] private GameObject skillTreeObject;
+
         public int count;
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -61,6 +63,7 @@ public class TutoOpenTrigger : MonoBehaviour
                                                     .sellWeapon2));
                                     string itemId = InventoryManager.Instance._inventory.First().Key;
                                     InventoryManager.Instance.RemoveItem(itemId);
+                                    skillTreeObject.SetActive(true);
                                     Destroy(transform.parent.gameObject);
                                     canSell = false;
                             }
@@ -68,6 +71,12 @@ public class TutoOpenTrigger : MonoBehaviour
                             if (gameObject.name == "DoorZone")
                             {
                                     door = true;
+                            }
+                            if (gameObject.name == "SkillTreeZone")
+                            {
+                                    StartCoroutine(
+                                            TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
+                                                    .store3));
                             }
                     }
             }

@@ -2089,6 +2089,8 @@ MonoBehaviour:
   canSell: 0
   isMade: 0
   isMadeFirst: 0
+  door: 0
+  skillTreeObject: {fileID: 0}
   count: 0
 --- !u!1 &312496437
 GameObject:
@@ -5990,6 +5992,8 @@ MonoBehaviour:
   canSell: 0
   isMade: 0
   isMadeFirst: 0
+  door: 0
+  skillTreeObject: {fileID: 1112939993}
   count: 0
 --- !u!1 &1057519832
 GameObject:
@@ -6384,7 +6388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1112939994
 Transform:
   m_ObjectHideFlags: 0
@@ -11484,6 +11488,7 @@ MonoBehaviour:
   - {fileID: 290847930}
   - {fileID: 454328293}
   canLast: 0
+  canLastCoroutine: 1
   <TutoRAttack>k__BackingField: {fileID: 1955538076}
   <TutoLAttack>k__BackingField: {fileID: 857025069}
   <TutoDungeon>k__BackingField: {fileID: 1192471125}
@@ -11569,12 +11574,13 @@ MonoBehaviour:
   - "\uC774\uC81C \uC5C5\uADF8\uB808\uC774\uB4DC\uB97C \uD574\uBCFC\uAE4C?"
   - "\uBE5B\uB098\uB294 \uACF3\uC73C\uB85C \uC774\uB3D9\uD574\uBCF4\uC790!"
   store2:
-  - "E \uD0A4\uB97C \uB20C\uB7EC \uCC3D\uC744 \uC5F0 \uB2E4\uC74C \uC5C5\uADF8\uB808\uC774\uB4DC\uB97C
-    \uD574\uBCF4\uC790!"
+  - "E\uD0A4\uB97C \uB204\uB974\uC790"
   store3:
-  - "\uC88B\uC558\uC5B4! \uC774\uC81C \uACE1\uAD2D\uC774 \uC5C5\uADF8\uB808\uC774\uB4DC\uB3C4
-    \uC54C\uB824\uC904\uAC8C."
-  - "\uC774 \uBC84\uD2BC\uC744 \uB20C\uB7EC\uBCF4\uC790."
+  - "\uC5EC\uAE30\uC120 \uC5C5\uADF8\uB808\uC774\uB4DC\uB97C \uD560 \uC218 \uC788\uC5B4"
+  - "\uC67C\uCABD \uBC84\uD2BC\uC73C\uB85C \uACE1\uAD2D\uC774\uC640 \uC2A4\uD0AC
+    \uD2B8\uB9AC \uC5C5\uADF8\uB808\uC774\uB4DC\uB97C \uC654\uB2E4\uAC14\uB2E4 \uD560
+    \uC218 \uC788\uC5B4"
+  - "\uBC84\uD2BC\uC744 \uB20C\uB7EC \uB098\uAC00\uC790."
   - "\uC7AC\uB8CC\uAC00 \uBAA8\uC774\uBA74 \uC5EC\uAE30\uC11C \uACE1\uAD2D\uC774\uB97C
     \uC5C5\uADF8\uB808\uC774\uB4DC \uD560 \uC218 \uC788\uC5B4!"
   - "\uC774\uC81C \uCC3D\uC744 \uB2EB\uACE0 \uB2E4\uB978 \uAC70\uC5D0 \uB300\uD574
@@ -16350,6 +16356,7 @@ GameObject:
   - component: {fileID: 1268230303}
   - component: {fileID: 1268230302}
   - component: {fileID: 1268230301}
+  - component: {fileID: 1268230304}
   m_Layer: 0
   m_Name: SkillTreeZone
   m_TagString: Untagged
@@ -16446,6 +16453,24 @@ MonoBehaviour:
   _zoneType: 3
   _doorObject: {fileID: 0}
   _skillTreeVisual: {fileID: 1112939995}
+--- !u!114 &1268230304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268230299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cbb7594f175ac5443bd30ba94a49a409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canSell: 0
+  isMade: 0
+  isMadeFirst: 0
+  door: 0
+  skillTreeObject: {fileID: 0}
+  count: 0
 --- !u!1 &1276279299
 GameObject:
   m_ObjectHideFlags: 0

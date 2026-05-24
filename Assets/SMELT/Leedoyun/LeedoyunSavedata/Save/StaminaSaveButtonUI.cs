@@ -27,6 +27,5 @@ public class StaminaSaveButtonUI : MonoBehaviour
     private void OnSaveClicked()
     {
         SaveManager.Instance.Save();
-        Debug.Log("[StaminaSaveButtonUI] 저장 완료");
     }
 }

@@ -11,19 +11,25 @@ public class TutoManager : MonoBehaviour
     [SerializeField] private GameObject[] lastObjects;
 
     public bool canLast;
+    public bool canLastCoroutine = true;
 
     private void Awake()
     {
         if (Instance == null)
             Instance = this;
+        canLastCoroutine = true;
     }
 
     private void Update()
     {
-        skillTreeUI = GameObject.Find("Group_ShopSkillTree");
-        if (skillTreeUI == null) return;
-        if (!skillTreeUI.activeSelf)
+        if (skillTreeUI == null )
         {
+            skillTreeUI = GameObject.Find("Group_ShopSkillTree");
+            return;
+        }
+        if (!skillTreeUI.activeSelf&&canLastCoroutine)
+        {
+            canLastCoroutine = false;
             lastObjects[0].gameObject.SetActive(true);
             lastObjects[1].gameObject.SetActive(true);
             StartCoroutine(LastCoroutine());
@@ -34,22 +40,29 @@ public class TutoManager : MonoBehaviour
     {
         yield return null;
         StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.store4));
+        yield return new WaitForSeconds(1f);
         if (canLast)
         {
             StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.changeBgm2));
             canLast = false;
         }
 
+        yield return new WaitForSeconds(1f);
         if (canLast)
         {
             StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.nextDay2));
+            canLast = false;
 
         }
 
+        yield return new WaitForSeconds(1f);
         if (canLast)
         {
             StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.last));
+            canLast = false;
+            
         }
+        yield return new WaitForSeconds(1f);
     }
 
     [field:SerializeField]public TutoAttack TutoRAttack { get;private set; }

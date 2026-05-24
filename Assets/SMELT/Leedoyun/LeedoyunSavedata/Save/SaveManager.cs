@@ -85,7 +85,6 @@ public class SaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"[SaveManager] Save failed: {e.Message}"); // 저장 실패
             OnSaveResult?.Invoke(false, "Save failed.");
         }
     }
@@ -106,9 +105,6 @@ public class SaveManager : MonoBehaviour
             string json     = File.ReadAllText(SavePath);
             SaveData loaded = JsonUtility.FromJson<SaveData>(json);
 
-            if (loaded.version != CURRENT_VERSION)
-                Debug.LogWarning($"[SaveManager] Version mismatch: {loaded.version} -> {CURRENT_VERSION}"); // 버전 불일치
-
             CurrentData = loaded;
 
             // 게임오버 상태(stamina=0)로 저장된 경우 기본값으로 복원
@@ -126,7 +122,6 @@ public class SaveManager : MonoBehaviour
         }
         catch (Exception e)
         {
-            Debug.LogError($"[SaveManager] Load failed: {e.Message}"); // 불러오기 실패
             OnLoadResult?.Invoke(false, "Load failed.");
             return false;
         }
@@ -150,6 +145,5 @@ public class SaveManager : MonoBehaviour
         _sessionStartTime = Time.time;
         foreach (var s in _saveables)
             s.OnLoad(CurrentData);
-        Debug.Log("[SaveManager] 모든 세이브 데이터 초기화 완료");
     }
 }
