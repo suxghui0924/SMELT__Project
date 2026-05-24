@@ -180,6 +180,7 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
     private IEnumerator TutoCoroutine()
     {
+        isTutorial = false;
         yield return null;
         StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.store3));
     }

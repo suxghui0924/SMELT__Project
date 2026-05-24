@@ -18,7 +18,10 @@ public class Dialogue : MonoBehaviour
     public float typingSpeed = 0.02f;
     public float duration = 4f;
     private bool active = true;
+    
+    
     public bool canMove = true;
+    public bool last = false;
     
     IEnumerator Type()
     {
@@ -61,6 +64,11 @@ public class Dialogue : MonoBehaviour
         if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)
         {
             canMove = true;
+        }
+        if (last)
+        {
+            last = false;
+            TutoManager.Instance.canLast = true;
         }
     }
 
@@ -149,6 +157,12 @@ public class Dialogue : MonoBehaviour
                 {
                     canMove = true;
                 }
+
+                if (last)
+                {
+                    last = false;
+                    TutoManager.Instance.canLast = true;
+                }
             }
         }
     }
@@ -161,4 +175,6 @@ public class Dialogue : MonoBehaviour
         UpdateName();
         textBox.text = "";
     }
+    
+    
 }

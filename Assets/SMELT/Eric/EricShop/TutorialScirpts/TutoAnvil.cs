@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 public class TutoAnvil : MonoBehaviour
 {
     [SerializeField] private GameObject craftUI;
-    [SerializeField] private GameObject TNPC;
     private bool canOpen = false;
     private void OnTriggerStay2D(Collider2D other)
     {
