@@ -1,7 +1,6 @@
 using System;                       // 추가
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Progress;
 
 /// <summary>
 /// 경제 시스템 + 인벤토리 + 테크트리 관리.
