@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using NUnit.Framework.Constraints;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine.SceneManagement;
@@ -11,6 +12,7 @@ public class skillSystem : MonoBehaviour
     [SerializeField]private bool isAlive = true;
     private float Damage = 10f;
     private bool shakes = false;
+    private bool Copper = false;
     public BossSkillManager _BSM;
     
     
@@ -90,7 +92,6 @@ public class skillSystem : MonoBehaviour
         if (BossSystem.Instance._Hp.fillAmount <= 0 )
         {
             DestroyAllSkills();
-            Debug.Log("보스가 죽었습니다!");
             isAlive = false;
             StartCoroutine(PlayDeathAnimation());
         }
@@ -111,7 +112,8 @@ public class skillSystem : MonoBehaviour
         _text.gameObject.SetActive(true);
         _Infinity.gameObject.SetActive(true);
         StartCoroutine(Managers());
-        Debug.Log("10만 골드 지급, ??? 획득");
+        Debug.Log("10만원 지급, ???획득");
+        Copper = true;
         GameManager.instance.ChangeState(new HouseState());
 
 
