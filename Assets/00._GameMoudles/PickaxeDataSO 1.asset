@@ -17,8 +17,9 @@ MonoBehaviour:
   icon: {fileID: 0}
   name: "\uBA5C\uB860 \uACE1\uAD2D\uC774"
   desc: "\uBA5C\uB860 \uB9DB\uC774 \uB098\uB294 \uACE1\uAD2D\uC774"
+  damage: 2
   goldPrice: 5000
   fruitPrice: 0000000005000000000000000000000000000000
-  hitboxSquare: 0
+  hitboxSquare: 0.7
   bought: 1
   eqiuqed: 0

@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private SkillInputSO _skillInput;
      private PlayerAnimation _skillAnim;
-    [SerializeField] private float _skillCoolDown;
+   public float _skillCoolDown;
     
     public float _nextAttackTime = 0f;
 
@@ -16,6 +16,11 @@ public class PlayerAttack : MonoBehaviour
         _skillAnim=GameObject.Find("PlayerVisual").GetComponent<PlayerAnimation>();
     }
 
+    public void SkillCooldownUpdate(float bonus)
+    {
+        _skillCoolDown *= (1f - bonus);
+        Debug.Log("현재 평쿨 업데이트됨 "+_skillCoolDown);
+    }
     private void OnEnable()
     {
         _skillInput.OnLeftKey += AttackLeft;

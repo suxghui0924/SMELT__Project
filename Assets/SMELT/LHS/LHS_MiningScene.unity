@@ -519,7 +519,7 @@ MonoBehaviour:
   - 0.15
   - 0.2
   - 0.2
-  maxEnemySpawnTimer: 4.5
+  maxEnemySpawnTimer: 4
   minEnemySpawnTimer: 1.5
 --- !u!1 &223916240
 GameObject:
@@ -1588,7 +1588,7 @@ MonoBehaviour:
   spawnChance:
   - 0.9
   - 0.1
-  maxEnemySpawnTimer: 5
+  maxEnemySpawnTimer: 4
   minEnemySpawnTimer: 2
 --- !u!1 &425754004
 GameObject:
@@ -2441,7 +2441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef949a8794e2b04c86bbad58732910c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickaxeStat: {fileID: 11400000, guid: 9181cc8b294d3bb47a01da26300f3670, type: 2}
+  currentDamage: 0
 --- !u!1 &611371519
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,6 +2766,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fffe0c1c0408adb41a8b10049b704c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHitBox: {fileID: 1847910403}
+  playerAttack: {fileID: 820997748}
 --- !u!1 &714948382
 GameObject:
   m_ObjectHideFlags: 0
@@ -4397,8 +4399,8 @@ MonoBehaviour:
   - 0.2
   - 0.25
   - 0.25
-  maxEnemySpawnTimer: 4
-  minEnemySpawnTimer: 1.2
+  maxEnemySpawnTimer: 3
+  minEnemySpawnTimer: 0.8
 --- !u!1 &1291544644
 GameObject:
   m_ObjectHideFlags: 0
@@ -8675,6 +8677,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   saveButton: {fileID: 233491182}
+  loadButton: {fileID: 0}
+  toastFont: {fileID: 0}
+  displayDuration: 1.5
+  fadeDuration: 0.3
 --- !u!1 &1814884678
 GameObject:
   m_ObjectHideFlags: 0
@@ -8755,7 +8761,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8d40e261fbbc949a1a05ac6b15acad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickaxeSO: {fileID: 11400000, guid: 9181cc8b294d3bb47a01da26300f3670, type: 2}
   _triggerOn: 0
 --- !u!1 &1858313179
 GameObject:
@@ -9814,7 +9819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef949a8794e2b04c86bbad58732910c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickaxeStat: {fileID: 11400000, guid: 9181cc8b294d3bb47a01da26300f3670, type: 2}
+  currentDamage: 0
 --- !u!1 &2132692109
 GameObject:
   m_ObjectHideFlags: 0
