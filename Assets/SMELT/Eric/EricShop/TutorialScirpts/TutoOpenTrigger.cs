@@ -9,7 +9,7 @@ public class TutoOpenTrigger : MonoBehaviour
         public bool canSell = false;
         public bool isMade = false;
         public bool isMadeFirst = false;
-        public bool door = false;
+        public string name;
 
         [SerializeField] private GameObject skillTreeObject;
 
@@ -52,71 +52,60 @@ public class TutoOpenTrigger : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
-            if (other.CompareTag("Player"))
-            {
+
                     if (Keyboard.current.eKey.wasPressedThisFrame)
                     {
-                            if (gameObject.name == "TriggerColl"&&canSell)
-                            {
-                                    StartCoroutine(
-                                            TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
-                                                    .sellWeapon2));
-                                    string itemId = InventoryManager.Instance._inventory.First().Key;
-                                    InventoryManager.Instance.RemoveItem(itemId);
-                                    skillTreeObject.SetActive(true);
-                                    Destroy(transform.parent.gameObject);
-                                    canSell = false;
-                            }
 
-                            if (gameObject.name == "DoorZone")
-                            {
-                                    door = true;
-                            }
-                            if (gameObject.name == "SkillTreeZone")
+
+
+                            if (name == "SkillTreeZone")
                             {
                                     StartCoroutine(
                                             TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
                                                     .store3));
                             }
-                    }
             }
     }
+    
+    
 
     private void Start()
     {
             count = InventoryManager.Instance._inventory.Count;
     }
 
-    private IEnumerator DoorCoroutine()
-    {
-            yield return null;
-            
-            StartCoroutine(
-                    TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
-                            .getOrder1));
-    }
+
+
 
     private void Update()
-    {
-
-            if (door)
+    {                   
+            if (TutoManager.Instance.TutoSaying.weaponSold)
             {
-                    StartCoroutine(DoorCoroutine());
-                    door = false;
+                    StartCoroutine(
+                            TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
+                                    .sellWeapon2));
+                    string itemId = InventoryManager.Instance._inventory.First().Key;
+                    TutoManager.Instance.TutoSaying.weaponSold=false;
+                    InventoryManager.Instance.RemoveItem(itemId);
+                    skillTreeObject.SetActive(true);
+                    Destroy(transform.parent.gameObject);
+                    canSell = false;
             }
+
             if (InventoryManager.Instance._inventory.Count > count&&!isMadeFirst)
             {
                     isMade = true;
                     isMadeFirst = true;
             }
 
-            if (isMade)
+            if (TutoManager.Instance.TutoSaying.weaponCrafted)
             {
                     StartCoroutine(
                             TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
                                     .sellWeapon1));
-
+                    TutoManager.Instance.TutoSaying.weaponCrafted = false;
                     canSell = true;
+                    isMade = false;
                     isMade = false;
             }
     }

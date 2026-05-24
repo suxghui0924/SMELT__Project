@@ -75,7 +75,7 @@ public class TutorialLine : MonoBehaviour
     {
         "드디어 첫판매구나!",
         "이제 업그레이드를 해볼까?",
-        "빛나는 곳으로 이동해보자!",
+        "옆 오브젝트로 이동해보자!",
     };
 
     public string[] store2 =
