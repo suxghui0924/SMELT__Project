@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needName: MelonUp1
   upName: AttackSpeedUp2
-  upTime: 0.2
+  upTime: 0.15
   needMoney: 16000
   icon: {fileID: 0}

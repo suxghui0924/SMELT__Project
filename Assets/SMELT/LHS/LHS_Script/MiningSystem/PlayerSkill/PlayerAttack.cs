@@ -10,6 +10,7 @@ public class PlayerAttack : MonoBehaviour
    public float _skillCoolDown;
     
     public float _nextAttackTime = 0f;
+    private PickaxeDataSO _pickaxeSO;
 
     private void Start()
     {
@@ -18,8 +19,22 @@ public class PlayerAttack : MonoBehaviour
 
     public void SkillCooldownUpdate(float bonus)
     {
-        _skillCoolDown *= (1f - bonus);
-        Debug.Log("현재 평쿨 업데이트됨 "+_skillCoolDown);
+        if (_pickaxeSO != null)
+        {
+            _skillCoolDown *= (1f - bonus - _pickaxeSO.speed);
+        }
+        else
+        {
+            _skillCoolDown *= (1f - bonus);
+        }
+
+        _skillCoolDown=Mathf.Clamp(_skillCoolDown, 0.05f, 1f); 
+            Debug.Log("현재 평쿨 업데이트됨 " + _skillCoolDown);
+       }
+    public void GetPickaxeData(PickaxeDataSO pickaxeSO)
+    {
+        _pickaxeSO = pickaxeSO;
+        Debug.Log("현재 곡괭이 업데이트됨 : "+ _pickaxeSO.name);
     }
     private void OnEnable()
     {
