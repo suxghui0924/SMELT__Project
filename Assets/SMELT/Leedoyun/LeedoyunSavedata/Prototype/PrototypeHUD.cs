@@ -165,6 +165,7 @@ public class PrototypeHUD : MonoBehaviour
             ZoneType.StoreRadioZone => "라디오 — [ E ] 가게 음악 설정",
             ZoneType.StoreStateZone => "두꺼비집 — [ E ] 가게 관련 설정",
             ZoneType.Door           => "문  —  [ E ] 문 열기",
+            ZoneType.Portal           => "포탈  —  [ E ] 들어가기",
             _                       => ""
         };
         _zoneHintGO.SetActive(true);

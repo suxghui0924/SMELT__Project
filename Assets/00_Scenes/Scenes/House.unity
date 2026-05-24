@@ -6131,6 +6131,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1102789748}
   m_CullTransparentMesh: 1
+--- !u!1 &1113735258
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1113735260}
+  - component: {fileID: 1113735259}
+  m_Layer: 0
+  m_Name: PortalSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1113735259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113735258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2972d947b7364636bb3ffacf307a81de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _portalObject: {fileID: 1811660010}
+--- !u!4 &1113735260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1113735258}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.5823994, y: 0.94291335, z: 0.014352182}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1157304069
 GameObject:
   m_ObjectHideFlags: 0
@@ -26365,13 +26410,14 @@ GameObject:
   - component: {fileID: 1811660014}
   - component: {fileID: 1811660013}
   - component: {fileID: 1811660012}
+  - component: {fileID: 1811660015}
   m_Layer: 0
   m_Name: YellowCarpet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1811660011
 Transform:
   m_ObjectHideFlags: 0
@@ -26727,6 +26773,21 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1811660015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1811660010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894ebe51c7397264187368ddb9ebca8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _zoneType: 9
+  _doorObject: {fileID: 0}
+  _skillTreeVisual: {fileID: 0}
 --- !u!1 &1816902036
 GameObject:
   m_ObjectHideFlags: 0
@@ -32775,3 +32836,4 @@ SceneRoots:
   - {fileID: 2116529344}
   - {fileID: 655564512}
   - {fileID: 2061078197}
+  - {fileID: 1113735260}

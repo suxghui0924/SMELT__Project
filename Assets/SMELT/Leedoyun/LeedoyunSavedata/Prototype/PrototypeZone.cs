@@ -1,7 +1,8 @@
+using _01_Scripts._Core._States;
 using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 
-public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone, NextDay, Door }
+public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone, NextDay, Door, Portal }
 
 public class PrototypeZone : MonoBehaviour
 {
@@ -135,6 +136,13 @@ public class PrototypeZone : MonoBehaviour
         {
             if (TimerAndReward.Instance != null && !TimerAndReward.Instance.canEnter) return;
             if (TimerAndReward.Instance != null) TimerAndReward.Instance.db = true;
+            /*if (InventoryManager.Instance != null && GameManager.instance != null)
+            {
+                if (InventoryManager.Instance.CurrentDay == 7)
+                    AchievementManager.Instance.AlarmPopUp("채광장이 막혀있습니다.", "오늘은 채광을 할 수 없습니다, 포탈로 이동하여 보스전을 진행하세요.");
+                else
+                    GameManager.instance.ChangeState(new MiningState());
+            }*/
             if (GameManager.instance != null)
                 GameManager.instance.ChangeState(new MiningState());
         }
@@ -164,6 +172,12 @@ public class PrototypeZone : MonoBehaviour
             }
             string hint = _isDoorOpen ? "문  —  [ E ] 문 닫기" : "문  —  [ E ] 문 열기";
             if (PrototypeHUD.Instance != null) PrototypeHUD.Instance.SetZoneHint(hint);
+        }
+
+        if (ZoneType == ZoneType.Portal)
+        {
+            if (GameManager.instance != null)
+                GameManager.instance.ChangeState(new BossState());
         }
     }
 }
