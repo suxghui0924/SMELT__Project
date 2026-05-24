@@ -30,12 +30,12 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     [Tooltip("동시에 표시되는 최대 주문 수")]
     [SerializeField] private int   maxActiveOrders   = 3;
     [Tooltip("가게 열기 후 첫 손님이 나올 때까지 대기 시간(초)")]
-    [SerializeField] private float firstOrderDelay    = 30f;
+    [SerializeField] private float firstOrderDelay    = 15f;
 
     // 일차별 주문 제한 시간 (1일차~7일차+)
     private static readonly float[] s_timeLimitByDay    = { 60f, 52f, 45f, 40f, 35f, 30f, 25f };
     // 일차별 주문 생성 주기 (1일차~7일차+)
-    private static readonly float[] s_spawnIntervalByDay = { 35f, 32f, 29f, 26f, 23f, 21f, 19f };
+    private static readonly float[] s_spawnIntervalByDay = { 15f, 15f, 15f, 15f, 15f, 15f, 15f };
 
     private static float GetOrderTimeLimitForDay(int day)
     {
@@ -79,6 +79,9 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
 
     /// <summary>골드 변경. (이전값, 새값) — UI 수익 카운터 애니메이션용.</summary>
     public event Action<int, int> OnTodayGoldChanged;
+
+    /// <summary>가게 닫힘 — 문 비주얼 즉시 동기화용.</summary>
+    public static event Action OnShopClosed;
 
     // ─────────────────────────────────────────
     // 해금 테이블 (날짜별 사용 가능한 조합)
@@ -129,6 +132,8 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
     // ─────────────────────────────────────────
     private void Update()
     {
+        if (SceneManager.GetActiveScene().name != "House") return;
+
         float dt = Time.deltaTime;
 
         // 활성 주문 타이머 업데이트
@@ -331,6 +336,7 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
             OnOrderExpired?.Invoke(order);
         }
         _spawnTimer = 0f;
+        OnShopClosed?.Invoke();
     }
 
     // ─────────────────────────────────────────
