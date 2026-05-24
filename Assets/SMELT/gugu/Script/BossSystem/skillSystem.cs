@@ -8,8 +8,7 @@ using UnityEngine.UI;
 
 public class skillSystem : MonoBehaviour
 {
-    private ulong _gold = 0;
-    public ulong Gold => _gold;
+    
     [SerializeField]private bool isAlive = true;
     private float Damage = 10f;
     private bool shakes = false;
