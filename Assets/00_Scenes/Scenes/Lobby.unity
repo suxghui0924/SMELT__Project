@@ -5951,7 +5951,7 @@ GameObject:
   - component: {fileID: 395160165}
   - component: {fileID: 395160166}
   m_Layer: 0
-  m_Name: StaminaManager
+  m_Name: TimerAndRewardManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5984,6 +5984,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24afbdc04344b6459dcc682d5aa2e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitBoxOnTrigger: {fileID: 0}
+  playerHitBox: {fileID: 0}
+  playerAttack: {fileID: 0}
   maxFatigue: 100
   currentFatigue: 0
   OnFatigueChange:
