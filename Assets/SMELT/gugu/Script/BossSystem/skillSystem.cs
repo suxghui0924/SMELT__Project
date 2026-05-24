@@ -107,6 +107,7 @@ public class skillSystem : MonoBehaviour
         _text.gameObject.SetActive(true);
         Debug.Log("10만 골드 지급, ??? 획득");
 
+
     }
 
     private void DestroyAllSkills()
