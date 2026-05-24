@@ -57,14 +57,14 @@ public class GameManager : MonoBehaviour
         SoundManager.instance.PlayBGM("Lobby");
     }
 
-    void Update()
+    /*void Update()
     {
 
         if (Input.GetKeyDown(KeyCode.RightShift))
         {
             ChangeState(new GameOverState());
         }
-    }
+    }*/
 
 
     public void ChangeState(IGameState newState)
