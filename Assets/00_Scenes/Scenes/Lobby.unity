@@ -5433,6 +5433,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 923eca31effac694e8132a8ca8211bbe, type: 3}
   - {fileID: 8300000, guid: 6eeee5e7dd4dd31408d7b33161529706, type: 3}
   - {fileID: 8300000, guid: 3626980c905a7bf4496b5025b4e59a8d, type: 3}
+  - {fileID: 8300000, guid: 478e380db90ddf6479551b69efbe8a94, type: 3}
+  - {fileID: 8300000, guid: e72a3998e29415a40bb637b44d4cc317, type: 3}
   _bgmVolumeSlider: {fileID: 792210233}
   _sfxVolumeSlider: {fileID: 2119518506}
 --- !u!1 &360140276

@@ -43,6 +43,7 @@ public class BossScenePlayerHP : MonoBehaviour
     {
         
         if (IsPlayerDead == true || IsPlayerInvincible == true) return;
+        VolumeManager.instance.VolumeStart("damage", "left",0.2f);
         ReduceFatigue(damageValue);
         if (PlayerCurrentHp > 0)
         {

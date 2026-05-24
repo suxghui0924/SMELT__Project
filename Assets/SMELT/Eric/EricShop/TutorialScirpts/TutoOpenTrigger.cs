@@ -81,6 +81,8 @@ public class TutoOpenTrigger : MonoBehaviour
     {                   
             if (TutoManager.Instance.TutoSaying.weaponSold)
             {
+                    TutoManager.Instance.Dialogue.canMakePoint = true;
+
                     StartCoroutine(
                             TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
                                     .sellWeapon2));
@@ -100,6 +102,7 @@ public class TutoOpenTrigger : MonoBehaviour
 
             if (TutoManager.Instance.TutoSaying.weaponCrafted)
             {
+                    TutoManager.Instance.Dialogue.canMakePoint = true;
                     StartCoroutine(
                             TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
                                     .sellWeapon1));
