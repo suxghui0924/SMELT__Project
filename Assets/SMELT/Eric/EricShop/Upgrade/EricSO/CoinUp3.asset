@@ -15,4 +15,5 @@ MonoBehaviour:
   needName: GrapeUp4
   upName: CoinUp3
   upTime: 0.05
-  needMoney: 28000
+  needMoney: 45000
+  icon: {fileID: 0}
