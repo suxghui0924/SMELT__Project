@@ -106,6 +106,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
             currentFatigue = maxFatigue;
             OnFatigueChange?.Invoke(currentFatigue);
             Debug.Log("스테미나 초기화: "+currentFatigue);
+            db = false;
         }
     
         void Update()
