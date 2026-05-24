@@ -92,6 +92,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                 else
                 {
                     FatigueReset();
+                    db = true;
                 }
             }
             else
