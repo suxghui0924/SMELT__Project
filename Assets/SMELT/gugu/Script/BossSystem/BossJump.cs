@@ -55,7 +55,7 @@ public class BossJump : MonoBehaviour
 
         // 착지 후 방향 전환
         spriteRenderer.flipX = flipValue;
-        BossSkillManager.Instance.timer = 1.5f;
+        BossSkillManager.Instance.timer = 0.5f;
         BossSkillManager.Instance.stack = true;
 
     }

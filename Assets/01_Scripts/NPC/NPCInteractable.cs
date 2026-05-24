@@ -202,8 +202,30 @@ namespace _01_Scripts.NPC
             }
             else
             {
-                _weaponIcon.enabled = false;
+                // 스프라이트 미할당이어도 광석 색상으로 폴백 표시 — 아이콘은 항상 보임
+                _weaponIcon.sprite  = null;
+                _weaponIcon.color   = GetOreColor(weaponId);
+                _weaponIcon.enabled = true;
+                // 캐시하지 않음 → WeaponCraftUI에 스프라이트 할당되면 다음 프레임에 교체됨
             }
+        }
+
+        private static readonly string[] _oreIds = { "apple", "melon", "orange", "lemon", "grape" };
+        private static readonly Color[]  _oreColors =
+        {
+            new Color(1.00f, 0.25f, 0.25f, 0.85f), // apple  빨강
+            new Color(0.25f, 0.85f, 0.25f, 0.85f), // melon  초록
+            new Color(1.00f, 0.58f, 0.10f, 0.85f), // orange 주황
+            new Color(0.95f, 0.92f, 0.20f, 0.85f), // lemon  노랑
+            new Color(0.60f, 0.20f, 0.95f, 0.85f), // grape  보라
+        };
+
+        private static Color GetOreColor(string weaponId)
+        {
+            string[] p = weaponId.Split('_');
+            if (p.Length < 3) return new Color(0.6f, 0.6f, 0.6f, 0.85f);
+            int idx = System.Array.IndexOf(_oreIds, p[2]);
+            return idx >= 0 ? _oreColors[idx] : new Color(0.6f, 0.6f, 0.6f, 0.85f);
         }
 
         // ─────────────────────────────────────────

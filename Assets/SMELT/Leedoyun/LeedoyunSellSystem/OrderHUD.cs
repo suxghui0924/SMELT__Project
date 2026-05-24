@@ -45,9 +45,7 @@ public class OrderHUD : MonoBehaviour
     private static readonly Color CLR_BG_PANEL    = new Color(0.35f, 0.25f, 0.14f, 0.97f);
     private static readonly Color CLR_ORDER_ACTIVE = new Color(0.26f, 0.18f, 0.10f, 1f);
     private static readonly Color CLR_ORDER_EMPTY  = new Color(0.20f, 0.14f, 0.08f, 0.85f);
-    private static readonly Color CLR_STOCK_OK     = new Color(0.18f, 0.50f, 0.22f, 1f);
-    private static readonly Color CLR_STOCK_NONE   = new Color(0.32f, 0.24f, 0.15f, 1f);
-    private static readonly Color CLR_LABEL        = new Color(0.93f, 0.85f, 0.65f);
+private static readonly Color CLR_LABEL        = new Color(0.93f, 0.85f, 0.65f);
     private static readonly Color CLR_GOLD         = new Color(1.00f, 0.85f, 0.20f);
     private static readonly Color CLR_DIVIDER      = new Color(0.60f, 0.45f, 0.25f, 0.6f);
     private static readonly Color CLR_TIMER_OK     = new Color(0.22f, 0.80f, 0.28f, 1f);
@@ -85,7 +83,7 @@ public class OrderHUD : MonoBehaviour
         public Image             timerFill;
         public GameObject        timerBg;
         public TextMeshProUGUI   timeTxt;
-        public Image             stockBg;
+        public Button            abandonBtn;
         public TextMeshProUGUI   stockTxt;
         public GameObject        emptyLabel;
         public Leedoyun_CustomerOrder order;
@@ -249,8 +247,8 @@ public class OrderHUD : MonoBehaviour
         slot.goldTxt.gameObject.SetActive(hasOrder);
         slot.timerBg.SetActive(hasOrder);
         slot.timeTxt.gameObject.SetActive(hasOrder);
-        slot.stockBg.gameObject.SetActive(hasOrder);
         slot.weaponIconFrame.SetActive(hasOrder);
+        if (slot.abandonBtn != null) slot.abandonBtn.gameObject.SetActive(hasOrder);
 
         if (!hasOrder) return;
 
@@ -262,8 +260,6 @@ public class OrderHUD : MonoBehaviour
         slot.goldTxt.text = $"{displayGold:N0} G";
 
         SetWeaponIcon(slot, slot.order.requestedWeaponId);
-
-        RefreshStock(i);
     }
 
     private void RefreshStockAll()
@@ -274,7 +270,6 @@ public class OrderHUD : MonoBehaviour
         for (int i = 0; i < SLOT_COUNT; i++)
         {
             if (_slots[i].order == null || !_slots[i].order.IsActive) continue;
-            RefreshStock(i);
             int displayGold = Mathf.RoundToInt(_slots[i].order.rewardGold * salesMult);
             _slots[i].goldTxt.text = $"{displayGold:N0} G";
 
@@ -291,17 +286,12 @@ public class OrderHUD : MonoBehaviour
         }
     }
 
-    private void RefreshStock(int i)
+    private void OnAbandonClicked(int slotIdx)
     {
-        var slot = _slots[i];
-        if (slot.order == null || slot.stockBg == null) return;
-
-        bool hasStock = InventoryManager.Instance != null &&
-                        InventoryManager.Instance.HasItem(slot.order.requestedWeaponId);
-
-        slot.stockBg.color   = hasStock ? CLR_STOCK_OK : CLR_STOCK_NONE;
-        slot.stockTxt.text   = hasStock ? "재고 있음" : "재고 없음";
-        slot.stockTxt.color  = hasStock ? Color.white : new Color(0.65f, 0.55f, 0.40f);
+        if (slotIdx < 0 || slotIdx >= SLOT_COUNT) return;
+        var order = _slots[slotIdx].order;
+        if (order == null || !order.IsActive) return;
+        Leedoyun_SellManager.Instance?.AbandonOrder(order.orderId);
     }
 
     private void UpdateTimerBars()
@@ -406,20 +396,30 @@ public class OrderHUD : MonoBehaviour
         slot.weaponIcon.preserveAspect = true;
         slot.weaponIcon.color = new Color(0f, 0f, 0f, 0f);
 
-        // 재고 상태 뱃지 (우측)
+        // 주문 포기 버튼 (우측)
         float badgeW  = 60f;
         float badgeCX = HUD_W / 2f - badgeW / 2f - 4f;
 
-        var stockGO = MakePanel(p, "StockBadge",
+        var abandonGO = MakePanel(p, "AbandonBtn",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
             new Vector2(badgeCX, 0f), new Vector2(badgeW, ORDER_H - 14f),
-            CLR_STOCK_NONE);
-        slot.stockBg  = stockGO.GetComponent<Image>();
-        slot.stockTxt = MakeTxt(stockGO.transform, "재고 없음", 10, FontStyles.Bold,
-            new Color(0.65f, 0.55f, 0.40f),
+            new Color(0.40f, 0.10f, 0.10f));
+        var abandonImg = abandonGO.GetComponent<Image>();
+        var abandonBtn = abandonGO.AddComponent<Button>();
+        abandonBtn.targetGraphic = abandonImg;
+        var cb = abandonBtn.colors;
+        cb.normalColor      = new Color(0.40f, 0.10f, 0.10f);
+        cb.highlightedColor = new Color(0.62f, 0.18f, 0.18f);
+        cb.pressedColor     = new Color(0.22f, 0.05f, 0.05f);
+        abandonBtn.colors = cb;
+        slot.abandonBtn = abandonBtn;
+        slot.stockTxt = MakeTxt(abandonGO.transform, "주문\n포기", 10, FontStyles.Bold,
+            new Color(1f, 0.75f, 0.75f),
             Vector2.zero, new Vector2(badgeW - 4f, ORDER_H - 18f));
         slot.stockTxt.alignment = TextAlignmentOptions.Center;
-        slot.stockBg.gameObject.SetActive(false);
+        int slotCapture = idx;
+        abandonBtn.onClick.AddListener(() => OnAbandonClicked(slotCapture));
+        abandonGO.SetActive(false);
 
         // 텍스트 영역
         float textLeft  = iconCenterX + iconSize / 2f + 6f;

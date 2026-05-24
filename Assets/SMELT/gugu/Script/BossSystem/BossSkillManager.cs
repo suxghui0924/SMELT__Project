@@ -60,7 +60,7 @@ public class BossSkillManager : MonoBehaviour
         if (timer < 0 && !db)
         {
             timer = 1f;
-            Skills(Random.Range(0, 3));
+            Skills(Random.Range(0, 4));
         }
     }
     private void Skills(int skill)
@@ -84,7 +84,7 @@ public class BossSkillManager : MonoBehaviour
             
                 db = false;
             }
-            else if (skill == 1)
+            else if (skill == 1 || skill == 2)
             {
             
                 db = true;
@@ -97,7 +97,7 @@ public class BossSkillManager : MonoBehaviour
                 db = false;
             
             }
-            else if (skill == 2)
+            else if (skill == 3)
             {
            
                 db = true;
