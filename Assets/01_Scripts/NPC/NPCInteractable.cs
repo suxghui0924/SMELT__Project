@@ -18,7 +18,7 @@ namespace _01_Scripts.NPC
         private const string FONT_PATH = "Assets/SMELT/Suxghui/Galmuri9 SDF.asset";
 
         // 말풍선 위치: NPC 우측
-        private static readonly Vector3 BUBBLE_OFFSET = new Vector3(0.8f, 0.2f, 0f);  // NPC 우측
+        private static readonly Vector3 BUBBLE_OFFSET = new Vector3(0.9f, 0.2f, 0f);  // NPC 우측
 
         private NPCMovement _movement;
         private Transform   _playerTransform;

@@ -3433,9 +3433,6 @@ MonoBehaviour:
   _anim: {fileID: 8086202439210286133}
   _horse: 0
   _horseString: 
-  UnitTypeChanged:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &1364145073433439217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3449,7 +3446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _timer: 3
-  _offset: 1.25
+  _offset: 2.5
 --- !u!114 &-4137591037969378524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3463,7 +3460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interactRadius: 2
-  _font: {fileID: 0}
+  _font: {fileID: 11400000, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
 --- !u!1 &7641525738523129613
 GameObject:
   m_ObjectHideFlags: 0

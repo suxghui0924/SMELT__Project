@@ -36,27 +36,24 @@ public class TutorialLine : MonoBehaviour
     };
     public string[] dungeon5 =
     {
-        "이 버튼을 누르면 중간에 가게로 돌아갈 수 있어.",
+        "HOME 버튼을 누르면 중간에 가게로 돌아갈 수 있어.",
+    };
+    public string[] ui1 =
+    {
+        "가장 상단에 있는 UI는 보유 재화와 보유 재료를 뜻해.",
     };
     public string[] getOrder1 =
     {
         "앗, 손님이 방문하셨어!",
-    };
-
-    public string[] getOrder2 =
-    {
         "주문 게시판을 봐보자!",
         "이건 주문에 대한 요청이야 .",
         "이 게이지는 손님의 인내심을 뜻해!",
         "인내심이 모두 달면 손님이 떠나버리니 조심해!",
         "사과석 검을 만들어 달라네 한번 재료도 있으니 만들어 보자",
-    };
-    public string[] makeWeapon1 =
-    {
         "모루가 있는 곳으로 이동해보자!",
     };
 
-    public string[] makeWeapon2 =
+    public string[] makeWeapon1 =
     {
         "E키를 눌러보자",
         "사과석 검을 만들어 달라고 했고 멜론석도 섞어달라고 했으니 만들어 보자.",

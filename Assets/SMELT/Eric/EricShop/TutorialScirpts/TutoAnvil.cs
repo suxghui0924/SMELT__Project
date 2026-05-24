@@ -1,16 +1,26 @@
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TutoAnvil : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private GameObject craftUI;
+    private bool canOpen = false;
+    private void OnTriggerStay2D(Collider2D other)
     {
-        
+        canOpen = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
     {
-        
+        craftUI = GameObject.Find("WeaponCraftUI");
+    }
+
+    private void Update()
+    {
+        if (!canOpen && Keyboard.current.eKey.wasPressedThisFrame)
+        {
+            craftUI.SetActive(true);
+        }
     }
 }
