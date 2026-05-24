@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using TMPro;
 using Unity.Cinemachine;
 using UnityEngine.SceneManagement;
 
@@ -12,16 +13,19 @@ public class skillSystem : MonoBehaviour
     private bool shakes = false;
     public BossSkillManager _BSM;
     
-    private ulong _gold           = 0;
     
     public bool IsAlive => isAlive;
     [SerializeField]private GameObject boss;
     [SerializeField]private GameObject orePrefab ;
     [SerializeField]private GameObject juicePrefab;
     [SerializeField]private CinemachineImpulseSource impulseSource;
+    [SerializeField]private TextMeshProUGUI _text;  
 
-    
-    
+    private void Start()
+    {
+        _text.gameObject.SetActive(false);
+    }
+
     private void FixedUpdate()
     {
         if (shakes)
@@ -100,8 +104,9 @@ public class skillSystem : MonoBehaviour
     public void OnAnimationEnd()
     {
         Destroy(boss);
-        
-        
+        _text.gameObject.SetActive(true);
+        Debug.Log("10만 골드 지급, ??? 획득");
+
     }
 
     private void DestroyAllSkills()
