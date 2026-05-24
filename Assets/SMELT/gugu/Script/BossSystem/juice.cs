@@ -10,7 +10,7 @@ public class juice : MonoBehaviour
     private Rigidbody2D rb;
     private bool Attack = false;
 
-    private float speed = 8f;
+    private float speed = 12f;
 
     
     private void Awake()
