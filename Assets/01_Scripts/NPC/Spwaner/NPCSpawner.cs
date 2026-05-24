@@ -5,6 +5,7 @@ using _01_Scripts.NPC;
 using _01_Scripts.NPC.Data;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using UnityEngine.SceneManagement;
 
 namespace _01_Scripts.Player.Manager
 {
@@ -22,13 +23,29 @@ namespace _01_Scripts.Player.Manager
         private void OnEnable()
         {
             OrderHUD.OnOrderCreated += HandleOnAcceptOrder;
-            OrderHUD.OnOrderEnded += HandleOnRewardOrder;
+            OrderHUD.OnOrderEnded   += HandleOnRewardOrder;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
-            private void OnDisable()
+        private void OnDisable()
         {
-            OrderHUD.OnOrderCreated -= HandleOnAcceptOrder;
-            OrderHUD.OnOrderEnded -= HandleOnRewardOrder;
+            OrderHUD.OnOrderCreated  -= HandleOnAcceptOrder;
+            OrderHUD.OnOrderEnded    -= HandleOnRewardOrder;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+        }
+
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            bool isHouse = scene.name == "House";
+            for (int i = npcList.Count - 1; i >= 0; i--)
+            {
+                if (npcList[i] == null) { npcList.RemoveAt(i); continue; }
+                if (isHouse)
+                    npcList[i].SetActive(true);
+                else
+                    Destroy(npcList[i]);
+            }
+            if (!isHouse) npcList.Clear();
         }
 
         // ReSharper disable Unity.PerformanceAnalysis

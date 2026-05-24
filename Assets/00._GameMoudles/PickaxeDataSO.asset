@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 0
   pickaxeId: pickaxe_apple
-  icon: {fileID: 0}
+  icon: {fileID: -3499580963339794783, guid: 20f227d6d92856d44ac840e581d43865, type: 3}
   name: "\uC0AC\uACFC \uACE1\uAD2D\uC774"
   desc: "\uD5A5\uAE30\uB86D\uAC8C \uC0AC\uACFC\uB0C4\uC0C8\uAC00 \uB0A9\uB2C8\uB2E4."
   damage: 1

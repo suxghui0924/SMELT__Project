@@ -15,4 +15,5 @@ MonoBehaviour:
   needName: MelonUp3
   upName: AttackSpeedUp4
   upTime: 0.5
-  needMoney: 150000000
+  needMoney: 50000
+  icon: {fileID: 0}

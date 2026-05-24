@@ -32,10 +32,17 @@ public class HitBoxOnTrigger : MonoBehaviour
             {
                 if (other.TryGetComponent<EnemyBase>(out EnemyBase _enemyBase))
                 {
-                    if(_pickaxeSO!=null)
+                    if (_pickaxeSO != null)
+                    { 
+                        SoundManager.instance.PlaySFX("Parry");
                     _enemyBase.OnEnemyDamaged(_pickaxeSO.damage);
+                        
+                    }
                     else
-                    _enemyBase.OnEnemyDamaged(1);
+                    {
+                        _enemyBase.OnEnemyDamaged(1);
+                        SoundManager.instance.PlaySFX("Parry");
+                    }
                 }
                 _enemies.Add(other.gameObject);
             }

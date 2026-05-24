@@ -15,4 +15,5 @@ MonoBehaviour:
   needName: UpParryRange1
   upName: AppleUp2
   upTime: 5
-  needMoney: 3000000
+  needMoney: 9000
+  icon: {fileID: 0}

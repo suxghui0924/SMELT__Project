@@ -15,4 +15,5 @@ MonoBehaviour:
   needName: OrangeUp2
   upName: OrangeUp3
   upTime: 10
-  needMoney: 40000000
+  needMoney: 34000
+  icon: {fileID: 0}

@@ -2,7 +2,7 @@ using _01_Scripts._Core._States;
 using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 
-public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone, NextDay, Door, Portal }
+public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone, NextDay, Door, Portal, StoreBroken }
 
 public class PrototypeZone : MonoBehaviour
 {
@@ -30,14 +30,34 @@ public class PrototypeZone : MonoBehaviour
     private bool  _isDayNextOpen = false;
     private bool  _isSkillOpen   = false;
 
+    private void Start()
+    {
+        if (_zoneType == ZoneType.Door)
+        {
+            _isDoorOpen = ShopManager.Instance != null && ShopManager.Instance.IsShopOpen;
+            if (_doorObject != null)
+                _doorObject.SetActive(!_isDoorOpen);
+        }
+    }
+
     private void OnEnable()
     {
         LeedoyunUIManager.OnAnyUIOpened += OnLeedoyunUIOpened;
+        Leedoyun_SellManager.OnShopClosed += OnShopForceClosed;
     }
 
     private void OnDisable()
     {
         LeedoyunUIManager.OnAnyUIOpened -= OnLeedoyunUIOpened;
+        Leedoyun_SellManager.OnShopClosed -= OnShopForceClosed;
+    }
+
+    private void OnShopForceClosed()
+    {
+        if (_zoneType != ZoneType.Door) return;
+        _isDoorOpen = false;
+        if (_doorObject != null)
+            _doorObject.SetActive(true); // 문 닫힘 = 오브젝트 활성
     }
 
     // Leedoyun UI가 열릴 때 라디오·달력·스킬 팝업을 닫고 상태 초기화
@@ -178,6 +198,12 @@ public class PrototypeZone : MonoBehaviour
         {
             if (GameManager.instance != null)
                 GameManager.instance.ChangeState(new BossState());
+        }
+
+        if (ZoneType == ZoneType.StoreBroken)
+        {
+            if (GameManager.instance != null)
+                GameManager.instance.ChangeState(new BrokenState());
         }
     }
 }

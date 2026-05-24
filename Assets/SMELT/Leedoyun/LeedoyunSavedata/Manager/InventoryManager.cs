@@ -28,7 +28,16 @@ public class InventoryManager : MonoBehaviour, ISaveable
     private static ulong GetMaintenanceCostForDay(int day)
     {
         int idx = Mathf.Clamp(day - 1, 0, s_dailyCost.Length - 1);
-        return s_dailyCost[idx];
+        ulong baseCost = s_dailyCost[idx];
+
+        // 7일차 초과 시 초과 일수만큼 30% 복리 증가
+        if (day > 7)
+        {
+            float multiplier = Mathf.Pow(1.3f, day - 7);
+            baseCost = (ulong)Mathf.RoundToInt(baseCost * multiplier);
+        }
+
+        return baseCost;
     }
 
     private List<string> _unlockedTechs = new List<string>();

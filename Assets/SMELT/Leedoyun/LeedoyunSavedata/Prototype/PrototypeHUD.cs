@@ -166,6 +166,7 @@ public class PrototypeHUD : MonoBehaviour
             ZoneType.StoreStateZone => "두꺼비집 — [ E ] 가게 관련 설정",
             ZoneType.Door           => "문  —  [ E ] 문 열기",
             ZoneType.Portal           => "포탈  —  [ E ] 들어가기",
+            ZoneType.StoreBroken           => "빨간 버튼  —  [ E ] 가게 페업하기",
             _                       => ""
         };
         _zoneHintGO.SetActive(true);

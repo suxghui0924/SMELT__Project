@@ -41,7 +41,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
+                //DontDestroyOnLoad(gameObject);
                 SceneManager.sceneLoaded += OnSceneChanged;
             }
             else
@@ -92,6 +92,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                 else
                 {
                     FatigueReset();
+                    db = true;
                 }
             }
             else
@@ -102,7 +103,6 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
         
         public void FatigueReset()
         {
-            db = true;
             currentFatigue = maxFatigue;
             OnFatigueChange?.Invoke(currentFatigue);
             Debug.Log("스테미나 초기화: "+currentFatigue);
