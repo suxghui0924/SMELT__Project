@@ -2,7 +2,7 @@ using _01_Scripts._Core._States;
 using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using UnityEngine;
 
-public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone, NextDay, Door, Portal }
+public enum ZoneType { Mining, Crafting, Selling, SkillTree, MineEntrance, StoreRadioZone, StoreStateZone, NextDay, Door, Portal, StoreBroken }
 
 public class PrototypeZone : MonoBehaviour
 {
@@ -178,6 +178,12 @@ public class PrototypeZone : MonoBehaviour
         {
             if (GameManager.instance != null)
                 GameManager.instance.ChangeState(new BossState());
+        }
+
+        if (ZoneType == ZoneType.StoreBroken)
+        {
+            if (GameManager.instance != null)
+                GameManager.instance.ChangeState(new BrokenState());
         }
     }
 }
