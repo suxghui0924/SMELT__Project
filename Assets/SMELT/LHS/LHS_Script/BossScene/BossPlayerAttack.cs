@@ -35,6 +35,7 @@ public class BossPlayerAttack : MonoBehaviour
     {
         if (Time.time >= _nextAttackTime)
         {
+            SoundManager.instance.PlaySFX("Attack");
             _nextAttackTime = Time.time + _skillCoolDown;
             
             _skillAnim.OnPlayerAttack(dirX);
