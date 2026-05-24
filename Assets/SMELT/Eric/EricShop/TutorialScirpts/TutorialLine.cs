@@ -41,10 +41,6 @@ public class TutorialLine : MonoBehaviour
     public string[] ui1 =
     {
         "가장 상단에 있는 UI는 보유 재화와 보유 재료를 뜻해.",
-    };
-
-    public string[] openDoor1 =
-    {
         "이제 재료도 있으니 문으로 가서 E를 눌러 가게를 열고 손님을 맞이해봐",
     };
     public string[] getOrder1 =

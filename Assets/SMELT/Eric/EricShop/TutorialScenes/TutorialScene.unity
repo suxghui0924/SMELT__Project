@@ -2089,6 +2089,7 @@ MonoBehaviour:
   canSell: 0
   isMade: 0
   isMadeFirst: 0
+  count: 0
 --- !u!1 &312496437
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,7 +3584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   craftUI: {fileID: 0}
-  TNPC: {fileID: 0}
 --- !u!1 &548593531
 GameObject:
   m_ObjectHideFlags: 0
@@ -5990,6 +5990,7 @@ MonoBehaviour:
   canSell: 0
   isMade: 0
   isMadeFirst: 0
+  count: 0
 --- !u!1 &1057519832
 GameObject:
   m_ObjectHideFlags: 0
@@ -11478,6 +11479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a923d66b51092c4a9f5d4e14c573e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillTreeUI: {fileID: 0}
+  lastObjects:
+  - {fileID: 290847930}
+  - {fileID: 454328293}
+  canLast: 0
   <TutoRAttack>k__BackingField: {fileID: 1955538076}
   <TutoLAttack>k__BackingField: {fileID: 857025069}
   <TutoDungeon>k__BackingField: {fileID: 1192471125}
@@ -11487,7 +11493,7 @@ MonoBehaviour:
   <TutoLine>k__BackingField: {fileID: 1128825364}
   <TutoSaying>k__BackingField: {fileID: 1128825361}
   <TutoHit>k__BackingField: {fileID: 1655058726}
-  <TutoOpenTrigger>k__BackingField: {fileID: 0}
+  <TutoOpenTrigger>k__BackingField: {fileID: 300137298}
   <Dialogue>k__BackingField: {fileID: 1866439608}
 --- !u!114 &1128825364
 MonoBehaviour:
@@ -11530,7 +11536,6 @@ MonoBehaviour:
   ui1:
   - "\uAC00\uC7A5 \uC0C1\uB2E8\uC5D0 \uC788\uB294 UI\uB294 \uBCF4\uC720 \uC7AC\uD654\uC640
     \uBCF4\uC720 \uC7AC\uB8CC\uB97C \uB73B\uD574."
-  openDoor1:
   - "\uC774\uC81C \uC7AC\uB8CC\uB3C4 \uC788\uC73C\uB2C8 \uBB38\uC73C\uB85C \uAC00\uC11C
     E\uB97C \uB20C\uB7EC \uAC00\uAC8C\uB97C \uC5F4\uACE0 \uC190\uB2D8\uC744 \uB9DE\uC774\uD574\uBD10"
   getOrder1:
@@ -11574,6 +11579,7 @@ MonoBehaviour:
     \uC5C5\uADF8\uB808\uC774\uB4DC \uD560 \uC218 \uC788\uC5B4!"
   - "\uC774\uC81C \uCC3D\uC744 \uB2EB\uACE0 \uB2E4\uB978 \uAC70\uC5D0 \uB300\uD574
     \uC54C\uB824\uC904\uAC8C"
+  store4:
   - "\uC6B0\uCE21 \uD558\uB2E8\uC5D0 \uBB54\uAC00 \uBCF4\uC774\uC9C0?"
   - "\uC774\uAC74 \uC6B0\uB9AC\uAC00 \uD558\uB8E8 \uB3D9\uC548 \uCC44\uC6CC\uC57C\uD560
     \uD560\uB2F9\uB7C9\uACFC \uC77C\uCC28\uC57C"
@@ -11581,17 +11587,13 @@ MonoBehaviour:
     \uBCF4\uC2A4\uC5D0 \uB3C4\uC804\uD560 \uC218 \uC788\uC5B4!"
   - "\uCC44\uC6B0\uC9C0 \uBABB\uD558\uBA74 \uD3D0\uC5C5\uD558\uAC8C \uB418\uB2C8
     \uC870\uC2EC\uD574"
-  changeBgm1:
-  - "\uB77C\uB514\uC624\uC5D0 \uB2E4\uAC00\uAC00 \uBCF4\uC790."
   changeBgm2:
-  - "E\uD0A4\uB97C \uB204\uB974\uACE0 \uCC3D\uC744 \uC5F4\uC5B4 \uB178\uB798\uB97C
-    \uBC14\uAFC0 \uC218 \uC788\uC5B4."
-  nextDay1:
-  - "\uCE98\uB9B0\uB354\uB85C \uB2E4\uAC00\uAC00 \uBCF4\uC790"
+  - "\uB77C\uB514\uC624\uB294 E\uD0A4\uB97C \uB204\uB974\uACE0 \uCC3D\uC744 \uC5F4\uC5B4
+    \uB178\uB798\uB97C \uBC14\uAFC0 \uC218 \uC788\uC5B4."
   nextDay2:
-  - "E\uD0A4\uB97C \uB204\uB974\uACE0 \uCC3D\uC744 \uC5F4\uBA74 \uD560\uB2F9\uB7C9
-    \uC81C\uCD9C\uD560 \uB9CC\uD07C\uC758 \uB3C8\uC774 \uC788\uB2E4\uBA74 \uB2E4\uC74C
-    \uB0A0\uC9DC\uB85C \uAC08 \uC218 \uC788\uC5B4."
+  - "\uCE98\uB9B0\uB354\uB294 E\uD0A4\uB97C \uB204\uB974\uACE0 \uCC3D\uC744 \uC5F4\uBA74
+    \uD560\uB2F9\uB7C9 \uC81C\uCD9C\uD560 \uB9CC\uD07C\uC758 \uB3C8\uC774 \uC788\uB2E4\uBA74
+    \uB2E4\uC74C \uB0A0\uC9DC\uB85C \uAC08 \uC218 \uC788\uC5B4."
   last:
   - "\uC774\uC81C \uB0B4\uAC00 \uC54C\uB824\uC904 \uAC74 \uB2E4 \uC54C\uB824\uC900
     \uAC70 \uAC19\uB124 \uD654\uC774\uD305\uD574\uBD10~!"
