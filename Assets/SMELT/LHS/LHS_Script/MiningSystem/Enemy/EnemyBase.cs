@@ -86,7 +86,7 @@ public class EnemyBase : MonoBehaviour
                 case "Melon":   ItemSpawnManager.instance.SpawnItem(1,transform,randomItemCount); break;
                 case "Mandarin":   ItemSpawnManager.instance.SpawnItem(2,transform,randomItemCount); break;
                 case "Lemon":   ItemSpawnManager.instance.SpawnItem(3,transform,randomItemCount); break;
-                case "Grape":   ItemSpawnManager.instance.SpawnItem(4,transform,randomItemCount); break;
+                //case "Grape":   ItemSpawnManager.instance.SpawnItem(4,transform,randomItemCount); break;
             }
             StartCoroutine(ParticleRoutine());
         }

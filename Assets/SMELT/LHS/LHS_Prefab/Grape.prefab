@@ -129,10 +129,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grapePrefab: {fileID: 7880522014629795840, guid: bc15133721e000c40b20a7101f49d058, type: 3}
-  grapeCount: 5
+  grapeCount: 3
   grapeSpeed: 3
-  spawnDuration: 3
-  timerWhenStop: 0.2
+  spawnDuration: 4.5
+  timerWhenStop: 0.5
 --- !u!1 &7880522014629795840
 GameObject:
   m_ObjectHideFlags: 0

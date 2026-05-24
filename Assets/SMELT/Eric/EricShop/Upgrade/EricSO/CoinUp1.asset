@@ -16,3 +16,4 @@ MonoBehaviour:
   upName: CoinUp1
   upTime: 0.05
   needMoney: 10000
+  icon: {fileID: 0}

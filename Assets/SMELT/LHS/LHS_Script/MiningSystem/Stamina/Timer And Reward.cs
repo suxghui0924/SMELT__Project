@@ -41,7 +41,7 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
+                //DontDestroyOnLoad(gameObject);
                 SceneManager.sceneLoaded += OnSceneChanged;
             }
             else

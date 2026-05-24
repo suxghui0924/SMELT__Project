@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum CanvasType { Title , Hud, Popup, System };
-public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading, GameDie, Radio, Tutorial };
+public enum ObjectType { Top, Center, Bottom, ShopASkill, DayNext, Setting , Fade, GameOver, Loading, GameDie, Radio, Tutorial, Hackboom };
 
 public class UICanvasManager : MonoBehaviour
 {
@@ -33,7 +33,7 @@ public class UICanvasManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            DontDestroyOnLoad(gameObject);
+            //DontDestroyOnLoad(gameObject);
             /*// 캔버스들도 씬 전환 시 파괴되지 않도록 영속화
             TryPersist(_title?.gameObject);
             TryPersist(_hud?.gameObject);
@@ -102,6 +102,8 @@ public class UICanvasManager : MonoBehaviour
             case ObjectType.Radio: if (PopupObject[3] != null) PopupObject[3].SetActive(isActive); break;
             case ObjectType.GameDie: if (SystemObject[3] != null)  SystemObject[3].SetActive(isActive); break;
             case ObjectType.Tutorial: if (PopupObject[4] != null)  PopupObject[4].SetActive(isActive); break;
+            case ObjectType.Hackboom: if (SystemObject[4] != null)  SystemObject[4].SetActive(isActive); break;
+            
         }
     }
     void UpdateUiTextLabel()
