@@ -45,6 +45,7 @@ namespace _01_Scripts.Player.TestDev
                 GameManager.instance.ChangeState(new TutorialState());
             if (Input.GetKeyDown(KeyCode.F3))
                 GameManager.instance.ChangeState(new MiningState());
+            #endregion
         }
         #endif
     }
