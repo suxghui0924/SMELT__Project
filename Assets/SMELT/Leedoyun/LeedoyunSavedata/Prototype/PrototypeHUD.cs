@@ -212,8 +212,6 @@ public class PrototypeHUD : MonoBehaviour
         // 한국어 폰트 로드 (에디터 전용 - 프로토타입이므로 AssetDatabase 사용)
 #if UNITY_EDITOR
         _korFont = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(KOR_FONT_PATH);
-        if (_korFont == null)
-            Debug.LogWarning($"[PrototypeHUD] 한국어 폰트를 찾을 수 없습니다: {KOR_FONT_PATH}");
 #endif
 
         var canvasGO = new GameObject("ProtoCanvas");

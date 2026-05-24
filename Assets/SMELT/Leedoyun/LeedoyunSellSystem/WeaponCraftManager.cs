@@ -65,6 +65,13 @@ public class WeaponCraftManager : MonoBehaviour
         };
 
     // ─────────────────────────────────────────
+    // 이벤트
+    // ─────────────────────────────────────────
+
+    /// <summary>무기 제작 완료 시 발동. 인자: 제작된 무기 아이템 ID</summary>
+    public static event System.Action<string> OnWeaponCrafted;
+
+    // ─────────────────────────────────────────
     // 초기화
     // ─────────────────────────────────────────
     private void Awake()
@@ -93,22 +100,13 @@ public class WeaponCraftManager : MonoBehaviour
     {
         // 레시피 유효성 검사
         if (!Recipes.TryGetValue(weaponType, out WeaponRecipe recipe))
-        {
-            Debug.LogWarning($"[WeaponCraft] 알 수 없는 무기 타입: {weaponType}");
             return false;
-        }
 
         // 광석 ID 유효성 검사
         if (!OreValues.ContainsKey(mainOreId))
-        {
-            Debug.LogWarning($"[WeaponCraft] 알 수 없는 메인 광석: {mainOreId}");
             return false;
-        }
         if (!OreValues.ContainsKey(subOreId))
-        {
-            Debug.LogWarning($"[WeaponCraft] 알 수 없는 서브 광석: {subOreId}");
             return false;
-        }
 
         // 보유 수량 확인 (같은 광석을 메인+서브로 쓸 경우 합산 체크)
         int mainNeed = recipe.mainCount;
@@ -119,27 +117,15 @@ public class WeaponCraftManager : MonoBehaviour
             // 같은 광석이면 합산 소모량으로 한 번에 확인
             int totalNeed = mainNeed + subNeed;
             if (!InventoryManager.Instance.HasItem(mainOreId, totalNeed))
-            {
-                Debug.LogWarning($"[WeaponCraft] 광석 부족 (같은 종류): {mainOreId} " +
-                                 $"(필요: {totalNeed}, 보유: {InventoryManager.Instance.GetQuantity(mainOreId)})");
                 return false;
-            }
         }
         else
         {
             // 메인/서브 각각 확인
             if (!InventoryManager.Instance.HasItem(mainOreId, mainNeed))
-            {
-                Debug.LogWarning($"[WeaponCraft] 메인 광석 부족: {mainOreId} " +
-                                 $"(필요: {mainNeed}, 보유: {InventoryManager.Instance.GetQuantity(mainOreId)})");
                 return false;
-            }
             if (!InventoryManager.Instance.HasItem(subOreId, subNeed))
-            {
-                Debug.LogWarning($"[WeaponCraft] 서브 광석 부족: {subOreId} " +
-                                 $"(필요: {subNeed}, 보유: {InventoryManager.Instance.GetQuantity(subOreId)})");
                 return false;
-            }
         }
 
         // 재료 소모
@@ -152,8 +138,7 @@ public class WeaponCraftManager : MonoBehaviour
         string weaponItemId = $"weapon_{GetWeaponTypeId(weaponType)}_{oreName}"; // ex) "weapon_sword_apple"
         InventoryManager.Instance.AddItem(weaponItemId, 1);
 
-        Debug.Log($"[WeaponCraft] 제작 완료: {weaponItemId} " +
-                  $"(재료: {mainOreId}×{mainNeed} + {subOreId}×{subNeed})");
+        OnWeaponCrafted?.Invoke(weaponItemId);
         return true;
     }
 

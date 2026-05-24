@@ -56,7 +56,7 @@ public class Leedoyun_SellUI : MonoBehaviour
     private void SubscribeEvents()
     {
         var sm = Leedoyun_SellManager.Instance;
-        if (sm == null) { Debug.LogError("[SellUI] Leedoyun_SellManager 없음"); return; }
+        if (sm == null) return;
 
         sm.OnOrderAdded      += HandleOrderAdded;
         sm.OnOrderFulfilled  += HandleOrderFulfilled;
@@ -103,7 +103,6 @@ public class Leedoyun_SellUI : MonoBehaviour
                 return;
             }
         }
-        Debug.LogWarning("[SellUI] 빈 슬롯 없음 - 슬롯 수 부족");
     }
 
     private void HandleOrderFulfilled(Leedoyun_CustomerOrder order, int gold)
@@ -181,8 +180,7 @@ public class Leedoyun_SellUI : MonoBehaviour
         if (!InventoryManager.Instance.HasItem(weaponId))
             InventoryManager.Instance.AddItem(weaponId, 1);
 
-        bool ok = Leedoyun_SellManager.Instance.TryFulfillByWeapon(weaponId);
-        Debug.Log(ok ? $"[SellUI] 납품 성공: {weaponId}" : $"[SellUI] 납품 실패");
+        Leedoyun_SellManager.Instance.TryFulfillByWeapon(weaponId);
     }
 
     // [설정] 버튼 - Work_Leedoyun_Setting 씬으로 이동

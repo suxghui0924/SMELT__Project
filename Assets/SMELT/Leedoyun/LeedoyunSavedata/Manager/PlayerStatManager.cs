@@ -92,10 +92,7 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
     {
         // 이미 구매한 업그레이드인지 확인
         if (_purchasedUpgrades.Contains(upgradeId))
-        {
-            Debug.LogWarning($"[Upgrade] 이미 구매함: {upgradeId}");
             return false;
-        }
 
         // 골드 차감
         if (!InventoryManager.Instance.SpendGold((ulong)cost))
@@ -104,7 +101,6 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
         // 업그레이드 적용
         _purchasedUpgrades.Add(upgradeId);
         ApplyUpgrade(upgradeId, times);
-        Debug.Log($"[Upgrade] 구매 완료: {upgradeId}");
         return true;
     }
 
@@ -245,7 +241,6 @@ public class PlayerStatManager : MonoBehaviour, ISaveable
                 UpMoreSell += times;
                 break;
             default:
-                Debug.LogWarning($"[Upgrade] 알 수 없는 업그레이드: {id}");
                 break;
         }
         SaveManager.Instance.Save();

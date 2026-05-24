@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   needName: LemonUp4
   upName: CoinUp4
-  upTime: 5
-  needMoney: 900000000
+  upTime: 0.05
+  needMoney: 42000

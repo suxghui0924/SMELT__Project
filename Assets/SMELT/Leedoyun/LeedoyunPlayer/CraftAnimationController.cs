@@ -65,8 +65,6 @@ public class CraftAnimationController : MonoBehaviour
             _followTarget = playerGO.transform;
             _playerSr    = playerGO.GetComponent<SpriteRenderer>();
         }
-        else
-            Debug.LogWarning("[CraftAnim] 플레이어를 찾을 수 없습니다.");
     }
 
     private void LateUpdate()
@@ -78,10 +76,7 @@ public class CraftAnimationController : MonoBehaviour
     public void PlayCraftAnimation(Sprite resultSprite = null)
     {
         if (_craftAnimator == null)
-        {
-            Debug.LogWarning("[CraftAnim] Animator가 연결되지 않았습니다.");
             return;
-        }
         StopAllCoroutines();
         PlayerMovement.IsLocked = true;
         if (_followTarget != null)
@@ -95,9 +90,16 @@ public class CraftAnimationController : MonoBehaviour
     {
         const int hitCount = 4;
 
-        // 사운드 전체를 한 번에 재생
+        // 무기 제작속도 스킬 배율 (WeaponUp 업그레이드, 기본 1.0)
+        float statSpeed = PlayerStatManager.Instance != null
+            ? PlayerStatManager.Instance.UpMakeSpeedWeapon : 1f;
+
+        // 사운드 전체를 한 번에 재생 (스킬 속도 비례 피치 적용)
         if (_audioSource != null && _hammerSound != null)
+        {
+            _audioSource.pitch = statSpeed;
             _audioSource.PlayOneShot(_hammerSound);
+        }
 
         for (int i = 0; i < hitCount; i++)
         {
@@ -107,11 +109,11 @@ public class CraftAnimationController : MonoBehaviour
             yield return new WaitUntil(() =>
                 _craftAnimator.GetCurrentAnimatorStateInfo(0).IsName("Craft Animation"));
 
-            // 속도 계산: 4사이클이 사운드 전체 길이에 맞도록, 배율 적용
+            // 속도 계산: 4사이클이 사운드 전체 길이에 맞도록, 배율 및 스킬 속도 적용
             if (i == 0 && _hammerSound != null)
             {
                 float animLength = _craftAnimator.GetCurrentAnimatorStateInfo(0).length;
-                _craftAnimator.speed = (animLength * hitCount) / _hammerSound.length * _speedMultiplier;
+                _craftAnimator.speed = (animLength * hitCount) / _hammerSound.length * _speedMultiplier * statSpeed;
             }
 
             // 치는 타이밍에 파티클 발동
@@ -127,6 +129,7 @@ public class CraftAnimationController : MonoBehaviour
         }
 
         _craftAnimator.speed = 1f;
+        if (_audioSource != null) _audioSource.pitch = 1f;
         _craftAnimator.Play(HashNewState);
         SetPlayerVisible(true);
         PlayerMovement.IsLocked = false;

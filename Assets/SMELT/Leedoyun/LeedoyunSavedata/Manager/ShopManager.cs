@@ -150,7 +150,6 @@ public class ShopManager : MonoBehaviour, ISaveable
     {
         CloseShop();
         SaveManager.Instance?.ResetAllData();
-        Debug.Log("[ShopManager] 가게 폐업 — 데이터 초기화 완료");
 
         // DontDestroyOnLoad UI를 씬 전환 전에 즉시 비활성화
         if (_persistentUIsToDestroy != null)
@@ -186,10 +185,7 @@ public class ShopManager : MonoBehaviour, ISaveable
         // 무기 ID 파싱 (WeaponType + mainOreId 추출)
         if (!WeaponCraftManager.TryParseWeaponItemId(weaponItemId,
             out WeaponType weaponType, out string mainOreId))
-        {
-            Debug.LogWarning($"[ShopManager] 유효하지 않은 무기 ID: {weaponItemId}");
             return false;
-        }
 
         // 인벤토리에서 무기 제거
         if (!InventoryManager.Instance.RemoveItem(weaponItemId, 1))
@@ -202,7 +198,6 @@ public class ShopManager : MonoBehaviour, ISaveable
         _totalEarned += (int)price;
         _salesHistory.Add(weaponItemId);
 
-        Debug.Log($"[ShopManager] 무기 판매: {weaponItemId} → {price}G");
         return true;
     }
 
