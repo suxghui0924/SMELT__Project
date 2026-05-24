@@ -16,6 +16,6 @@ MonoBehaviour:
   achievementDisplayName: "\uB178\uB828\uD574\uC9C0\uC168\uAD70\uC694!"
   achievementState: 4
   achievementDescription: "\uC138\uBC88 \uCC44\uAD11\uD568"
-  achievementSprite: {fileID: 0}
+  achievementSprite: {fileID: 6870616878993603242, guid: 5b836332cd979b0429312d2990e0a133, type: 3}
   clear: 0
-  count: 0
+  count: 8
