@@ -203,7 +203,7 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.StoreBroken)
         {
             if (GameManager.instance != null)
-                GameManager.instance.ChangeState(new BrokenState());
+                GameManager.instance.ChangeState(new GameOverState());
         }
     }
 }
