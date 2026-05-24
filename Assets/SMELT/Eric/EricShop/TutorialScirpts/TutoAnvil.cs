@@ -10,17 +10,17 @@ public class TutoAnvil : MonoBehaviour
     {
         canOpen = true;
     }
-
-    private void OnEnable()
-    {
-        craftUI = GameObject.Find("WeaponCraftUI");
-    }
-
     private void Update()
     {
-        if (!canOpen && Keyboard.current.eKey.wasPressedThisFrame)
+        craftUI = GameObject.Find("WeaponCraftUI");
+        if (craftUI.activeSelf)
         {
-            craftUI.SetActive(true);
+            if (TutoManager.Instance.TutoSaying.makeWeapon1&&!TutoManager.Instance.TutoSaying.canGetOrder2)
+            {
+                TutoManager.Instance.TutoSaying.makeWeapon1 = false;
+                StartCoroutine(
+                    TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.makeWeapon1));
+            }
         }
     }
 }

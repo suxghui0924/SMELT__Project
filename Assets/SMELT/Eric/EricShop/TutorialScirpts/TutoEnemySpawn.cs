@@ -8,11 +8,14 @@ public class TutoEnemySpawn : MonoBehaviour
     {
         if (right)
         {
-            Instantiate(enemyPrefab, spawnPoint[0].transform.position, Quaternion.identity);
+            GameObject go = Instantiate(enemyPrefab, spawnPoint[0].transform.position, Quaternion.identity);
+            go.transform.localScale = new Vector3(go.transform.localScale.x*2, go.transform.localScale.y*2, go.transform.localScale.z*2);
+            
         }   
         else 
         {
-            Instantiate(enemyPrefab, spawnPoint[1].transform.position, Quaternion.identity);
+            GameObject go = Instantiate(enemyPrefab, spawnPoint[1].transform.position, Quaternion.identity);
+            go.transform.localScale = new Vector3(-go.transform.localScale.x*2, go.transform.localScale.y*2, go.transform.localScale.z*2);
         }
     }
 }
