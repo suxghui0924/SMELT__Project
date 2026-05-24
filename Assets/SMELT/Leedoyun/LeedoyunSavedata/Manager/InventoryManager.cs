@@ -14,7 +14,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     // ─────────────────────────────────────────
     // 런타임 데이터
     // ─────────────────────────────────────────
-    private Dictionary<string, int> _inventory = new Dictionary<string, int>();
+    public Dictionary<string, int> _inventory = new Dictionary<string, int>();
 
     private int _currentDay      = 1;
     private ulong _gold           = 0;

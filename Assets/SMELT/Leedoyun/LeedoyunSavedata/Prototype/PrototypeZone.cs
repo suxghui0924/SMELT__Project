@@ -29,6 +29,36 @@ public class PrototypeZone : MonoBehaviour
     private bool  _isDayNextOpen = false;
     private bool  _isSkillOpen   = false;
 
+    private void OnEnable()
+    {
+        LeedoyunUIManager.OnAnyUIOpened += OnLeedoyunUIOpened;
+    }
+
+    private void OnDisable()
+    {
+        LeedoyunUIManager.OnAnyUIOpened -= OnLeedoyunUIOpened;
+    }
+
+    // Leedoyun UI가 열릴 때 라디오·달력·스킬 팝업을 닫고 상태 초기화
+    private void OnLeedoyunUIOpened()
+    {
+        if (_isRadioOpen)
+        {
+            _isRadioOpen = false;
+            UICanvasManager.instance?.ControlObject(ObjectType.Radio, false);
+        }
+        if (_isDayNextOpen)
+        {
+            _isDayNextOpen = false;
+            UICanvasManager.instance?.ControlObject(ObjectType.DayNext, false);
+        }
+        if (_isSkillOpen)
+        {
+            _isSkillOpen = false;
+            UICanvasManager.instance?.ControlObject(ObjectType.ShopASkill, false);
+        }
+    }
+
     private void Update()
     {
         if (ZoneType != ZoneType.Mining || !_playerInside) return;
@@ -61,25 +91,22 @@ public class PrototypeZone : MonoBehaviour
         PrototypeHUD.Instance?.OnZoneExit(ZoneType);
 
         // Zone을 벗어나면 모든 UI 닫기
+        LeedoyunUIManager.CloseAll();
         WeaponCraftUI.Instance?.Hide();
         NPCOrderPopup.Instance?.Close();
         SkillTreeController.Instance?.Hide();
+        SettingUI.Instance?.ClosePanel();
+
+        UICanvasManager.instance?.ControlObject(ObjectType.ShopASkill, false);
+        UICanvasManager.instance?.ControlObject(ObjectType.Radio, false);
+        UICanvasManager.instance?.ControlObject(ObjectType.DayNext, false);
+        UICanvasManager.instance?.ControlObject(ObjectType.Setting, false);
+        _isSkillOpen   = false;
+        _isRadioOpen   = false;
+        _isDayNextOpen = false;
 
         if (ZoneType == ZoneType.SkillTree)
-        {
             _skillTreeVisual?.SetInteracting(false);
-            _isSkillOpen = false;
-        }
-        if (ZoneType == ZoneType.StoreRadioZone || ZoneType == ZoneType.StoreStateZone)
-        {
-            UICanvasManager.instance?.ControlObject(ObjectType.Radio, false);
-            _isRadioOpen = false;
-        }
-        if (ZoneType == ZoneType.NextDay)
-        {
-            UICanvasManager.instance?.ControlObject(ObjectType.DayNext, false);
-            _isDayNextOpen = false;
-        }
     }
 
     public void Interact()
@@ -115,11 +142,13 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.StoreRadioZone || ZoneType == ZoneType.StoreStateZone)
         {
             _isRadioOpen = !_isRadioOpen;
+            if (_isRadioOpen) LeedoyunUIManager.CloseAll();
             UICanvasManager.instance?.ControlObject(ObjectType.Radio, _isRadioOpen);
         }
         if (ZoneType == ZoneType.NextDay)
         {
             _isDayNextOpen = !_isDayNextOpen;
+            if (_isDayNextOpen) LeedoyunUIManager.CloseAll();
             UICanvasManager.instance?.ControlObject(ObjectType.DayNext, _isDayNextOpen);
         }
 

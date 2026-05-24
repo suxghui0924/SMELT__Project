@@ -10,7 +10,8 @@
       "Bash(grep -E \"\\\\\\\\.cs$\")",
       "Bash(xargs grep -l \"IsTrigger\\\\|prototype\\\\|Zone\")",
       "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\" -Filter \"PlayerMovement.cs\" -Recurse)",
-      "Bash(xargs grep -l \"class.*Plant\\\\|Plant.*Manager\")"
+      "Bash(xargs grep -l \"class.*Plant\\\\|Plant.*Manager\")",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\Leedoyun\" -Recurse -File | Where-Object { $_.Extension -in @\\('.cs', '.unity', '.prefab', '.meta'\\) } | Select-Object FullName | Sort-Object FullName)"
     ]
   }
 }

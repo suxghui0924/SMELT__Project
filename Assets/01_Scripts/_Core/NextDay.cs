@@ -1,4 +1,5 @@
-﻿using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
+﻿using System;
+using SMELT.LHS.LHS_Script.MiningSystem.Stamina;
 using TMPro;
 using UnityEngine;
 
@@ -14,6 +15,11 @@ namespace _01_Scripts.Player
         void Start()
         {
             UpdateOutData();
+        }
+
+        private void OnEnable()
+        {
+            NextDayOnViusalButton();
         }
 
         private void UpdateOutData()
@@ -36,14 +42,14 @@ namespace _01_Scripts.Player
             NextDayOnViusalButton();
             if (InventoryManager.Instance.EndOfDay())
             {
-                Debug.Log("넘어갑니다");
+                AchievementManager.Instance.AlarmPopUp("유지비 송금 성공", "집 주인이게 송금을 하였기에 다음날로 넘어갑니다.");
                 TimerAndReward.Instance.canEnter = true;
                 TimerAndReward.Instance.FatigueReset();
                 UpdateOutData();
             }
             else
             {
-                Debug.Log("못넘어가용");
+                AchievementManager.Instance.AlarmPopUp("유지비 송금 실패", "돈이 부족하여 다음날로 넘어가지 못합니다.");
             }
         }
 

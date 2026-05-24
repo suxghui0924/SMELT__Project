@@ -71,6 +71,7 @@ public class NPCOrderPopup : MonoBehaviour
     public void Open(Leedoyun_CustomerOrder order)
     {
         if (order == null || !order.IsActive) return;
+        LeedoyunUIManager.NotifyOpen(Close);
         _currentOrder = order;
         _isOpen = true;
         _root.SetActive(true);

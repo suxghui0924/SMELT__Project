@@ -9,7 +9,6 @@ using UnityEditor;
 
 /// <summary>
 /// 주문 HUD — 화면 우측 상단에 항상 표시.
-/// 플레이어가 어느 구역에 있든 손님 주문을 확인하고 납품할 수 있습니다.
 /// 담당자: 이도윤
 /// </summary>
 public class OrderHUD : MonoBehaviour
@@ -32,29 +31,33 @@ public class OrderHUD : MonoBehaviour
     private const string FONT_PATH = "Assets/SMELT/Suxghui/Galmuri9 SDF.asset";
 
     [Header("무기 이미지 (검 / 도끼 / 창 / 망치 / 건틀릿 순)")]
-    [Tooltip("할당하면 주문 슬롯 아이콘에 표시됩니다. 비워두면 색상 박스 사용.")]
     [SerializeField] private Sprite[] _weaponSprites = new Sprite[5];
 
     // ─────────────────────────────────────────
     // 레이아웃 상수
     // ─────────────────────────────────────────
-    public  const float HUD_W       = 260f;
-    public  const float PANEL_TOTAL_W = HUD_W + 16f; // SellZoneUI 위치 계산용
-    private const float ORDER_H    = 96f;
-    private const int   SLOT_COUNT = 3;
-    private const float SLOT_GAP   = 5f;
+    public  const float HUD_W         = 260f;
+    public  const float PANEL_TOTAL_W = HUD_W + 16f;
+    private const float ORDER_H       = 96f;
+    private const int   SLOT_COUNT    = 3;
+    private const float SLOT_GAP      = 5f;
 
     // ─────────────────────────────────────────
-    // 색상 상수
+    // 색상 상수 (WeaponCraftUI 갈색 RPG 톤)
     // ─────────────────────────────────────────
-    private static readonly Color CLR_BG_PANEL     = new Color(0.05f, 0.07f, 0.05f, 0.92f);
-    private static readonly Color CLR_ORDER_ACTIVE = new Color(0.10f, 0.18f, 0.10f, 1f);
-    private static readonly Color CLR_ORDER_EMPTY  = new Color(0.07f, 0.09f, 0.07f, 0.85f);
-    private static readonly Color CLR_BTN_DELIVER  = new Color(0.12f, 0.50f, 0.18f, 1f);
-    private static readonly Color CLR_BTN_DISABLED = new Color(0.18f, 0.18f, 0.20f, 1f);
+    private static readonly Color CLR_BG_PANEL    = new Color(0.35f, 0.25f, 0.14f, 0.97f);
+    private static readonly Color CLR_ORDER_ACTIVE = new Color(0.26f, 0.18f, 0.10f, 1f);
+    private static readonly Color CLR_ORDER_EMPTY  = new Color(0.20f, 0.14f, 0.08f, 0.85f);
+    private static readonly Color CLR_STOCK_OK     = new Color(0.18f, 0.50f, 0.22f, 1f);
+    private static readonly Color CLR_STOCK_NONE   = new Color(0.32f, 0.24f, 0.15f, 1f);
+    private static readonly Color CLR_LABEL        = new Color(0.93f, 0.85f, 0.65f);
+    private static readonly Color CLR_GOLD         = new Color(1.00f, 0.85f, 0.20f);
+    private static readonly Color CLR_DIVIDER      = new Color(0.60f, 0.45f, 0.25f, 0.6f);
     private static readonly Color CLR_TIMER_OK     = new Color(0.22f, 0.80f, 0.28f, 1f);
     private static readonly Color CLR_TIMER_WARN   = new Color(0.90f, 0.65f, 0.10f, 1f);
     private static readonly Color CLR_TIMER_CRIT   = new Color(0.85f, 0.18f, 0.18f, 1f);
+    private static readonly Color CLR_HEADER_TXT   = new Color(0.93f, 0.85f, 0.65f);
+    private static readonly Color CLR_EMPTY_TXT    = new Color(0.55f, 0.45f, 0.30f);
 
     // ─────────────────────────────────────────
     // 데이터 테이블
@@ -67,14 +70,15 @@ public class OrderHUD : MonoBehaviour
     private class OrderSlotUI
     {
         public Image             bg;
+        public GameObject        weaponIconFrame;
         public Image             weaponIcon;
         public TextMeshProUGUI   weaponTxt;
         public TextMeshProUGUI   goldTxt;
         public Image             timerFill;
         public GameObject        timerBg;
-        public Button            btn;
-        public Image             btnImg;
-        public TextMeshProUGUI   btnTxt;
+        public TextMeshProUGUI   timeTxt;
+        public Image             stockBg;
+        public TextMeshProUGUI   stockTxt;
         public GameObject        emptyLabel;
         public Leedoyun_CustomerOrder order;
     }
@@ -97,7 +101,7 @@ public class OrderHUD : MonoBehaviour
         BuildHUD();
         SubscribeEvents();
         SyncExistingOrders();
-        InvokeRepeating(nameof(RefreshDeliverButtons), 0.5f, 0.5f);
+        InvokeRepeating(nameof(RefreshStockAll), 0.5f, 0.5f);
         SceneManager.activeSceneChanged += OnSceneChanged;
 
         bool isHouseNow = SceneManager.GetActiveScene().name == HOUSE_SCENE;
@@ -236,45 +240,47 @@ public class OrderHUD : MonoBehaviour
         slot.weaponTxt.gameObject.SetActive(hasOrder);
         slot.goldTxt.gameObject.SetActive(hasOrder);
         slot.timerBg.SetActive(hasOrder);
-        slot.btn.gameObject.SetActive(hasOrder);
-        slot.weaponIcon.gameObject.SetActive(hasOrder);
+        slot.timeTxt.gameObject.SetActive(hasOrder);
+        slot.stockBg.gameObject.SetActive(hasOrder);
+        slot.weaponIconFrame.SetActive(hasOrder);
 
         if (!hasOrder) return;
 
         slot.weaponTxt.text = WeaponDisplayName(slot.order.requestedWeaponId);
         slot.goldTxt.text   = $"{slot.order.rewardGold:N0} G";
 
-        // 무기 아이콘 (Inspector에서 _weaponSprites 배열에 스프라이트 할당 시 표시)
-        int typeIdx = GetWeaponTypeIndex(slot.order.requestedWeaponId);
-        Sprite spr = (typeIdx >= 0 && _weaponSprites != null && typeIdx < _weaponSprites.Length)
-            ? _weaponSprites[typeIdx] : null;
+        Sprite spr = WeaponCraftUI.Instance != null
+            ? WeaponCraftUI.Instance.GetWeaponSprite(slot.order.requestedWeaponId)
+            : null;
         if (spr != null)
         {
             slot.weaponIcon.sprite = spr;
             slot.weaponIcon.color  = Color.white;
         }
 
-        RefreshDeliverButton(i);
+        RefreshStock(i);
     }
 
-    private void RefreshDeliverButtons()
+    private void RefreshStockAll()
     {
         for (int i = 0; i < SLOT_COUNT; i++)
         {
             if (_slots[i].order != null && _slots[i].order.IsActive)
-                RefreshDeliverButton(i);
+                RefreshStock(i);
         }
     }
 
-    private void RefreshDeliverButton(int i)
+    private void RefreshStock(int i)
     {
         var slot = _slots[i];
-        if (slot.order == null || slot.btn == null) return;
-        bool canDeliver = InventoryManager.Instance != null &&
-                          InventoryManager.Instance.HasItem(slot.order.requestedWeaponId);
-        slot.btnImg.color     = canDeliver ? CLR_BTN_DELIVER : CLR_BTN_DISABLED;
-        slot.btnTxt.text      = canDeliver ? "납품" : "재고 없음";
-        slot.btn.interactable = canDeliver;
+        if (slot.order == null || slot.stockBg == null) return;
+
+        bool hasStock = InventoryManager.Instance != null &&
+                        InventoryManager.Instance.HasItem(slot.order.requestedWeaponId);
+
+        slot.stockBg.color   = hasStock ? CLR_STOCK_OK : CLR_STOCK_NONE;
+        slot.stockTxt.text   = hasStock ? "재고 있음" : "재고 없음";
+        slot.stockTxt.color  = hasStock ? Color.white : new Color(0.65f, 0.55f, 0.40f);
     }
 
     private void UpdateTimerBars()
@@ -283,25 +289,20 @@ public class OrderHUD : MonoBehaviour
         {
             if (slot.order == null || !slot.order.IsActive || slot.timerFill == null) continue;
             float ratio = slot.order.RemainingRatio;
-            // anchorMax.x를 비율로 조정 → 바가 왼쪽부터 줄어드는 효과
             var rt = slot.timerFill.rectTransform;
             rt.anchorMax  = new Vector2(ratio, 1f);
-            rt.offsetMax  = Vector2.zero; // offset 초기화(안 하면 늘어날 수 있음)
+            rt.offsetMax  = Vector2.zero;
             slot.timerFill.color = ratio > 0.5f ? CLR_TIMER_OK :
                                    ratio > 0.25f ? CLR_TIMER_WARN : CLR_TIMER_CRIT;
+
+            if (slot.timeTxt != null)
+            {
+                int sec = Mathf.CeilToInt(slot.order.RemainingTime);
+                slot.timeTxt.text  = $"{sec}초 남음";
+                slot.timeTxt.color = ratio > 0.5f ? CLR_TIMER_OK :
+                                     ratio > 0.25f ? CLR_TIMER_WARN : CLR_TIMER_CRIT;
+            }
         }
-    }
-
-    // ─────────────────────────────────────────
-    // 납품 처리
-    // ─────────────────────────────────────────
-    private void OnDeliverClicked(int slotIdx)
-    {
-        var slot = _slots[slotIdx];
-        if (slot.order == null || !slot.order.IsActive) return;
-
-        Leedoyun_SellManager.Instance?.FulfillOrder(
-            slot.order.orderId, slot.order.requestedWeaponId);
     }
 
     // ─────────────────────────────────────────
@@ -320,7 +321,6 @@ public class OrderHUD : MonoBehaviour
         float panelW  = HUD_W + 16f;
         float panelH  = headerH + 8f + SLOT_COUNT * ORDER_H + (SLOT_COUNT - 1) * SLOT_GAP + 8f;
 
-        // 루트 패널 — 우측 상단에 고정 (anchor & pivot 모두 top-right)
         _hudRoot = MakePanel(canvasT, "OrderHUD",
             new Vector2(1f, 1f), new Vector2(1f, 1f),
             new Vector2(-panelW / 2f - 10f, -panelH / 2f - 10f),
@@ -330,27 +330,27 @@ public class OrderHUD : MonoBehaviour
 
         var root = _hudRoot.transform;
 
-        // 헤더
         var header = MakeTxt(root, "손님 주문", 14, FontStyles.Bold,
-            new Color(0.5f, 0.9f, 0.5f),
+            CLR_HEADER_TXT,
             new Vector2(0f, panelH / 2f - headerH / 2f - 4f),
             new Vector2(HUD_W, headerH));
         header.alignment = TextAlignmentOptions.Center;
 
-        // 슬롯 배치 (헤더 아래부터 아래로 순서대로)
+        MakePanel(root, "HLine",
+            new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
+            new Vector2(0f, panelH / 2f - headerH - 2f),
+            new Vector2(HUD_W, 1f), CLR_DIVIDER);
+
         float firstSlotCenterY = panelH / 2f - headerH - 8f - ORDER_H / 2f;
         for (int i = 0; i < SLOT_COUNT; i++)
         {
             float slotCenterY = firstSlotCenterY - i * (ORDER_H + SLOT_GAP);
             _slots[i] = BuildSlot(root, i, new Vector2(0f, slotCenterY));
         }
-
     }
 
     private OrderSlotUI BuildSlot(Transform parent, int idx, Vector2 centerPos)
     {
-        int captured = idx;
-
         var cardGO = MakePanel(parent, $"OrderSlot_{idx}",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
             centerPos, new Vector2(HUD_W, ORDER_H), CLR_ORDER_EMPTY);
@@ -359,50 +359,74 @@ public class OrderHUD : MonoBehaviour
 
         // 빈 상태 라벨
         var empty = MakeTxt(p, "대기 중...", 12, FontStyles.Normal,
-            new Color(0.30f, 0.32f, 0.30f), Vector2.zero, new Vector2(HUD_W - 16f, 24f));
+            CLR_EMPTY_TXT, Vector2.zero, new Vector2(HUD_W - 16f, 24f));
         empty.alignment = TextAlignmentOptions.Center;
         slot.emptyLabel = empty.gameObject;
 
-        // ── 무기 아이콘 ──────────────────────────
-        // Inspector의 _weaponSprites 배열에 스프라이트를 할당하면 이 영역에 표시됩니다.
-        float iconSize = ORDER_H - 12f;
+        // 무기 아이콘
+        float iconSize    = ORDER_H - 12f;
         float iconCenterX = -HUD_W / 2f + iconSize / 2f + 6f;
 
-        var iconGO = MakePanel(p, "WeaponIcon",
+        // 배경 프레임
+        var iconFrameGO = MakePanel(p, "WeaponIconFrame",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
             new Vector2(iconCenterX, 0f),
             new Vector2(iconSize, iconSize),
-            new Color(0.12f, 0.16f, 0.12f));
-        slot.weaponIcon = iconGO.GetComponent<Image>();
+            new Color(0.18f, 0.12f, 0.06f));
+        slot.weaponIconFrame = iconFrameGO;
+        iconFrameGO.SetActive(false);
+
+        // 스프라이트 Image — 프레임 내부에 padding 4 적용, 비율 유지
+        var iconSpriteGO = new GameObject("WeaponSprite");
+        iconSpriteGO.transform.SetParent(iconFrameGO.transform, false);
+        var sprRt = iconSpriteGO.AddComponent<RectTransform>();
+        sprRt.anchorMin = Vector2.zero;
+        sprRt.anchorMax = Vector2.one;
+        sprRt.offsetMin = new Vector2(4f, 4f);
+        sprRt.offsetMax = new Vector2(-4f, -4f);
+        slot.weaponIcon = iconSpriteGO.AddComponent<Image>();
         slot.weaponIcon.preserveAspect = true;
-        slot.weaponIcon.gameObject.SetActive(false);
+        slot.weaponIcon.color = new Color(0f, 0f, 0f, 0f);
 
-        // ── 텍스트 / 타이머 영역 ─────────────────
-        float btnW      = 64f;
+        // 재고 상태 뱃지 (우측)
+        float badgeW  = 60f;
+        float badgeCX = HUD_W / 2f - badgeW / 2f - 4f;
+
+        var stockGO = MakePanel(p, "StockBadge",
+            new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
+            new Vector2(badgeCX, 0f), new Vector2(badgeW, ORDER_H - 14f),
+            CLR_STOCK_NONE);
+        slot.stockBg  = stockGO.GetComponent<Image>();
+        slot.stockTxt = MakeTxt(stockGO.transform, "재고 없음", 10, FontStyles.Bold,
+            new Color(0.65f, 0.55f, 0.40f),
+            Vector2.zero, new Vector2(badgeW - 4f, ORDER_H - 18f));
+        slot.stockTxt.alignment = TextAlignmentOptions.Center;
+        slot.stockBg.gameObject.SetActive(false);
+
+        // 텍스트 영역
         float textLeft  = iconCenterX + iconSize / 2f + 6f;
-        float textRight = HUD_W / 2f - btnW - 8f;
+        float textRight = HUD_W / 2f - badgeW - 8f;
         float textCX    = (textLeft + textRight) / 2f;
-        float textW2    = textRight - textLeft;
+        float textW     = textRight - textLeft;
 
-        slot.weaponTxt = MakeTxt(p, "", 12, FontStyles.Bold, Color.white,
-            new Vector2(textCX, 28f), new Vector2(textW2, 18f));
+        slot.weaponTxt = MakeTxt(p, "", 12, FontStyles.Bold, CLR_LABEL,
+            new Vector2(textCX, 28f), new Vector2(textW, 18f));
         slot.weaponTxt.alignment = TextAlignmentOptions.Left;
         slot.weaponTxt.gameObject.SetActive(false);
 
-        slot.goldTxt = MakeTxt(p, "", 11, FontStyles.Bold, new Color(1f, 0.85f, 0.2f),
-            new Vector2(textCX, 10f), new Vector2(textW2, 16f));
+        slot.goldTxt = MakeTxt(p, "", 11, FontStyles.Bold, CLR_GOLD,
+            new Vector2(textCX, 10f), new Vector2(textW, 16f));
         slot.goldTxt.alignment = TextAlignmentOptions.Left;
         slot.goldTxt.gameObject.SetActive(false);
 
-        // 타이머 바 (anchorMax.x 방식 — Image.Type.Filled보다 확실하게 동작)
+        // 타이머 바
         var timerBgGO = MakePanel(p, "TimerBg",
             new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f),
-            new Vector2(textCX, -8f), new Vector2(textW2, 7f),
-            new Color(0.08f, 0.08f, 0.08f));
+            new Vector2(textCX, -8f), new Vector2(textW, 7f),
+            new Color(0.12f, 0.08f, 0.04f));
         slot.timerBg = timerBgGO;
         timerBgGO.SetActive(false);
 
-        // 채움 영역: anchorMin=(0,0) anchorMax=(1,1) → Update에서 anchorMax.x=ratio로 조정
         var timerFillGO = new GameObject("Fill");
         timerFillGO.transform.SetParent(timerBgGO.transform, false);
         var fillRt = timerFillGO.AddComponent<RectTransform>();
@@ -412,14 +436,10 @@ public class OrderHUD : MonoBehaviour
         slot.timerFill = timerFillGO.AddComponent<Image>();
         slot.timerFill.color = CLR_TIMER_OK;
 
-        // ── 납품 버튼 ────────────────────────────
-        float btnCX = HUD_W / 2f - btnW / 2f - 5f;
-        slot.btn = MakeBtn(p, "납품",
-            new Vector2(btnCX, 0f), new Vector2(btnW, ORDER_H - 14f),
-            CLR_BTN_DELIVER, () => OnDeliverClicked(captured));
-        slot.btnImg = slot.btn.GetComponent<Image>();
-        slot.btnTxt = slot.btn.GetComponentInChildren<TextMeshProUGUI>();
-        slot.btn.gameObject.SetActive(false);
+        slot.timeTxt = MakeTxt(p, "", 10, FontStyles.Normal, CLR_TIMER_OK,
+            new Vector2(textCX, -22f), new Vector2(textW, 14f));
+        slot.timeTxt.alignment = TextAlignmentOptions.Left;
+        slot.timeTxt.gameObject.SetActive(true);
 
         return slot;
     }
@@ -507,26 +527,5 @@ public class OrderHUD : MonoBehaviour
         tmp.text = text; tmp.fontSize = size; tmp.fontStyle = style;
         tmp.color = color; tmp.raycastTarget = false;
         return tmp;
-    }
-
-    private Button MakeBtn(Transform parent, string label, Vector2 pos, Vector2 size,
-        Color color, Action onClick)
-    {
-        var go  = MakePanel(parent, "Btn",
-            new Vector2(0.5f, 0.5f), new Vector2(0.5f, 0.5f), pos, size, color);
-        var btn = go.AddComponent<Button>();
-        btn.targetGraphic = go.GetComponent<Image>();
-        btn.onClick.AddListener(() => onClick());
-
-        var txtGO = new GameObject("Text");
-        txtGO.transform.SetParent(go.transform, false);
-        var rt = txtGO.AddComponent<RectTransform>();
-        rt.anchorMin = Vector2.zero; rt.anchorMax = Vector2.one;
-        rt.offsetMin = rt.offsetMax = Vector2.zero;
-        var tmp = txtGO.AddComponent<TextMeshProUGUI>();
-        if (_koreanFont != null) tmp.font = _koreanFont;
-        tmp.text = label; tmp.fontSize = 12f; tmp.fontStyle = FontStyles.Bold;
-        tmp.color = Color.white; tmp.alignment = TextAlignmentOptions.Center;
-        return btn;
     }
 }

@@ -60,7 +60,6 @@ namespace _01_Scripts.Player.Manager
             
             if(finishedNPC != null)
                 finishedNPC.GetComponent<NPCMovement>().IndexChange(0);
-
             for (int _ = 0; _ < npcList.Count; _++)
             {
                 if (npcList[_] == null) continue;

@@ -131,7 +131,9 @@ namespace _01_Scripts.NPC
             var inv = InventoryManager.Instance;
             if (inv == null || !inv.HasItem(order.requestedWeaponId)) return;
 
-            sm.FulfillOrder(order.orderId, order.requestedWeaponId);
+            int goldEarned = sm.FulfillOrder(order.orderId, order.requestedWeaponId);
+            if (goldEarned >= 0)
+                GoldPopup.Show(transform.position + Vector3.up * 0.5f, goldEarned);
 
             var held = HeldItemController.Instance;
             if (held != null && held.IsHolding)
@@ -240,23 +242,32 @@ namespace _01_Scripts.NPC
             const float bubbleX = 15f;   // 캔버스 중심 기준 살짝 오른쪽
             const float bubbleY = 25f;
 
-            var bubbleGO = Rect(root, "Bubble",
-                new Vector2(bubbleX, bubbleY), new Vector2(bubbleW, bubbleH));
-            bubbleGO.AddComponent<Image>().color = new Color(1f, 1f, 0.92f, 0.97f);
-
-            // ── 꼬리 (말풍선 왼쪽, NPC 방향) ──────────
+            // 꼬리를 먼저 생성 → 배경이 위에 렌더링되어 꼬리 안쪽을 덮음
             var tailGO = Rect(root, "BubbleTail",
-                new Vector2(bubbleX - bubbleW * 0.5f - 5f, bubbleY - 10f),
+                new Vector2(bubbleX - bubbleW * 0.5f + 6f, bubbleY),
                 new Vector2(18f, 18f));
             tailGO.transform.localRotation = Quaternion.Euler(0f, 0f, 45f);
             tailGO.AddComponent<Image>().color = new Color(1f, 1f, 0.92f, 0.97f);
 
+            var bubbleGO = Rect(root, "Bubble",
+                new Vector2(bubbleX, bubbleY), new Vector2(bubbleW, bubbleH));
+            bubbleGO.AddComponent<Image>().color = new Color(1f, 1f, 0.92f, 0.97f);
+
             // ── 무기 아이콘 ─────────────────────────────
             var iconGO = Rect(bubbleGO.transform, "WeaponIcon",
                 Vector2.zero, new Vector2(82f, 82f));
-            _weaponIcon = iconGO.AddComponent<Image>();
+            iconGO.AddComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+
+            var iconSpriteGO = new GameObject("Sprite");
+            iconSpriteGO.transform.SetParent(iconGO.transform, false);
+            var sprRt = iconSpriteGO.AddComponent<RectTransform>();
+            sprRt.anchorMin = Vector2.zero;
+            sprRt.anchorMax = Vector2.one;
+            sprRt.offsetMin = new Vector2(4f, 4f);
+            sprRt.offsetMax = new Vector2(-4f, -4f);
+            _weaponIcon = iconSpriteGO.AddComponent<Image>();
             _weaponIcon.preserveAspect = true;
-            _weaponIcon.color = new Color(0.6f, 0.6f, 0.6f, 0.5f);
+            _weaponIcon.color = new Color(0f, 0f, 0f, 0f);
 
             // ── [E] 프롬프트 (말풍선 아래) ─────────────
             var promptGO = Rect(root, "EPrompt",
