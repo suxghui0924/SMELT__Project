@@ -74,7 +74,7 @@ namespace _01_Scripts.Player
                 }
                 else
                 {
-                    AchievementManager.Instance.AlarmPopUp("다음날로 넘어가지 못합니다.", "포탈을 들어간 후 보스를 잡고 오시기 바랍니다.");
+                    AchievementManager.Instance.AlarmPopUp("유지비 납부 실패.", "가게 유지비를 납부하지 못하여 다음날로 못 넘어갑니다.");
                 }
             /*
             }*/

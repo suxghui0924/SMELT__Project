@@ -14994,6 +14994,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 778061459}
     m_Modifications:
+    - target: {fileID: 283999747382533855, guid: 9c520d6da211aba45b6b4f55f81f9547, type: 3}
+      propertyPath: m_text
+      value: Description
+      objectReference: {fileID: 0}
+    - target: {fileID: 283999747382533855, guid: 9c520d6da211aba45b6b4f55f81f9547, type: 3}
+      propertyPath: m_fontSize
+      value: 30.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 283999747382533855, guid: 9c520d6da211aba45b6b4f55f81f9547, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 30.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 283999747382533855, guid: 9c520d6da211aba45b6b4f55f81f9547, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2067365972955944593, guid: 9c520d6da211aba45b6b4f55f81f9547, type: 3}
       propertyPath: m_Name
       value: AchivementPopup
@@ -15077,6 +15093,10 @@ PrefabInstance:
     - target: {fileID: 3070792717844157215, guid: 9c520d6da211aba45b6b4f55f81f9547, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274284325853531630, guid: 9c520d6da211aba45b6b4f55f81f9547, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

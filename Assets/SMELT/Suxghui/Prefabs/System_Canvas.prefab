@@ -1230,7 +1230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uD53C\uB85C\uB3C4\uAC00 \uB05D\uC5D0 \uB2E4\uB2E4\u314F\u3139\uC558\uC2B5\uB2C8\uB2E4."
+  m_text: GAME OVER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
   m_sharedMaterial: {fileID: -6093665087452869761, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
@@ -3189,8 +3189,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1261.2, y: 716.7}
+  m_AnchoredPosition: {x: 197.6, y: 0}
+  m_SizeDelta: {x: 1500.57, y: 716.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4343069887847985182
 CanvasRenderer:
@@ -3220,8 +3220,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC624\uB298\uC740 \uB354 \uC774\uC0C1 \uB358\uC804\uC5D0 \uCC38\uAC00\uD558\uC2E4\uC218
-    \uC5C6\uC73C\uC2ED\uB2C8\uB2E4."
+  m_text: "\uAE30\uB825\uC774 \uC804\uBD80 \uC18C\uBAA8\uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+    \uAC00\uAC8C\uB85C \uB3CC\uC544\uAC11\uB2C8\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
   m_sharedMaterial: {fileID: -6093665087452869761, guid: 0eeafdbd26042514fad469dec5bd70ab, type: 2}
@@ -3248,8 +3248,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 111.5
-  m_fontSizeBase: 111.5
+  m_fontSize: 83.8
+  m_fontSizeBase: 83.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3287,7 +3287,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 384.3167, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3303,6 +3303,7 @@ GameObject:
   m_Component:
   - component: {fileID: 859296300272724468}
   - component: {fileID: 6625502919456489446}
+  - component: {fileID: 9116692692028900866}
   m_Layer: 5
   m_Name: Video Player
   m_TagString: Untagged
@@ -3365,3 +3366,15 @@ VideoPlayer:
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
+--- !u!114 &9116692692028900866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8939980353165051595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f481a27072146bf848f464de1c8a27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

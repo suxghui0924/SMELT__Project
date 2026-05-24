@@ -1,4 +1,5 @@
 ﻿using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,8 @@ namespace _01_Scripts.Player.Manager
         {
             if(scene.name == "House")
                 SetChildrenActive(true);
+            else if(scene.name == "Lobby")
+                SetChildrenDestroy();
             else
                 SetChildrenActive(false);
         }
@@ -41,7 +44,18 @@ namespace _01_Scripts.Player.Manager
                 child.SetActive(active);
             }
         }
-
+        
+        private void SetChildrenDestroy()
+        {
+            Debug.Assert(_context != null, "Context cannot be null.");
+            for (int _ = 0; _ < _context.transform.childCount ; _++)
+            {
+                GameObject child = _context.transform.GetChild(_).gameObject;
+                Debug.Assert(child != null, "_context.transform.GetChild(_) != null");
+                Destroy(child);
+            }
+        }
+        
         private void OnDisable()
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
