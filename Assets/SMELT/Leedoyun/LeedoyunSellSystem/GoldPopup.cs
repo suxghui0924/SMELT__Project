@@ -2,9 +2,6 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 /// <summary>
 /// 무기 납품 / 주문 만료 시 화면에 골드 획득·손실 텍스트를 띄움.
@@ -14,9 +11,10 @@ public class GoldPopup : MonoBehaviour
 {
     public static GoldPopup Instance { get; private set; }
 
+    [SerializeField] private TMP_FontAsset _font;
+
     private Canvas        _canvas;
     private RectTransform _canvasRt;
-    private TMP_FontAsset _font;
     private const string  FONT_PATH = "Assets/SMELT/Suxghui/Galmuri9 SDF.asset";
 
     // ─────────────────────────────────────────
@@ -40,9 +38,7 @@ public class GoldPopup : MonoBehaviour
         cGO.AddComponent<CanvasScaler>();
         _canvasRt = cGO.GetComponent<RectTransform>();
 
-#if UNITY_EDITOR
-        _font = AssetDatabase.LoadAssetAtPath<TMP_FontAsset>(FONT_PATH);
-#endif
+        if (_font == null) _font = FontLoader.Galmuri9;
     }
 
     // ─────────────────────────────────────────
