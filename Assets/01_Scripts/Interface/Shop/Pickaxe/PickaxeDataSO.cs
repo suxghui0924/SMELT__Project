@@ -10,9 +10,10 @@ public class PickaxeDataSO : ScriptableObject
     public new string name;
     public string desc;
     public int damage;
+    public float speed;
     public ulong goldPrice;
     public int[] fruitPrice;
-    public double hitboxSquare;
+    public float hitboxSquare;
     public bool bought;
     public bool eqiuqed;
 }

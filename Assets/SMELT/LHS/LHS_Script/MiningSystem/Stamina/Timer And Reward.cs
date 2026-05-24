@@ -69,6 +69,8 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                 playerHitBox = GameObject.Find("HitBox").GetComponent<PlayerHitBox>();
                 hitBoxOnTrigger1 = GameObject.Find("LeftHitBox").GetComponent<HitBoxOnTrigger>();
                 hitBoxOnTrigger2 = GameObject.Find("RightHitBox").GetComponent<HitBoxOnTrigger>();
+                
+                
                 if (PickaxeManager.Instance.EquippedPickaxe != null)
                 {
                     hitBoxOnTrigger1.GetPickaxeData(PickaxeManager.Instance.EquippedPickaxe);
@@ -76,10 +78,21 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                 }
 
                 SaveData data = SaveManager.Instance.CurrentData;
+                
                float parry = data.parryRange;
                float attackSpeed = data.attackSpeed;
-               if(playerHitBox!=null) playerHitBox.HitboxUpdate(parry);
-               if(playerAttack!=null) playerAttack.SkillCooldownUpdate(attackSpeed);
+               if(playerHitBox!=null)
+               {
+                   if(PickaxeManager.Instance.EquippedPickaxe!=null)
+                   playerHitBox.GetPickaxeData(PickaxeManager.Instance.EquippedPickaxe);
+                   playerHitBox.HitboxUpdate(parry);
+               }
+               if(playerAttack!=null)
+               {
+                   if(PickaxeManager.Instance.EquippedPickaxe!=null)
+                   playerAttack.GetPickaxeData(PickaxeManager.Instance.EquippedPickaxe);
+                   playerAttack.SkillCooldownUpdate(attackSpeed);
+               }
                
                 // 저장 파일이 있으면 저장된 스태미나 값으로 복원, 없으면 최대치로 초기화
                 if (SaveManager.Instance != null && SaveManager.Instance.HasSaveData() && !isNextDay)
