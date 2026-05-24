@@ -4,6 +4,7 @@ using System.Collections;
 using TMPro;
 using Unity.Cinemachine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class skillSystem : MonoBehaviour
 {
@@ -20,8 +21,8 @@ public class skillSystem : MonoBehaviour
     [SerializeField]private GameObject orePrefab ;
     [SerializeField]private GameObject juicePrefab;
     [SerializeField]private CinemachineImpulseSource impulseSource;
-    [SerializeField]private TextMeshProUGUI _text;  
-
+    [SerializeField]private TextMeshProUGUI _text;
+    [SerializeField] private Button homebtn;
     private void Start()
     {
         _text.gameObject.SetActive(false);
@@ -108,9 +109,7 @@ public class skillSystem : MonoBehaviour
         _text.gameObject.SetActive(true);
         StartCoroutine(Managers());
         Debug.Log("10만 골드 지급, ??? 획득");
-        GameManager.instance.ChangeState(new HouseState());
-
-
+        homebtn.enabled = true;
     }
 
     private void DestroyAllSkills()
