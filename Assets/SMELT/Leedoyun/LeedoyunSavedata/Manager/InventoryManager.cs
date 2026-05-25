@@ -17,12 +17,12 @@ public class InventoryManager : MonoBehaviour, ISaveable
 
     private int _currentDay      = 1;
     private ulong _gold           = 0;
-    private ulong _maintenanceCost = 6_000;
+    private ulong _maintenanceCost = 8_000;
     private int _techLevel       = 1;
 
     // 일차별 유지비 고정 테이블 (1일차~7일차+)
     private static readonly ulong[] s_dailyCost =
-        { 6_000, 9_000, 13_000, 18_000, 25_000, 33_000, 45_000 };
+        { 8_000, 15_000, 23_000, 30_000, 38_000, 45_000, 50_000 };
 
     private static ulong GetMaintenanceCostForDay(int day)
     {
@@ -113,10 +113,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     {
         _currentDay      = data.currentDay > 0 ? data.currentDay : 1;
         _gold            = data.gold;
-        // 구버전 세이브(100G 기준)는 테이블로 재계산
-        _maintenanceCost = data.maintenanceCost < 1000
-            ? GetMaintenanceCostForDay(_currentDay)
-            : data.maintenanceCost;
+        _maintenanceCost = GetMaintenanceCostForDay(_currentDay);
         _techLevel       = data.currentTechLevel;
         _unlockedTechs   = data.unlockedTechs;
 

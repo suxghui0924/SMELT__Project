@@ -110,18 +110,27 @@ public class skillSystem : MonoBehaviour
     }
     public void OnAnimationEnd()
     {
-        Destroy(boss);
-        _text.gameObject.SetActive(true);   
-        StartCoroutine(Managers());
-        Debug.Log("5만 골드 지급, ??? 획득");
-        InventoryManager.Instance.AddGold(100000);
+        const int goldReward = 100000;
+        InventoryManager.Instance.AddGold(goldReward);
         PickaxeManager.Instance.AddPickaxe(pickaxeData);
-        Debug.Log("지급 완료");
+
+        _text.gameObject.SetActive(true);
+
+        GoldPopup.Show(transform.position, goldReward);
+        AchievementManager.Instance?.AlarmPopUp("보스 클리어!", $"골드 +{goldReward:N0} G 획득!");
+
         Weccs = true;
         homeBtn.enabled = true;
         homeBtnImage.enabled = true;
-        InventoryManager.Instance.AddGold(100000);
-        if(!CanbuyPickaxe)PickaxeDataSend();
+        if (!CanbuyPickaxe) PickaxeDataSend();
+
+        StartCoroutine(ReturnAfterDelay());
+    }
+
+    private IEnumerator ReturnAfterDelay()
+    {
+        yield return new WaitForSecondsRealtime(3f);
+        Destroy(boss);
         GameManager.instance.ChangeState(new HouseState());
     }
 
