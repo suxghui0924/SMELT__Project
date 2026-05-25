@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec98fb76b35a2a4b9b746abbbff751f, type: 3}
+  m_Name: 03_Dungeon_Stamina
+  m_EditorClassIdentifier: 
+  characterName: "\uACF5\uC8FC"
+  lines:
+  - "\uC624\uB978\uCABD \uC544\uB798\uC5D0 \uC788\uB294 \uAC8C\uC774\uC9C0\uB294
+    \uAE30\uB825 \uAC8C\uC774\uC9C0\uC57C!"
+  - "\uAE30\uB825\uC740 \uC2DC\uAC04\uC5D0 \uB530\uB77C \uC18C\uC9C4\uB418\uAE30\uB3C4
+    \uD558\uC9C0\uB9CC \uC801\uACFC \uB2FF\uC544\uB3C4 \uC18C\uC9C4\uB3FC!"
+  - "\uAE30\uB825\uC774 \uBAA8\uB450 \uC18C\uC9C4\uB418\uBA74 \uADF8 \uB0A0\uC740
+    \uB358\uC804\uC5D0 \uB4E4\uC5B4\uC62C \uC218 \uC5C6\uC73C\uB2C8 \uBA85\uC2EC\uD574!"
+  condition: 0
+  waitKey: 0
+  customConditionId: 
+  autoAdvanceDelay: 1.5
+  freezeTime: 0

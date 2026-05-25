@@ -150,6 +150,7 @@ public class ShopManager : MonoBehaviour, ISaveable
     {
         CloseShop();
         SaveManager.Instance?.ResetAllData();
+        DayTimer.Instance?.ResetTimer();
 
         // DontDestroyOnLoad UI를 씬 전환 전에 즉시 비활성화
         if (_persistentUIsToDestroy != null)

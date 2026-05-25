@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec98fb76b35a2a4b9b746abbbff751f, type: 3}
+  m_Name: 13_SellWeapon2
+  m_EditorClassIdentifier: 
+  characterName: "\uACF5\uC8FC"
+  lines:
+  - "\uB4DC\uB514\uC5B4 \uCCAB \uD310\uB9E4\uAD6C\uB098! \uC218\uACE0\uD588\uC5B4!"
+  - "\uC774\uC81C \uC5C5\uADF8\uB808\uC774\uB4DC\uB97C \uD574\uBCFC\uAE4C?"
+  - "\uAC00\uAC8C \uC548\uC5D0 \uB098\uBB34 \uC624\uBE0C\uC81D\uD2B8\uAC00 \uBCF4\uC774\uC9C0?
+    \uAC70\uAE30\uB85C \uC774\uB3D9\uD574\uBD10!"
+  condition: 0
+  waitKey: 0
+  customConditionId: 
+  autoAdvanceDelay: 1.5
+  freezeTime: 0

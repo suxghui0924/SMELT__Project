@@ -17,7 +17,8 @@
       "PowerShell(ls -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\\" | Where-Object {$_.PSIsContainer})",
       "PowerShell(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\\\\Assets\\\\SMELT\\\\Leedoyun\" -Recurse -File | ForEach-Object { $_.FullName } | Sort-Object)",
       "Bash(Get-ChildItem -Path \"c:\\\\GameFile\\\\SMELT__Project\" -Recurse -Directory)",
-      "Bash(xargs grep -l \"CurrentDay\\\\|InventoryManager\")"
+      "Bash(xargs grep -l \"CurrentDay\\\\|InventoryManager\")",
+      "Bash(awk -F: '{print NR, $0}')"
     ]
   }
 }
