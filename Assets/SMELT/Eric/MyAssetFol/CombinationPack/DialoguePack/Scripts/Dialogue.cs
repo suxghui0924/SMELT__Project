@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _01_Scripts._Core._States;
 using UnityEngine;
 using TMPro;
 
@@ -30,6 +31,7 @@ public class Dialogue : MonoBehaviour
 
     private void Dissapear()
     {
+        Check();
         animController.SetTrigger("Disappear");
         if (TutoManager.Instance.TutoSaying.canGetOrder2)  TutoManager.Instance.TutoSaying.canGetOrder2 = false;
         if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)  canMove = true;
@@ -47,12 +49,32 @@ public class Dialogue : MonoBehaviour
         {
             StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon3));
         }
+        if(TutoManager.Instance.TutoLine.store4 == TutoManager.Instance.TutoSaying.str)
+        {
+            TutoManager.Instance.Triggered();
+            TutoManager.Instance.Dialogue.canMakePoint = true;
+            StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.changeBgm2));
+
+        }     
+        if(TutoManager.Instance.TutoLine.changeBgm2 == TutoManager.Instance.TutoSaying.str)
+        {
+            TutoManager.Instance.Triggered();
+            TutoManager.Instance.Dialogue.canMakePoint = true;
+            StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.nextDay2));
+
+        }
+        if(TutoManager.Instance.TutoLine.nextDay2 == TutoManager.Instance.TutoSaying.str)
+        {
+            TutoManager.Instance.Triggered();
+            StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.last));
+
+        }
         if(TutoManager.Instance.TutoLine.last == TutoManager.Instance.TutoSaying.str&&next)
         {
             next = false;
-            GameManager.instance.ChangeState(new LoadingState());
+            GameManager.instance.ChangeState(new LobbyState());
+
         }
-        Check();
     }
 
     private void Check()

@@ -408,17 +408,16 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         OnOrderAdded?.Invoke(order);
     }
     //강제 소환
-    public void ForceSpawnTutorialOrder(WeaponType weaponType, string oreId)
+    public void ForceSpawnTutorialOrder(WeaponType weaponType, string oreId, int reward)
     {
         if (_activeOrders.Count >= maxActiveOrders) 
         {
             return;
         }
 
-        int rewardGold = CalculateFallbackPrice(weaponType, oreId);
         float timeLimit = 1000f; 
 
-        var order = new Leedoyun_CustomerOrder(weaponType, oreId, rewardGold, timeLimit);
+        var order = new Leedoyun_CustomerOrder(weaponType, oreId, reward, timeLimit);
         
         _activeOrders.Add(order);
 

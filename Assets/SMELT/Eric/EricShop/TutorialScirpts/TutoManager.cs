@@ -17,6 +17,8 @@ public class TutoManager : MonoBehaviour
     public Vector3[] targets;
     public GameObject[] targetObjects;
 
+    public GameObject tree;
+
     public void TargetPos(int index)
     {
         targetObjects[0].transform.position = targets[index];
@@ -67,34 +69,7 @@ public class TutoManager : MonoBehaviour
         yield return null;
         TutoManager.Instance.Triggered();
         StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.store4));
-        yield return new WaitForSeconds(1f);
-        if (canLast)
-        {
-            TutoManager.Instance.Triggered();
-            TutoManager.Instance.Dialogue.canMakePoint = true;
-            StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.changeBgm2));
-            canLast = false;
-        }
-
-        yield return new WaitForSeconds(1f);
-        if (canLast)
-        {
-            TutoManager.Instance.Triggered();
-            TutoManager.Instance.Dialogue.canMakePoint = true;
-            StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.nextDay2));
-            canLast = false;
-
-        }
-
-        yield return new WaitForSeconds(1f);
-        if (canLast)
-        {
-            TutoManager.Instance.Triggered();
-            StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.last));
-            canLast = false;
-            
-        }
-        yield return new WaitForSeconds(0.5f);
+        tree.SetActive(false);
     }
 
     [field:SerializeField]public TutorialLine TutoLine{ get;private set; }
