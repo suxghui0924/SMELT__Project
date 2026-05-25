@@ -25,6 +25,9 @@ public class skillSystem : MonoBehaviour
     [SerializeField]private TextMeshProUGUI _text;
     [SerializeField] private Button homeBtn;
     [SerializeField] private Image homeBtnImage;
+    
+    [SerializeField] private PickaxeDataSO pickaxeData;
+    
     private void Start()
     {
         _text.gameObject.SetActive(false);
@@ -111,14 +114,15 @@ public class skillSystem : MonoBehaviour
         _text.gameObject.SetActive(true);   
         StartCoroutine(Managers());
         Debug.Log("5만 골드 지급, ??? 획득");
-        InventoryManager.Instance.AddGold(100000);
+        InventoryManager.Instance.AddGold(50000);
+        PickaxeManager.Instance.AddPickaxe(pickaxeData);
         Debug.Log("지급 완료");
         Weccs = true;
         homeBtn.enabled = true;
         homeBtnImage.enabled = true;
-        InventoryManager.Instance.AddGold(100000);
+        InventoryManager.Instance.AddGold(50000);
         if(!CanbuyPickaxe)PickaxeDataSend();
-        
+        GameManager.instance.ChangeState(new HouseState());
     }
 
     private void PickaxeDataSend()

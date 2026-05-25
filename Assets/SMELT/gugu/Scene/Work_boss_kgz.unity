@@ -406,6 +406,7 @@ MonoBehaviour:
   isAlive: 1
   Weccs: 0
   _BSM: {fileID: 33894944}
+  CanbuyPickaxe: 0
   boss: {fileID: 33894936}
   orePrefab: {fileID: 6672166761486969934, guid: 68e84cf3df6d249439e2c7e9b24e70da, type: 3}
   juicePrefab: {fileID: 2384462126000575630, guid: 181fc3e1146e54747a6efe5c73bfc22d, type: 3}
@@ -413,6 +414,7 @@ MonoBehaviour:
   _text: {fileID: 1072838991}
   homeBtn: {fileID: 77015604}
   homeBtnImage: {fileID: 77015605}
+  pickaxeData: {fileID: 11400000, guid: fdab6fc60b324934896914d44ad7f158, type: 2}
 --- !u!95 &33894950
 Animator:
   serializedVersion: 7
