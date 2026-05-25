@@ -44,10 +44,10 @@ public class WeaponCraftManager : MonoBehaviour
         new Dictionary<WeaponType, WeaponRecipe>
         {
             { WeaponType.Sword,    new WeaponRecipe(basePrice: 800,  mainCount: 1, subCount: 1) }, // 검:    메인×1 + 서브×1
-            { WeaponType.Axe,      new WeaponRecipe(basePrice: 1100,  mainCount: 1, subCount: 2) }, // 도끼:  메인×1 + 서브×2
-            { WeaponType.Spear,    new WeaponRecipe(basePrice: 1300, mainCount: 2, subCount: 2) }, // 창:    메인×2 + 서브×2
-            { WeaponType.Hammer,   new WeaponRecipe(basePrice: 1500, mainCount: 2, subCount: 3) }, // 망치: 메인×2 + 서브×3
-            { WeaponType.Gauntlet, new WeaponRecipe(basePrice: 1800, mainCount: 3, subCount: 2) }, // 건틀릿: 메인×3 + 서브×2
+            { WeaponType.Axe,      new WeaponRecipe(basePrice: 1100,  mainCount: 2, subCount: 2) }, // 도끼:  메인×1 + 서브×2
+            { WeaponType.Spear,    new WeaponRecipe(basePrice: 1300, mainCount: 4, subCount: 4) }, // 창:    메인×2 + 서브×2
+            { WeaponType.Hammer,   new WeaponRecipe(basePrice: 1500, mainCount: 6, subCount: 5) }, // 망치: 메인×2 + 서브×3
+            { WeaponType.Gauntlet, new WeaponRecipe(basePrice: 1800, mainCount: 7, subCount: 8) }, // 건틀릿: 메인×3 + 서브×2
         };
 
     /// <summary>
@@ -58,10 +58,10 @@ public class WeaponCraftManager : MonoBehaviour
         new Dictionary<string, int>
         {
             { "fruitstone_apple",  1000 }, // 사과석
-            { "fruitstone_melon",  2000 }, // 멜론석
-            { "fruitstone_orange", 3000 }, // 귤석
-            { "fruitstone_lemon",  4000 }, // 레몬석
-            { "fruitstone_grape",  5000 }, // 포도석
+            { "fruitstone_melon",  1500 }, // 멜론석
+            { "fruitstone_orange", 2000 }, // 귤석
+            { "fruitstone_lemon",  2500 }, // 레몬석
+            { "fruitstone_grape",  3000 }, // 포도석
         };
 
     // ─────────────────────────────────────────

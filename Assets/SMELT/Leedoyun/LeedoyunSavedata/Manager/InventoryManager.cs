@@ -17,7 +17,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
 
     private int _currentDay      = 1;
     private ulong _gold           = 0;
-    private ulong _maintenanceCost = 10_000;
+    private ulong _maintenanceCost = 6_000;
     private int _techLevel       = 1;
 
     // 일차별 유지비 고정 테이블 (1일차~7일차+)
