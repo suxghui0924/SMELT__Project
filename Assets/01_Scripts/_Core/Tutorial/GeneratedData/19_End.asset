@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ec98fb76b35a2a4b9b746abbbff751f, type: 3}
+  m_Name: 19_End
+  m_EditorClassIdentifier: 
+  characterName: "\uACF5\uC8FC"
+  lines:
+  - "\uC774\uC81C \uB0B4\uAC00 \uC54C\uB824\uC904 \uAC74 \uB2E4 \uC54C\uB824\uC900
+    \uAC70 \uAC19\uB124, \uD654\uC774\uD305\uD574\uBD10~!"
+  condition: 0
+  waitKey: 0
+  customConditionId: 
+  autoAdvanceDelay: 1.5
+  freezeTime: 0

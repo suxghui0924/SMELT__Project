@@ -3,18 +3,24 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// 캐시 초기화 확인 팝업 전용 컨트롤러.
-/// 확인 팝업 GameObject에 붙여서 사용합니다.
-///
-/// [버튼 OnClick 연결]
-///   캐시 삭제 버튼  → CacheResetConfirm.ShowPanel
-///   아니요 버튼     → CacheResetConfirm.HidePanel
-///   초기화(예) 버튼 → CacheResetConfirm.ResetAndReturnToLobby
+/// 가게 폐업 확인 팝업 컨트롤러.
+/// Group_StoreBroken 오브젝트에 붙어있음.
+/// But_Y → ResetAndReturnToLobby, But_X → HidePanel, But_StoreBroken → ShowPanel
 /// </summary>
 public class CacheResetConfirm : MonoBehaviour
 {
+    public static CacheResetConfirm Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void ShowPanel()
     {
+        // Radio UI 닫기
+        if (UICanvasManager.instance != null)
+            UICanvasManager.instance.ControlObject(ObjectType.Radio, false);
         gameObject.SetActive(true);
     }
 
@@ -25,8 +31,10 @@ public class CacheResetConfirm : MonoBehaviour
 
     public void ResetAndReturnToLobby()
     {
+        ShopManager.Instance?.CloseShop();
         if (SaveManager.Instance != null)
             SaveManager.Instance.ResetAllData();
+        DayTimer.Instance?.ResetTimer();
 
         gameObject.SetActive(false);
 
