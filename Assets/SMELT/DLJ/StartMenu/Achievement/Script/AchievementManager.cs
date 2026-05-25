@@ -22,13 +22,11 @@ public class AchievementManager : MonoBehaviour, ISaveable
 
     private void Awake()
     {
-        
         if (Instance == null)
         {
             Instance = this;
             InitDictionary();
         }
-
         else
             Destroy(gameObject);
     }
@@ -36,6 +34,11 @@ public class AchievementManager : MonoBehaviour, ISaveable
     private void Start()
     {
         SaveManager.Instance.Register(this);
+    }
+
+    private void OnDestroy()
+    {
+        SaveManager.Instance?.Unregister(this);
     }
     private void InitDictionary()
     {

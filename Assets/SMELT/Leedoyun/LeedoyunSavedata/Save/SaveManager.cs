@@ -40,6 +40,7 @@ public class SaveManager : MonoBehaviour
         yield return null;
         if (HasSaveData())
             Load();
+        _initialLoadDone = true;
     }
 
     // ─────────────────────────────────────────
@@ -59,6 +60,9 @@ public class SaveManager : MonoBehaviour
     // 플레이 타임 측정용
     private float _sessionStartTime;
 
+    // AutoLoadOnStart 완료 여부 — 이후 Register 시 즉시 OnLoad 호출하기 위해 사용
+    private bool _initialLoadDone = false;
+
     // 저장/불러오기 결과를 UI에 알려주는 이벤트
     public event Action<bool, string> OnSaveResult;  // (성공여부, 메시지)
     public event Action<bool, string> OnLoadResult;
@@ -69,8 +73,10 @@ public class SaveManager : MonoBehaviour
     // ─────────────────────────────────────────
     public void Register(ISaveable saveable)
     {
-        if (!_saveables.Contains(saveable))
-            _saveables.Add(saveable);
+        if (_saveables.Contains(saveable)) return;
+        _saveables.Add(saveable);
+        if (_initialLoadDone)
+            saveable.OnLoad(CurrentData);
     }
 
     public void Unregister(ISaveable saveable) => _saveables.Remove(saveable);
