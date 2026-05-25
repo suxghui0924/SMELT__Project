@@ -23,6 +23,10 @@ public class TutorialSaying : MonoBehaviour
         public bool weaponCrafted;
         public bool weaponSold;
 
+        public string[] str;
+
+        public GameObject dungeon;
+
         private void OnEnable()
         {
                 WeaponCraftManager.OnWeaponCrafted += HandleWeaponCrafted;
@@ -55,17 +59,9 @@ public class TutorialSaying : MonoBehaviour
 
         public IEnumerator SayingCoroutine(string[] texts)
         {
+                str = texts;
                 TutoManager.Instance.Dialogue.canMove = false;
                 Time.timeScale = 0f;
-                
-                if(TutoManager.Instance.TutoLine.dungeon3 == texts)
-                {
-                        tuRAttack = true;
-                }
-                if(TutoManager.Instance.TutoLine.dungeon4 == texts)
-                {
-                        tuLAttack = true;
-                }
 
                 if (texts == TutoManager.Instance.TutoLine.store4 ||
                     texts == TutoManager.Instance.TutoLine.changeBgm2 ||
@@ -91,28 +87,21 @@ public class TutorialSaying : MonoBehaviour
                 if (Input.GetMouseButtonDown(0))
                 {
                         TutoManager.Instance.Dialogue.Skip();
+                        
+                        TutoManager.Instance.Dialogue.canMove = true;
                 }
 
-                if(tuRAttack)
+                if (Keyboard.current.aKey.wasPressedThisFrame&&tuRAttack||Keyboard.current.dKey.wasPressedThisFrame&&tuRAttack)
                 {
-                        if (Keyboard.current.dKey.wasPressedThisFrame)
-                        {
-                                TutoManager.Instance.Dialogue.canMove = true;
-                                tuRAttack = false;
-                                TutoManager.Instance.Dialogue.Skip();
-                        }
-                }
-                if(tuLAttack)
-                {
-                        if (Keyboard.current.aKey.wasPressedThisFrame)
-                        {
-                                TutoManager.Instance.Dialogue.canMove = true;
-                                tuLAttack = false;
-                                TutoManager.Instance.Dialogue.Skip();
-                                TutoManager.Instance.Dialogue.canMakePoint = true;
-                                StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon5));
-                                canExitDungeon = true;
-                        }      
+                        TutoManager.Instance.Triggered();
+                        tuRAttack = false;
+                        TutoManager.Instance.Dialogue.canMove = true;
+                        TutoManager.Instance.Dialogue.Skip();
+                        TutoManager.Instance.Dialogue.canMakePoint = true;
+                        StartCoroutine(
+                                TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
+                                        .dungeon5));
+                        canExitDungeon = true;
                 }
         }
 }

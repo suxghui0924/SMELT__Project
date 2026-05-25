@@ -25,6 +25,9 @@ public class Dialogue : MonoBehaviour
     public int pointsNum = 0;
     public bool canMakePoint =false;
 
+    public bool canDo = true;
+    public bool next=true;
+
     private void Dissapear()
     {
         animController.SetTrigger("Disappear");
@@ -35,12 +38,26 @@ public class Dialogue : MonoBehaviour
             last = false;
             TutoManager.Instance.canLast = true;
         }
+        if(TutoManager.Instance.TutoLine.dungeon3 == TutoManager.Instance.TutoSaying.str&&TutoManager.Instance.TutoSaying.dungeon.activeSelf&&canDo)
+        {
+            canDo = false;
+            TutoManager.Instance.TutoSaying.tuRAttack = true;
+        }
+        if(TutoManager.Instance.TutoLine.dungeon1 == TutoManager.Instance.TutoSaying.str&&TutoManager.Instance.TutoSaying.dungeon.activeSelf)
+        {
+            StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon3));
+        }
+        if(TutoManager.Instance.TutoLine.last == TutoManager.Instance.TutoSaying.str&&next)
+        {
+            next = false;
+            GameManager.instance.ChangeState(new LoadingState());
+        }
         Check();
     }
 
     private void Check()
     {
-        if (pointsNum >= 10||!canMakePoint) return;
+        if (pointsNum >= 9||!canMakePoint) return;
         TutoManager.Instance.TargetPos(pointsNum);
         pointsNum++;
         canMakePoint = false;

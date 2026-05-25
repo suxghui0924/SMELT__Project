@@ -19,21 +19,13 @@ public class TutorialLine : MonoBehaviour
     {
         "오른쪽 아래에 있는 게이지는 기력 게이지야!",
         "기력은 시간에 따라 소진되기도 하지만 적과 닿아도 소진돼!",
-        "기력이 모두 소진되면 그 날은 던전에 들어올 수 없으니 명심해!.",
+        "기력이 모두 소진되면 그 날은 던전에 들어올 수 없으니 명심해!",
     };
 
-    public string[] dungeon2 =
-    {
-        "앗! 저기 사과석 한 마리가 나타났어!.",
-    };    
     public string[] dungeon3 =
     {
-        "D  키를 눌러 공격해보자!.",
+        "A 키와 D  키를 눌러 공격해보자!",
     };   
-    public string[] dungeon4 =
-    {
-        "A키를 눌러 공격해보자!",
-    };
     public string[] dungeon5 =
     {
         "HOME 버튼을 누르면 중간에 가게로 돌아갈 수 있어.",

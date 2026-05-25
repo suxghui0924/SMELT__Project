@@ -407,6 +407,23 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         _activeOrders.Add(order);
         OnOrderAdded?.Invoke(order);
     }
+    //강제 소환
+    public void ForceSpawnTutorialOrder(WeaponType weaponType, string oreId)
+    {
+        if (_activeOrders.Count >= maxActiveOrders) 
+        {
+            return;
+        }
+
+        int rewardGold = CalculateFallbackPrice(weaponType, oreId);
+        float timeLimit = 1000f; 
+
+        var order = new Leedoyun_CustomerOrder(weaponType, oreId, rewardGold, timeLimit);
+        
+        _activeOrders.Add(order);
+
+        OnOrderAdded?.Invoke(order);
+    }
 
     /// <summary>남은 시간 비율에 따른 실제 보상 계산 (초록 100% / 노랑 75% / 빨강 50%).</summary>
     private static int CalculateTimedReward(Leedoyun_CustomerOrder order)

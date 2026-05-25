@@ -46,6 +46,7 @@ public class Triggering : MonoBehaviour
 
                 if (door)
                 {
+                        Leedoyun_SellManager.Instance.ForceSpawnTutorialOrder(WeaponType.Sword, "fruitstone_apple");
                         TutoManager.Instance.Triggered();
                         door = false;
                         TutoManager.Instance.Dialogue.canMakePoint = true;
