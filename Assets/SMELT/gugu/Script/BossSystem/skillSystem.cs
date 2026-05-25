@@ -114,13 +114,13 @@ public class skillSystem : MonoBehaviour
         _text.gameObject.SetActive(true);   
         StartCoroutine(Managers());
         Debug.Log("5만 골드 지급, ??? 획득");
-        InventoryManager.Instance.AddGold(50000);
+        InventoryManager.Instance.AddGold(100000);
         PickaxeManager.Instance.AddPickaxe(pickaxeData);
         Debug.Log("지급 완료");
         Weccs = true;
         homeBtn.enabled = true;
         homeBtnImage.enabled = true;
-        InventoryManager.Instance.AddGold(50000);
+        InventoryManager.Instance.AddGold(100000);
         if(!CanbuyPickaxe)PickaxeDataSend();
         GameManager.instance.ChangeState(new HouseState());
     }
