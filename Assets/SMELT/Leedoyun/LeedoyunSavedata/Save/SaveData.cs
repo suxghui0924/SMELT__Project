@@ -91,7 +91,8 @@ public class SaveData
     // 설정 담당자: 이도윤
     // ─────────────────────────────────────────
     [Header("Settings")]
-    public float volumeLevel = 1.0f; // 마스터 볼륨 (0.0 ~ 1.0)
+    public float volumeLevel    = 1.0f;  // 마스터 볼륨 (0.0 ~ 1.0)
+    public float remainingTime  = 600f;  // 타이머 남은 시간(초)
 
     // ─────────────────────────────────────────
     // 상점 운영 현황 담당자: 박성희
@@ -100,6 +101,7 @@ public class SaveData
     [Header("Shop")]
     public int totalEarned  = 0;   // 누적 총 수익
     public int todayEarned  = 0;   // 오늘 번 돈
+    public bool isShopOpen  = false; // 가게 문 열림 여부
     public List<string> salesHistory = new List<string>();
     // 저장 예시: ["weapon_sword", "juice_grape"] → 오늘 팔린 아이템 목록
 }

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class DayTimer : MonoBehaviour
+public class DayTimer : MonoBehaviour, ISaveable
 {
     public static DayTimer Instance { get; private set; }
 
@@ -17,6 +17,26 @@ public class DayTimer : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
         _remainingTime = MAX_TIME;
+    }
+
+    private void Start()
+    {
+        SaveManager.Instance?.Register(this);
+    }
+
+    private void OnDestroy()
+    {
+        SaveManager.Instance?.Unregister(this);
+    }
+
+    public void OnSave(SaveData data)
+    {
+        data.remainingTime = _remainingTime;
+    }
+
+    public void OnLoad(SaveData data)
+    {
+        _remainingTime = data.remainingTime > 0f ? data.remainingTime : MAX_TIME;
     }
 
     private void OnEnable()

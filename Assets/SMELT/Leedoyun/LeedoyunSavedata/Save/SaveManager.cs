@@ -121,10 +121,6 @@ public class SaveManager : MonoBehaviour
 
             CurrentData = loaded;
 
-            // 게임오버 상태(stamina=0)로 저장된 경우 기본값으로 복원
-            if (CurrentData.stamina <= 0)
-                CurrentData.stamina = 100f;
-
             // 등록된 모든 매니저에 데이터 배포
             foreach (var s in _saveables)
                 s.OnLoad(CurrentData);
