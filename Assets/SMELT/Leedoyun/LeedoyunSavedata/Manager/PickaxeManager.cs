@@ -135,6 +135,11 @@ public class PickaxeManager : MonoBehaviour, ISaveable
         return true;
     }
 
+    public void AddPickaxe(PickaxeDataSO pickaxe)
+    {
+        _purchasedPickaxeIds.Add(pickaxe.pickaxeId);
+    }
+    
     // ─────────────────────────────────────────
     // 곡괭이 장착
     // ─────────────────────────────────────────

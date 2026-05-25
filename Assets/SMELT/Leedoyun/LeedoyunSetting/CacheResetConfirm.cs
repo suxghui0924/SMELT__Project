@@ -1,3 +1,4 @@
+using _01_Scripts._Core._States;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -40,7 +41,6 @@ public class CacheResetConfirm : MonoBehaviour
         if (UICanvasManager.instance != null)
             UICanvasManager.instance.SetCanvasActive(CanvasType.Title, false);
 
-        SceneLoader.nextScene = "Lobby";
-        SceneManager.LoadScene("NewLoading");
+        GameManager.instance.ChangeState(new LobbyState());
     }
 }
