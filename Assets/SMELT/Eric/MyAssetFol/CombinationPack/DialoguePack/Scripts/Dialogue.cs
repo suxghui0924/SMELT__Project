@@ -28,6 +28,7 @@ public class Dialogue : MonoBehaviour
 
     public bool canDo = true;
     public bool next=true;
+    public GameObject homeBtn;
 
     private void Dissapear()
     {
@@ -44,6 +45,10 @@ public class Dialogue : MonoBehaviour
         {
             canDo = false;
             TutoManager.Instance.TutoSaying.tuRAttack = true;
+        }      
+        if(TutoManager.Instance.TutoLine.dungeon3 == TutoManager.Instance.TutoSaying.str&&TutoManager.Instance.TutoSaying.dungeon.activeSelf&&canDo)
+        {
+            homeBtn.SetActive(false);
         }
         if(TutoManager.Instance.TutoLine.dungeon1 == TutoManager.Instance.TutoSaying.str&&TutoManager.Instance.TutoSaying.dungeon.activeSelf)
         {
