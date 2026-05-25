@@ -46,9 +46,10 @@ public class Dialogue : MonoBehaviour
             canDo = false;
             TutoManager.Instance.TutoSaying.tuRAttack = true;
         }      
-        if(TutoManager.Instance.TutoLine.dungeon3 == TutoManager.Instance.TutoSaying.str&&TutoManager.Instance.TutoSaying.dungeon.activeSelf&&canDo)
+        if(TutoManager.Instance.TutoLine.dungeon5 == TutoManager.Instance.TutoSaying.str)
         {
-            homeBtn.SetActive(false);
+                  TutoManager.Instance.TutoSaying.canExitDungeon = true;
+            
         }
         if(TutoManager.Instance.TutoLine.dungeon1 == TutoManager.Instance.TutoSaying.str&&TutoManager.Instance.TutoSaying.dungeon.activeSelf)
         {

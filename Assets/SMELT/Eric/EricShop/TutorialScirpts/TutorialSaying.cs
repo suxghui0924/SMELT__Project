@@ -101,7 +101,6 @@ public class TutorialSaying : MonoBehaviour
                         StartCoroutine(
                                 TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
                                         .dungeon5));
-                        canExitDungeon = true;
                 }
         }
 }
