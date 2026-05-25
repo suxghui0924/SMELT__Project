@@ -17,6 +17,7 @@ namespace _01_Scripts.Player.Tutorial
                 if (!achievementSO.clear)
                 {
                     UICanvasManager.instance.ControlObject(ObjectType.Tutorial, true);
+                    TutorialRunner.Instance?.Restart();
                 }
             }
         }
