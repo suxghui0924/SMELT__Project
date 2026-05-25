@@ -26,8 +26,9 @@ namespace _01_Scripts.Shop.Pickaxe
         #region pickaxe Init
         private void InitPickaxeState()
         {
-            for (int i = 0; i < _pickaxeDataListSO.pickaxeDataSO.Length-1; i++)
-            { Debug.Log(i);
+            for (int i = 0; i < 6; i++)
+            { 
+                Debug.Log(i);
                 if ( _pickaxeDataListSO != null && PickaxeManager.Instance.IsPickaxePurchased(_pickaxeDataListSO.pickaxeDataSO[i].pickaxeId))
                 {
                     Debug.Log("구매됨 " + _pickaxeDataListSO.pickaxeDataSO[i].name);

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 5
   pickaxeId: pickaxe_hidden
-  icon: {fileID: 0}
+  icon: {fileID: -6507130722856804517, guid: abdc481b3e6db2b4f9aff4393a5ea8f6, type: 3}
   name: "?? \uACE1\uAD2D\uC774"
   desc: "\uC660\uC9C0 \uD788\uB4E0 \uC544\uC774\uD15C\uC778\uAC70 \uAC19\uB2E4."
   damage: 100000000

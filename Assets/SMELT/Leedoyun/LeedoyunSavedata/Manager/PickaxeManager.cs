@@ -137,8 +137,6 @@ public class PickaxeManager : MonoBehaviour, ISaveable
 
     public void AddPickaxe(PickaxeDataSO pickaxe)
     {
-        if (pickaxe == null)
-            return;
         _purchasedPickaxeIds.Add(pickaxe.pickaxeId);
     }
     

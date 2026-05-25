@@ -13615,9 +13615,25 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5885948962057819946, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: pickaxeBuyItems.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885948962057819946, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: 'pickaxeBuyItems.Array.data[5]'
+      value: 
+      objectReference: {fileID: 989145924}
+    - target: {fileID: 5885948962057819946, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: pickaxeEquiedItems.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5885948962057819946, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: pickaxeEquiedTexts.Array.size
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 5885948962057819946, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+      propertyPath: 'pickaxeEquiedItems.Array.data[5]'
+      value: 
+      objectReference: {fileID: 250302337}
     - target: {fileID: 5885948962057819946, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
       propertyPath: 'pickaxeEquiedTexts.Array.data[5]'
       value: 
@@ -15305,6 +15321,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981786065}
   m_CullTransparentMesh: 1
+--- !u!1 &989145924 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3281539611678376358, guid: 55cc724e835b43d4eaa43d6736132c44, type: 3}
+  m_PrefabInstance: {fileID: 921372330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &995116047
 PrefabInstance:
   m_ObjectHideFlags: 0
