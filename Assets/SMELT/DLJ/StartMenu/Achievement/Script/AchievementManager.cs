@@ -33,6 +33,9 @@ public class AchievementManager : MonoBehaviour, ISaveable
 
     private void Start()
     {
+        foreach (var achievement in AchievementStateDic.Values)
+            achievement.clear = false;
+
         SaveManager.Instance.Register(this);
     }
 
@@ -61,8 +64,16 @@ public class AchievementManager : MonoBehaviour, ISaveable
     }
 
     public void AchievementClear(Achievements achievements)
-    { 
+    {
         AchievementStateDic[achievements].clear = true;
+
+        if (SaveManager.Instance != null)
+        {
+            int id = AchievementStateDic[achievements].achievementID;
+            var list = SaveManager.Instance.CurrentData.clearedAchievements;
+            if (!list.Contains(id))
+                list.Add(id);
+        }
     }
 
     public void OnSave(SaveData data)

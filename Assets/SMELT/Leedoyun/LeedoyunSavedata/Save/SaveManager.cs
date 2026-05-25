@@ -40,6 +40,12 @@ public class SaveManager : MonoBehaviour
         yield return null;
         if (HasSaveData())
             Load();
+        else
+        {
+            // 저장 파일이 없어도 각 매니저를 기본값으로 초기화 (에디터 SO 잔류값 방지)
+            foreach (var s in _saveables)
+                s.OnLoad(CurrentData);
+        }
         _initialLoadDone = true;
     }
 
