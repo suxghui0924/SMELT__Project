@@ -13261,6 +13261,7 @@ MonoBehaviour:
   <TutoSaying>k__BackingField: {fileID: 1128825361}
   <Dialogue>k__BackingField: {fileID: 1866439608}
   <Upgrading>k__BackingField: {fileID: 0}
+  <TutoExitDungeon>k__BackingField: {fileID: 0}
 --- !u!114 &1128825364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28010,6 +28011,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1594472085249328483, guid: 9e2be8eb880c8cc4094d465d19874448, type: 3}
+      propertyPath: homeBtn
+      value: 
+      objectReference: {fileID: 2060871915}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
