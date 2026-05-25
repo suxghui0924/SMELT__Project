@@ -21,6 +21,7 @@ public class TutoOpenTrigger : MonoBehaviour
                 if(gameObject.name == "CraftingZone")
                 {
                         if (!TutoManager.Instance.TutoSaying.canGetOrder1&&TutoManager.Instance.TutoSaying.canGetOrder2) return;
+                        TutoManager.Instance.Triggered();
                         TutoManager.Instance.TutoSaying.canGetOrder2 = true;
                         StartCoroutine(
                                 TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
@@ -36,6 +37,7 @@ public class TutoOpenTrigger : MonoBehaviour
 
                 if (gameObject.name == "SkillTreeZone")
                 {
+                        TutoManager.Instance.Triggered();
                         StartCoroutine(
                                 TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
                                         .store2));
@@ -81,6 +83,7 @@ public class TutoOpenTrigger : MonoBehaviour
     {                   
             if (TutoManager.Instance.TutoSaying.weaponSold)
             {
+                    TutoManager.Instance.Triggered();
                     TutoManager.Instance.Dialogue.canMakePoint = true;
 
                     StartCoroutine(

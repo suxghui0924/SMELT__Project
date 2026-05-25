@@ -12,6 +12,7 @@ public class PlayerHitBox : MonoBehaviour
     public bool _triggerOn = false;
      
     private PlayerAttack _att;
+    private PickaxeDataSO _pickaxeSO;
 
 
     private void Start()
@@ -38,10 +39,24 @@ public class PlayerHitBox : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             var scale = transform.GetChild(i).gameObject.transform.localScale;
-            scale.x = scale.x * bonus;
+           if(_pickaxeSO!=null)
+           {
+               scale.x = scale.x * bonus * _pickaxeSO.hitboxSquare;
             transform.GetChild(i).gameObject.transform.localScale = scale;
-            Debug.Log("히박 범위 업데이트도미 "+ i+ " : " + transform.GetChild(i).gameObject.transform.localScale.x);
+            Debug.Log("히박 범위 업데이트도미 "+ i+ " : " + transform.GetChild(i).gameObject.transform.localScale.x+" : "+ bonus+ " : " + _pickaxeSO.hitboxSquare);
+           }
+           else
+           {
+               scale.x = scale.x * bonus;
+               transform.GetChild(i).gameObject.transform.localScale = scale;
+               Debug.Log("히박 범위 업데이트도미 "+ i+ " : " + transform.GetChild(i).gameObject.transform.localScale.x+" : "+ bonus);
+           }
         }
+    }
+    public void GetPickaxeData(PickaxeDataSO pickaxeSO)
+    {
+        _pickaxeSO = pickaxeSO;
+        Debug.Log("현재 곡괭이 업데이트됨 : "+ _pickaxeSO.name);
     }
 
     public void CheckHit(int direction)

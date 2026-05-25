@@ -43,11 +43,11 @@ public class WeaponCraftManager : MonoBehaviour
     public static readonly Dictionary<WeaponType, WeaponRecipe> Recipes =
         new Dictionary<WeaponType, WeaponRecipe>
         {
-            { WeaponType.Sword,    new WeaponRecipe(basePrice: 500,  mainCount: 1, subCount: 1) }, // 검:    메인×1 + 서브×1
-            { WeaponType.Axe,      new WeaponRecipe(basePrice: 800,  mainCount: 1, subCount: 2) }, // 도끼:  메인×1 + 서브×2
-            { WeaponType.Spear,    new WeaponRecipe(basePrice: 1000, mainCount: 2, subCount: 2) }, // 창:    메인×2 + 서브×2
-            { WeaponType.Hammer,   new WeaponRecipe(basePrice: 1200, mainCount: 2, subCount: 3) }, // 망치: 메인×2 + 서브×3
-            { WeaponType.Gauntlet, new WeaponRecipe(basePrice: 1500, mainCount: 3, subCount: 2) }, // 건틀릿: 메인×3 + 서브×2
+            { WeaponType.Sword,    new WeaponRecipe(basePrice: 800,  mainCount: 1, subCount: 1) }, // 검:    메인×1 + 서브×1
+            { WeaponType.Axe,      new WeaponRecipe(basePrice: 1100,  mainCount: 1, subCount: 2) }, // 도끼:  메인×1 + 서브×2
+            { WeaponType.Spear,    new WeaponRecipe(basePrice: 1300, mainCount: 2, subCount: 2) }, // 창:    메인×2 + 서브×2
+            { WeaponType.Hammer,   new WeaponRecipe(basePrice: 1500, mainCount: 2, subCount: 3) }, // 망치: 메인×2 + 서브×3
+            { WeaponType.Gauntlet, new WeaponRecipe(basePrice: 1800, mainCount: 3, subCount: 2) }, // 건틀릿: 메인×3 + 서브×2
         };
 
     /// <summary>

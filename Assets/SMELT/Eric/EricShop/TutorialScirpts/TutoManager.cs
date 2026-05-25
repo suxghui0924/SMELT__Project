@@ -34,6 +34,14 @@ public class TutoManager : MonoBehaviour
         canLastCoroutine = true;
     }
 
+    private void Start()
+    {
+        if (!Upgrading.isTutorial)
+        {
+            Upgrading.isTutorial = true;
+        }
+    }
+
     private void Update()
     {
         if (skillTreeUI == null )
@@ -53,33 +61,37 @@ public class TutoManager : MonoBehaviour
     private IEnumerator LastCoroutine()
     {
         yield return null;
+        TutoManager.Instance.Triggered();
         TutoManager.Instance.Dialogue.canMakePoint = true;
         StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.store4));
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if (canLast)
         {
+            TutoManager.Instance.Triggered();
             TutoManager.Instance.Dialogue.canMakePoint = true;
             StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.changeBgm2));
             canLast = false;
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if (canLast)
         {
+            TutoManager.Instance.Triggered();
             TutoManager.Instance.Dialogue.canMakePoint = true;
             StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.nextDay2));
             canLast = false;
 
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         if (canLast)
         {
+            TutoManager.Instance.Triggered();
             StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.last));
             canLast = false;
             
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
     }
 
     [field:SerializeField]public TutoAttack TutoRAttack { get;private set; }
@@ -93,6 +105,7 @@ public class TutoManager : MonoBehaviour
     [field:SerializeField]public TutoHit TutoHit{ get;private set; }
     [field:SerializeField]public TutoOpenTrigger TutoOpenTrigger{ get;private set; }
     [field:SerializeField]public Dialogue Dialogue{ get;private set; }
+    [field:SerializeField]public Upgrading Upgrading{ get;private set; }
 
 
 }

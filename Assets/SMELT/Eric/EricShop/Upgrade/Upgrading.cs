@@ -26,7 +26,7 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private Image _image;
     private Sprite _sprite;
 
-    [SerializeField] private bool isTutorial;
+    public bool isTutorial = false;
 
     [SerializeField]private TMP_FontAsset myFontAsset;
     [SerializeField]private TMP_SpriteAsset mySpriteAsset;
@@ -59,7 +59,6 @@ public class Upgrading : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (upso.needName == "First")
         {
             _first = true;
-            isTutorial = true;
         }
         if (upso != null && upso.icon != null)
             _image.sprite = upso.icon;

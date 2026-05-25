@@ -82,6 +82,7 @@ public class TutorialSaying : MonoBehaviour
         {
                 if (ui1)
                 {
+                        TutoManager.Instance.Triggered();
                         ui1 = false;
                         TutoManager.Instance.Dialogue.canMakePoint = true;
                         StartCoroutine(

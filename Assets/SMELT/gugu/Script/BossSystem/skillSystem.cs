@@ -14,7 +14,7 @@ public class skillSystem : MonoBehaviour
     private bool shakes = false;
     public bool Weccs = false;
     public BossSkillManager _BSM;
-    
+    public bool CanbuyPickaxe;
     
     public bool IsAlive => isAlive;
     private StartBtn _startBtn;
@@ -102,20 +102,29 @@ public class skillSystem : MonoBehaviour
         shakes = true;
         BossSkillManager.Instance.stack = false;
         yield return new WaitForSeconds(3f);
-
+        
         OnAnimationEnd();
     }
     public void OnAnimationEnd()
     {
         Destroy(boss);
-        _text.gameObject.SetActive(true);
+        _text.gameObject.SetActive(true);   
         StartCoroutine(Managers());
-        Debug.Log("10만 골드 지급, ??? 획득");
+        Debug.Log("5만 골드 지급, ??? 획득");
+        InventoryManager.Instance.AddGold(50000);
+        Debug.Log("지급 완료");
         Weccs = true;
         homeBtn.enabled = true;
         homeBtnImage.enabled = true;
+        InventoryManager.Instance.AddGold(50000);
+        if(!CanbuyPickaxe)PickaxeDataSend();
+        
     }
 
+    private void PickaxeDataSend()
+    {
+        CanbuyPickaxe = true;
+    }
     private void DestroyAllSkills()
     {
         GameObject[] ores = GameObject.FindGameObjectsWithTag("ore");
@@ -132,4 +141,5 @@ public class skillSystem : MonoBehaviour
             Destroy(juice);
         }
     }
+    
 }
