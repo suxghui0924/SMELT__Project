@@ -21,16 +21,20 @@ public class BossHitBoxOnTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_playerHitBox._triggerOn)
+        if (other.CompareTag("ore") || other.CompareTag("juice"))
         {
-                    Vector3 myCenter = _myTrigger.bounds.center;
+            if (_playerHitBox._triggerOn)
+            {
+                Vector3 myCenter = _myTrigger.bounds.center;
 
-                    Vector3 hitPoint = other.ClosestPoint(myCenter);
-                        SoundManager.instance.PlaySFX("Parry");
-                        _hitVfx.transform.position = hitPoint;
-                        _hitVfx.Play();
+                Vector3 hitPoint = other.ClosestPoint(myCenter);
+                SoundManager.instance.PlaySFX("Parry");
+                _hitVfx.transform.position = hitPoint;
+                _hitVfx.Play();
+            }
         }
-                _enemies.Add(other.gameObject);
+
+        _enemies.Add(other.gameObject);
     }
     private void OnTriggerExit2D(Collider2D other)
     {
