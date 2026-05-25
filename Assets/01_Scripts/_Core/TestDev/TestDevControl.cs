@@ -7,6 +7,7 @@ namespace _01_Scripts.Player.TestDev
 {
     public class TestDevControl : MonoBehaviour
     {
+        [SerializeField] private PickaxeDataSO pickaxeData;
         #if UNITY_EDITOR
         private void Update()
         {
@@ -46,6 +47,16 @@ namespace _01_Scripts.Player.TestDev
             if (Input.GetKeyDown(KeyCode.F3))
                 GameManager.instance.ChangeState(new MiningState());
             #endregion
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                Debug.Log("5만 골드 지급, ??? 획득");
+                InventoryManager.Instance.AddGold(50000);
+                PickaxeManager.Instance.AddPickaxe(pickaxeData);
+                Debug.Log("지급 완료");
+                InventoryManager.Instance.AddGold(50000);
+                GameManager.instance.ChangeState(new HouseState());
+            }
         }
         #endif
     }

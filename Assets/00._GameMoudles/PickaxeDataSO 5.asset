@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PickaxeDataSO 5
   m_EditorClassIdentifier: 
   index: 5
-  pickaxeId: 
+  pickaxeId: pickaxe_hidden
   icon: {fileID: 0}
   name: "?? \uACE1\uAD2D\uC774"
   desc: "\uC660\uC9C0 \uD788\uB4E0 \uC544\uC774\uD15C\uC778\uAC70 \uAC19\uB2E4."
@@ -22,5 +22,5 @@ MonoBehaviour:
   goldPrice: 0
   fruitPrice: 0000000000000000000000000000000000000000
   hitboxSquare: 1.5
-  bought: 0
+  bought: 1
   eqiuqed: 0
