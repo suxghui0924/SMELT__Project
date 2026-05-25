@@ -21,6 +21,15 @@ public class AchievementClear : MonoBehaviour
     private void Start()
     {
         startTime = Time.timeAsDouble;
+        if (SaveManager.Instance != null && !SaveManager.Instance.HasSaveData())
+        {
+            foreach (var so in achievementSOs)
+            {
+                if (so.achievementState != Achievements.FirstJoined) continue;
+                AchievementManager.Instance?.AchPopUp(so);
+                break;
+            }
+        }
     }
     private void Update()
     {
