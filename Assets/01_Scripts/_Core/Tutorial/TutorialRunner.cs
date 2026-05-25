@@ -151,5 +151,6 @@ public class TutorialRunner : MonoBehaviour
         _characterUI.Hide();
         Time.timeScale = 1f;
         _state = TutorialState.Idle;
+        AchievementManager.Instance?.AchievementClear(Achievements.FirstJoined);
     }
 }

@@ -34,7 +34,10 @@ public class AchievementManager : MonoBehaviour, ISaveable
     private void Start()
     {
         foreach (var achievement in AchievementStateDic.Values)
+        {
             achievement.clear = false;
+            achievement.count = 0;
+        }
 
         SaveManager.Instance.Register(this);
     }
@@ -94,6 +97,7 @@ public class AchievementManager : MonoBehaviour, ISaveable
         foreach (var achievement in AchievementStateDic.Values)
         {
             achievement.clear = false;
+            achievement.count = 0;
         }
 
         foreach (int achievementID in data.clearedAchievements)

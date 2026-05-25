@@ -101,6 +101,8 @@ namespace SMELT.LHS.LHS_Script.MiningSystem.Stamina
                     canEnter = currentFatigue > 0;
                     db = canEnter;
                     OnFatigueChange?.Invoke(currentFatigue);
+                    if (currentFatigue <= 0)
+                        GameOver();
                 }
                 else if (SaveManager.Instance != null && SaveManager.Instance.HasSaveData() && isNextDay)
                 {

@@ -21,8 +21,6 @@ public class AchievementClear : MonoBehaviour
     private void Start()
     {
         startTime = Time.timeAsDouble;
-        Debug.Log(1);
-        ClearAchievement(Achievements.FirstJoined);
     }
     private void Update()
     {

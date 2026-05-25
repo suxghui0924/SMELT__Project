@@ -14,7 +14,7 @@ namespace _01_Scripts.Player.Tutorial
         {
             if (AchievementManager.Instance.AchievementStateDic.TryGetValue(Achievements.FirstJoined, out AchievementSO achievementSO))
             {
-                if ((achievementSO.count == 0 || achievementSO.count == 1) && !achievementSO.clear)
+                if (!achievementSO.clear)
                 {
                     UICanvasManager.instance.ControlObject(ObjectType.Tutorial, true);
                 }
