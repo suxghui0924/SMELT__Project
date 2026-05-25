@@ -28,6 +28,7 @@ public class DrowOre : MonoBehaviour
         
         for (int i = 0; i < spawnCount; i++)
         {
+            SoundManager.instance.PlaySFX("Growl");
             if (_skillSystem.IsAlive == true)
             {
                 _bossSKillAnim.SetTrigger("BossSkill");

@@ -101,7 +101,7 @@ public class skillSystem : MonoBehaviour
    
     private IEnumerator PlayDeathAnimation()
     {
-
+        SoundManager.instance.PlaySFX("BossDead");
         shakes = true;
         BossSkillManager.Instance.stack = false;
         yield return new WaitForSeconds(3f);

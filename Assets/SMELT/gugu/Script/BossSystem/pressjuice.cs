@@ -21,6 +21,7 @@ public class pressjuice : MonoBehaviour
 
     public void SpawnJuice()
     {
+        SoundManager.instance.PlaySFX("Growl");
         _bossSKillAnim.SetTrigger("BossSkill");
        
         for (int i = 0; i < spawnCount; i++)
