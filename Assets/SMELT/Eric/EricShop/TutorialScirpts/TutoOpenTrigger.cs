@@ -13,6 +13,7 @@ public class TutoOpenTrigger : MonoBehaviour
 
         [SerializeField] private GameObject skillTreeObject;
 
+
         public int count;
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -28,12 +29,6 @@ public class TutoOpenTrigger : MonoBehaviour
                                         .getOrder2));
                 }
 
-                if (gameObject.name == "NextDayZone")
-                {
-                        StartCoroutine(
-                                TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
-                                        .nextDay2));
-                }
 
                 if (gameObject.name == "SkillTreeZone")
                 {
@@ -43,12 +38,6 @@ public class TutoOpenTrigger : MonoBehaviour
                                         .store2));
                 }
 
-                if (gameObject.name == "StoreRadioZone")
-                {
-                        StartCoroutine(
-                                TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine
-                                        .changeBgm2));
-                }
         }
     }
 

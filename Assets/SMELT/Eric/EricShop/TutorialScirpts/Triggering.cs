@@ -12,12 +12,12 @@ public class Triggering : MonoBehaviour
         {
                 var inv = InventoryManager.Instance;
 
-                inv.AddGold(100_000_000);
-                inv.AddItem("fruitstone_apple", 999);
-                inv.AddItem("fruitstone_melon", 999);
-                inv.AddItem("fruitstone_orange", 999);
-                inv.AddItem("fruitstone_lemon", 999);
-                inv.AddItem("fruitstone_grape", 999);
+                inv.AddGold(0);
+                inv.AddItem("fruitstone_apple", 1);
+                inv.AddItem("fruitstone_melon", 1);
+                inv.AddItem("fruitstone_orange", 0);
+                inv.AddItem("fruitstone_lemon", 0);
+                inv.AddItem("fruitstone_grape", 0);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -36,8 +36,6 @@ public class Triggering : MonoBehaviour
                                 door = true;
                         }
                 }
-
-
         }
 
         private void Update()
@@ -46,6 +44,7 @@ public class Triggering : MonoBehaviour
 
                 if (door)
                 {
+                        Leedoyun_SellManager.Instance.ForceSpawnTutorialOrder(WeaponType.Sword, "fruitstone_apple", 0);
                         TutoManager.Instance.Triggered();
                         door = false;
                         TutoManager.Instance.Dialogue.canMakePoint = true;

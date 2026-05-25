@@ -82,6 +82,8 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
 
     /// <summary>가게 닫힘 — 문 비주얼 즉시 동기화용.</summary>
     public static event Action OnShopClosed;
+    /// <summary>가게 열림 — 문 비주얼 즉시 동기화용.</summary>
+    public static event Action OnShopOpened;
 
     // ─────────────────────────────────────────
     // 해금 테이블 (날짜별 사용 가능한 조합)
@@ -331,6 +333,7 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         _isShopOpen = true;
         int day = InventoryManager.Instance != null ? InventoryManager.Instance.CurrentDay : 1;
         _spawnTimer = GetSpawnIntervalForDay(day) - firstOrderDelay; // firstOrderDelay 후 첫 주문 생성
+        OnShopOpened?.Invoke();
     }
 
     /// <summary>
@@ -405,6 +408,22 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
         float timeLimit = GetOrderTimeLimitForDay(currentDay);
         var order = new Leedoyun_CustomerOrder(weaponType, oreId, rewardGold, timeLimit);
         _activeOrders.Add(order);
+        OnOrderAdded?.Invoke(order);
+    }
+    //강제 소환
+    public void ForceSpawnTutorialOrder(WeaponType weaponType, string oreId, int reward)
+    {
+        if (_activeOrders.Count >= maxActiveOrders) 
+        {
+            return;
+        }
+
+        float timeLimit = 1000f; 
+
+        var order = new Leedoyun_CustomerOrder(weaponType, oreId, reward, timeLimit);
+        
+        _activeOrders.Add(order);
+
         OnOrderAdded?.Invoke(order);
     }
 

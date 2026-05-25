@@ -22,20 +22,29 @@ public class AchievementManager : MonoBehaviour, ISaveable
 
     private void Awake()
     {
-        
         if (Instance == null)
         {
             Instance = this;
             InitDictionary();
         }
-
         else
             Destroy(gameObject);
     }
 
     private void Start()
     {
+        foreach (var achievement in AchievementStateDic.Values)
+        {
+            achievement.clear = false;
+            achievement.count = 0;
+        }
+
         SaveManager.Instance.Register(this);
+    }
+
+    private void OnDestroy()
+    {
+        SaveManager.Instance?.Unregister(this);
     }
     private void InitDictionary()
     {
@@ -58,8 +67,16 @@ public class AchievementManager : MonoBehaviour, ISaveable
     }
 
     public void AchievementClear(Achievements achievements)
-    { 
+    {
         AchievementStateDic[achievements].clear = true;
+
+        if (SaveManager.Instance != null)
+        {
+            int id = AchievementStateDic[achievements].achievementID;
+            var list = SaveManager.Instance.CurrentData.clearedAchievements;
+            if (!list.Contains(id))
+                list.Add(id);
+        }
     }
 
     public void OnSave(SaveData data)
@@ -80,6 +97,7 @@ public class AchievementManager : MonoBehaviour, ISaveable
         foreach (var achievement in AchievementStateDic.Values)
         {
             achievement.clear = false;
+            achievement.count = 0;
         }
 
         foreach (int achievementID in data.clearedAchievements)

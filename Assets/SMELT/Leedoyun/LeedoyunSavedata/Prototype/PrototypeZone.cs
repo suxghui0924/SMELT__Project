@@ -45,12 +45,14 @@ public class PrototypeZone : MonoBehaviour
     {
         LeedoyunUIManager.OnAnyUIOpened += OnLeedoyunUIOpened;
         Leedoyun_SellManager.OnShopClosed += OnShopForceClosed;
+        Leedoyun_SellManager.OnShopOpened += OnShopForceOpened;
     }
 
     private void OnDisable()
     {
         LeedoyunUIManager.OnAnyUIOpened -= OnLeedoyunUIOpened;
         Leedoyun_SellManager.OnShopClosed -= OnShopForceClosed;
+        Leedoyun_SellManager.OnShopOpened -= OnShopForceOpened;
     }
 
     private void OnShopForceClosed()
@@ -59,6 +61,14 @@ public class PrototypeZone : MonoBehaviour
         _isDoorOpen = false;
         if (_doorObject != null)
             _doorObject.SetActive(true); // 문 닫힘 = 오브젝트 활성
+    }
+
+    private void OnShopForceOpened()
+    {
+        if (_zoneType != ZoneType.Door) return;
+        _isDoorOpen = true;
+        if (_doorObject != null)
+            _doorObject.SetActive(false); // 문 열림 = 오브젝트 비활성
     }
 
     // Leedoyun UI가 열릴 때 라디오·달력·스킬 팝업을 닫고 상태 초기화
@@ -159,6 +169,7 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.MineEntrance)
         {
             if (TimerAndReward.Instance != null && !TimerAndReward.Instance.canEnter) return;
+            if (TimerAndReward.Instance == null && SaveManager.Instance != null && SaveManager.Instance.HasSaveData() && SaveManager.Instance.CurrentData.stamina <= 0) return;
             if (TimerAndReward.Instance != null) TimerAndReward.Instance.db = true;
             /*if (InventoryManager.Instance != null && GameManager.instance != null)
             {

@@ -12,9 +12,12 @@ public class TutoManager : MonoBehaviour
 
     public bool canLast;
     public bool canLastCoroutine = true;
+    public bool isCanUpgrading = true;
 
     public Vector3[] targets;
     public GameObject[] targetObjects;
+
+    public GameObject tree;
 
     public void TargetPos(int index)
     {
@@ -33,14 +36,7 @@ public class TutoManager : MonoBehaviour
             Instance = this;
         canLastCoroutine = true;
     }
-
-    private void Start()
-    {
-        if (!Upgrading.isTutorial)
-        {
-            Upgrading.isTutorial = true;
-        }
-    }
+    
 
     private void Update()
     {
@@ -49,6 +45,16 @@ public class TutoManager : MonoBehaviour
             skillTreeUI = GameObject.Find("Group_ShopSkillTree");
             return;
         }
+        if(Upgrading != null)
+            if (!Upgrading.isTutorial&&isCanUpgrading)
+            {
+                isCanUpgrading = false;
+                Upgrading.isTutorial = true;
+            }
+            else
+            {
+                Upgrading = GameObject.Find("UpEveryOre1").GetComponent<Upgrading>();
+            }
         if (!skillTreeUI.activeSelf&&canLastCoroutine)
         {
             canLastCoroutine = false;
@@ -62,48 +68,12 @@ public class TutoManager : MonoBehaviour
     {
         yield return null;
         TutoManager.Instance.Triggered();
-        TutoManager.Instance.Dialogue.canMakePoint = true;
         StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.store4));
-        yield return new WaitForSeconds(0.5f);
-        if (canLast)
-        {
-            TutoManager.Instance.Triggered();
-            TutoManager.Instance.Dialogue.canMakePoint = true;
-            StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.changeBgm2));
-            canLast = false;
-        }
-
-        yield return new WaitForSeconds(0.5f);
-        if (canLast)
-        {
-            TutoManager.Instance.Triggered();
-            TutoManager.Instance.Dialogue.canMakePoint = true;
-            StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.nextDay2));
-            canLast = false;
-
-        }
-
-        yield return new WaitForSeconds(0.5f);
-        if (canLast)
-        {
-            TutoManager.Instance.Triggered();
-            StartCoroutine(TutoSaying.SayingCoroutine(TutoLine.last));
-            canLast = false;
-            
-        }
-        yield return new WaitForSeconds(0.5f);
+        tree.SetActive(false);
     }
 
-    [field:SerializeField]public TutoAttack TutoRAttack { get;private set; }
-    [field:SerializeField]public TutoAttack TutoLAttack { get;private set; }
-    [field:SerializeField]public TutoDungeonAndUpgrade TutoDungeon { get;private set; }
-    [field:SerializeField]public TutoDungeonAndUpgrade TutoUpgrade { get;private set; }
-    [field:SerializeField]public TutoEnemySpawn TutoEnemySpawn{ get;private set; }
-    [field:SerializeField]public TutoOnTrigger TutoOnTrigger{ get;private set; }
     [field:SerializeField]public TutorialLine TutoLine{ get;private set; }
     [field:SerializeField]public TutorialSaying TutoSaying{ get;private set; }
-    [field:SerializeField]public TutoHit TutoHit{ get;private set; }
-    [field:SerializeField]public TutoOpenTrigger TutoOpenTrigger{ get;private set; }
     [field:SerializeField]public Dialogue Dialogue{ get;private set; }
     [field:SerializeField]public Upgrading Upgrading{ get;private set; }
 

@@ -54,6 +54,7 @@ public class ShopManager : MonoBehaviour, ISaveable
         data.totalEarned  = _totalEarned;
         data.todayEarned  = _todayEarned;
         data.salesHistory = _salesHistory;
+        data.isShopOpen   = IsShopOpen;
     }
 
     public void OnLoad(SaveData data)
@@ -61,6 +62,12 @@ public class ShopManager : MonoBehaviour, ISaveable
         _totalEarned  = data.totalEarned;
         _todayEarned  = data.todayEarned;
         _salesHistory = data.salesHistory;
+
+        // 저장된 가게 상태 복원 (튜토리얼→게임, 씬 전환 후 잘못된 문 상태 방지)
+        if (data.isShopOpen)
+            OpenShop();
+        else
+            CloseShop();
     }
 
     // ─────────────────────────────────────────

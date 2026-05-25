@@ -38,7 +38,6 @@ public class TutoDungeonAndUpgrade : MonoBehaviour
                     playerHouse[1].gameObject.SetActive(false);
                     mining[0].gameObject.SetActive(true);
                     mining[1].gameObject.SetActive(true);
-                    TutoManager.Instance.TutoEnemySpawn.Spawn(true);
                     canSpawn =  false;
                 }
             }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using _01_Scripts._Core._States;
 using UnityEngine;
 using TMPro;
 
@@ -25,8 +26,12 @@ public class Dialogue : MonoBehaviour
     public int pointsNum = 0;
     public bool canMakePoint =false;
 
+    public bool canDo = true;
+    public bool next=true;
+
     private void Dissapear()
     {
+        Check();
         animController.SetTrigger("Disappear");
         if (TutoManager.Instance.TutoSaying.canGetOrder2)  TutoManager.Instance.TutoSaying.canGetOrder2 = false;
         if (!TutoManager.Instance.TutoSaying.tuRAttack && !TutoManager.Instance.TutoSaying.tuLAttack)  canMove = true;
@@ -35,12 +40,46 @@ public class Dialogue : MonoBehaviour
             last = false;
             TutoManager.Instance.canLast = true;
         }
-        Check();
+        if(TutoManager.Instance.TutoLine.dungeon3 == TutoManager.Instance.TutoSaying.str&&TutoManager.Instance.TutoSaying.dungeon.activeSelf&&canDo)
+        {
+            canDo = false;
+            TutoManager.Instance.TutoSaying.tuRAttack = true;
+        }
+        if(TutoManager.Instance.TutoLine.dungeon1 == TutoManager.Instance.TutoSaying.str&&TutoManager.Instance.TutoSaying.dungeon.activeSelf)
+        {
+            StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.dungeon3));
+        }
+        if(TutoManager.Instance.TutoLine.store4 == TutoManager.Instance.TutoSaying.str)
+        {
+            TutoManager.Instance.Triggered();
+            TutoManager.Instance.Dialogue.canMakePoint = true;
+            StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.changeBgm2));
+
+        }     
+        if(TutoManager.Instance.TutoLine.changeBgm2 == TutoManager.Instance.TutoSaying.str)
+        {
+            TutoManager.Instance.Triggered();
+            TutoManager.Instance.Dialogue.canMakePoint = true;
+            StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.nextDay2));
+
+        }
+        if(TutoManager.Instance.TutoLine.nextDay2 == TutoManager.Instance.TutoSaying.str)
+        {
+            TutoManager.Instance.Triggered();
+            StartCoroutine(TutoManager.Instance.TutoSaying.SayingCoroutine(TutoManager.Instance.TutoLine.last));
+
+        }
+        if(TutoManager.Instance.TutoLine.last == TutoManager.Instance.TutoSaying.str&&next)
+        {
+            next = false;
+            GameManager.instance.ChangeState(new LobbyState());
+
+        }
     }
 
     private void Check()
     {
-        if (pointsNum >= 10||!canMakePoint) return;
+        if (pointsNum >= 9||!canMakePoint) return;
         TutoManager.Instance.TargetPos(pointsNum);
         pointsNum++;
         canMakePoint = false;

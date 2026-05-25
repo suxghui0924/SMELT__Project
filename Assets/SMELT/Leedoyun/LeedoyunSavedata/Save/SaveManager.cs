@@ -40,6 +40,13 @@ public class SaveManager : MonoBehaviour
         yield return null;
         if (HasSaveData())
             Load();
+        else
+        {
+            // 저장 파일이 없어도 각 매니저를 기본값으로 초기화 (에디터 SO 잔류값 방지)
+            foreach (var s in _saveables)
+                s.OnLoad(CurrentData);
+        }
+        _initialLoadDone = true;
     }
 
     // ─────────────────────────────────────────
@@ -59,6 +66,9 @@ public class SaveManager : MonoBehaviour
     // 플레이 타임 측정용
     private float _sessionStartTime;
 
+    // AutoLoadOnStart 완료 여부 — 이후 Register 시 즉시 OnLoad 호출하기 위해 사용
+    private bool _initialLoadDone = false;
+
     // 저장/불러오기 결과를 UI에 알려주는 이벤트
     public event Action<bool, string> OnSaveResult;  // (성공여부, 메시지)
     public event Action<bool, string> OnLoadResult;
@@ -69,8 +79,10 @@ public class SaveManager : MonoBehaviour
     // ─────────────────────────────────────────
     public void Register(ISaveable saveable)
     {
-        if (!_saveables.Contains(saveable))
-            _saveables.Add(saveable);
+        if (_saveables.Contains(saveable)) return;
+        _saveables.Add(saveable);
+        if (_initialLoadDone)
+            saveable.OnLoad(CurrentData);
     }
 
     public void Unregister(ISaveable saveable) => _saveables.Remove(saveable);
@@ -120,10 +132,6 @@ public class SaveManager : MonoBehaviour
             SaveData loaded = JsonUtility.FromJson<SaveData>(json);
 
             CurrentData = loaded;
-
-            // 게임오버 상태(stamina=0)로 저장된 경우 기본값으로 복원
-            if (CurrentData.stamina <= 0)
-                CurrentData.stamina = 100f;
 
             // 등록된 모든 매니저에 데이터 배포
             foreach (var s in _saveables)
