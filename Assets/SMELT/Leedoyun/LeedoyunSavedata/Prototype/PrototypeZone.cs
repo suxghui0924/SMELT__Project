@@ -169,6 +169,7 @@ public class PrototypeZone : MonoBehaviour
         if (ZoneType == ZoneType.MineEntrance)
         {
             if (TimerAndReward.Instance != null && !TimerAndReward.Instance.canEnter) return;
+            if (TimerAndReward.Instance == null && SaveManager.Instance != null && SaveManager.Instance.HasSaveData() && SaveManager.Instance.CurrentData.stamina <= 0) return;
             if (TimerAndReward.Instance != null) TimerAndReward.Instance.db = true;
             /*if (InventoryManager.Instance != null && GameManager.instance != null)
             {

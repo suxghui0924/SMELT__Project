@@ -14,7 +14,7 @@ public class DropShow : MonoBehaviour
     
     private void Start()
     {
-        
+        SoundManager.instance.PlaySFX("Cry");
         
         if(gameObject.name == "Player")
             mySequence.Append(transform.DOMoveY(-2.5f, 1.5f).SetEase(Ease.OutBounce));

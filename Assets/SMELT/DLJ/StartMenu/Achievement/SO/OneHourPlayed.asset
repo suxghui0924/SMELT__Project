@@ -18,4 +18,4 @@ MonoBehaviour:
   achievementDescription: "\uAC8C\uC784\uC744 1\uC2DC\uAC04\uB3D9\uC548 \uD50C\uB808\uC774\uD568"
   achievementSprite: {fileID: 21300000, guid: 02e48102914474fcaa20c168299db427, type: 3}
   clear: 0
-  count: 2
+  count: 0

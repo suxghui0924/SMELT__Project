@@ -146,10 +146,19 @@ public class TutorialRunner : MonoBehaviour
         RunStep(next);
     }
 
+    public void Restart()
+    {
+        _stepIndex = 0;
+        _lineIndex = 0;
+        _state = TutorialState.Idle;
+        RunStep(0);
+    }
+
     private void EndTutorial()
     {
         _characterUI.Hide();
         Time.timeScale = 1f;
         _state = TutorialState.Idle;
+        AchievementManager.Instance?.AchievementClear(Achievements.FirstJoined);
     }
 }
