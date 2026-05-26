@@ -11,7 +11,7 @@ namespace _01_Scripts.Player
         [SerializeField] private TextMeshProUGUI _textLabelData;
         [SerializeField] private TextMeshProUGUI _textLabelDuty;
         [SerializeField] private TextMeshProUGUI _textLabelResult;
-        private int _outData;
+        private ulong _outData;
 
         void Start()
         {
@@ -25,7 +25,7 @@ namespace _01_Scripts.Player
 
         private void UpdateOutData()
         {
-            _outData = (int)InventoryManager.Instance.Gold;
+            _outData = InventoryManager.Instance.Gold;
         }
 
         public void NextDayOnViusalButton()
@@ -33,7 +33,7 @@ namespace _01_Scripts.Player
             this.gameObject.SetActive(true);
             _textLabelData.text = $"현재 날짜(Day {InventoryManager.Instance.CurrentDay}) -> 다음 날짜(Day {InventoryManager.Instance.CurrentDay + 1})";
             _textLabelDuty.text = $"오늘의 유지비용 : { InventoryManager.Instance.MaintenanceCost.ToString("N0")} 골드";
-            _textLabelResult.text = $"오늘의 수입 : {(InventoryManager.Instance.Gold - (ulong)_outData).ToString("N0")} 골드";
+            _textLabelResult.text = $"오늘의 수입 : {(InventoryManager.Instance.Gold > _outData ? (InventoryManager.Instance.Gold - _outData).ToString("N0") : "0")} 골드";
                 
         }
         
