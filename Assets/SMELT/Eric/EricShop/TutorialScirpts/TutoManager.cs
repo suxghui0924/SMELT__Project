@@ -76,6 +76,7 @@ public class TutoManager : MonoBehaviour
     [field:SerializeField]public TutorialSaying TutoSaying{ get;private set; }
     [field:SerializeField]public Dialogue Dialogue{ get;private set; }
     [field:SerializeField]public Upgrading Upgrading{ get;private set; }
+    [field:SerializeField]public TutoExitDungeon TutoExitDungeon{ get;private set; }
 
 
 }

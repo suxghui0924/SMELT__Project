@@ -113,10 +113,7 @@ public class InventoryManager : MonoBehaviour, ISaveable
     {
         _currentDay      = data.currentDay > 0 ? data.currentDay : 1;
         _gold            = data.gold;
-        // 구버전 세이브(100G 기준)는 테이블로 재계산
-        _maintenanceCost = data.maintenanceCost < 1000
-            ? GetMaintenanceCostForDay(_currentDay)
-            : data.maintenanceCost;
+        _maintenanceCost = GetMaintenanceCostForDay(_currentDay);
         _techLevel       = data.currentTechLevel;
         _unlockedTechs   = data.unlockedTechs;
 

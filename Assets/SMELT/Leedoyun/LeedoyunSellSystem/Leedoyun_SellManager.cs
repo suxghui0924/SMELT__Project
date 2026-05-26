@@ -34,8 +34,8 @@ public class Leedoyun_SellManager : MonoBehaviour, ISaveable
 
     // 일차별 주문 제한 시간 (1일차~7일차+)
     private static readonly float[] s_timeLimitByDay    = { 60f, 52f, 45f, 40f, 35f, 30f, 25f };
-    // 일차별 주문 생성 주기 (1일차~7일차+)
-    private static readonly float[] s_spawnIntervalByDay = { 15f, 15f, 15f, 15f, 15f, 15f, 15f };
+    // 일차별 주문 생성 주기 (1일차~7일차+) — 점점 빨라져 7일차에 5초
+    private static readonly float[] s_spawnIntervalByDay = { 15f, 14f, 13f, 11f, 9f, 7f, 5f };
 
     private static float GetOrderTimeLimitForDay(int day)
     {

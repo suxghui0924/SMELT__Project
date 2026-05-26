@@ -1013,6 +1013,9 @@ namespace Unity.VisualScripting.Generated.Aot
 	// MelonOverride.op_Implicit
 	// MelonOverride.op_Equality
 	// MelonOverride.op_Inequality
+	// BossHitBoxOnTrigger.op_Implicit
+	// BossHitBoxOnTrigger.op_Equality
+	// BossHitBoxOnTrigger.op_Inequality
 	// HitBoxOnTrigger.op_Implicit
 	// HitBoxOnTrigger.op_Equality
 	// HitBoxOnTrigger.op_Inequality
@@ -13232,6 +13235,41 @@ namespace Unity.VisualScripting.Generated.Aot
 		// MelonOverride.op_Inequality
 		[global::UnityEngine.Scripting.PreserveAttribute()]
 		public static void MelonOverride_op_Inequality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 != arg1);
+			global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// BossHitBoxOnTrigger.op_Implicit
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void BossHitBoxOnTrigger_op_Implicit()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			bool conversion = ((bool)(arg0));
+			global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, bool> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// BossHitBoxOnTrigger.op_Equality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void BossHitBoxOnTrigger_op_Equality()
+		{
+			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
+			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);
+			bool @operator = (arg0 == arg1);
+			global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<UnityEngine.Object, UnityEngine.Object, bool>(default(global::System.Reflection.MethodInfo));
+			optimized.Invoke(null, arg0, arg1);
+			optimized.Invoke(default(object[]));
+		}
+		
+		// BossHitBoxOnTrigger.op_Inequality
+		[global::UnityEngine.Scripting.PreserveAttribute()]
+		public static void BossHitBoxOnTrigger_op_Inequality()
 		{
 			global::UnityEngine.Object arg0 = default(global::UnityEngine.Object);
 			global::UnityEngine.Object arg1 = default(global::UnityEngine.Object);

@@ -13,8 +13,8 @@ public class Triggering : MonoBehaviour
                 var inv = InventoryManager.Instance;
 
                 inv.AddGold(0);
-                inv.AddItem("fruitstone_apple", 1);
-                inv.AddItem("fruitstone_melon", 1);
+                inv.AddItem("fruitstone_apple", 2);
+                inv.AddItem("fruitstone_melon", 0);
                 inv.AddItem("fruitstone_orange", 0);
                 inv.AddItem("fruitstone_lemon", 0);
                 inv.AddItem("fruitstone_grape", 0);
